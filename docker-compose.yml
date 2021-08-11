@@ -1,0 +1,41 @@
+version: "3"
+
+services:
+  pik4_web:
+    container_name: pik4_web
+    # ./myapp-web/Dockerfile でイメージをビルド
+    build:
+      context: ./docker/app
+      dockerfile: Dockerfile
+    # myapp-db 起動後に myapp-web を起動
+    depends_on:
+      - pik4_db
+    # 80 番ポートを割り当て
+    ports:
+      - "80:80"
+    # ローカル の ./html フォルダを
+    # コンテナの /var/www/html にマウント
+    volumes:
+      - "./html:/var/www/html"
+
+  # MySQL
+  pik4_db:
+    container_name: pik4_db
+    image: mysql:8.0
+    volumes:
+      - "./docker/db:/docker-entrypoint-initdb.d"
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+
+  # phpMyAdmin
+  pik4_pma:
+    container_name: pik4_pma
+    image: phpmyadmin/phpmyadmin:5.0
+    depends_on:
+      - pik4_db
+    volumes:
+      - ./docker/pma/misc.ini:/usr/local/etc/php/conf.d/misc.ini
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: pik4_db

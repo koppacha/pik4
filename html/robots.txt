@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /tweet/
+Disallow: /twitterauth/
+Sitemap: https://chr.mn/pik4/sitemap.xml

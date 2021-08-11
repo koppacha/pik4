@@ -1,0 +1,1452 @@
+menu_title,ピクミンシリーズチャレンジモード大会,The Leaderboards of Pikmin Series Challenge & Mission Mode
+menu_setting,表示設定,Display settings
+menu_nav_on,ナビゲーションテーブル表示,Display navigation table
+menu_nav_off,ナビゲーションテーブル非表示,Hide navigation table
+menu_info_on,ご案内表示,Display information
+menu_info_off,ご案内非表示,Hide information
+menu_info2_on,お知らせ表示,Display notifications
+menu_info2_off,お知らせ非表示,Hide notifications
+menu_mov_on,動画リンク表示,Display video links
+menu_mov_off,動画リンク非表示,Hide video links
+menu_newrec_on,最新/今週トップ/人気ステージ表示,Display Latest / Top of this week / Popular stages
+menu_newrec_off,最新/今週トップ/人気ステージ非表示,Hide Latest / Top of this week / Popular stages
+menu_diary_on,日替わりチャレンジ表示,Display daily challenge
+menu_diary_off,日替わりチャレンジ非表示,Hide daily challenge
+menu_total_on,参加者総合ランキング表示,Display comprehensive player rankings
+menu_total_off,参加者総合ランキング非表示,Hide comprehensive player rankings
+menu_submit,このステージに投稿する,Submit this stage
+menu_cnt_total,総投稿数,Total number of posts
+menu_cnt_now,今週の投稿,Posts from this week
+menu_cnt_prev,先週の投稿,Posts from last week
+menu_limited_notice,開催予定の期間限定ランキング,Scheduled (ranking)
+menu_limited_dai,第,#
+menu_limited_kai,回,
+menu_limited_open,開催中の期間限定ランキング,Current Ranking Lists
+rank_tail,位,
+menu_info,ご案内,Guidance
+menu_info_welcome,ピクチャレ大会へようこそ,Welcome to the Pikmin Series Challenge Mode Leaderboard
+menu_info_rule,ルール集,Rules
+menu_info_discord,Discord（ピクミン界隈専用チャット）,Japanese Pikmin Discord
+menu_info_contact,管理人への連絡はこちら,Contact administrator
+menu_info_pik3dx,ピクミン3DXが発売された場合の対応,Information about the release of Pikmin 3DX
+menu_info_cheating,不正疑惑騒動まとめ,Summary of alleged cheating
+menu_info_limitedlist,期間限定チャレンジ一覧,Limited time challenges
+menu_info_temporarypost,臨時投稿フォーム（要Googleアカ）,Limited time challenge submission form (Google account required)
+menu_info_meetingroom,会議室入室申請フォーム,Application form for permission to enter the meeting room
+menu_info_exempiton,証拠動画免除フォーム,Evidence exemption form
+menu_info_functionlist,機能一覧,Function list
+menu_info_questionlist,質問集,Frequently Asked Questions
+menu_info_realevent,オフ会ガイドライン,Off-line guidelines
+menu_info_pikminkeywords,新・ピクミンキーワード,New Pikmin Technical Terms(Japanese)
+menu_info_more,▼さらに表示,▼ Expand
+menu_info_less,▲折り畳む,▲ Collapse
+pik3dx,ピクミン3 デラックス,Pikmin 3 Deluxe
+menu_pickup_countdown,発売まであと,Time until the release
+menu_pickup_amzn,巾着つきパッケージ版,Package version with drawstring bag
+menu_pickup_711,キーホルダーつきパッケージ版,Package version with keychain
+menu_pickup_dl,ダウンロード版,Download version
+menu_pickup_pack,パッケージ版,Cartridge version
+menu_info2,お知らせ,Notices
+menu_mov,動画コンテンツリンク集,Video links
+menu_mov_twitch1,Twitch:ピクミン,Twitch: Pikmin
+menu_mov_twitch2,Twitch:ピクミン2,Twitch: Pikmin 2
+menu_mov_twitch3,Twitch:ピクミン3,Twitch: Pikmin 3
+menu_mov_youtubeja,YouTube:日本語,YouTube: Japanese
+menu_mov_youtubeen,YouTube:英語,YouTube: English
+menu_mov_nicovideo,ニコニコ動画:新着順,Nicovideo: New Pikmin Videos
+menu_newrec,最新記録,Newest record
+menu_newrec_link,→新着一覧,New submissions
+menu_newrec_notrec,◆有効な記録はまだありません。,◆ There is no valid record yet.
+menu_topscore,今週のトップスコア,Top score of the week
+menu_topscore_notrec,◆今週の記録はまだありません。,◆ There is no record for this week yet.
+menu_poplar,最近の人気ステージ,Recent popular stage
+menu_poplar_not,◆該当ステージが存在しません。,◆ The corresponding stage does not exist.
+menu_daily,今日の日替わりチャレンジ,Today's daily challenge
+menu_recommend,今日のオススメ！,Recommended today!
+menu_eggfortune,タマゴムシくじ,Mitite Lottery
+menu_eggfortune_run,タマゴを割る,Break the egg
+menu_total_6th,▼6位以下,▼ 6th place and below
+menu_toggle_open,▼再表示,▼ Redisplay
+menu_toggle_normal,◆通常ステージ,◆ Normal stage
+menu_toggle_special,◆特殊ステージ,◆ Special stage
+menu_siteinfo,サイト情報,Site information
+menu_siteinfo_moving,移転日,Relocation date of the site
+menu_siteinfo_admin,管理人：木っ端ちゃっぴー,Caretaker: koppacha(木っ端ちゃっぴー)
+menu_siteinfo_blog,ブログ,blog
+menu_siteinfo_caution,◆このサイトは非公式であり、任天堂及びその他権利者とは一切関係ありません。お問い合わせ、要望など管理人への連絡は本家ブログの連絡フォームまでお願いします。,◆ This site is unofficial and has nothing to do with Nintendo. For inquiries, requests, etc., please use the contact form on the blog.
+menu_siteinfo_contact,→連絡フォーム,→ Contact form
+form_title,◆スコア登録,◆ Sending your scores
+form_lockon,フォームロック中,Form locked
+form_lockoff,フォームロック解除中,Form unlocking
+form_player,プレイヤー名,player name
+form_player_caution,数字のみや半角記号不可。12文字まで [クリックで詳細],Only numbers and half-width symbols are not allowed. Up to 12 characters [Click for details]
+form_player_caution_detail,"名前の制約詳細
+・使えるのはShift-JISで表現可能なひらカタ・漢字・アルファベット・数字と一部の記号です
+・最初の１文字は数字やアンダーバーは使えません
+・13文字以上の名前は使えません（半角は0.5文字として計算）
+・「名無し」「匿名」「Anonymous」など匿名を想起させる名称は使えません
+・ゲームや漫画や小説などに登場するキャラクターや固有名詞はなるべくそのまま使わないでください
+・他の人と重複した名前は使えません
+・半角記号の一部は使えません（!""$&'()\/）
+・機種依存文字（常用漢字外の漢字や絵文字、丸数字など）は使えません
+・現実の自分自身や知り合い、現実やネットの著名人の実名やハンドルネームは使えません","""Name constraint details
+・ You can use alphanumeric characters, Hiragana, Katakana, Kanji, and some symbols that can be expressed in Shift-JIS.
+・ Numbers and underscores cannot be used for the first character
+・ Names with 13 characters or more cannot be used
+・ Names such as ""anonymous"" cannot be used.
+・ Please do not use characters and proper nouns that appear in games, manga, novels, etc.
+・ You cannot use a name that someone else is already using.
+・ Some symbols cannot be used (! """" $ &'() \ /)
+・ Machine-dependent characters (kanji, pictograms, circled numbers, etc. other than common kanji) cannot be used.
+・ You cannot use the real names of yourself, acquaintances, real people, or celebrities on the Internet. """
+form_pass,パスワード,password
+form_pass_caution,(初投稿したときに入力したパスワードが登録されます),(The password you entered when you posted for the first time will be registered)
+form_pass_caution2,パスワードを忘れた場合は,forgot password?
+here,こちら,Here
+form_twitter_login,Twitterでログイン,Login with Twitter
+form_twitter_post,Twitterにも投稿する,Post to Twitter
+form_twitter_login_now,Twitterでログイン中,Currently logged in with Twitter
+form_twitter_logout,Twitterからログアウト,Log out of Twitter
+form_division,登録区分,Select Division
+form_division_normal,通常ランキング,Standard ranking
+form_division_new,新チャレンジモード,New challenge mode
+form_division_2p,2Pモードランキング,2-Player mode ranking
+form_division_unlimit,アンリミテッド・ランキング,Unlimited Ranking
+form_division_limited,期間限定/日替わりチャレンジ,Season / Daily Challenge
+form_division_dungeon,本編地下チャレンジ,Challenge in Main Story
+form_division_story,本編ランキング,Ranking (Main Story)
+form_division_battle,バトルモード,Battle mode
+form_conf,各種設定,Settings
+form_conf_defalut,▼選んでください,Please select
+form_conf_delete,記録を削除する,Delete Record
+form_conf_update,記録を更新する,Update Record
+form_conf_profile,プロフィールを登録／更新,Edit Profile
+form_conf_post,メッセージを送る,send a message
+form_conf_nopostlogin,投稿せずにログイン,Login Only
+form_conf_nopostlogin_caution,（記録を何も登録せずにログインだけします。「登録」ボタンを押してください。）,Login without posting. tap "register" button.
+form_conf_profile_site,運営しているサイト/ブログ,Site / blog that you run
+form_conf_profile_site_caution,（サイト名32文字まで・URLパラメータは登録できません）,(Site name up to 32 characters - URL parameters cannot be registered)
+form_conf_profile_site_name,サイト名,Site name
+form_conf_profile_site_url,URL,URL
+form_conf_profile_nicovideo,ニコニコ動画,Nicovideo
+form_conf_profile_nicovideo_caution,（マイリスト[mylist/XXXXX]またはユーザーページ[user/XXXXX]）,(my list [mylist/XXXXX] or user page [user/XXXXX])
+form_conf_profile_twitch,Twitch,Twitch
+form_conf_profile_youtube,YouTube,YouTube
+form_conf_profile_youtube_caution,（チャンネルURLの[user/XXXXX]または[channel/XXXXX]をuser・channelを含めて入力）,(Enter [user/XXXXX] or [channel/XXXXX] of the channel URL including user / channel)
+form_conf_profile_twitter,Twitter ID,Twitter username
+form_conf_profile_twitter__caution,（@を除いたアカウント名を入力・鍵アカは非推奨）,(Enter the account name excluding @)
+form_conf_profile_fav,お気に入りステージ,Favorite stage
+form_conf_profile_fav_noselect,選択なし,None
+form_conf_profile_comment,プロフィールコメント,Profile comment
+form_conf_profile_comment_caution,（256文字まで・改行はそのまま反映されます）,(Up to 256 characters, line breaks are reflected as they are)
+form_conf_profile_caution,（※登録されている情報を削除したい場合は空欄のまま送信してください）,(* If you want to delete the registered information, please leave it blank)
+form_conf_profile_caution2,（※NGワードが一つでもあるとすべて反映されません。ご注意ください）,(* Please note that if there is even one NG word, it will not be reflected.)
+form_conf_post_theme,テーマ,theme
+form_conf_post_limited,期間限定ルールを投稿する,Post a new Ranking idea
+form_conf_post_achievement,ピクミン実績を投稿する,Post Pikmin achievements
+form_conf_post_other,その他(意見・要望・通報・不具合報告・削除申請),Others(opinions / requests / reports / bug reports)
+form_conf_post_other_post,自由記述欄,Note
+form_conf_post_other_post_caution,"投稿の前にお読みください
+ルール集をよく読んでから送信してください。
+こちらはユーザー証明が必要な内容の連絡フォームです。匿名で済む情報提供（不具合報告・要望・荒らし通報等）はGoogleフォームが確実です。
+要望等で返信が欲しい場合、先頭行にメールアドレスかTwitter ID（@を含む半角英数字）を入力してください。Twitterの場合管理人TwitterからのDMになります。設定やフォロー状況によっては届きません。
+やむを得ない事情でユーザー削除を申請したい場合、以下のフォームに「削除」と入力してそのまま送信してください。
+ユーザー名を「名無し」に変える措置を執らせていただきます（スコア自体は他参加者のランクポイントにも強くかかわっているため削除できません。予めご了承ください）。
+","""Please read before posting
+Please read the rules carefully before sending.
+This is a contact form that requires proof of user. The Google form is sure to provide information that can be done anonymously (defect reports, requests, vandalism reports, etc.).
+If you want a reply due to a request, please enter your email address or Twitter ID (half-width alphanumeric characters including @) in the first line. In the case of Twitter, it will be DM from the administrator Twitter. It may not be delivered depending on the settings and follow-up status.
+If you want to apply for user deletion due to unavoidable circumstances, please enter ""Delete"" in the form below and send it as it is.
+We will take measures to change the user name to ""anonymous"" (Please note that the score itself is strongly related to the rank points of other participants and cannot be deleted).
+"""
+form_conf_post_limited,ステージ名と縛りルール名,Stage & Rule name
+form_conf_post_limited_caution,(『チーム対抗戦』など包括ルールの投稿の場合、ルール名のみ入力),(When posting a comprehensive rule such as "Team Battle", enter only the rule name)
+form_conf_post_limited_detail,ルール詳細,Rule details
+form_conf_post_limited_detail_caution,"縛りルールの条件
+・プラットフォームなどプレイ環境の差によって著しいスコア差が生まれないこと
+・参加者の過半数はクリアできる程度の難易度であること
+・実証に大きな手間がかかる、または実証不可能な縛りではないこと","""Conditions for binding rules
+・ There should be no significant score difference due to differences in play environment such as platforms.
+・ The majority of participants must be difficult enough to clear
+・ It is not a binding that takes a lot of time and effort to prove or cannot be proved. """
+form_conf_update_id,投稿ID,Post ID
+form_conf_update_caution,(投稿者による記録の削除はタイプミス等によって不本意に虚偽のスコアを投稿してしまった場合のみ認められます。投稿者の自己都合による削除は認められません。),(Delete of the record by the poster is permitted only when the false score is unintentionally posted due to a typo etc. The deletion by the poster's own convenience is not permitted.)
+form_conf_update_reset,リセットする,Reset
+form_conf_update_reset_caution,(登録済みのコメント・証拠写真・証拠動画を削除する場合チェックしてください。チェックした場合、以下のフォームで新しく登録する情報以外は削除されます),(Please check if you want to delete the registered comment, evidence photo, evidence video. If you check, all the information other than the newly registered information will be deleted in the form below)
+form_conf_update_reset_check,←チェック,← Check
+form_score_stage,ステージ名,Stage name
+form_score_reague,参加リーグ,Participating league
+form_score_reague_value1,レギュラーリーグ（レート変動あり）,Regular league (with rate fluctuations)
+form_score_reague_value2,フリー対戦（レート変動なし）,Free match (no rate fluctuation)
+form_score_rule,対戦ルール,Battle rules
+form_score_macaroon,マカロンあり,With macaroons
+form_score_reader,２対２,2 to 2
+form_score_pikmin,初期ピクミン,initial pikmin
+form_score_1p,1P,1P
+form_score_2p,2P,2P
+form_score_regular,対戦ルール（レギュラーリーグ）,Battle rules (regular league)
+form_score_regular_rule,"[ピクミン2] 
+　・1P/2P初期ピクミン：25匹 
+ 
+[ピクミン3] 
+　・マカロン：なし 
+　・リーダー：1対1 
+　・1P/2P初期ピクミン：25匹 ","[Pikmin 2]
+・ 1P / 2P initial Pikmin: 25
+ 
+[Pikmin 3]
+・ Macaron: Off
+・ Leaders: 1 vs. 1
+・ 1P / 2P initial Pikmin: 25"
+form_score_result,結果,result
+form_score_result_1win,1Pの勝利,1P victory
+form_score_result_2win,2Pの勝利,2P victory
+form_score_result_draw,引き分け,draw
+form_score_result_invalid,無効試合,Invalid match
+form_score_result_detail,結果詳細,result details
+form_score_result_detail_value1,相手チーム色のビー玉を運んだ,got foe's marble
+form_score_result_detail_value2,黄色ビー玉を４つ運んだ,got 4 yellow marble
+form_score_result_detail_value3,ビンゴシートが１列以上揃った,completed one or more lines
+form_score_result_detail_value4,勝利のマカロンを運んだ,Retrieve your macaroon
+form_score_result_detail_value5,相手リーダーがダウンした,Opponent's Leader loses all of his health
+form_score_result_detail_value6,相手ピクミンがゼンメツした,Opponent's Pikmin Extinction
+form_score_result_detail_value7,無効試合/引き分け,Draw / No contents
+form_score_minites_point,所持TP,Possession TP
+form_score_console_1p,1P操作方法,1P operation method
+form_score_player_2p,2Pプレイヤー名,2P player name
+form_score_console_2p,2P操作方法,2P operation method
+form_score_score,スコア,Score
+form_score_evidence_video,証拠動画必要スコア,border (Video Required)
+form_score_evidence_photo,証拠画像必要スコア,border (Result Required)
+form_score_trial,体験版,Demo
+form_score_trial_caution,（※体験版をプレイした場合はチェックして下さい。）,(* Please check if you played the trial version.)
+form_score_time,タイム,Time
+form_score_min,分,Minutes
+form_score_sec,秒,Seconds
+form_score_prov,暫定スコア,Provisional Score
+form_score_value,お宝累計,Amount Earned
+form_score_totaltime,合計時間,Total Time
+form_score_limittime,制限時間,Time Limit
+form_score_init_composition,初期構成,Pikmin Entering
+form_score_total,合計,Total
+form_score_possible,連れて行ける数,Number of Pikmin you can take
+red,赤,Red
+blue,青,Blue
+yellow,黄,Yellow
+purple,紫,Purple
+white,白,White
+form_score_add_composition,追加編成,Additional Member
+form_score_add_composition_caution,（ポポガシグサは使用回数を入力）,Please enter the number of times you have used in the Queen Candypop Bud field
+koppa,コッパ,Bulbmin
+popoga,ポポガ,Queen Candypop Bud
+form_score_deaths,犠牲数,Number of deaths
+form_score_timeandscore,通過タイム/スコア,Elapsed time / score
+form_score_hour,時間,time
+form_score_point,点,points
+form_score_basescore,基本スコア,Basic score
+form_score_cleartime_caution,(＊クリアタイムのみ投稿の場合、秒数には「0」を入力してください),put 0 in "second" When posting Time record only)
+form_score_dayｓ,クリア日数,Days spent
+form_score_day,日,days
+form_score_collect,回収数,Number of collections
+form_score_piece,個,
+form_score_totalpikmin,増やした数,Pikmin Born
+form_score_total_caution,(＊「増やした数」は「残ったピクミン」と「死んだピクミン」の合算です),(* "Pikmin Born" is the sum of "remaining Pikmin" and "dead Pikmin")
+winged,羽,Winged
+rock,岩,Rock
+form_score_storylim01,ノースプレー,No spray
+form_score_storylim02,ノーダメージ,No damage
+form_score_storylim03,ノーリセット,No reset
+form_score_storylim04,ノーキル,No kill
+form_score_storylim05,午前縛り,By noon
+form_score_storylim06,赤不使用,Red not used
+form_score_storylim07,青不使用,Blue not used
+form_score_storylim08,黄不使用,Yellow not used
+form_score_storylim09,地下隊列最小,Underground platoon minimum
+form_score_storylim10,白不使用,White not used
+form_score_storylim11,紫不使用,Purple not used
+form_score_storylim12,コッパ不使用,Bulbmin not used
+form_score_storylim13,葉のみ,Leaves only
+form_score_storylim14,常時ズームイン,Always zoom in
+form_score_storylim15,リーダー１人,1 leader
+form_score_storylim16,LRZボタン禁止,LRZ button prohibited
+form_score_storylim17,Cスティック禁止,C stick prohibited
+form_score_storylim18,Bボタン禁止,B button prohibited
+form_score_storylim19,バグ技不使用,Glitchless
+form_score_storylim20,地下１回制限,One underground limit
+form_score_storylim21,毎日１匹スタート,Start one every day
+form_score_comment,一行コメント,Comments:
+form_score_evidence_photo,証拠写真,Photographic evidence:
+form_score_evidence_photo_caution,写真：bmp/jpeg/png/gif形式のいずれか [クリックで詳細],Photo: bmp, jpeg, png or gif [Click for details]
+form_score_evidence_attachment_video_caution,動画：mp4形式のみ、最大40MBまで [クリックで詳細],Video: mp4 format only, up to 40MB [Click for details]
+form_score_evidence_photo_detail,"証拠写真の条件詳細
+・3MB以上の画像は自動的に圧縮されます。
+・通常ランキング10位以上（ピクミン2では20位以上）、特殊ランキングへの投稿では必須。 
+・リザルト画面の大半が映っているもの、できれば紙吹雪が舞っている状態のリザルト画面が望ましい。 
+・撮り損ねた場合はステージセレクト画面で当該ステージのハイスコアが表示されている画面の写真でも可。 
+・直撮り・キャプ画かどうかは問わないが、直撮りの場合は顔などの映り込みやExif情報に注意（写真はサイト上に公開される）","""Details of proof photo conditions
+-Images larger than 3MB are automatically compressed.
+・ Normal ranking 10th or higher (20th or higher in Pikmin 2), required for posting to special rankings.
+・ It is desirable to have a result screen that shows most of the result screen, preferably with confetti.
+・ If you fail to take a picture, you can use a picture of the screen where the high score of the stage is displayed on the stage select screen.
+・ It doesn't matter if it's a direct shot or a cap image, but if you take a direct shot, be careful about reflections such as faces and Exif information (photos will be published on the site) """
+form_score_evidence_attachment_video_detail,"ショート動画の条件詳細
+・ショート動画は現在不具合対応中です。アップロードできません。（2020/07/04）
+・ショート動画は当サイトへ直接動画をアップロードする仕組みです。 
+・ピクミン2通常ランキング10位以上または各種RTAでは原則必須（動画サイトでも可） 
+・適当な音質の音声があり、ゲームプレイの認識に支障がない画質であり、著しいブロックノイズや音ズレがないこと 
+・Aviutl + x264GUIでのH.264エンコードを推奨。ビットレート指定は音声最大128kbps、上限ファイルサイズ指定最大40MB 
+・機種にかかわらずピクミン1/2では480p・30fps、ピクミン3では720p～1080p・60fps推奨。 
+・プレイ時間が長い場合などで上記設定で画質に難がある場合はYouTubeへの投稿をご検討ください。 ","""Details of short video conditions
+・ Short videos are currently being fixed. I can't upload. (2020/07/04)
+・ Short videos are a mechanism for uploading videos directly to this site.
+・ Pikmin 2 is usually ranked 10th or higher or required in principle for various RTAs (video sites are also acceptable)
+-There is sound with appropriate sound quality, the image quality does not interfere with the recognition of game play, and there is no significant block noise or sound deviation.
+-H.264 encoding with Aviutl + x264 GUI is recommended. Bit rate specification is maximum audio 128kbps, maximum file size specification maximum 40MB
+・ Regardless of the model, 480p / 30fps is recommended for Pikmin 1/2, and 720p-1080p / 60fps is recommended for Pikmin 3.
+・ If you have difficulty in image quality with the above settings due to long play time, please consider posting to YouTube. """
+form_score_filesizeover,※写真は3MB以下にしてください！, Image you upload must be less than 3MB.
+form_score_evidence_movieurl,証拠動画URL,URL (Proof Video)
+form_score_evidence_movieurl_caution,（ピクミン2チャレンジモード10位以上の場合必須）,(Required for Pikmin 2 Challenge Mode 10th or higher)
+form_score_evidence_movieurl_caution2,（ニコニコ動画・YouTube・Twitchのみ登録可能）,(Only Nico Nico Douga, YouTube, and Twitch can be registered)
+form_score_warning,投稿完了した時点でルール集に同意したものと見なされます。投稿前にもう一度スコアをご確認ください！,By completing the posting, you are deemed to have agreed to the rules. Please check your score again before posting!
+main_sub_title,本家ブログ11周年企画 by @koppachappy,Honke Blog 11th Anniversary Project by @koppachappy
+main_title,ピクミンシリーズチャレンジモード大会,The Leaderboards of Pikmin Series Challenge & Mission Mode
+main_eng_title,The Leaderboards of Pikmin Series Challenge & Mission Mode,ピクミンシリーズチャレンジモード大会
+main_welcome,ようこそ,About
+main_video_stop,一時停止,Pause video
+main_video_toggle,動画On/Off,Show/Hide video
+main_warning,このサイトは非公式であり、任天堂株式会社とは一切関係ありません。,This site is unofficial and has nothing to do with Nintendo Co., Ltd.
+menu_toplink,トップページ,top page
+menu_mobile_total,総合 ------------------------------ ,Overall ------------------------------
+main_head_special,◆特殊スコアリスト,◆ Special score list
+main_head_user,◆ユーザー別スコアリスト,◆ Score list by user
+main_head_story,◆本編ランキング,◆ Main story ranking
+main_head_note,◆個別ページ,◆ Individual page
+main_head_mix,◆チャレンジモード複合,◆ Challenge mode compound
+main_head_battle,◆バトルモードランキング,◆ Battle mode ranking
+main_head_battle_total,◆バトルモード戦績,◆ Battle mode battle record
+main_head_offlineevent,◆ピクチャレ大会オフラインイベント,◆ Picturere Tournament Offline Event
+main_head_limited,◆期間限定ランキング,◆ Limited time ranking
+main_head_single,◆記録個別ページ,◆ Record individual page
+main_head_userplan,◆参加者企画,◆ Participant planning
+main_head_total,◆総合ランキング,◆ Overall ranking
+main_minites_kuji,くじを引いた総数,Total number of lottery
+main_kai,回,Times
+tail_nin,人,Man
+main_postcount,投稿数,Number of posts
+main_playercount,参加人数,The number of participants
+main_displaycount,表示中のステージ数,Number of stages being displayed
+main_master,管理人,Caretaker
+main_loginnow,ログイン中,Login
+main_recordcount,記録数,Number of records
+main_stagecount,ステージ数,Number of stages
+main_battlecount,総対戦回数,Total number of matches
+main_signupdate,登録日,Registration date
+main_lastupdate,最終投稿日,Last posted date
+tail_hiki,匹,Animal
+main_historymode,ヒストリーモードで表示中 [クリックで解除],Displaying in history mode [Click to cancel]
+main_nodata,記録がありません！ [フィルターを解除],No record now !
+main_trend,◆最近の流行ステージ,◆ Recent fashion stage
+main_activescore,◆アクティブユーザー総合ランキング,◆ Active user overall ranking
+main_activepost,◆アクティブユーザー投稿数ランキング,◆ Ranking of the number of posts by active users
+main_navlock_on,ナビゲーションロック中,Navigation locked
+main_navlock_off,ナビゲーションロック解除中,Navigation unlocking
+main_nav_pik2,ピクミン2総合,Pikmin 2 Overall
+main_nav_pik3,ピクミン3総合,Pikmin 3 Overall
+main_nav_normal,通常ランキング,Standard Ranking
+main_nav_special,特殊ランキング,Other Ranking
+main_nav_pik3anddx,ピクミン3/デラックス,Pikmin 3 / Deluxe
+main_nav_anomaly,変則ルール,Special Ruleset Ranking
+main_nav_storyandrta,本編/RTA,Main Story / Speedrun
+main_nav_2p,2Pプレイ,Co-op
+main_nav_pikcup,ピク杯,Pik-cup
+main_nav_userplan,参加者企画,Participant planning
+main_nav_individual,個人戦,Individual match
+japan_tokyo,東京,Tokyo
+japan_tokyo_ueno,上野,Ueno
+japan_tokyo_ikebukuro,池袋,Ikebukuro
+main_nav_userplan1,ピクミン2全ステージ各一本勝負,Pikmin 2 All stages one try
+main_nav_winner,優勝,Winner
+main_nav_idea,アイデア賞,Idea award
+main_nav_colorcoded1,自陣と敵陣を色分け,Color-code your own team and the enemy team
+main_nav_colorcoded2,ユーザー毎に色分け,Color coded for each user
+main_nav_team_in,さんの所属チームは,is on
+desu_tail,です。,team
+main_nav_team_notin,さんはまだチームに所属していません。,doesn't belongs to Any team.
+main_nav_team_rate,さんのレート,Rate
+main_nav_team_join,参加する,Join
+main_nav_team_join_caution,（参加予定のない方は押さないでください！）,(Please do not press if you do not plan to participate!)
+main_nav_team_error,ログインしていません。期間限定ランキングは通常ランキングに１回でも参加してログインしていることが参加条件になります。,You are not logged in. Participation condition for the limited-time ranking is that you have participated in the regular ranking even once and logged in.
+main_nav_team_last,あと,after
+main_nav_team_undevelop,（未開地）,(Undeveloped land)
+main_nav_team_exborder,EXボーダー,EX border
+main_nav_team_hiscore,ハイスコア,Best Score
+main_nav_team_base,（拠点）,(Base)
+main_nav_area_unbanned,未解禁,Locked
+main_nav_area_lifted,解禁済み,Unlocked
+main_nav_area_notclear,未クリア,not passed yet
+main_nav_area_borderover,ボーダー突破,Border breakthrough
+main_nav_area_exborderover,EXボーダー突破,EX border breakthrough
+main_ki,期,Period
+main_info_70k,70万点参考スコア,700,000 points benchmarks
+main_info_unexpected,想定外,Unexpected
+main_daily_simtitle,★お宝一覧シミュレーター [クリックで開閉],★ Treasure list simulator [Click to open and close]
+main_daily_floor,階層,Sublevel
+main_daily_name,名前,name
+main_daily_value,価値,Poco
+main_uplan_player,参加者名,Player name
+main_uplan_toplink,ランキング総合ページへ,To the ranking general page
+main_nav_team_border,ボーダースコア,Border score
+main_nav_team_numofplayer,必要人数,Required number of people
+main_nav_team_borderover,ボーダー突破人数,Number of people breaking through the border
+main_battle_win,勝,Win
+main_battle_lose,敗,Loss
+main_battle_draw,分,Minutes
+no_comment,コメントなし,no comment
+main_limited_classa,◆Aクラス限定◆,◆ A class only ◆
+main_limited_classb,◆Bクラス限定◆,◆ B class only ◆
+main_limited_eachteam,◆各チーム,◆only 
+main_limited_eachteam_tail,人まで◆,  per a team◆
+main_limited_last,残り,remaining
+main_limited_turn1,先鋒,1st
+main_limited_turn2,次鋒,2nd
+main_limited_turn3,副将,3rd
+main_limited_turn4,大将,4th
+main_limited_turn5,ヘイ,Hey
+main_limited_bonus,(ボーナス),(Bonus)
+main_limited_noplayer,(まだ参加者がいません),(No participant)
+main_season_toggleall,全期間モード,All period mode
+main_season_toggleseason,シーズンモード,Season mode
+main_topscore,トップスコア,Top score
+main_score_player,プレイヤー,Player:
+main_score_score,スコア,Score:
+main_score_date,投稿日時,Date:
+main_score_notvideo,この記録は１位ですが証拠動画がありません。,This record is number one, but there is no evidence video.
+main_score_egg,割ったタマゴの総数,Total number of broken eggs
+main_score_trial,[体験版],[Demo]
+main_battle_total,戦,War
+main_score_tresure,お宝,Treasure
+main_score_time,タイムボーナス,Time bonus
+pik,ピクミン,Pikmin
+main_score_deaths,犠牲,Sacrifice
+main_score_teamtotal,◆チーム別ランクポイント,◆ Rank points by team
+main_limited_wrtotal,WR総合ランキング,WR overall ranking
+main_breakthrough,踏破ポイント,Breaking point
+main_score_notpindata,比較用データがありません,No data for comparison
+main_score_cat,カテゴリ,category
+main_score_topper,トップ保持者,Top holder
+main_seasontop,今期トップ,This term top
+menu_limited_16,第16回期間限定ランキング,16th Limited Time Ranking
+main_compare_displaytotal,表示中の合計点,Total points displayed
+main_compare_toprank,最高位,Highest rank
+main_compare_averank,平均位,Average rank
+main_compare_lowrank,最低位,Lowest rank
+main_compare_totalrps,合計RPS,Total RPS
+main_score_videosearch,[ステージ名で動画を検索],[Search Video with Cave name]
+main_filter_pin,ピン表示,Pin display
+main_filter_sort,並び順,order
+main_filter_subfilter,フィルター1,Filter 1
+main_filter_filter,フィルター2,Filter 2
+main_filter_logfilter,フィルター3,Filter 3
+main_compare_score,スコア比較表示,Score comparison display
+main_compare_timebonuscaution,(タマゴムシとサンショクシジミのポイントを含む),(Including points of Mitites and Unmarked Spectralids)
+main_compare_ave_over,平均以上,Above average
+main_compare_ave_down,平均以下,Below average
+main_compare_target_over,目標突破,Goal breakthrough
+main_compare_target_down,目標未満,Less than the target
+main_compare_change_over,上昇,Rise
+main_compare_change_down,下降,Descent
+main_compare_change_caution,(未更新ステージや古い投稿は除く),(Excluding unupdated stages and old posts)
+main_compare_getwr,ピクミン3WR獲得数,Number of Pikmin 3WR acquisitions
+main_compare_over180,WR差3分以上,WR difference 3 minutes or more
+san_tail,さん,Mr.
+main_compare_rank_over,位以上獲得数,Number of ranks or higher
+main_compare_rank_down,位以下,Below the rank
+limited_stage_title_fixed1,個人戦,Individual match
+limited_stage_title_fixed2,個人戦,Individual match
+limited_stage_title_fixed3,個人戦,Individual match
+limited_stage_title_fixed4,個人戦,Individual match
+limited_stage_title_fixed5,個人戦,Individual match
+limited_stage_title_fixed6,チーム対抗戦,Team competition
+limited_stage_title_fixed7,チーム対抗戦,Team competition
+limited_stage_title_fixed8,チーム対抗戦,Team competition
+limited_stage_title_fixed9,チーム対抗戦,Team competition
+limited_stage_title_fixed10,チーム対抗戦,Team competition
+limited_stage_title_fixed11,チーム対抗戦,Team competition
+limited_stage_title_fixed12,エリア踏破戦,Area traversal battle
+limited_stage_title_fixed13,エリア踏破戦,Area traversal battle
+limited_stage_title_fixed14,エリア踏破戦,Area traversal battle
+limited_stage_title_fixed15,エリア踏破戦,Area traversal battle
+limited_stage_sub_fixed0,スタンダード,Standard
+limited_stage_sub_fixed1,スタンダード,Standard
+limited_stage_sub_fixed2,スタンダード,Standard
+limited_stage_sub_fixed3,スタンダード,Standard
+limited_stage_sub_fixed4,スタンダード,Standard
+limited_stage_sub_fixed5,スタンダード,Standard
+limited_stage_sub_fixed6,スタンダード,Standard
+limited_stage_sub_fixed7,スタンダード,Standard
+limited_stage_sub_fixed8,短期決戦,Short-term decisive battle
+limited_stage_sub_fixed9,ピンポイント,Pinpoint
+limited_stage_sub_fixed10,代表選抜制,Representative selection system
+limited_stage_sub_fixed11,ブラインド制,Blind system
+limited_stage_sub_fixed12,協力制,Cooperation system
+limited_stage_sub_fixed13,スタンダード,Standard
+limited_stage_sub_fixed14,チーム対抗制,Team opposition
+limited_stage_sub_fixed15,チーム対抗制,Team opposition
+team0,,
+team1,チーム青ピクミン,Team blue pikmin
+team2,チーム赤ピクミン,Team red pikmin
+team3,チーム白ピクミン,Team white pikmin
+team4,チーム紫ピクミン,Team purple pikmin
+team5,チーム羽ピクミン,Team wing pikmin
+team6,チーム岩ピクミン,Team rock pikmin
+team7,チームデメマダラ,Team bulborb
+team8,チームヘビガラス,Team snagret
+team9,偉そうで偉くないチーム,Team Worthless Statue
+team10,偉そうで偉いチーム,Team Priceless Statue
+team11,飴坊主組,Team Waterwraith
+team12,飴入道組,Team Plasm Wraith
+team13,チームヒダマリノミ🍓,Team Sunseed Berry🍓
+team14,チームツラノカワ🍊,Team Citrus Lump🍊
+team15,チームオフランス🍐,Team Tremendous Sniffer🍐
+team16,チームカワスベール🍌,Team Slapstick Crescent🍌
+week_array0,日,Sun
+week_array1,月,Mon
+week_array2,火,Tue
+week_array3,水,Wed
+week_array4,木,Thu
+week_array5,金,Fri
+week_array6,土,Sat
+stage_info_output_array0,初期タイム,initial time
+stage_info_output_array1,ピクミン数,number of pikmin
+stage_info_output_array2,全回収点,collection score
+stage_info_output_array3,平均点,average score
+battle_result0,無効試合,No Contents. / Draw
+battle_result1,1P勝利,1P victory
+battle_result2,2P勝利,2P victory
+battle_result9,引き分け,Draw
+array_reague_icon0,フリー対戦（レートなし）,Free match (no rate)
+array_reague_icon1,レギュラーリーグ,Regular league
+array_reague_icon2,第1回ピク杯,1st Pic Cup
+array_reague_icon3,第2回ピク杯,2nd Pic Cup
+array_battle_detail0,引き分け,draw
+array_battle_detail1,相手チーム色のビー玉を運んだ,Carried marbles of the opponent team color
+array_battle_detail2,黄色ビー玉を４つ運んだ,Carried four yellow marbles
+array_battle_detail3,ビンゴシートが１列以上揃った,One or more rows of bingo sheets are available
+array_battle_detail4,勝利のマカロンを運んだ,Carried a victorious macaron
+array_battle_detail5,相手リーダーがダウンした,Opponent leader went down
+array_battle_detail6,相手ピクミンがゼンメツした,Opponent Pikmin was sick
+array_sort0,ステージ番号順,Stage number order
+array_sort1,ステージ番号順,Stage number order
+array_sort2,順位高い順,Highest ranking
+array_sort3,ランクポイント高い順,In descending order of rank points
+array_sort4,名前順,By name
+array_sort5,スコア順,Score order
+array_sort6,投稿日時順,Post date and time
+array_filter0,すべて表示,Show all
+array_filter1,すべて表示,Show all
+array_filter2,ピクミン1のみ,Pikmin 1 only
+array_filter3,ピクミン2のみ,Pikmin 2 only
+array_filter4,ピクミン3のみ,Pikmin 3 only
+array_filter5,本編のみ,Main story only
+array_filter6,期間限定のみ,For a limited time only
+array_filter7,本編地下のみ,Main story underground only
+array_filter8,日替わりのみ,Daily only
+array_filter9,ピクミン2(2P)のみ,Pikmin 2 (2P) only
+array_filter10,ピクミン3(2P)のみ,Pikmin 3 (2P) only
+array_filter11,チャレンジ複合のみ,Challenge compound only
+array_filter12,タマゴありのみ,Only with eggs
+array_filter13,タマゴなしのみ,Only without eggs
+array_filter14,通常ランキングすべて,All standard rankings
+array_filter15,通常ランキング以外すべて,Everything except the standard ranking
+array_subfilter0,すべて表示,Show all
+array_subfilter1,すべて表示,Show all
+array_subfilter2,NGCコントローラー,NGC controller
+array_subfilter3,Wiiリモコン＋ヌンチャク,Wii remote controller + nunchuck
+array_subfilter4,Wii U GamePad（ボタン操作）,Wii U GamePad (classic mode)
+array_subfilter5,Wii U GamePad（タッチペン）,Wii U GamePad (stylus)
+array_subfilter6,Wii U Proコントローラー,Wii U Pro controller
+array_subfilter7,Joy-Con１本（ジャイロなし#）,One Joy-Con (without gyro)
+array_subfilter8,Joy-Con１本（ジャイロあり$）,1 Joy-Con (with gyro)
+array_subfilter9,Joy-Con２本/Switch Lite（ジャイロなし#）,2 Joy-Cons / Switch Lite (without gyro)
+array_subfilter10,Joy-Con２本/Switch Lite（ジャイロあり$）,2 Joy-Con / Switch Lite (with gyro)
+array_subfilter11,Switch Proコントローラー（ジャイロなし#）,Switch Pro controller (without gyro)
+array_subfilter12,Switch Proコントローラー（ジャイロあり$）,Switch Pro controller (with gyro)
+array_subfilter13,Wii U（ピクミン3）,Wii U (Pikmin 3)
+array_subfilter14,Switch（ピクミン3DX）,Switch (Pikmin 3DX)
+array_subfilter15,ジャイロなし#,No gyro
+array_subfilter16,ジャイロあり$,With gyro
+array_logfilter0,すべて表示,Show all
+array_logfilter1,最高記録のみ表示,Display only the highest record
+array_logfilter2,歴代１位のみ表示,Only the 1st place in history is displayed
+array_logfilter3,歴代10位のみ表示,Only the 10th place in history is displayed
+array_logfilter4,すべての記録を表示,View all records
+array_compare0,表示しない,Do not show
+array_compare1,1位,1st
+array_compare3,3位,3rd place
+array_compare10,10位,10th place
+array_compare20,20位,20th place
+array_compare101,平均点,Average score
+array_compare102,偏差値,Deviation value
+array_compare103,次の順位との点差,Point difference from the next ranking
+array_compare104,順位変動マーク,Rank change mark
+array_compare201,タイムボーナス [2・3],Time Bonus [2 ・ 3]
+array_compare202,70万点参考スコア [2],700,000 points reference score [2]
+array_compare203,70.1万点参考スコア [2],701,000 points Reference score [2]
+array_compare204,世界記録 [3] (2017/08/30),World record [3] (2017/08/30)
+array_compare205,想定外 [3],Unexpected [3]
+array_pin0,表示しない,Do not show
+array_pin1,表示しない,Do not show
+array_pin2,平均点,Average score
+array_pin3,70万点参考スコア,700,000 points reference score
+array_pin4,第11期トップ [2017],11th term top [2017]
+array_pin5,第10期トップ [2016],10th term top [2016]
+array_pin6,第9期トップ [2015],9th term top [2015]
+array_pin7,第8期トップ [2014],8th term top [2014]
+array_pin8,第7期以前 [2007-2013],Before the 7th term [2007-2013]
+array_pin9,第6期トップ [2012],6th term top [2012]
+array_pin10,第5期トップ [2011],5th term top [2011]
+array_pin11,第4期トップ [2010],4th term top [2010]
+array_pin12,第3期トップ [2009],3rd term top [2009]
+array_pin13,第2期トップ [2008],Phase 2 Top [2008]
+array_pin14,第1期トップ [2007],Phase 1 Top [2007]
+array_pin15,70.1万点参考スコア,border example(701,000)
+array_pin16,世界記録,World record
+array_pin17,WR-60,WR-60
+array_pin18,WR-120,WR-120
+array_pin19,WR-180,WR-180
+array_pin20,想定外,Unexpected
+array_pin21,第12期トップ [2018],12th term top [2018]
+array_pin22,第13期トップ [2019],13th term top [2019]
+array_pin23,第14期トップ [2020],14th term top [2020]
+season_filter0,全期間,Whole period
+season_filter1,全期間,Whole period
+season_filter2,今期のみ [第14期],This term only [14th term]
+array_console_long1,GCコントローラー / GameCube controller,GameCube controller
+array_console_long2,Wiiリモコン+ヌンチャク / Wii Remote + Nunchuk,Wii Remote + Nunchuk
+array_console_long3,Wii U GamePad (ボタンのみ) / Wii U GamePad Only,Wii U GamePad Only
+array_console_long4,Wii U GamePad (タッチペン) / Wii U GamePad + Touch Pen,Wii U GamePad + Touch Pen
+array_console_long5,Wii U Proコントローラー / Wii U Pro Controller,Wii U Pro Controller
+array_console_long6,Joy-Con単独・おすそわけ（ジャイロなし） / Joy-Con Solo (Gyro Off),Joy-Con Solo (Gyro Off)
+array_console_long7,Joy-Con単独・おすそわけ（ジャイロあり） / Joy-Con Solo (Gyro On),Joy-Con Solo (Gyro On)
+array_console_long8,Joy-Con二本・携帯モード・Switch Lite（ジャイロなし） / Joy-Con Double/Handheld Mode/Switch Lite (Gyro Off),Joy-Con Double/Handheld Mode/Switch Lite (Gyro Off)
+array_console_long9,Joy-Con二本・携帯モード・Switch Lite（ジャイロあり） / Joy-Con Double/Handheld Mode/Switch Lite (Gyro On),Joy-Con Double/Handheld Mode/Switch Lite (Gyro On)
+array_console_long10,Switch Proコントローラー（ジャイロなし） / Switch Pro Controller (Gyro Off),Switch Pro Controller (Gyro Off)
+array_console_long11,Switch Proコントローラー（ジャイロあり） / Switch Pro Controller (Gyro On),Switch Pro Controller (Gyro On)
+array_console1,NGC,NGC
+array_console2,Wii,Wii
+array_console3,GamePad Only,GamePad Classic
+array_console4,GamePad Touch,GamePad Stylus
+array_console5,Wii U Pro,Wii U Pro
+array_console6,Joy-Con Solo#,Joy-Con Solo #
+array_console7,Joy-Con Solo$,Joy-Con Solo $
+array_console8,Joy-Con Double#,Joy-Con Double #
+array_console9,Joy-Con Double$,Joy-Con Double $
+array_console10,Switch Pro#,Switch Pro #
+array_console11,Switch Pro$,Switch Pro $
+array_stage_title_veryshort10,ピク1,Pikmin 1
+array_stage_title_veryshort20,ピク2,Pikmin 2
+array_stage_title_veryshort21,卵有,Has egg
+array_stage_title_veryshort22,卵無,Has no egg
+array_stage_title_veryshort30,ピク3,Pikmin 3
+array_stage_title_veryshort31,お宝,Treasure
+array_stage_title_veryshort32,原生,Enemy
+array_stage_title_veryshort33,巨大,Boss
+array_stage_title_veryshort91,限定,Limited
+array_stage_title_veryshort24,2Pチ,2P Chi
+array_stage_title_veryshort93,本編,Main story
+array_stage_title_veryshort94,複合,composite
+array_stage_title_veryshort92,日替,Daily change
+array_stage_title_veryshort34,2Pミ,2P Mi
+array_stage_title_veryshort26,新チャ1,New Cha 1
+array_stage_title_veryshort28,新チャ2,New Cha 2
+array_stage_title_veryshort25,2対戦,2 matches
+array_stage_title_veryshort35,3対戦,3 matches
+array_stage_title_veryshort201,こ,EC
+array_stage_title_veryshort202,新,NT
+array_stage_title_veryshort203,神,LTB
+array_stage_title_veryshort204,あ,CG
+array_stage_title_veryshort205,グ,GH
+array_stage_title_veryshort206,地,HH
+array_stage_title_veryshort207,鉄,BA
+array_stage_title_veryshort208,赤,RC
+array_stage_title_veryshort209,花,TrG
+array_stage_title_veryshort210,た,TwG
+array_stage_title_veryshort211,か,CC
+array_stage_title_veryshort212,コ,CM
+array_stage_title_veryshort213,コ,CR
+array_stage_title_veryshort214,シ,DN
+array_stage_title_veryshort215,大,CA
+array_stage_title_veryshort216,食,SP
+array_stage_title_veryshort217,三,TCT
+array_stage_title_veryshort218,炎,HT
+array_stage_title_veryshort219,鼻,CoS
+array_stage_title_veryshort220,巨,TGB
+array_stage_title_veryshort221,土,RG
+array_stage_title_veryshort222,地,SL
+array_stage_title_veryshort223,ひ,THG
+array_stage_title_veryshort224,さ,AD
+array_stage_title_veryshort225,秘,STR
+array_stage_title_veryshort226,倍,BG
+array_stage_title_veryshort227,天,CoP
+array_stage_title_veryshort228,ど,BD
+array_stage_title_veryshort229,ス,SR
+array_stage_title_veryshort230,デ,ER
+array_stage_title_fixed1,新着記録,Latest Record
+array_stage_title_fixed7,全総合,All synthesis
+array_stage_title_fixed8,特殊総合,Special synthesis
+array_stage_title_fixed9,通常総合,Usually comprehensive
+array_stage_title_fixed10,ピクミン,Pikmin
+array_stage_title_fixed20,ピクミン2,Pikmin 2
+array_stage_title_fixed21,タマゴあり,Egg
+array_stage_title_fixed22,タマゴなし,No egg
+array_stage_title_fixed23,本編地下,Main story underground
+array_stage_title_fixed24,2Pチャレンジ,2P challenge
+array_stage_title_fixed25,2Pバトル,2P battle
+array_stage_title_fixed26,タマゴムシ縛り,Tama rubber tie
+array_stage_title_fixed27,第14期総合,14th term comprehensive
+array_stage_title_fixed28,スプレー縛り等,Spray binding, etc.
+array_stage_title_fixed30,ピクミン3,Pikmin 3
+array_stage_title_fixed31,お宝をあつめろ！,Collect treasure!
+array_stage_title_fixed32,原生生物をたおせ,Battle Enemies!
+array_stage_title_fixed33,巨大生物をたおせ,Defeat Bosses!
+array_stage_title_fixed34,2Pミッション,2P mission
+array_stage_title_fixed35,ビンゴバトル,Bingo Battle
+array_stage_title_fixed36,サイドストーリー,Side story
+array_stage_title_fixed81,無差別級,Open weight
+array_stage_title_fixed82,TAS,TAS
+array_stage_title_fixed91,期間限定,For a limited time
+array_stage_title_fixed92,日替わり,Daily
+array_stage_title_fixed93,本編,Main story
+array_stage_title_fixed94,チャレンジ複合,Challenge compound
+array_stage_title_fixed95,バトルモード,Battle mode
+array_stage_title_fixed10101,全回収RTA(pik1),All parts Speedrun [1]
+array_stage_title_fixed10201,借金返済RTA,Pay off Debt Speedrun [2]
+array_stage_title_fixed10202,全回収RTA(pik2),All treasures Speedrun [2]
+array_stage_title_fixed10203,借金返済クリア,Beat Pikmin2 pay off debt [2]
+array_stage_title_fixed10204,全回収クリア,Beat Pikmin2 all treasures [2]
+array_stage_title_fixed10301,Any% RTA,Any% Speedrun [3]
+array_stage_title_fixed10302,全回収RTA(pik3),All fruits Speedrun [3]
+array_stage_title_fixed10205,全クリア,Beat all challenge mode stages [2]
+array_stage_title_fixed10206,全公式超え,Beat all official records [2]
+array_stage_title_fixed10207,全公式1区,Beat all 1st row official records [2]
+array_stage_title_fixed10208,全公式2区,Beat all 2nd row official records [2]
+array_stage_title_fixed10209,全公式3区,Beat all 3rd row official records [2]
+array_stage_title_fixed10210,全公式4区,Beat all 4th row official records [2]
+array_stage_title_fixed10211,全公式5区,Beat all 5th row official records [2]
+array_stage_title_fixed10212,全公式6区,Beat all 6th row official records [2]
+array_stage_title_fixed10213,総合70万超え,Over 700,000 in total [2]
+array_stage_title_fixed10214,全回収,All treasures in Challenge mode [2]
+array_stage_title_fixed151101,第1回大会,1st competition
+array_stage_title_fixed160306,第2回大会,2nd competition
+array_stage_title_fixed160319,第3回大会,3rd competition
+array_stage_title_fixed160423,第4回大会,4th competition
+array_stage_title_fixed160430,第5回大会,5th competition
+array_stage_title_fixed160806,第6回大会,6th competition
+array_stage_title_fixed170101,第7回大会,7th competition
+array_stage_title_fixed170211,第8回大会,8th competition
+array_stage_title_fixed170325,第9回大会,9th competition
+array_stage_title_fixed170429,第10回大会,10th competition
+array_stage_title_fixed171013,第11回大会,11th competition
+array_stage_title_fixed171231,第1回ピク杯,1st Pik-cup
+array_stage_title_fixed180101,第12回大会,12th competition
+array_stage_title_fixed180429,第2回ピク杯,2nd Pik-cup
+array_stage_title_fixed180901,第13回大会,13th competition
+array_stage_title_fixed190209,参加者企画,Participant planning
+array_stage_title_fixed190321,参加者企画,Participant planning
+array_stage_title_fixed190802,第14回大会,14th competition
+array_stage_title_fixed200723,第15回大会,15th competition
+array_stage_title_fixed200918,第16回大会,16th competition
+array_stage_title1,新着順一覧,New arrival list
+array_stage_title2,新着順一覧（シーズン記録のみ）,New arrival list (season record only)
+array_stage_title3,トップランカー一覧,Top ranker list
+array_stage_title4,カスタムリスト,Custom list
+array_stage_title5,全ステージ一覧,List of all stages
+array_stage_title6,バトルモード最新戦歴,Battle mode latest battle history
+array_stage_title7,ピクチャレ大会総合ランキング,Picturere tournament general ranking
+array_stage_title8,特殊総合ランキング,Special overall ranking
+array_stage_title9,通常総合ランキング,Normal overall ranking
+array_stage_title10,ピクミン チャレンジモード総合,Pikmin Challenge Mode Comprehensive
+array_stage_title20,ピクミン2 チャレンジモード総合,Pikmin 2 Challenge Mode Comprehensive
+array_stage_title21,ピクミン2 チャレンジモード総合（タマゴあり）,Pikmin 2 Challenge Mode Comprehensive (with eggs)
+array_stage_title22,ピクミン2 チャレンジモード総合（タマゴなし）,Pikmin 2 Challenge Mode Comprehensive (without eggs)
+array_stage_title23,ピクミン2 本編地下チャレンジ総合,Pikmin 2 Main Story Underground Challenge Comprehensive
+array_stage_title24,ピクミン2 2Pチャレンジモード総合,Pikmin 2 2P Challenge Mode Comprehensive
+array_stage_title25,ピクミン2 2Pバトルモード総合,Pikmin 2 2P Battle Mode Comprehensive
+array_stage_title26,新チャレンジモード総合（タマゴムシ縛り）,New Challenge Mode Comprehensive (Tamagomushi Tied Up)
+array_stage_title27,ピクミン2 チャレンジモード第14期総合,Pikmin 2 Challenge Mode 14th Comprehensive
+array_stage_title28,新チャレンジモード総合（スプレー縛り等）,New challenge mode comprehensive (spray binding, etc.)
+array_stage_title30,ピクミン3 ミッションモード総合,Pikmin 3 Mission Mode Comprehensive
+array_stage_title31,ピクミン3 「お宝をあつめろ！」総合,Pikmin 3 "Collect treasure!" Comprehensive
+array_stage_title32,ピクミン3 「原生生物をたおせ！」総合,Pikmin 3 "Take Protists!"
+array_stage_title33,ピクミン3 「巨大生物をたおせ！」総合,Pikmin 3 "Take a giant creature!"
+array_stage_title34,ピクミン3 2Pミッションモード総合,Pikmin 3 2P mission mode comprehensive
+array_stage_title35,ピクミン3 ビンゴバトルモード総合,Pikmin 3 Bingo Battle Mode Comprehensive
+array_stage_title36,ピクミン3デラックス サイドストーリーモード総合,Pikmin 3 Deluxe Side Story Mode Comprehensive
+array_stage_title81,ピクミン2 無差別級チャレンジモード総合,Pikmin 2 Open Weight Challenge Mode Comprehensive
+array_stage_title82,ピクミン2 チャレンジモードTAS総合,Pikmin 2 Challenge Mode TAS Comprehensive
+array_stage_title91,期間限定ランキング総合,Limited time ranking comprehensive
+array_stage_title92,日替わりチャレンジ総合,Daily Challenge Comprehensive
+array_stage_title93,本編総合ランキング,Main story overall ranking
+array_stage_title94,チャレンジ複合総合ランキング,Challenge compound overall ranking
+array_stage_title95,バトルモード総合,Battle mode comprehensive
+array_stage_title98,投稿数ランキング,Posts ranking
+array_stage_title99,タマゴムシくじ総合ランキング,Tama rubber lottery general ranking
+array_stage_title101,遭難地点,The Impact Site
+array_stage_title102,希望の森,The Forest of Hope
+array_stage_title103,樹海のヘソ,The Forest Navel
+array_stage_title104,大水源,The Distant Spring
+array_stage_title105,最後の試練,The Final Trial
+array_stage_title201,こてしらべの洞窟,Explorer's Cave
+array_stage_title202,新参者の試練場,Novice Training
+array_stage_title203,神々のおもちゃ箱,Lost Toy Box
+array_stage_title204,あのひとの庭,Creator's Garden
+array_stage_title205,グリーンホール,Green Hole
+array_stage_title206,地下の温室,Hot House
+array_stage_title207,鉄人の穴,Brawny Abyss
+array_stage_title208,赤の洞窟,Red Chasm
+array_stage_title209,花園を荒らすもの,Trampled Garden
+array_stage_title210,たそがれの庭,Twilight Garden
+array_stage_title211,かくしもちの洞窟,Cryptic Cavern
+array_stage_title212,コンクリート迷路,Concrete Maze
+array_stage_title213,コレクタールーム,Collector's Room
+array_stage_title214,ショイグモの巣,Dweevil Nest
+array_stage_title215,大足の穴,Cavernous Abyss
+array_stage_title216,食神のかまど,Snack Pit
+array_stage_title217,三色試練場,Three Color Training
+array_stage_title218,炎と水の試練場,Hazard Training
+array_stage_title219,鼻息の洞穴,Cave of Snarls
+array_stage_title220,巨人のトイレ,The Giant's Bath
+array_stage_title221,土とんの洞窟,Rumbling Grotto
+array_stage_title222,地底警備室,Subtettanean Lair
+array_stage_title223,ひみつの花園,The Hidden Garden
+array_stage_title224,さらいの洞窟,Abduction Den
+array_stage_title225,秘密兵器実験場,Secret Testing Range
+array_stage_title226,倍々ゲームの穴,Breeding Ground
+array_stage_title227,天罰の穴,Cave of Pain
+array_stage_title228,どっすん迷路,Bully Den
+array_stage_title229,スナイパールーム,Sniper Room
+array_stage_title230,デメマダラの巣窟,Emperor's Realm
+array_stage_title231,始まりの洞窟,Emergence Cave
+array_stage_title232,地下の秘密基地,Subterranean Complex
+array_stage_title233,辺境の洞窟,Frontier Cavern
+array_stage_title234,けだものの穴,Hole of Beasts
+array_stage_title235,白い花園,White Flower Garden
+array_stage_title236,デメマダラの王国,Bulblax Kingdom
+array_stage_title237,ヘビガラスの穴,Snagret Hole
+array_stage_title238,クモの根城,Citadel of Spiders
+array_stage_title239,食神の台所,Glutton's Kitchen
+array_stage_title240,シャワールーム,Shower Room
+array_stage_title241,水中の城,Submerged Castle
+array_stage_title242,混沌の魔窟,Cavern of Chaos
+array_stage_title243,百戦錬磨の穴,Hole of Heroes
+array_stage_title244,夢の穴,Dream Den
+array_stage_title245,こてしらべの洞窟（794ポコ）,Explorer's Cave (794 poko)
+array_stage_title246,新参者の試練場（1823ポコ）,Novice Training (1823 poko)
+array_stage_title247,神々のおもちゃ箱（867ポコ）,Lost Toy Box (867 poko)
+array_stage_title248,あのひとの庭（684ポコ）,Creator's Garden (684 poko)
+array_stage_title249,グリーンホール（595ポコ）,Green Hole (595 poko)
+array_stage_title250,地下の温室（372ポコ）,Hot House (372 poko)
+array_stage_title251,鉄人の穴（570ポコ）,Brawny Abyss (570 poko)
+array_stage_title252,赤の洞窟（722ポコ）,Red Chasm (722 poko)
+array_stage_title253,花園を荒らすもの（2700ポコ）,Trampled Garden (2700 poko)
+array_stage_title254,たそがれの庭（909ポコ）,Twilight Garden (909 poko)
+array_stage_title255,かくしもちの洞窟（526ポコ）,Cryptic Cavern (526 poko)
+array_stage_title256,コンクリート迷路（460ポコ）,Concrete Maze (460 poko)
+array_stage_title257,コレクタールーム（2011ポコ）,Collector's Room (2011 poko)
+array_stage_title258,ショイグモの巣（643ポコ）,Dweevil Nest (643 poko)
+array_stage_title259,大足の穴（100ポコ）,Cavernous Abyss (100 poko)
+array_stage_title260,食神のかまど（230ポコ）,Snack Pit (230 poko)
+array_stage_title261,三色試練場（662ポコ）,Three Color Training (662 poko)
+array_stage_title262,炎と水の試練場（1364ポコ）,Hazard Training (1364 poko)
+array_stage_title263,鼻息の洞穴（547ポコ）,Cave of Snarls (547 poko)
+array_stage_title264,巨人のトイレ（675ポコ）,The Giant's Bath (675 poko)
+array_stage_title265,土とんの洞窟（1037ポコ）,Rumbling Grotto (1037 poko)
+array_stage_title266,地底警備室（522ポコ）,Subtettanean Lair (522 poko)
+array_stage_title267,ひみつの花園（229ポコ）,The Hidden Garden (229 poko)
+array_stage_title268,さらいの洞窟（456ポコ）,Abduction Den (456 poko)
+array_stage_title269,秘密兵器実験場（900ポコ）,Secret Testing Range (900 poko)
+array_stage_title270,倍々ゲームの穴（682ポコ）,Breeding Ground (682 poko)
+array_stage_title271,天罰の穴（417ポコ）,Cave of Pain (417 poko)
+array_stage_title272,どっすん迷路（551ポコ）,Bully Den (551 poko)
+array_stage_title273,スナイパールーム（1005ポコ）,Sniper Room (1005 poko)
+array_stage_title274,デメマダラの巣窟（1171ポコ）,Emperor's Realm (1171 poko)
+array_stage_title275,おてがるコース,Battle Field
+array_stage_title276,せま～いコース,War Path
+array_stage_title277,ひろびろコース,Carpet Plain
+array_stage_title278,カクカクコース,Angle Maze
+array_stage_title279,うじゃうじゃコース,Colosseum
+array_stage_title280,ひやひやコース,Rusty Gulch
+array_stage_title281,のびのびコース,Brawl Yard
+array_stage_title282,タイルコース,Tile Lands
+array_stage_title283,めいろコース,Dim Labyrinth
+array_stage_title284,からくちコース,Hostile Territory
+array_stage_title285,新・こてしらべの洞窟,Explorer's Cave (no mitite)
+array_stage_title286,新・新参者の試練場,Novice Training (no mitite)
+array_stage_title287,新・グリーンホール,Green Hole (no mitite)
+array_stage_title288,新・地下の温室,Hot House (no mitite)
+array_stage_title289,新・鉄人の穴,Brawny Abyss (no mitite)
+array_stage_title290,新・コンクリート迷路,Concrete Maze (no mitite)
+array_stage_title291,新・三色試練場,Three Color Training (no mitite)
+array_stage_title292,新・炎と水の試練場,Hazard Training (no mitite)
+array_stage_title293,新・巨人のトイレ,The Giant's Bath (no mitite)
+array_stage_title294,新・倍々ゲームの穴,Breeding Ground (no mitite)
+array_stage_title295,新・どっすん迷路,Bully Den (no mitite)
+array_stage_title296,新・スナイパールーム,Sniper Room (no mitite)
+array_stage_title297,新・デメマダラの巣窟,Emperor's Realm (no mitite)
+array_stage_title301,原生の杜,Tropical Forest
+array_stage_title302,白銀の泉,Silver Lake
+array_stage_title303,渇きの砂,Thirsty Desert
+array_stage_title304,落葉の回廊,Twilight Hollow
+array_stage_title305,草花の園,Shaded Garden
+array_stage_title317,続・原生の杜,Tropical Forest Remix
+array_stage_title318,続・白銀の泉,Silver Lake Remix
+array_stage_title319,続・渇きの砂,Thirsty Desert Remix
+array_stage_title320,続・落葉の回廊,Twilight Hollow Remix
+array_stage_title321,続・草花の園,Shaded Garden Remix
+array_stage_title327,冬の贈りもの,Fortress of Festivity
+array_stage_title328,工事現場ドリーム,The Rustyard
+array_stage_title329,ピクアリウム,Beastly Cavern
+array_stage_title330,思いでの砂浜,Forgotten Cove
+array_stage_title331,機械仕掛けのブルース,Clockwork Chasm
+array_stage_title306,原生の杜,Tropical Forest
+array_stage_title307,白銀の泉,Silver Lake
+array_stage_title308,渇きの砂,Thirsty Desert
+array_stage_title309,落葉の回廊,Twilight Hollow
+array_stage_title310,草花の園,Shaded Garden
+array_stage_title322,続・始まりの森,Tropical Wilds Remix
+array_stage_title323,続・再開の花園,Garden of Hope Remix
+array_stage_title324,続・迷いの雪原,Distant Tundra Remix
+array_stage_title325,続・交わりの渓流,Twilight River Remix
+array_stage_title326,続・哀しき獣の塔,Formidable Oak Remix
+array_stage_title332,冬の贈りもの,Fortress of Festivity
+array_stage_title333,工事現場ドリーム,The Rustyard
+array_stage_title334,ピクアリウム,Beastly Cavern
+array_stage_title335,思いでの砂浜,Forgotten Cove
+array_stage_title336,機械仕掛けのブルース,Clockwork Chasm
+array_stage_title311,ヨロヒイモムカデ,Armored Mawdad
+array_stage_title312,オオバケカガミ,Vehemoth Phosbat
+array_stage_title313,オオスナフラシ,Sandbelching Meerslug
+array_stage_title314,タテゴトハチスズメ,Scornet Maestro
+array_stage_title315,ヌマアラシ,Quaggled Mireclops
+array_stage_title316,アメニュウドウ,Plasm Wraith
+array_stage_title337,こもれびの庭,Shaded Terrace
+array_stage_title338,天地創造の小川,Stagnant Sea
+array_stage_title339,地下の根城,Twisted Cavern
+array_stage_title340,砂の都,Arid Metropolis
+array_stage_title341,天と地の狭間,Rusted Labyrinth
+array_stage_title342,積み木の城,Jigsaw Fortress
+array_stage_title343,咲きみちた庭,Blooming Terrace
+array_stage_title344,せせらぎの小川,Parched Brook
+array_stage_title345,地下のオアシス,Buried Pond
+array_stage_title346,砂上の王国,Sandbox Kingdom
+array_stage_title347,鉄くずのブルース,Corroded Maze
+array_stage_title348,積み木の迷路,Jigsaw Closseum
+array_stage_title399,試しの砂浜,Sandbox
+array_stage_title1001,コンクリート迷路（タマゴなし）,Concrete Maze (no egg)
+array_stage_title1002,どっすん迷路（タマゴなし）,Bully Den (no egg)
+array_stage_title1003,地底警備室（スプレーなし）,Subtettanean Lair (no spray)
+array_stage_title1004,倍々ゲームの穴（12匹縛り),Breeding Ground (12 pikmin)
+array_stage_title1005,遭難地点（20匹縛り),The Impact Site (20 pikmin)
+array_stage_title1006,花園を荒らすもの（90秒縛り),Trampled Garden (90 sec.)
+array_stage_title1007,希望の森（青黄30匹）,The Forest of Hope (30 blue/yellow)
+array_stage_title1008,天罰の穴（近視縛り）,Cave of Pain (closest zoom)
+array_stage_title1009,秘密兵器実験場（スプレーなし）,Secret Weapon Testing Site (without spray)
+array_stage_title1010,神々のおもちゃ箱（999ポコ）,Gods' Toy Box (999 Poco)
+array_stage_title1011,食神のかまど（Aボタン縛り）,Kamado of Shokujin (A button tied up)
+array_stage_title1012,こてしらべの洞窟（片手縛り）,Kotesirabe Cave (one-handed binding)
+array_stage_title1013,あのひとの庭（スプレーなし）,That person's garden (without spray)
+array_stage_title1014,樹海のヘソ（45匹縛り）,Navel of Jukai (45 tied up)
+array_stage_title1015,炎と水の試練場（スプレーなし）,Flame and Water Trial Ground (without spray)
+array_stage_title1016,土とんの洞窟（160秒縛り）,Earth Cave (160 seconds tied up)
+array_stage_title1017,巨人のトイレ（交代縛り）,Giant's toilet (shift binding)
+array_stage_title1018,スナイパールーム（ノーキル）,Sniper Room (No Kill)
+array_stage_title1019,新参者の試練場（基本縛り）,Newcomer's Trial Ground (Basic binding)
+array_stage_title1020,ショイグモの巣（遠視縛り）,Shoe spider's nest (hyperopia binding)
+array_stage_title1021,赤の洞窟（Aボタン縛り）,Red Cave (A button tied up)
+array_stage_title1022,さらいの洞窟（100秒縛り）,Cave of Sarai (tied for 100 seconds)
+array_stage_title1023,地下の温室（3匹縛り）,Underground greenhouse (3 tied up)
+array_stage_title1024,三色試練場（90秒縛り）,Tricolor Trial Ground (90 seconds tied up)
+array_stage_title1025,大足の穴（R固定視点縛り）,Large foot hole (R fixed viewpoint binding)
+array_stage_title1026,コレクタールーム（残35匹）,Collector room (35 remaining)
+array_stage_title1027,かくしもちの洞窟（逆さ持ち）,Hidden Mochi Cave (upside down)
+array_stage_title1028,鉄人の穴（200ポコ）,Iron Man's Hole (200 Poco)
+array_stage_title1029,たそがれの庭（Bボタン縛り）,Twilight Garden (B button tied)
+array_stage_title1030,ひみつの花園（100秒縛り）,Secret Flower Garden (100 seconds tied up)
+array_stage_title1031,鼻息の洞穴（スプレーなし）,Cave of nasal breath (without spray)
+array_stage_title1032,グリーンホール（タマゴムシのみ）,Green hole (only for tamagomushi)
+array_stage_title1033,デメマダラの巣窟（500ポコ50匹）,Dememadara's Nest (50 500 Poco)
+array_stage_title1034,大水源（54匹縛り）,Large water source (54 tied up)
+array_stage_title1035,最後の試練（赤のみ）,Last Trial (Red only)
+array_stage_title1036,どっすん迷路（アメ1残し）[全員],Thwomp Maze (Leave 1 candy) [Everyone]
+array_stage_title1037,花園を荒らすもの（4761ポコ）[全員],What destroys the flower garden (4761 Poco) [Everyone]
+array_stage_title1038,鼻息の洞穴（紫禁止）[先鋒],Cave of nasal breath (purple prohibited) [Spirit]
+array_stage_title1039,あのひとの庭（石化討伐）[次鋒],That person's garden (petrification subjugation) [Next]
+array_stage_title1040,ショイグモの巣（残ピク減点）[副将],Shoe Spider's Nest (remaining pic deduction) [Deputy General]
+array_stage_title1041,地底警備室（40秒）[大将],Underground Security Room (40 seconds) [General]
+array_stage_title1042,こてしらべの洞窟（60秒）[ヘイ],Kotesirabe Cave (60 seconds) [Hey]
+array_stage_title1043,食神のかまど（残ピク減点）,Kamado of Shokujin (remaining pic deduction)
+array_stage_title1044,大足の穴（奥200ポコ）,Large foot hole (200 poco in the back)
+array_stage_title1045,ひみつの花園（シジミ放置）,Secret flower garden (leaving clams)
+array_stage_title1046,鉄人のトイレ（200秒縛り）,Tetsujin's toilet (tied for 200 seconds)
+array_stage_title1047,コンクリート迷路（逆さ持ち）,Concrete maze (upside down)
+array_stage_title1048,チャレンジモード（2018ポコ）,Challenge Mode (2018 Poco)
+array_stage_title1049,神々の庭（150秒縛り）,Garden of the Gods (150 seconds tied up)
+array_stage_title1050,土とんの洞窟（スプレー1種）,Cave of Earth (1 type of spray)
+array_stage_title2201,こてしらべの洞窟(2P),Explorer's Cave (2P)
+array_stage_title2202,新参者の試練場(2P),Novice Training (2P)
+array_stage_title2203,神々のおもちゃ箱(2P),Lost Toy Box (2P)
+array_stage_title2204,あのひとの庭(2P),Creator's Garden (2P)
+array_stage_title2205,グリーンホール(2P),Green Hole (2P)
+array_stage_title2206,地下の温室(2P),Hot House (2P)
+array_stage_title2207,鉄人の穴(2P),Brawny Abyss (2P)
+array_stage_title2208,赤の洞窟(2P),Red Chasm (2P)
+array_stage_title2209,花園を荒らすもの(2P),Trampled Garden (2P)
+array_stage_title2210,たそがれの庭(2P),Twilight Garden (2P)
+array_stage_title2211,かくしもちの洞窟(2P),Cryptic Cavern (2P)
+array_stage_title2212,コンクリート迷路(2P),Concrete Maze (2P)
+array_stage_title2213,コレクタールーム(2P),Collector's Room (2P)
+array_stage_title2214,ショイグモの巣(2P),Dweevil Nest (2P)
+array_stage_title2215,大足の穴(2P),Cavernous Abyss (2P)
+array_stage_title2216,食神のかまど(2P),Snack Pit (2P)
+array_stage_title2217,三色試練場(2P),Three Color Training (2P)
+array_stage_title2218,炎と水の試練場(2P),Hazard Training (2P)
+array_stage_title2219,鼻息の洞穴(2P),Cave of Snarls (2P)
+array_stage_title2220,巨人のトイレ(2P),The Giant's Bath (2P)
+array_stage_title2221,土とんの洞窟(2P),Rumbling Grotto (2P)
+array_stage_title2222,地底警備室(2P),Subtettanean Lair (2P)
+array_stage_title2223,ひみつの花園(2P),The Hidden Garden (2P)
+array_stage_title2224,さらいの洞窟(2P),Abduction Den (2P)
+array_stage_title2225,秘密兵器実験場(2P),Secret Testing Range (2P)
+array_stage_title2226,倍々ゲームの穴(2P),Breeding Ground (2P)
+array_stage_title2227,天罰の穴(2P),Cave of Pain (2P)
+array_stage_title2228,どっすん迷路(2P),Bully Den (2P)
+array_stage_title2229,スナイパールーム(2P),Sniper Room (2P)
+array_stage_title2230,デメマダラの巣窟(2P),Emperor's Realm (2P)
+array_stage_title2301,原生の杜(2P),Tropical Forest (2P)
+array_stage_title2302,白銀の泉(2P),Silver Lake (2P)
+array_stage_title2303,渇きの砂(2P),Thirsty Desert (2P)
+array_stage_title2304,落葉の回廊(2P),Twilight Hollow (2P)
+array_stage_title2305,草花の園(2P),Shaded Garden (2P)
+array_stage_title2317,続・原生の杜(2P),Tropical Forest (2P)
+array_stage_title2318,続・白銀の泉(2P),Silver Lake (2P)
+array_stage_title2319,続・渇きの砂(2P),Thirsty Desert (2P)
+array_stage_title2320,続・落葉の回廊(2P),Twilight Hollow (2P)
+array_stage_title2321,続・草花の園(2P),Shaded Garden (2P)
+array_stage_title2327,冬の贈りもの(2P),Armored Mawdad (2P)
+array_stage_title2328,工事現場ドリーム(2P),Vehemoth Phosbat (2P)
+array_stage_title2329,ピクアリウム(2P),Sandbelching Meerslug (2P)
+array_stage_title2330,思いでの砂浜(2P),Scornet Maestro (2P)
+array_stage_title2331,機械仕掛けのブルース(2P),Quaggled Mireclops (2P)
+array_stage_title2306,原生の杜(2P),Plasm Wraith (2P)
+array_stage_title2307,白銀の泉(2P),Tropical Forest Remix (2P)
+array_stage_title2308,渇きの砂(2P),Silver Lake Remix (2P)
+array_stage_title2309,落葉の回廊(2P),Thirsty Desert Remix (2P)
+array_stage_title2310,草花の園(2P),Twilight Hollow Remix (2P)
+array_stage_title2322,続・始まりの森(2P),Shaded Garden Remix (2P)
+array_stage_title2323,続・再開の花園(2P),Tropical Wilds Remix (2P)
+array_stage_title2324,続・迷いの雪原(2P),Garden of Hope Remix (2P)
+array_stage_title2325,続・交わりの渓流(2P),Distant Tundra Remix (2P)
+array_stage_title2326,続・哀しき獣の塔(2P),Twilight River Remix (2P)
+array_stage_title2332,冬の贈りもの(2P),Formidable Oak Remix (2P)
+array_stage_title2333,工事現場ドリーム(2P),Fortress of Festivity (2P)
+array_stage_title2334,ピクアリウム(2P),The Rustyard (2P)
+array_stage_title2335,思いでの砂浜(2P),Beastly Cavern (2P)
+array_stage_title2336,機械仕掛けのブルース(2P),Forgotten Cove (2P)
+array_stage_title2311,ヨロヒイモムカデ(2P),Clockwork Chasm (2P)
+array_stage_title2312,オオバケカガミ(2P),Fortress of Festivity (2P)
+array_stage_title2313,オオスナフラシ(2P),The Rustyard (2P)
+array_stage_title2314,タテゴトハチスズメ(2P),Beastly Cavern (2P)
+array_stage_title2315,ヌマアラシ(2P),Forgotten Cove (2P)
+array_stage_title2316,アメニュウドウ(2P),Clockwork Chasm (2P)
+array_stage_title3001,どっすん迷路（スプレー1残し）,Bully Den ( -1 Sprays )
+array_stage_title3002,コンクリート迷路（スプレー1残し）,Concrete maze (spray 1 left)
+array_stage_title3003,地下の温室（スプレー1残し）,Underground greenhouse (1 spray left)
+array_stage_title3004,三色試練場（スプレー1残し）,Tricolor Trial Ground (1 spray left)
+array_stage_title3005,天罰の穴（攻撃縛り）,Hole of punishment (attack binding)
+array_stage_title3006,地底警備室（スプレー1残し）,Underground Security Room (1 spray left)
+array_stage_title3007,さらいの洞窟（スプレー1残し）,Cave of Sarai (spray 1 left)
+array_stage_title3008,巨人のトイレ（スプレー1残し）,Giant's toilet (1 spray left)
+array_stage_title3009,あのひとの庭（80秒縛り）,That person's garden (tied for 80 seconds)
+array_stage_title3010,こてしらべの洞窟（スプレー1残し）,Kotesirabe Cave (spray 1 left)
+array_stage_title3011,コレクタールーム（スプレー1残し）,Collector room (1 spray left)
+array_stage_title3012,神々のおもちゃ箱（スプレー1残し）,Gods toy box (spray 1 left)
+array_stage_title3013,大足の穴（スプレー1残し）,Large foot hole (spray 1 left)
+array_stage_title3014,花園を荒らすもの（第13回期間限定）,What destroys the flower garden (13th limited time)
+array_stage_title3015,土とんの洞窟（スプレー1残し）,Earth Cave (spray 1 left)
+array_stage_title3016,赤の洞窟（スプレー1残し）,Red Cave (1 spray left)
+array_stage_title3017,あのひとの庭（スプレー1残し）,That person's garden (spray 1 left)
+array_stage_title3018,炎と水の試練場（2222ポコ）,Flame and Water Trial Ground (2222 Poco)
+array_stage_title3019,秘密兵器実験場（スプレー1残し）,Secret Weapon Testing Site (spray 1 left)
+array_stage_title3020,ひみつの花園（スプレー1残し）,Secret Flower Garden (1 spray left)
+array_stage_title3021,天罰の穴（スプレー1残し）,Penalty hole (spray 1 left)
+array_stage_title3022,鼻息の洞穴（スプレー1残し）,Cave of nasal breath (spray 1 left)
+array_stage_title3023,ショイグモの巣（第13回期間限定）,Shoe Spider's Nest (13th Limited Time Offer)
+array_stage_title3024,炎と水の試練場（スプレー1残し）,Flame and water test site (spray 1 left)
+array_stage_title3025,たそがれの庭（スプレー1残し）,Twilight Garden (1 spray left)
+array_stage_title3026,新参者の試練場（スプレー1残し）,Newcomer's Trial Ground (1 spray left)
+array_stage_title3027,さらいの洞窟（スプレーなし）,Cave of Sarai (without spray)
+array_stage_title3028,食神のかまど（第13回期間限定）,Kamado of Shokujin (13th limited time offer)
+array_stage_title3029,スナイパールーム（スプレー1残し）,Sniper room (1 spray left)
+array_stage_title3030,かくしもちの洞窟（スプレー1残し）,Hidden Mochi Cave (1 spray left)
+array_stage_title3031,秘密兵器実験場（100秒縛り）,Secret Weapon Testing Site (100 seconds tied up)
+array_stage_title3032,デメマダラの巣窟（スプレー1残し）,Dememadara's Nest (spray 1 left)
+array_stage_title3033,鉄人の穴（スプレー1残し）,Iron man's hole (spray 1 left)
+array_stage_title3034,グリーンホール（スプレー1残し）,Green hole (1 spray left)
+array_stage_title3035,倍々ゲームの穴（スプレー1残し）,Double game hole (spray 1 left)
+array_stage_title3036,デメマダラの巣窟（カギのみ）,Emperor's Realm (Key Only)
+array_stage_title3037,コレクタールーム（カギのみ）,Collector room (key only)
+array_stage_title3038,秘密兵器実験場（カギのみ）,Secret Weapon Testing Site (key only)
+array_stage_title3039,地底警備室（カギのみ）,Underground security room (key only)
+array_stage_title3040,グリーンホール（カギのみ）,Green Hall (key only)
+array_stage_title3041,大足の穴（カギのみ）,Large leg hole (key only)
+array_stage_title3042,あのひとの庭（カギのみ）,That person's garden (key only)
+array_stage_title3043,炎と水の試練場（カギのみ）,Flame and Water Trial Ground (Key Only)
+array_stage_title3044,新参者の試練場（カギのみ）,Trial ground for newcomers (key only)
+array_stage_title3045,さらいの洞窟（カギのみ）,Cave of Sarai (key only)
+array_stage_title3046,巨人のトイレ（カギのみ）,Giant's toilet (key only)
+array_stage_title3047,ショイグモの巣（カギのみ）,Shoe spider nest (key only)
+array_stage_title3048,天罰の穴（カギのみ）,Hole of punishment (key only)
+array_stage_title3049,食神のかまど（カギのみ）,Kamado of the Shokujin (key only)
+array_stage_title3050,コンクリート迷路（カギのみ）,Concrete maze (key only)
+array_stage_title3051,こてしらべの洞窟（カギのみ）,Kotesirabe Cave (key only)
+array_stage_title3052,花園を荒らすもの（カギのみ）,What ruins the flower garden (key only)
+array_stage_title3053,鼻息の洞穴（カギのみ）,Cave of nasal breath (key only)
+array_stage_title3054,たそがれの庭（カギのみ）,Twilight Garden (key only)
+array_stage_title3055,鉄人の穴（カギのみ）,Iron Man's Hole (Key Only)
+array_stage_title3056,神々のおもちゃ箱（カギのみ）,Gods toy box (key only)
+array_stage_title3057,地下の温室（カギのみ）,Underground greenhouse (key only)
+array_stage_title3058,どっすん迷路（カギのみ）,Thwomp Maze (key only)
+array_stage_title3059,赤の洞窟（カギのみ）,Red cave (key only)
+array_stage_title3060,スナイパールーム（カギのみ）,Sniper room (key only)
+array_stage_title3061,三色試練場（カギのみ）,Three-color trial ground (key only)
+array_stage_title3062,ひみつの花園（カギのみ）,secret One flower garden (key only)
+array_stage_title3063,かくしもちの洞窟（カギのみ）,Hidden Mochi Cave (Key only)
+array_stage_title3064,土とんの洞窟（カギのみ）,Earth Cave (key only)
+array_stage_title3065,倍々ゲームの穴（カギのみ）,Double game hole (key only)
+array_stage_title3066,花園を荒らすもの（ノーキル）,What destroys the flower garden (no kill)
+array_stage_title3067,鼻息の洞穴（交代縛り）,Cave of Snarls (Don't Switch Captain)
+array_stage_title3068,地下の温室（B2F黄縛り）,Underground greenhouse (B2F yellow binding)
+array_stage_title3069,かくしもちの洞窟（各階犠牲縛り）,Hidden Mochi Cave (Sacrifice binding on each floor)
+array_stage_title3070,天罰の穴（残ピク１）,Hole of punishment (remaining pic 1)
+array_stage_title3071,たそがれの庭（目隠し）,Twilight Garden (Blindfold)
+array_stage_title3072,あのひとの庭（ノースプレー攻撃禁止）,That person's garden (no spray attack prohibited)
+array_stage_title3073,土とんの洞窟（重複縛り）,Earth Cave (Duplicate binding)
+array_stage_title3074,神々のおもちゃ箱（渋滞選手権）,Gods' Toy Box (Congestion Championship)
+array_stage_title3075,コンクリート迷路（カメラ操作禁止）,Concrete maze (camera operation prohibited)
+array_stage_title3076,ショイグモの巣（Bボタン縛り）,Shoe spider's nest (B button tied)
+array_stage_title3077,食神のかまど（Aボタン縛り）,Kamado of Shokujin (A button tied up)
+array_stage_title3078,三色試練場（タマ2キル）,Tricolor Trial Ground (Tama 2 Kill)
+array_stage_title3079,デメマダラの巣窟（葉縛り脱出）,Dememadara's Nest (Leaf-bound escape)
+array_stage_title3080,どっすん迷路（2セット縛り）,Thwomp Maze (2 sets tied up)
+array_stage_title3081,スナイパールーム（2バケツ限定）,Sniper Room (Limited to 2 buckets)
+array_stage_title3082,秘密兵器実験場（Aボタン縛り）,Secret Weapon Testing Site (Without A button)
+array_stage_title3083,地底警備室（Aボタン縛り）,Underground Security Room (A button tied up)
+array_stage_title3084,さらいの洞窟（Aボタン縛り）,Cave of Sarai (A button tied up)
+array_stage_title3085,コレクタールーム（250秒）,Collector room (250 seconds)
+array_stage_title3086,鉄人の穴（フタクチ以外攻撃禁止）,Iron Man's Hole (Attack prohibited except Futakuchi)
+array_stage_title3087,炎と水の試練場（お宝回収縛り）,Flame and Water Trial Ground (Treasure Recovery Tied Up)
+array_stage_title3088,新参者の試練場（白縛り）,Trial ground for newcomers (white binding)
+array_stage_title3089,グリーンホール（死骸回収禁止）,Green Hall (No corpse collection)
+array_stage_title3090,こてしらべの洞窟（両手縛り）,Kotesirabe Cave (both hands tied)
+array_stage_title3091,巨人のトイレ（おまもりタマゴ）,Giant's Toilet (Omamori Egg)
+array_stage_title3092,倍々ゲームの穴（B2F以下黄縛り）,Double game hole (yellow binding below B2F)
+array_stage_title3093,ひみつの花園（26匹縛り）,Secret Flower Garden (26 tied up)
+array_stage_title3094,赤の洞窟（コチャノーキル）,Red Cave (Cochanokill)
+array_stage_title3095,大足の穴（ゾウ対50匹）,Large leg hole (50 elephants vs. 50 elephants)
+array_stage_title3096,どっすん迷路（ローラーキル）,Thwomp Maze (Roller Kill)
+array_stage_title3097,炎と水の試練場（完全色分け縛り）,Flame and Water Trial Ground (Complete color-coded binding)
+array_stage_title3098,鼻息の洞穴（葉縛り脱出）,Cave of nasal breath (leaf binding escape)
+array_stage_title3099,天罰の穴（寝袋禁止）,Hole of punishment (no sleeping bag)
+array_stage_title3100,地下の温室（三色縛り）,Underground greenhouse (three-color binding)
+array_stage_title3101,秘密兵器実験場（だまぐもといっしょ）,Secret Weapon Testing Site (with Damagumoto)
+array_stage_title3102,かくしもちの洞窟（目隠し）,Hidden Mochi Cave (Blindfold)
+array_stage_title3103,あのひとの庭（壁破壊禁止）,That person's garden (no wall destruction)
+array_stage_title3104,デメマダラの巣窟（300秒）,Dememadara's Nest (300 seconds)
+array_stage_title3105,三色試練場（タマコキン放置）,Tricolor Trial Ground (Leave Tamakokin)
+array_stage_title3106,大足の穴（足縛り）,Large foot hole (foot binding)
+array_stage_title3107,神々のおもちゃ箱（線路は続くよどこまでも）,Gods' toy box (I've Been Working on the Railroad)
+array_stage_title3108,花園を荒らすもの（片面縛り）,What ruins the flower garden (one-sided binding)
+array_stage_title3109,赤の洞窟（A禁止）,Red Cave (A prohibited)
+array_stage_title3110,地底警備室（クマ占い）,Underground security room (bear fortune-telling)
+array_stage_title3111,食神のかまど（重いもの縛り）,Kamado of the god of food (tied up heavy things)
+array_stage_title3112,巨人のトイレ（交代禁止）,Giant's toilet (no replacement)
+array_stage_title4001,こてしらべの洞窟（一本勝負）,Explorer's Cave (The first take)
+array_stage_title4002,新参者の試練場（一本勝負）,Trial ground for newcomers (one game)
+array_stage_title4003,神々のおもちゃ箱（一本勝負）,God's toy box (one game)
+array_stage_title4004,あのひとの庭（一本勝負）,That person's garden (one game)
+array_stage_title4005,グリーンホール（一本勝負）,Green Hall (one game)
+array_stage_title4006,地下の温室（一本勝負）,Underground greenhouse (one game)
+array_stage_title4007,鉄人の穴（一本勝負）,Tetsujin no Hana (one game)
+array_stage_title4008,赤の洞窟（一本勝負）,Red cave (one game)
+array_stage_title4009,花園を荒らすもの（一本勝負）,What destroys the flower garden (one game)
+array_stage_title4010,たそがれの庭（一本勝負）,Twilight Garden (One game)
+array_stage_title4011,かくしもちの洞窟（一本勝負）,Hidden Mochi Cave (One game)
+array_stage_title4012,コンクリート迷路（一本勝負）,Concrete maze (one game)
+array_stage_title4013,コレクタールーム（一本勝負）,Collector's room (one game)
+array_stage_title4014,ショイグモの巣（一本勝負）,Shoe spider's nest (one game)
+array_stage_title4015,大足の穴（一本勝負）,Large foot hole (one game)
+array_stage_title4016,食神のかまど（一本勝負）,Kamado of Shokujin (one game)
+array_stage_title4017,三色試練場（一本勝負）,Three-color trial ground (one game)
+array_stage_title4018,炎と水の試練場（一本勝負）,Flame and Water Trial Ground (One Game)
+array_stage_title4019,鼻息の洞穴（一本勝負）,Cave of nasal breath (one game)
+array_stage_title4020,巨人のトイレ（一本勝負）,Giant's toilet (one game)
+array_stage_title4021,土とんの洞窟（一本勝負）,Cave of Earth (one game)
+array_stage_title4022,地底警備室（一本勝負）,Underground Security Room (One game)
+array_stage_title4023,ひみつの花園（一本勝負）,Secret Flower Garden (One game)
+array_stage_title4024,さらいの洞窟（一本勝負）,Cave of Sarai (one game)
+array_stage_title4025,秘密兵器実験場（一本勝負）,Secret Weapon Testing Site (one game)
+array_stage_title4026,倍々ゲームの穴（一本勝負）,Double game hole (one game)
+array_stage_title4027,天罰の穴（一本勝負）,Hole of punishment (one game)
+array_stage_title4028,どっすん迷路（一本勝負）,Thwomp Maze (one game)
+array_stage_title4029,スナイパールーム（一本勝負）,Sniper room (one game)
+array_stage_title4030,デメマダラの巣窟（一本勝負）,Dememadara's Nest (One game)
+array_stage_title4031,こてしらべの洞窟（一本勝負）,Kotesirabe Cave (One game)
+array_stage_title4032,新参者の試練場（一本勝負）,Trial ground for newcomers (one game)
+array_stage_title4033,神々のおもちゃ箱（一本勝負）,God's toy box (one game)
+array_stage_title4034,あのひとの庭（一本勝負）,That person's garden (one game)
+array_stage_title4035,グリーンホール（一本勝負）,Green Hall (one game)
+array_stage_title4036,地下の温室（一本勝負）,Underground greenhouse (one game)
+array_stage_title4037,鉄人の穴（一本勝負）,Tetsujin no Hana (one game)
+array_stage_title4038,赤の洞窟（一本勝負）,Red cave (one game)
+array_stage_title4039,花園を荒らすもの（一本勝負）,What destroys the flower garden (one game)
+array_stage_title4040,たそがれの庭（一本勝負）,Twilight Garden (One game)
+array_stage_title4041,かくしもちの洞窟（一本勝負）,Hidden Mochi Cave (One game)
+array_stage_title4042,コンクリート迷路（一本勝負）,Concrete maze (one game)
+array_stage_title4043,コレクタールーム（一本勝負）,Collector's room (one game)
+array_stage_title4044,ショイグモの巣（一本勝負）,Shoe spider's nest (one game)
+array_stage_title4045,大足の穴（一本勝負）,Large foot hole (one game)
+array_stage_title4046,食神のかまど（一本勝負）,Kamado of Shokujin (one game)
+array_stage_title4047,三色試練場（一本勝負）,Three-color trial ground (one game)
+array_stage_title4048,炎と水の試練場（一本勝負）,Flame and Water Trial Ground (One Game)
+array_stage_title4049,鼻息の洞穴（一本勝負）,Cave of nasal breath (one game)
+array_stage_title4050,巨人のトイレ（一本勝負）,Giant's toilet (one game)
+array_stage_title4051,土とんの洞窟（一本勝負）,Cave of Earth (one game)
+array_stage_title4052,地底警備室（一本勝負）,Underground security room (one game)
+array_stage_title4053,ひみつの花園（一本勝負）,Secret Flower Garden (One game)
+array_stage_title4054,さらいの洞窟（一本勝負）,Cave of Sarai (one game)
+array_stage_title4055,秘密兵器実験場（一本勝負）,Secret Weapon Testing Site (one game)
+array_stage_title4056,倍々ゲームの穴（一本勝負）,Double game hole (one game)
+array_stage_title4057,天罰の穴（一本勝負）,Hole of punishment (one game)
+array_stage_title4058,どっすん迷路（一本勝負）,Thwomp Maze (one game)
+array_stage_title4059,スナイパールーム（一本勝負）,Sniper room (one game)
+array_stage_title4060,デメマダラの巣窟（一本勝負）,Dememadara's Nest (One game)
+array_stage_title5001,新・神々のおもちゃ箱,New Gods Toy Box
+array_stage_title5002,新・あのひとの庭,New that person's garden
+array_stage_title5003,新・赤の洞窟,New Red Cave
+array_stage_title5004,新・たそがれの庭,New Twilight Garden
+array_stage_title5005,新・かくしもちの洞窟,New Hidden Mochi Cave
+array_stage_title5006,新・コレクタールーム,new collector room
+array_stage_title5007,新・大足の穴,new big foot hole
+array_stage_title5008,新・鼻息の洞穴,New Nose Breath Cave
+array_stage_title5009,新・土とんの洞窟,New Earth Cave
+array_stage_title5010,新・地底警備室,New Underground Security Room
+array_stage_title5011,新・さらいの洞窟,New Sarai Cave
+array_stage_title5012,新・秘密兵器実験場,New Secret Weapon Testing Site
+array_stage_title5013,新・天罰の穴,New punishment hole
+array_stage_title5014,新・花園を荒らすもの,New Hanazono Ruiner
+array_stage_title5015,新・ショイグモの巣,New Shoi Spider Nest
+array_stage_title5016,新・食神のかまど,New Kamado of Shokujin
+array_stage_title5017,新・ひみつの花園,New Secret Flower Garden
+array_stage_title5018,こてしらべの洞窟（実機無差別級）,Explorer's Cave (Unlimited play)
+array_stage_title5019,新参者の試練場（実機無差別級）,Newcomer's trial ground (actual machine open weight)
+array_stage_title5020,神々のおもちゃ箱（実機無差別級）,God's toy box (actual machine open weight)
+array_stage_title5021,あのひとの庭（実機無差別級）,That person's garden (actual machine open weight)
+array_stage_title5022,グリーンホール（実機無差別級）,Green Hall (actual machine open weight)
+array_stage_title5023,地下の温室（実機無差別級）,Underground greenhouse (actual machine open weight)
+array_stage_title5024,鉄人の穴（実機無差別級）,Tetsujin no Hana (actual machine open weight)
+array_stage_title5025,赤の洞窟（実機無差別級）,Red cave (actual machine open weight)
+array_stage_title5026,花園を荒らすもの（実機無差別級）,What destroys the flower garden (actual machine open weight)
+array_stage_title5027,たそがれの庭（実機無差別級）,Twilight Garden (actual machine open weight)
+array_stage_title5028,かくしもちの洞窟（実機無差別級）,Hidden Mochi Cave (actual machine open weight)
+array_stage_title5029,コンクリート迷路（実機無差別級）,Concrete maze (actual machine open weight)
+array_stage_title5030,コレクタールーム（実機無差別級）,Collector room (actual machine open weight)
+array_stage_title5031,ショイグモの巣（実機無差別級）,Shoe spider's nest (actual machine open weight)
+array_stage_title5032,大足の穴（実機無差別級）,Large foot hole (actual machine open weight)
+array_stage_title5033,食神のかまど（実機無差別級）,Kamado of Shokujin (actual machine open weight)
+array_stage_title5034,三色試練場（実機無差別級）,Three-color trial ground (actual machine open weight)
+array_stage_title5035,炎と水の試練場（実機無差別級）,Flame and Water Trial Ground (Actual Open Weight)
+array_stage_title5036,鼻息の洞穴（実機無差別級）,Cave of nasal breath (actual machine open weight)
+array_stage_title5037,巨人のトイレ（実機無差別級）,Giant's toilet (actual machine open weight)
+array_stage_title5038,土とんの洞窟（実機無差別級）,Earth Cave (actual machine open weight)
+array_stage_title5039,地底警備室（実機無差別級）,Underground security room (actual machine open weight)
+array_stage_title5040,ひみつの花園（実機無差別級）,Secret Flower Garden (actual machine open weight)
+array_stage_title5041,さらいの洞窟（実機無差別級）,Sararai Cave (actual machine open weight)
+array_stage_title5042,秘密兵器実験場（実機無差別級）,Secret Weapon Testing Site (actual machine open weight)
+array_stage_title5043,倍々ゲームの穴（実機無差別級）,Double game hole (actual machine open weight)
+array_stage_title5044,天罰の穴（実機無差別級）,Hole of punishment (actual machine open weight)
+array_stage_title5045,どっすん迷路（実機無差別級）,Thwomp Maze (actual machine open weight)
+array_stage_title5046,スナイパールーム（実機無差別級）,Sniper room (actual machine open weight)
+array_stage_title5047,デメマダラの巣窟（実機無差別級）,Dememadara's Nest (actual open weight)
+array_stage_title5048,こてしらべの洞窟（TAS）,Kotesirabe Cave (TAS)
+array_stage_title5049,新参者の試練場（TAS）,Newcomer's Trial Ground (TAS)
+array_stage_title5050,神々のおもちゃ箱（TAS）,Gods Toy Box (TAS)
+array_stage_title5051,あのひとの庭（TAS）,That person's garden (TAS)
+array_stage_title5052,グリーンホール（TAS）,Green Hall (TAS)
+array_stage_title5053,地下の温室（TAS）,Underground greenhouse (TAS)
+array_stage_title5054,鉄人の穴（TAS）,Iron Man's Hole (TAS)
+array_stage_title5055,赤の洞窟（TAS）,Red Cave (TAS)
+array_stage_title5056,花園を荒らすもの（TAS）,What destroys the flower garden (TAS)
+array_stage_title5057,たそがれの庭（TAS）,Twilight Garden (TAS)
+array_stage_title5058,かくしもちの洞窟（TAS）,Hidden Mochi Cave (TAS)
+array_stage_title5059,コンクリート迷路（TAS）,Concrete Maze (TAS)
+array_stage_title5060,コレクタールーム（TAS）,Collector Room (TAS)
+array_stage_title5061,ショイグモの巣（TAS）,Shoe Spider Nest (TAS)
+array_stage_title5062,大足の穴（TAS）,Large foot hole (TAS)
+array_stage_title5063,食神のかまど（TAS）,Shokujin no Kamado (TAS)
+array_stage_title5064,三色試練場（TAS）,Tricolor Trial Ground (TAS)
+array_stage_title5065,炎と水の試練場（TAS）,Flame and Water Trial Ground (TAS)
+array_stage_title5066,鼻息の洞穴（TAS）,Nose Cave (TAS)
+array_stage_title5067,巨人のトイレ（TAS）,Giant's Toilet (TAS)
+array_stage_title5068,土とんの洞窟（TAS）,Earth Cave (TAS)
+array_stage_title5069,地底警備室（TAS）,Underground Security Room (TAS)
+array_stage_title5070,ひみつの花園（TAS）,Secret Flower Garden (TAS)
+array_stage_title5071,さらいの洞窟（TAS）,Cave of Sarai (TAS)
+array_stage_title5072,秘密兵器実験場（TAS）,Secret Weapon Testing Site (TAS)
+array_stage_title5073,倍々ゲームの穴（TAS）,Double Game Hole (TAS)
+array_stage_title5074,天罰の穴（TAS）,Hole of Punishment (TAS)
+array_stage_title5075,どっすん迷路（TAS）,Thwomp Maze (TAS)
+array_stage_title5076,スナイパールーム（TAS）,Sniper Room (TAS)
+array_stage_title5077,デメマダラの巣窟（TAS）,Dememadara's Nest (TAS)
+array_stage_title10100,ピクミン フリースタイルRTA,Pikmin Freestyle RTA
+array_stage_title10101,ピクミン 全回収RTA,Pikmin Total Recovery RTA
+array_stage_title10200,ピクミン2 フリースタイルRTA,Pikmin 2 Freestyle RTA
+array_stage_title10201,ピクミン2 借金返済RTA,Pikmin 2 Debt Repayment RTA
+array_stage_title10202,ピクミン2 全回収RTA,Pikmin 2 Total Recovery RTA
+array_stage_title10203,ピクミン2 借金返済クリア,Pikmin 2 Debt Repayment Clear
+array_stage_title10204,ピクミン2 全回収クリア,Pikmin 2 Clear all recovery
+array_stage_title10205,ピクミン2 チャレンジ全クリア,Pikmin 2 Challenge Completed
+array_stage_title10206,ピクミン2 チャレンジ全公式超え,Pikmin 2 Challenge All Official Exceeded
+array_stage_title10207,ピクミン2 チャレンジ公式超え1区,Pikmin 2 Challenge Official Over 1 Ward
+array_stage_title10208,ピクミン2 チャレンジ公式超え2区,Pikmin 2 Challenge Official Over 2 Wards
+array_stage_title10209,ピクミン2 チャレンジ公式超え3区,Pikmin 2 Challenge Official Over 3 Wards
+array_stage_title10210,ピクミン2 チャレンジ公式超え4区,Pikmin 2 Challenge Official Over 4 Wards
+array_stage_title10211,ピクミン2 チャレンジ公式超え5区,Pikmin 2 Challenge Official Over 5 Wards
+array_stage_title10212,ピクミン2 チャレンジ公式超え6区,Pikmin 2 Challenge Official Over 6 Wards
+array_stage_title10213,ピクミン2 チャレンジ総合70万点超え,Pikmin 2 Challenge 700,000+ points
+array_stage_title10214,ピクミン2 チャレンジ全回収,Pikmin 2 Challenge Full Recovery
+array_stage_title10300,ピクミン3 フリースタイルRTA,Pikmin 3 Freestyle RTA
+array_stage_title10301,ピクミン3 Any% RTA,Pikmin 3 Any% RTA
+array_stage_title10302,ピクミン3 全回収RTA,Pikmin 3 Total Recovery RTA
+array_stage_title151101,第1回期間限定ランキング,1st Limited Time Ranking
+array_stage_title160306,第2回期間限定ランキング,2nd limited time ranking
+array_stage_title160319,第3回期間限定ランキング,3rd Limited Time Ranking
+array_stage_title160423,第4回期間限定ランキング,4th Limited Time Ranking
+array_stage_title160430,第5回期間限定ランキング,5th Limited Time Ranking
+array_stage_title160806,第6回期間限定ランキング,6th Limited Time Ranking
+array_stage_title170101,第7回期間限定ランキング,7th Limited Time Ranking
+array_stage_title170211,第8回期間限定ランキング,8th Limited Time Ranking
+array_stage_title170325,第9回期間限定ランキング,9th Limited Time Ranking
+array_stage_title170429,第10回期間限定ランキング,10th Limited Time Ranking
+array_stage_title171013,第11回期間限定ランキング,11th Limited Time Ranking
+array_stage_title171231,第1回ピク杯,1st Pic Cup
+array_stage_title180101,第12回期間限定ランキング,12th Limited Time Ranking
+array_stage_title180429,第2回ピク杯,2nd Pic Cup
+array_stage_title180901,第13回期間限定ランキング,13th Limited Time Ranking
+array_stage_title190209,第1回ピクミン2チャレンジモード全ステージ各一本勝負,1st Pikmin 2 Challenge Mode All stages 1 game each
+array_stage_title190321,第2回ピクミン2チャレンジモード全ステージ各一本勝負,2nd Pikmin 2 Challenge Mode All stages 1 game each
+array_stage_title190802,第14回期間限定ランキング,14th Limited Time Ranking
+array_stage_title200723,第15回期間限定ランキング,15th Limited Time Ranking
+array_stage_title200918,第16回期間限定ランキング,16th Limited Time Ranking
+array_stage_summary1,このページでは最近投稿された記録100本を表示しています。短期間で複数回更新された場合、古い方の記録は表示されません。 ,This page shows 100 Latest posted records. (shows Only the newest record when updating multiple times in a short period)
+array_stage_summary2,このページでは最近投稿された記録100本を表示しています。シーズン記録や、短期間で複数回更新された場合もすべて表示されます。 ,This page shows 100 Latest posted records. (shows individually when updating multiple times in a short period, including season record)
+array_stage_summary5,当サイトで取り扱うすべてのランキングの一覧です。先頭行をクリックすると並び替えることができます。 ,This page shows the list of all rankings on this website. Tap first line to sort.
+array_stage_summary7,このランキングでは、当サイト『ピクミンシリーズチャレンジモード大会』で受け付けているすべてのステージの合計ランクポイントで競います。 ,This ranking is based on "Total score". "Total score" is generated according to all results on this website.
+array_stage_summary8,このランキングでは、通常総合ランキング対象ステージ以外のすべてのステージの合計ランクポイントで競います。,This ranking is based on special total point that generated according to all rank-points, except normal ranking(Pikmin 1, Pikmin 2, Pikmin 3 or DX).
+array_stage_summary9,このランキングでは『ピクミン』『ピクミン2』『ピクミン3』の各チャレンジ・ミッション1Pモード71ステージそれぞれの順位によって加算されるランクポイントの合計値で競います。 ,This ranking is based on normal total point that generated according to all normal ranking(Pikmin 1, Pikmin 2, Pikmin 3 or DX, 71 stages in total).
+array_stage_summary10,このランキングでは『ピクミン』チャレンジモード全5ステージの合計点で競います。ステージは本編でパーツを集めて新ステージへ行けるようになると同時に解禁されます。 ,This ranking is based on "Pikmin 1" total point that generated according to 5 rankings in Pikmin 1. You need to progress Main Story to play Challenge mode.
+array_stage_summary20,このランキングではNGC『ピクミン2』、Wii『Wiiであそぶピクミン2』、Wii U『Wiiであそぶピクミン2(DL版)』の1Pチャレンジモード全30ステージの合計点で競います。チャレンジモードは本編で「あのカギ」を手に入れると遊べるようになります。,In this ranking, NGC "Pikmin 2", Wii "Wii Play Pikmin 2", Wii U "Wii Play Pikmin 2 (DL version)" will compete in the total points of all 30 stages of 1P challenge mode. You will be able to play Challenge Mode when you get "that key" in the main story.
+array_stage_summary21,このランキングでは『ピクミン2』1Pチャレンジモードのうち、タマゴが出現する13ステージの合計点で競います。一部のステージは配置によってタマゴが出現しないこともあります。タマゴを割ると20分の1で「タマゴムシ」が10匹出現し、1匹運搬するごとに10点のボーナス点が加算されます。 ,In this ranking, in the "Pikmin 2" 1P challenge mode, you will compete with the total points of 13 stages where eggs appear. Eggs may not appear on some stages depending on the placement. When you break an egg, 10 "tamagomushi" will appear at 1/20, and 10 bonus points will be added for each egg you carry.
+array_stage_summary22,このランキングでは『ピクミン2』1Pチャレンジモードのうち、タマゴが出現しない17ステージの合計点で競います。 ,In this ranking, in the "Pikmin 2" 1P challenge mode, you will compete with the total points of 17 stages where eggs do not appear.
+array_stage_summary30,このランキングではWii U『ピクミン3』ミッションモード全30ステージの合計点で競います（巨大生物をたおせ！は残り時間1秒につき1点とみなして集計されます）。一部ステージは有料DLCを購入しなければプレイできません。『ピクミン3デラックス』とランキングを共用するかどうかについては審議中です。,In this ranking, Wii U "Pikmin 3" Compete with the total points of all 30 stages in mission mode (Take the giant creatures! Is counted as 1 point for each second remaining time). Some stages cannot be played without purchasing paid DLC. Whether or not to share the ranking with "Pikmin 3 Deluxe" is under discussion.
+array_stage_summary31,このランキングでは『ピクミン3』1Pミッションモードのうち、「お宝をあつめろ！」カテゴリの15ステージ合計点で競います。タイムボーナスは一律1秒30点です。一部のステージは有料追加コンテンツです。 ,In this ranking, in the "Pikmin 3" 1P mission mode, you will compete with the total points of 15 stages in the "Collect treasure!" Category. The time bonus is 30 points per second. Some stages are paid additional content.
+array_stage_summary32,このランキングでは『ピクミン3』1Pミッションモードのうち、「原生生物をたおせ！」カテゴリの15ステージ合計点で競います。タイムボーナスは『BE01 原生の杜』から『BE05 草花の園』までが1秒30点、それ以降は1秒10点です。一部のステージは有料追加コンテンツです。 ,In this ranking, in the "Pikmin 3" 1P mission mode, you will compete with the total points of 15 stages in the "Take protists!" Category. The time bonus is 30 points per second from "BE01 Primitive Forest" to "BE05 Flower Garden", and 10 points per second thereafter. Some stages are paid additional content.
+array_stage_summary33,このランキングではWii U『ピクミン3』ミッションモード「巨大生物をたおせ！」全6ステージの合計点で競います。スコアは残り時間1秒につき1点とみなして集計されます。ステージは本編各ステージの巨大生物を倒すと解禁されます。 ,In this ranking, Wii U "Pikmin 3" mission mode "Take a giant creature!" Compete with the total points of all 6 stages. Scores are counted as 1 point for each second of remaining time. The stage will be unlocked when you defeat the giant creatures in each stage of the main story.
+array_stage_summary23,本編地下チャレンジとは、『ピクミン2』本編の地下1ステージをチャレンジモードとみなして遊ぶ区間RTAです。参加には録画環境と何らかの時間計測手段が必要になります。また、連れて行けるピクミンと制限時間について当サイト独自のルールがあります。,The main story underground challenge is a section RTA where you can play with the underground 1 stage of the main story of "Pikmin 2" as the challenge mode. Participation requires a recording environment and some means of time measurement. In addition, there are rules unique to this site regarding the Pikmin that can be taken and the time limit.
+array_stage_summary24,このランキングでは『ピクミン2』2Pチャレンジモードの総合点数を競います。総合ランキングではパートナーや1p/2p問わず、ステージごとにそのユーザーがプレイした最高点数が集計対象になります。各ステージでは、1Pが同じプレイヤーの記録は最も高いスコアのみ表示されます。なお、対象ステージは適正人数以外でのプレイ（1人によるダブルプレイなど）によって出したスコアはすべて無効となります。 ,In this ranking, we will compete for the total score of "Pikmin 2" 2P Challenge Mode. In the overall ranking, the highest score played by the user for each stage is counted regardless of the partner or 1p / 2p. In each stage, only the highest score will be displayed for players with the same 1P. In addition, all scores given by playing other than the appropriate number of people (double play by one person, etc.) will be invalid in the target stage.
+array_stage_summary25,このランキングでは『ピクミン2』2Pバトルモードの総合成績を競います。得点は対象ステージすべての「レギュラーリーグ」(ピクミン25匹同士による対戦）におけるレート値を合計したものになります。レート値は内部では単精度浮動小数点数（14桁）で保存されているため、各ステージに表示されているレートの見た目上の合計値と合わないことがあります。 ,In this ranking, we will compete for the overall results of "Pikmin 2" 2P battle mode. The score is the sum of the rate values ​​in the "Regular League" (competition between 25 Pikmin) of all target stages. The rate values ​​are stored internally as single precision floating point numbers (14 digits) and may not match the apparent total of the rates displayed on each stage.
+array_stage_summary26,新チャレンジモードとは、日替わりチャレンジや期間限定ランキングと違い期間無制限で競い合う、当サイト独自ルールによる特殊ランキングです。詳しいルールについては各ステージの説明をお読みください。なお当カテゴリは当面の間、証拠動画の提出は任意とします。証拠写真は順位にかかわらず可能なかぎり提出してください。,The new challenge mode is a special ranking based on our unique rules, where you can compete for an unlimited period of time, unlike daily challenges and limited-time rankings. Please read the explanation of each stage for detailed rules. For the time being, submission of evidence videos is optional for this category. Please submit proof photos as much as possible regardless of the ranking.
+array_stage_summary28,新チャレンジモードとは、日替わりチャレンジや期間限定ランキングと違い期間無制限で競い合う、当サイト独自ルールによる特殊ランキングです。詳しいルールについては各ステージの説明をお読みください。なお当カテゴリは当面の間、証拠動画の提出は任意とします。証拠写真は順位にかかわらず可能なかぎり提出してください。,The new challenge mode is a special ranking based on our unique rules, where you can compete for an unlimited period of time, unlike daily challenges and limited-time rankings. Please read the explanation of each stage for detailed rules. For the time being, submission of evidence videos is optional for this category. Please submit proof photos as much as possible regardless of the ranking.
+array_stage_summary34,このランキングでは『ピクミン3』2Pミッションモードの総合点数を競います。対象ステージは適正人数以外でのプレイ（1人によるダブルプレイなど）によって出したスコアはすべて無効となります。 ,In this ranking, we will compete for the total score of "Pikmin 3" 2P mission mode. In the target stage, all scores given by playing with other than the appropriate number of people (double play by one person, etc.) will be invalid.
+array_stage_summary35,このランキングでは『ピクミン3』ビンゴバトルモードの総合成績を競います。得点は対象ステージすべての「レギュラーリーグ」(マカロンなし・リーダー1対1・ピクミン25匹同士による対戦）におけるレート値を合計したものになります。レート値は内部では単精度浮動小数点数（14桁）で保存されているため、各ステージに表示されているレートの見た目上の合計値と合わないことがあります。 ,In this ranking, we will compete for the overall results of "Pikmin 3" bingo battle mode. The score is the sum of the rate values ​​in the "Regular League" (no macaroons, 1 to 1 leader, 25 Pikmin battles) in all target stages. The rate values ​​are stored internally in single precision floating point numbers (14 digits) and may not match the apparent total of the rates displayed on each stage.
+array_stage_summary36,このランキングでは『ピクミン3デラックス』サイドストーリーモード２ステージの合計点数を競います。このページは仮置きです。2020年10月30日よりスコア投稿を受け付けます。サイドストーリーモードがスコアアタック制でなかった場合は本編RTAカテゴリに統合し特殊ランキングとして扱います。,In this ranking, we will compete for the total score of "Pikmin 3 Deluxe" side story mode 2 stages. This page is temporary. Score submissions will be accepted from October 30, 2020. If the side story mode is not a score attack system, it will be integrated into the main RTA category and treated as a special ranking.
+array_stage_summary81,このランキングでは『ピクミン2』チャレンジモードを、通常禁止されている乱数調整などを解禁した特別ルールで競います。このランキングが所属するステージは特殊総合・全総合には反映されません。,In this ranking, we will compete in the "Pikmin 2" challenge mode with special rules that lift the ban on random number adjustment, which is normally prohibited. The stage to which this ranking belongs is not reflected in the special synthesis / total synthesis.
+array_stage_summary82,このランキングでは『ピクミン2』チャレンジモードを、Tool-Assisted-Playで競い合います。無差別級ランキングと同様、禁止ルールはありません。このランキングが所属するステージは特殊総合・全総合には反映されません。,In this ranking, we will compete in "Pikmin 2" challenge mode with Tool-Assisted-Play. Like the open weight ranking, there are no prohibition rules. The stage to which this ranking belongs is not reflected in the special synthesis / total synthesis.
+array_stage_summary91,期間限定ランキングとは、決められた期間内だけ投稿できる特殊ルールで合計スコアを競い合う当サイト独自のランキングです。事前告知は管理人Twitter及び当サイトで行います。『ピクミン』チャレンジモードが対象の場合、集計スコアは10倍してから加算されます。 ,The limited-time ranking is a ranking unique to this site that competes for the total score with special rules that can be posted only within a fixed period. Advance notice will be made on the administrator Twitter and this site. If the "Pikmin" challenge mode is the target, the total score will be multiplied by 10 before being added.
+array_stage_summary92,日替わりチャレンジとは、毎月その日にしか遊べない『ピクミン2』チャレンジモードの縛りルールで遊ぶ独自ランキングです。当日の対象ステージはメニューに表示されています。 縛りルールはすべて「ポコ縛り」となっています。タイトルに指定されているポコ数ちょうどになるようにお宝を選び、選んだお宝だけを運んでクリアしたときのスコアを競います。 ,The daily challenge is a unique ranking where you can play with the binding rules of "Pikmin 2" challenge mode, which you can only play on that day every month. The target stage of the day is displayed in the menu. All binding rules are "poco binding". Select the treasure so that the number of poco specified in the title is exactly the same, and compete for the score when you carry and clear only the selected treasure.
+array_stage_summary93,このランキングでは、本編RTA全ステージの合計ランクポイントで競います。,In this ranking, we will compete with the total rank points of all stages of the main RTA.
+array_stage_summary94,このランキングでは、チャレンジ複合全ステージの合計ランクポイントで競います。,In this ranking, you will compete with the total rank points of all stages of the Challenge Complex.
+array_stage_summary95,このランキングは『ピクミン2』2Pビンゴバトルモード、『ピクミン3』ビンゴバトルモード全22ステージの全戦績の最新レーティングです。レーティング計算は当サイト独自のものです。初期値は1500です。集計対象はスタンダードルールで行った勝負すべてであり、ピク杯のプログラムとして行われた勝負を含みます。 ,This ranking is the latest rating of all 22 stages of "Pikmin 2" 2P bingo battle mode and "Pikmin 3" bingo battle mode. Rating calculation is unique to this site. The initial value is 1500. All the games played according to the standard rules are counted, including the games played as a program of the Piku Cup.
+array_stage_summary98,2015年09月01日以降一度も投稿していないユーザーは集計の対象外となっています。一度でも投稿すると2015年08月31日以前の分も含めた総数が反映されます。,Users who have never posted since September 01, 2015 are not included in the total. If you post even once, the total number including the ones before August 31, 2015 will be reflected.
+array_stage_summary101,,
+array_stage_summary102,,
+array_stage_summary103,,
+array_stage_summary104,,
+array_stage_summary105,,
+array_stage_summary201,,
+array_stage_summary202,,
+array_stage_summary203,このステージではリージョンによってお宝の総価値が異なります。日本語版以外で出した記録は、すべて200点を追加して登録してください。,In this stage, the total value of the treasures varies depending on the region. Please increase all records published in versions ​​other than the Japanese version by 200 points before submitting.
+array_stage_summary204,,
+array_stage_summary205,,
+array_stage_summary206,,
+array_stage_summary207,,
+array_stage_summary208,,
+array_stage_summary209,,
+array_stage_summary210,,
+array_stage_summary211,,
+array_stage_summary212,,
+array_stage_summary213,このステージではリージョンによってお宝の総価値が異なります。日本語版以外で出した記録は、すべて100点減らして登録してください。,In this stage, the total value of the treasures varies depending on the region. Please reduce all records published in versions ​​other than the Japanese version by 100 points before submitting.
+array_stage_summary214,,
+array_stage_summary215,,
+array_stage_summary216,,
+array_stage_summary217,,
+array_stage_summary218,,
+array_stage_summary219,,
+array_stage_summary220,,
+array_stage_summary221,,
+array_stage_summary222,,
+array_stage_summary223,,
+array_stage_summary224,,
+array_stage_summary225,,
+array_stage_summary226,,
+array_stage_summary227,,
+array_stage_summary228,このステージではリージョンによってお宝の総価値が異なります。日本語版以外で出した記録は、すべて40点減らして登録してください。,In this stage, the total value of the treasures varies depending on the region. Please reduce all records published in versions ​​other than the Japanese version by 40 points before submitting.
+array_stage_summary229,,
+array_stage_summary299,,
+array_stage_summary230,,
+array_stage_summary301,,
+array_stage_summary302,,
+array_stage_summary303,,
+array_stage_summary304,,
+array_stage_summary305,,
+array_stage_summary306,,
+array_stage_summary307,,
+array_stage_summary308,,
+array_stage_summary309,,
+array_stage_summary310,,
+array_stage_summary311,,
+array_stage_summary312,,
+array_stage_summary313,,
+array_stage_summary314,,
+array_stage_summary315,,
+array_stage_summary316,,
+array_stage_summary317,,
+array_stage_summary318,,
+array_stage_summary319,,
+array_stage_summary320,,
+array_stage_summary321,,
+array_stage_summary322,,
+array_stage_summary323,,
+array_stage_summary324,,
+array_stage_summary325,,
+array_stage_summary326,,
+array_stage_summary327,,
+array_stage_summary328,,
+array_stage_summary329,,
+array_stage_summary330,,
+array_stage_summary331,,
+array_stage_summary332,,
+array_stage_summary333,,
+array_stage_summary334,,
+array_stage_summary335,,
+array_stage_summary336,,
