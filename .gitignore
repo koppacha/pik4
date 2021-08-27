@@ -1,3 +1,4 @@
 /html/_def.php
 /html/_img/
-/html/uploads
+/html/uploads/
+/docker/db/data/
