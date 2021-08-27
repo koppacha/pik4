@@ -1,19 +1,19 @@
 <?php
-// Cookieをセットする
-if (isset($_POST['check_send'])) {
+if(@$_POST['formtype'] == 1){
+	// Cookieをセットする
 	setcookie('user_name', $_POST['user_name'], time()+60*60*24*30*120);
 	$_COOKIE['user_name'] = $_POST['user_name'];
 	setcookie('user_name_2p', $_POST['user_name_2p'], time()+60*60*24*30*120);
 	$_COOKIE['user_name_2p'] = $_POST['user_name_2p'];		// クッキーに保存するパスワードを暗号化
-		$set_cookiepass	= $_POST['password'];
-		$randpass	= 'uLB9EgG96R2X6EyEezsPRbyEuKvBydyC5pK';//乱数種を設定
-		$iv		= openssl_random_pseudo_bytes( 8 );	//ランダムバイトを設定
-		$raw_output	= false;				//Base64で出力
-		$method		='aes-256-ecb';				//AES256bitで暗号化
+	$set_cookiepass	= $_POST['password'];
+	$randpass	= COOKIE_CRYPT; //乱数種を設定
+	$iv		= openssl_random_pseudo_bytes( 8 );	//ランダムバイトを設定
+	$raw_output	= false;				//Base64で出力
+	$method		='aes-256-ecb';				//AES256bitで暗号化
 
-		if ($_POST['password'] != ""){
-			$cookiepass = openssl_encrypt($set_cookiepass, $method, $randpass);
-		}
+	if ($_POST['password'] != ""){
+		$cookiepass = openssl_encrypt($set_cookiepass, $method, $randpass);
+	}
 
 	setcookie('password', $cookiepass, time()+60*60*24*30*120);
 	$_COOKIE['password'] = $cookiepass;
@@ -26,6 +26,7 @@ if (isset($_POST['check_send'])) {
 		$_COOKIE['post_twitter'] = $_POST['post_twitter'];
 	}
 }
+
 // クッキー（COOKIE）からログイン中のユーザー名を取得
 if (isset($_COOKIE['user_name'])) {
 	$cookie_name = $_COOKIE["user_name"];
@@ -47,7 +48,7 @@ if (isset($_COOKIE['user_name_2p'])) {
 // クッキーに保存されているパスワードを復号
 if (isset($_COOKIE['password'])) {
 	$set_cookiepass	= $_COOKIE['password'];
-	$randpass	= 'uLB9EgG96R2X6EyEezsPRbyEuKvBydyC5pK';//乱数種を設定
+	$randpass	= COOKIE_CRYPT; //乱数種を設定
 	$iv		= openssl_random_pseudo_bytes( 8 );	//ランダムバイトを設定
 	$raw_output	= false;				//Base64で出力
 	$method		='aes-256-ecb';				//AES256bitで暗号化

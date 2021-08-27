@@ -7,6 +7,7 @@ Autor: @koppachappy（木っ端ちゃっぴー）
 */
 
 // 設定を読み込む
+require_once('_def.php');
 require_once('pik4_config.php');
 
 // セッションスタート
@@ -42,7 +43,7 @@ require_once('pik4_database.php');
 
 // URLからステージIDを取得
 $url_array = explode('/', $_SERVER["REQUEST_URI"]);
-$url_stage_id =  array_pop( $url_array );
+$url_stage_id =  urldecode( array_pop( $url_array ) );
 
 // URLのルーティング
 $page_type = 0;
@@ -50,7 +51,6 @@ $show_scoretable = 1;
     if ( $site_mode == 1			       ) $page_type =99; // メンテナンスモード
 elseif ( $network_error == 1			       ) $page_type =98; // ネットワークエラー
 elseif ( !$stage_id	     and!$user_name 	       ) $page_type = 0; // エラー
-elseif ( $stage_id 	 and !is_numeric($url_stage_id)) $page_type =98; // 不正アクセスエラー
 elseif ( $stage_id >       0 and $stage_id <         6 ) $page_type = 1; // 特殊ランキング（新着、RPS順）
 elseif ( $stage_id >       5 and $stage_id <         7 ) $page_type =17; // 特殊ランキング（バトルモード戦歴）
 elseif ( $stage_id >       6 and $stage_id <       101 ) $page_type = 2; // 総合ランキング（9＝RPS総合、10番台＝初代、20番台＝2、30番台＝3、90番台＝特殊）
@@ -71,8 +71,8 @@ elseif ( $stage_id >    1000 and $stage_id <      2001 ) $page_type = 4; // 特�
 elseif ( $stage_id >    2000 and $stage_id <      3001 ) $page_type =12; // 特殊ランキング (2Pモード)
 elseif ( $stage_id >    3000 and $stage_id <      3113 ) $page_type =19; // 特殊ランキング（エリア踏破戦個別ページ）
 elseif ( $stage_id >    3035 and $stage_id <      4001 ) $page_type =98; // 無効
-elseif ( $stage_id >    4000 and $stage_id <      4061 ) $page_type = 4; // 特殊ランキング（参加者企画）
-elseif ( $stage_id >    4060 and $stage_id <      5001 ) $page_type =98; // 無効
+elseif ( $stage_id >    4000 and $stage_id <      4074 ) $page_type = 4; // 特殊ランキング（参加者企画）
+elseif ( $stage_id >    4073 and $stage_id <      5001 ) $page_type =98; // 無効
 elseif ( $stage_id >    5000 and $stage_id <      5018 ) $page_type = 3; // 特殊ランキング（スプレー縛り等）
 elseif ( $stage_id >    5017 and $stage_id <      5049 ) $page_type = 3; // 特殊ランキング（ピクミン2なんでもあり）
 elseif ( $stage_id >    5047 and $stage_id <      5079 ) $page_type = 3; // 特殊ランキング（ピクミン2TAS）
@@ -82,11 +82,11 @@ elseif ( $stage_id >   10204 and $stage_id <     10215 ) $page_type =14; // 特�
 elseif ( $stage_id >   10214 and $stage_id <     10300 ) $page_type =98; // 無効
 elseif ( $stage_id >   10299 and $stage_id <     10400 ) $page_type = 7; // 特殊ランキング (ピクミン3)
 elseif ( $stage_id >   10399 and $stage_id <    151101 ) $page_type =98; // 無効
-elseif ( $stage_id >  151100 and $stage_id <    201232 ) $page_type = 6; // 総合ランキング（期間限定ランキング)
-elseif ( $stage_id >  201231 and $stage_id < 100000000 ) $page_type =98; // エラー
+elseif ( $stage_id >  151100 and $stage_id <    211232 ) $page_type = 6; // 総合ランキング（期間限定ランキング)
+elseif ( $stage_id >  211231 and $stage_id < 100000000 ) $page_type =98; // エラー
 elseif ( $stage_id >99999999 and $stage_id <1000000000 ) $page_type =20; // 記録個別ページ
-elseif ( $stage_id >  201231  or $stage_id <         0 ) $page_type =98; // エラー
 elseif ( $user_name != "index.php" )		         $page_type = 5; // ユーザー別ランキング
+elseif ( $stage_id >  201231  or $stage_id <         0 ) $page_type =98; // エラー
 else					                 $page_type =98; // トップページを表示
 
 if($page_type == 6 and strpos($limited_type[$stage_id], 't') !== false) $page_type = 10;// 特殊ランキング (チーム対抗戦)
@@ -192,11 +192,15 @@ if (!$header_stage_title){
 		$result = mysqli_query($mysqlconn, $sql);
 		if($result){
 			$row = mysqli_fetch_assoc($result);
-		} else {
-			$row = 0;
-		}
-		if($row["stage_sub"] && $stage_id < 1000){
-			$sub_title = "（".$row["stage_sub"]."）";
+			if(isset($row["stage_sub"])){
+				if($row["stage_sub"] && $stage_id < 1000){
+					$sub_title = "（".$row["stage_sub"]."）";
+				} else {
+					$sub_title = "";
+				}
+			} else {
+				$sub_title = "";
+			}
 		} else {
 			$sub_title = "";
 		}
@@ -220,7 +224,7 @@ if($page_type == 5){
 	$subscription = urldecode($url_stage_id).'さんのスコアリストです。ピクチャレ大会は、任天堂より発売中のゲームソフト『ピクミン』シリーズのチャレンジ・ミッションモード全71ステージの記録を対象とした、誰でも参加できる非公式ランキングサイトです。';
 } elseif($page_type == 9 || $page_type == 15){
 	$subscription = urldecode($url_stage_id).'のページです。ピクチャレ大会は、任天堂より発売中のゲームソフト『ピクミン』シリーズのチャレンジ・ミッションモード全71ステージの記録を対象とした、誰でも参加できる非公式ランキングサイトです。';
-} elseif($page_type == 0) {
+} elseif($page_type == 0 || $page_type == 20){
 	$subscription = 'ピクチャレ大会は、任天堂より発売中のゲームソフト『ピクミン』シリーズのチャレンジ・ミッションモード全71ステージの記録を対象とした、誰でも参加できる非公式ランキングサイトです。';
 } else {
 	$subscription = $array_stage_title[$url_stage_id].' のランキングページです。ピクチャレ大会は、任天堂より発売中のゲームソフト『ピクミン』シリーズのチャレンジ・ミッションモード全71ステージの記録を対象とした、誰でも参加できる非公式ランキングサイトです。';
@@ -368,7 +372,8 @@ if($_SESSION['debug_mode']){
 	echo '</table>';
 }
 	// ページタイプによるdiv調整まずはここを試す
-	if($page_type != 2 and $page_type != 6 and $page_type != 13 and $page_type != 20 and $page_type != 21) echo '</div>';
+	if($page_type != 21) echo '</div>';
+	if($page_type ==  3 or $page_type ==  4 or $page_type == 5 or $page_type == 8 or $page_type == 10 or $page_type ==  12 or $page_type ==  16 or $page_type ==  18 or $page_type == 19) echo '</div>';
 
 require_once('pik4_menu.php'); // メニュー画面読み込み
 require_once('pik4_form.php'); // フォーム画面読み込み
@@ -401,28 +406,28 @@ if(!$mysql_mode){
 <!--/ フッターで読み込むjavascript /-->
 	<script src="https://vjs.zencdn.net/7.1.0/video.js"></script>
 	<script src="https://unpkg.com/glottologist"></script>
-    <script>
-      const glot = new Glottologist();
+	<script>
+		const glot = new Glottologist();
 
-      //JSONファイルの読み込み
-      glot.import("lang.json").then(() => {
-        glot.render();
-      })
-      /**
-      **言語切り替え用のイベント処理
-      **/
-      const ja = document.getElementById('ja');
-      const en = document.getElementById('en');
+		//JSONファイルの読み込み
+		glot.import("lang.json").then(() => {
+		glot.render();
+		})
+		/**
+		 **言語切り替え用のイベント処理
+		**/
+		const ja = document.getElementById('ja');
+		const en = document.getElementById('en');
 
-      ja.addEventListener('click', e => {
-        e.preventDefault();
-        glot.render('ja');
-      });
-      
-      en.addEventListener('click', e => {
-        e.preventDefault()
-	glot.render('en');
-      });
-     </script>
+		ja.addEventListener('click', e => {
+		e.preventDefault();
+		glot.render('ja');
+		});
+
+		en.addEventListener('click', e => {
+		e.preventDefault()
+		glot.render('en');
+		});
+	</script>
 </body>
 </html>

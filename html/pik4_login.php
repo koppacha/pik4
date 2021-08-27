@@ -1,10 +1,9 @@
 <?php
-ini_set( 'session.gc_maxlifetime', 7776000 );
-session_save_path('/home/users/0/chronon/web/chr.mn/_session');
-session_start();
+require_once('_def.php');
 
-define("Consumer_Key", "g8DNcIpCm9LOJMN2x6PKekTPz");
-define("Consumer_Secret", "LF2waTjwrFG9dubT8FqJnumzUF11mX1EMb8AkTpa3OkTmqKws8");
+ini_set( 'session.gc_maxlifetime', 7776000 );
+session_save_path(SESSION_PATH);
+session_start();
 
 //Callback URL
 define('Callback', 'https://chr.mn/pik4/pik4_callback.php');
@@ -15,7 +14,7 @@ require "ca-bundle-master/src/CaBundle.php";
 use Abraham\TwitterOAuth\TwitterOAuth;
 
 //TwitterOAuthのインスタンスを生成し、Twitterからリクエストトークンを取得する
-$connection = new TwitterOAuth(Consumer_Key, Consumer_Secret);
+$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET);
 $request_token = $connection->oauth("oauth/request_token", array("oauth_callback" => Callback));
 
 //リクエストトークンはcallback.phpでも利用するのでセッションに保存する

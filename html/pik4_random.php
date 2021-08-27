@@ -1,5 +1,7 @@
 <?php
 
+require_once('_def.php');
+
 $back_data = '';
 $user_name = $_POST["user_name"];
 $error	   = 0;
@@ -7,10 +9,10 @@ $error	   = 0;
 // データベース接続情報
 if($_SERVER['SERVER_NAME'] != 'localhost'){
 	// Heteml DataBase Server Connection
-	$mysql_host = "mysql506.heteml.jp";
-	$mysql_user = "_pik4";
-	$mysql_pass = "a21586hhwxj7egk";
-	$mysql_db   = "_pik4";
+	$mysql_host = DATABASE_DOMAIN;
+	$mysql_user = DATABASE_USER;
+	$mysql_pass = DATABASE_PASS;
+	$mysql_db   = DATABASE_USER;
 	$mysql_mode = 1;
 } else {
 	// XAMPP Local Server Connection

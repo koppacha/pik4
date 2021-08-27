@@ -174,6 +174,8 @@ $(function(){
 			var idn = $(this).attr("id");
 			idn = idn.replace("nv", "lim");
 			$('.' + idn).show();
+			idn = idn.replace("lim", "top-score");
+			$('.' + idn).show();
 		}
 	});
 });

@@ -1,4 +1,4 @@
-FROM php:8.0-apache
+FROM php:7.3-apache
 
   # Node.js
   ARG node_ver=14.15.1
@@ -24,16 +24,19 @@ FROM php:8.0-apache
     # PHP BCMath
     && docker-php-ext-install bcmath \
     # PHP GD
-    && apt-get install -y zlib1g-dev libpng-dev libjpeg62-turbo-dev \
-    && docker-php-ext-configure gd --with-jpeg \
-    && docker-php-ext-install -j$(nproc) gd \
+    # && apt-get install -y zlib1g-dev libpng-dev libjpeg62-turbo-dev \
+    # && docker-php-ext-configure gd --with-jpeg \
+    # && docker-php-ext-install -j$(nproc) gd \
     # PHP intl
     && apt-get install -y libicu-dev \
     && docker-php-ext-install intl \
     # PHP PDO MySQL
     && docker-php-ext-install pdo_mysql mysqli \
+    # PHP OpenSSL
+    && apt-get install -y libssl-dev openssl ssl-cert \
     # mod_rewrite 有効化
-    && a2enmod rewrite
+    && a2enmod rewrite ssl \
+    && a2ensite default-ssl
   
   # php.iniの追加設定
   RUN echo "file_uploads = On\n" \

@@ -21,9 +21,11 @@ services:
   # MySQL
   pik4_db:
     container_name: pik4_db
-    image: mysql:8.0
+    build:
+      context: ./docker/db
+      dockerfile: Dockerfile
     volumes:
-      - "./docker/db:/docker-entrypoint-initdb.d"
+      - "./docker/db/data:/var/lib/mysql"
     environment:
       MYSQL_ROOT_PASSWORD: 'root'
 

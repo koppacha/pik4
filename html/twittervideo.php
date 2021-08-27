@@ -6,10 +6,10 @@ require "twitteroauth/autoload.php";
 use Abraham\TwitterOAuth\TwitterOAuth;
 
 // Twitter API関連（アクセストークンは@koppachappy経由）
-$pik4_api_key = 'g8DNcIpCm9LOJMN2x6PKekTPz';
-$pik4_api_skey= 'LF2waTjwrFG9dubT8FqJnumzUF11mX1EMb8AkTpa3OkTmqKws8';
-$pik4_access_token = '128352931-9NRp9wUHsDT4JdhOGcx653MoRZQUpekQ4QbCo7qm';
-$pik4_access_stoken= 'DKEckZvq5FLtxD393PNFXrdVvTADIJMbLlJQLITjiTVw1';
+$pik4_api_key = TWITTER_API_KEY;
+$pik4_api_skey= TWITTER_API_SKEY;
+$pik4_access_token = TWITTER_TOKEN;
+$pik4_access_stoken= TWITTER_STOKEN;
 $twObj = new TwitterOAuth($pik4_api_key, $pik4_api_skey, $pik4_access_token, $pik4_access_stoken);
 
 // 現在時刻から取得対象日時を計算

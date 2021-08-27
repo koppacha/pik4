@@ -1203,6 +1203,14 @@
 "ja": "ピクミン2全ステージ各一本勝負",
 "en": "Pikmin 2 All stages one try"
 },
+"main_nav_userplan2":{
+"ja": "ピクミン2全ステージ各一本勝負",
+"en": "Pikmin 2 All stages one try"
+},
+"main_nav_userplan3":{
+"ja": "ピクミン2タマゴムシ取り大会",
+"en": "Pikmin 2 Mitite catching tournament "
+},
 "main_nav_winner":{
 "ja": "優勝",
 "en": "Winner"
@@ -2633,7 +2641,247 @@
 },
 "array_stage_title_fixed95":{
 "ja": "バトルモード",
-"en": "Battl"
+"en": "Battle"
+},
+"array_stage_title_fixed4001":{
+"ja": "こてしらべの洞窟",
+"en": "Explorer's Cave"
+},
+"array_stage_title_fixed4002":{
+"ja": "新参者の試練場",
+"en": "Trial ground for newcomers"
+},
+"array_stage_title_fixed4003":{
+"ja": "神々のおもちゃ箱",
+"en": "God's toy box"
+},
+"array_stage_title_fixed4004":{
+"ja": "あのひとの庭",
+"en": "That person's garden"
+},
+"array_stage_title_fixed4005":{
+"ja": "グリーンホール",
+"en": "Green Hall"
+},
+"array_stage_title_fixed4006":{
+"ja": "地下の温室",
+"en": "Underground greenhouse"
+},
+"array_stage_title_fixed4007":{
+"ja": "鉄人の穴",
+"en": "Tetsujin no Hana"
+},
+"array_stage_title_fixed4008":{
+"ja": "赤の洞窟",
+"en": "Red cave"
+},
+"array_stage_title_fixed4009":{
+"ja": "花園を荒らすもの",
+"en": "What destroys the flower garden"
+},
+"array_stage_title_fixed4010":{
+"ja": "たそがれの庭",
+"en": "Twilight Garden"
+},
+"array_stage_title_fixed4011":{
+"ja": "かくしもちの洞窟",
+"en": "Hidden Mochi Cave"
+},
+"array_stage_title_fixed4012":{
+"ja": "コンクリート迷路",
+"en": "Concrete maze"
+},
+"array_stage_title_fixed4013":{
+"ja": "コレクタールーム",
+"en": "Collector's room"
+},
+"array_stage_title_fixed4014":{
+"ja": "ショイグモの巣",
+"en": "Shoe spider's nest"
+},
+"array_stage_title_fixed4015":{
+"ja": "大足の穴",
+"en": "Large foot hole"
+},
+"array_stage_title_fixed4016":{
+"ja": "食神のかまど",
+"en": "Kamado of Shokujin"
+},
+"array_stage_title_fixed4017":{
+"ja": "三色試練場",
+"en": "Three-color trial ground"
+},
+"array_stage_title_fixed4018":{
+"ja": "炎と水の試練場",
+"en": "Flame and Water Trial Ground"
+},
+"array_stage_title_fixed4019":{
+"ja": "鼻息の洞穴",
+"en": "Cave of nasal breath"
+},
+"array_stage_title_fixed4020":{
+"ja": "巨人のトイレ",
+"en": "Giant's toilet"
+},
+"array_stage_title_fixed4021":{
+"ja": "土とんの洞窟",
+"en": "Cave of Earth"
+},
+"array_stage_title_fixed4022":{
+"ja": "地底警備室",
+"en": "Underground Security Room"
+},
+"array_stage_title_fixed4023":{
+"ja": "ひみつの花園",
+"en": "Secret Flower Garden"
+},
+"array_stage_title_fixed4024":{
+"ja": "さらいの洞窟",
+"en": "Cave of Sarai"
+},
+"array_stage_title_fixed4025":{
+"ja": "秘密兵器実験場",
+"en": "Secret Weapon Testing Site"
+},
+"array_stage_title_fixed4026":{
+"ja": "倍々ゲームの穴",
+"en": "Double game hole"
+},
+"array_stage_title_fixed4027":{
+"ja": "天罰の穴",
+"en": "Hole of punishment"
+},
+"array_stage_title_fixed4028":{
+"ja": "どっすん迷路",
+"en": "Thwomp Maze"
+},
+"array_stage_title_fixed4029":{
+"ja": "スナイパールーム",
+"en": "Sniper room"
+},
+"array_stage_title_fixed4030":{
+"ja": "デメマダラの巣窟",
+"en": "Dememadara's Nest"
+},
+"array_stage_title_fixed4031":{
+"ja": "こてしらべの洞窟",
+"en": "Kotesirabe Cave"
+},
+"array_stage_title_fixed4032":{
+"ja": "新参者の試練場",
+"en": "Trial ground for newcomers"
+},
+"array_stage_title_fixed4033":{
+"ja": "神々のおもちゃ箱",
+"en": "God's toy box"
+},
+"array_stage_title_fixed4034":{
+"ja": "あのひとの庭",
+"en": "That person's garden"
+},
+"array_stage_title_fixed4035":{
+"ja": "グリーンホール",
+"en": "Green Hall"
+},
+"array_stage_title_fixed4036":{
+"ja": "地下の温室",
+"en": "Underground greenhouse"
+},
+"array_stage_title_fixed4037":{
+"ja": "鉄人の穴",
+"en": "Tetsujin no Hana"
+},
+"array_stage_title_fixed4038":{
+"ja": "赤の洞窟",
+"en": "Red cave"
+},
+"array_stage_title_fixed4039":{
+"ja": "花園を荒らすもの",
+"en": "What destroys the flower garden"
+},
+"array_stage_title_fixed4040":{
+"ja": "たそがれの庭",
+"en": "Twilight Garden"
+},
+"array_stage_title_fixed4041":{
+"ja": "かくしもちの洞窟",
+"en": "Hidden Mochi Cave"
+},
+"array_stage_title_fixed4042":{
+"ja": "コンクリート迷路",
+"en": "Concrete maze"
+},
+"array_stage_title_fixed4043":{
+"ja": "コレクタールーム",
+"en": "Collector's room"
+},
+"array_stage_title_fixed4044":{
+"ja": "ショイグモの巣",
+"en": "Shoe spider's nest"
+},
+"array_stage_title_fixed4045":{
+"ja": "大足の穴",
+"en": "Large foot hole"
+},
+"array_stage_title_fixed4046":{
+"ja": "食神のかまど",
+"en": "Kamado of Shokujin"
+},
+"array_stage_title_fixed4047":{
+"ja": "三色試練場",
+"en": "Three-color trial ground"
+},
+"array_stage_title_fixed4048":{
+"ja": "炎と水の試練場",
+"en": "Flame and Water Trial Ground"
+},
+"array_stage_title_fixed4049":{
+"ja": "鼻息の洞穴",
+"en": "Cave of nasal breath"
+},
+"array_stage_title_fixed4050":{
+"ja": "巨人のトイレ",
+"en": "Giant's toilet"
+},
+"array_stage_title_fixed4051":{
+"ja": "土とんの洞窟",
+"en": "Cave of Earth"
+},
+"array_stage_title_fixed4052":{
+"ja": "地底警備室",
+"en": "Underground security room"
+},
+"array_stage_title_fixed4053":{
+"ja": "ひみつの花園",
+"en": "Secret Flower Garden"
+},
+"array_stage_title_fixed4054":{
+"ja": "さらいの洞窟",
+"en": "Cave of Sarai"
+},
+"array_stage_title_fixed4055":{
+"ja": "秘密兵器実験場",
+"en": "Secret Weapon Testing Site"
+},
+"array_stage_title_fixed4056":{
+"ja": "倍々ゲームの穴",
+"en": "Double game hole"
+},
+"array_stage_title_fixed4057":{
+"ja": "天罰の穴",
+"en": "Hole of punishment"
+},
+"array_stage_title_fixed4058":{
+"ja": "どっすん迷路",
+"en": "Thwomp Maze"
+},
+"array_stage_title_fixed4059":{
+"ja": "スナイパールーム",
+"en": "Sniper room"
+},
+"array_stage_title_fixed4060":{
+"ja": "デメマダラの巣窟",
+"en": "Dememadara's Nest"
 },
 "array_stage_title_fixed10101":{
 "ja": "全回収RTA(pik1)",
@@ -4735,6 +4983,58 @@
 "ja": "デメマダラの巣窟（一本勝負）",
 "en": "Dememadara's Nest (One game)"
 },
+"array_stage_title4061":{
+"ja": "こてしらべの洞窟（ムシ取り）",
+"en": "Explorer's Cave (mitite catching)"
+},
+"array_stage_title4062":{
+"ja": "新参者の試練場（ムシ取り）",
+"en": "Novice Training (mitite catching)"
+},
+"array_stage_title4063":{
+"ja": "グリーンホール（ムシ取り）",
+"en": "Green Hole (mitite catching)"
+},
+"array_stage_title4064":{
+"ja": "地下の温室（ムシ取り）",
+"en": "Hot House (mitite catching)"
+},
+"array_stage_title4065":{
+"ja": "鉄人の穴（ムシ取り）",
+"en": "Brawny Abyss (mitite catching)"
+},
+"array_stage_title4066":{
+"ja": "コンクリート迷路（ムシ取り）",
+"en": "Concrete Maze (mitite catching)"
+},
+"array_stage_title4067":{
+"ja": "三色試練場（ムシ取り）",
+"en": "Three Color Training (mitite catching)"
+},
+"array_stage_title4068":{
+"ja": "炎と水の試練場（ムシ取り）",
+"en": "Hazard Training (mitite catching)"
+},
+"array_stage_title4069":{
+"ja": "巨人のトイレ（ムシ取り）",
+"en": "The Giant's Bath (mitite catching)"
+},
+"array_stage_title4070":{
+"ja": "倍々ゲームの穴（ムシ取り）",
+"en": "Breeding Ground (mitite catching)"
+},
+"array_stage_title4071":{
+"ja": "どっすん迷路（ムシ取り）",
+"en": "Bully Den (mitite catching)"
+},
+"array_stage_title4072":{
+"ja": "スナイパールーム（ムシ取り）",
+"en": "Sniper Room (mitite catching)"
+},
+"array_stage_title4073":{
+"ja": "デメマダラの巣窟（ムシ取り）",
+"en": "Emperor's Realm (mitite catching)"
+},
 "array_stage_title5001":{
 "ja": "新・神々のおもちゃ箱",
 "en": "New Gods Toy Box"
@@ -5202,6 +5502,10 @@
 "array_stage_title200918":{
 "ja": "第16回期間限定ランキング",
 "en": "16th Limited Time Ranking"
+},
+"array_stage_title210829":{
+"ja": "タマゴムシ取り大会",
+"en": "Mitites catching tournament"
 },
 "array_stage_summary1":{
 "ja": "このページでは最近投稿された記録100本を表示しています。短期間で複数回更新された場合、古い方の記録は表示されません。 ",

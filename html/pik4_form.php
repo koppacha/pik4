@@ -48,7 +48,7 @@ if(isset($_COOKIE["formlock"])){
 <hr size="1"/>
 <i class="fa fa-key"></i><span glot-model="form_pass">パスワード<span class="form_eng_cap"> / Password</span></span><br>
 <span class="form_eng_cap" glot-model="form_pass_caution">(初投稿したときに入力したパスワードが登録されます)</span> <br>
-<span class="form_eng_cap">(<span glot-model="form_pass_caution2">パスワードを忘れた場合は</span><A href="https://chr.mn/glyph/%e9%80%a3%e7%b5%a1%e3%83%95%e3%82%a9%e3%83%bc%e3%83%a0" glot-model="here">こちら</A>)</span> <br>
+<span class="form_eng_cap">(<span glot-model="form_pass_caution2">パスワードを忘れた場合は</span> <A href="https://chr.mn/glyph/%e9%80%a3%e7%b5%a1%e3%83%95%e3%82%a9%e3%83%bc%e3%83%a0" glot-model="here">こちら</A>)</span> <br>
 <input type="password" required="required" name="password" value="<?php echo $cookie_pass; ?>" /> <br>
 <hr size="1"/>
 
@@ -574,7 +574,11 @@ foreach($array_console_long as $key => $sel){
 <?php
 	$i = 201;
 	$e = 230 + 1;
-	$comp_stage_id = $url_stage_id - 10204; // AL=1,公式=2,3～8=各区
+	if($url_stage_id < 99999){
+		$comp_stage_id = $url_stage_id - 10204; // AL=1,公式=2,3～8=各区
+	} else {
+		$comp_stage_id = "";
+	}
 	if($url_stage_id == 10213) $comp_stage_id = 2;
 	if($url_stage_id == 10214) $comp_stage_id = 2;
 	$output = '';

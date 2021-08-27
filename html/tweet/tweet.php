@@ -11,10 +11,10 @@ date_default_timezone_set('Asia/Tokyo');			// 標準時
 // エラー非表示
 ini_set('display_errors', 0);
 
-$mysql_host = "mysql506.heteml.jp";
-$mysql_user = "_pik4";
-$mysql_pass = "a21586hhwxj7egk";
-$mysql_db   = "_pik4";
+$mysql_host = DATABASE_DOMAIN;
+$mysql_user = DATABASE_USER;
+$mysql_pass = DATABASE_PASS;
+$mysql_db   = DATABASE_USER;
 $mysqlconn = mysqli_connect($mysql_host,$mysql_user,$mysql_pass,$mysql_db);
 if ( $mysqlconn == false) {
 	die ("<br/>エラー715：Database Connection Error. ");
@@ -51,8 +51,8 @@ function disp_tweet($value, $text){
 <body>
 <?php
 if(isset($_POST['send'])){
-		$pik4_api_key = 'g8DNcIpCm9LOJMN2x6PKekTPz';
-		$pik4_api_skey= 'LF2waTjwrFG9dubT8FqJnumzUF11mX1EMb8AkTpa3OkTmqKws8';
+		$pik4_api_key = TWITTER_API_KEY;
+		$pik4_api_skey= TWITTER_API_SKEY;
 		$pik4_access_token = $_SESSION['access_token']['oauth_token'];
 		$pik4_access_stoken = $_SESSION['access_token']['oauth_token_secret'];
 
@@ -102,8 +102,8 @@ if(isset($_POST['send'])){
 //		echo "<p>access_token：". $_SESSION['access_token']['oauth_token'] . "</p>";
 		echo '<i class="fa fa-twitter" aria-hidden="true"></i><a href="pik4_logout.php">ログアウト</A>';
 	}
-	$pik4_api_key = 'g8DNcIpCm9LOJMN2x6PKekTPz';
-	$pik4_api_skey= 'LF2waTjwrFG9dubT8FqJnumzUF11mX1EMb8AkTpa3OkTmqKws8';
+	$pik4_api_key = TWITTER_API_KEY;
+	$pik4_api_skey= TWITTER_API_SKEY;
 	$pik4_access_token = $_SESSION['access_token']['oauth_token'];
 	$pik4_access_stoken = $_SESSION['access_token']['oauth_token_secret'];
 	$twObj = new TwitterOAuth($pik4_api_key, $pik4_api_skey , $pik4_access_token, $pik4_access_stoken);

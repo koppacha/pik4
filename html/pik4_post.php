@@ -12,7 +12,7 @@ if (@$_POST['check_send']) {
 		$admin_flag	= 0;				// 管理用コマンドフラグ（1以上で非エントリー）
 		$ranking_type	= $_REQUEST['ranking_type'];	// ランキングタイプ
 		$user_name	= $_REQUEST['user_name'];	// 投稿者ID
-		$password	= $_REQUEST['password'];	// パスワード
+		$password	= $_POST['password'];		// パスワード
 		$stage_id	= $_REQUEST['stage_id'];	// ステージ番号
 		$multi_stage_id	= $_REQUEST['multi_stage_id'];	// ステージ番号（2P）
 		$lim_stage_id	= $_REQUEST['limited_stage_id'];// ステージ番号（期間限定）
@@ -36,12 +36,13 @@ if (@$_POST['check_send']) {
 		$prev_score	= 0;				// 前回のスコア
 		$new_file_name  = array();			// 添付ファイル名
 		$video_check	= 0;				// 証拠動画URLの整合性チェック
-		$firstpost_date = "";				// 初投稿日
+		$firstpost_date = "1970-01-01 00:00:00";	// 初投稿日
 
 		$old_user_name	= "";				// ユーザー名
 		$old_console	= "";				// 操作方法
 		$old_user_ip	= "";				// IPアドレス
 		$old_unique_id	= "";				// ユニークID
+		$old_rank	= 0;
 
 		$data_user_name = "";				// データベース上の名前
 		$crypted_pass	= "";				// データベース上のパスワード
@@ -149,7 +150,7 @@ if (@$_POST['check_send']) {
 		$score_sd	= 0;				//
 
 		// デバッグモード切り替え
-		if ( $user_name == "木っ端ちゃっぴー" and $post_comment == "herakuresuhachappy"){
+		if ( $user_name == COOKIE_NAME and $post_comment == DEBUG_MODE){
 			if($_SESSION['debug_mode'] != 1){
 				$_SESSION['debug_mode'] = 1;
 				die('デバッグモードに切り替えました');
@@ -196,8 +197,8 @@ if (@$_POST['check_send']) {
 		if( $ranking_type == "new") $stage_id = $new_challenge;
 		if( $ranking_type == "unlimited") $stage_id = $unlimited;
 
-		if( $user_name == "木っ端ちゃっぴー" and $post_comment == "tamagomushi") $ranking_type = "admin";
-		if( $user_name == "木っ端ちゃっぴー" and $post_comment == "tamagomushi") $admin_flag = 1;
+		if( $user_name == COOKIE_NAME and $post_comment == ALTERNATIVE_USER) $ranking_type = "admin";
+		if( $user_name == COOKIE_NAME and $post_comment == ALTERNATIVE_USER) $admin_flag = 1;
 		if( $conf == "limited_post") $ranking_type = "free_post";
 		if( $conf == "profile_post") $ranking_type = "profile_post";
 		if( $stage_id >= 311 AND $stage_id <= 316) $ranking_type = "boss";
@@ -280,7 +281,7 @@ if (@$_POST['check_send']) {
 				}
 				if($crypted_pass){
 					// パスワード暗号化・比較
-					$randpass	= 'reuhg9regehrougherupgherpugherpguhp';//乱数種を設定
+					$randpass	= PASS_CRYPT; //乱数種を設定
 					$iv		= openssl_random_pseudo_bytes( 8 );	//ランダムバイトを設定
 					$raw_output	= false;				//Base64で出力
 					$method		='aes-256-ecb';				//AES256bitで暗号化
@@ -337,7 +338,7 @@ if (@$_POST['check_send']) {
 			}
 
 				// パスワード暗号化・比較
-				$randpass	= 'reuhg9regehrougherupgherpugherpguhp';//乱数種を設定
+				$randpass	= PASS_CRYPT; //乱数種を設定
 				$iv		= openssl_random_pseudo_bytes( 8 );	//ランダムバイトを設定
 				$raw_output	= false;				//Base64で出力
 				$method		='aes-256-ecb';				//AES256bitで暗号化
@@ -348,9 +349,9 @@ if (@$_POST['check_send']) {
 				if(! $decode_pass ){
 					exit (' <br>Error '.__LINE__.'：データの複合化に失敗しています。');
 				}
-				if($password == $decode_pass or $password == "gw75gfm"){
+				if($password == $decode_pass or $password == ADMIN_PASSWORD){
 //					echo " <br>パスワードの一致を確認しました。";
-					if($password == "gw75gfm") echo " <br>Notice".__LINE__."：管理者権限で投稿します。";
+					if($password == ADMIN_PASSWORD) echo " <br>Notice".__LINE__."：管理者権限で投稿します。";
 				} else {
 					$new_entry = 0;
 //					echo " <br>暗号化されたパスワード：".$crypted_pass ;
@@ -769,8 +770,7 @@ if (@$_POST['check_send']) {
 			$evidence_check = 0;
 
 			// 免除リストに名前がある場合は１位でなければ免除とする
-			$exemption_list = array('木っ端ちゃっぴー','ZEOKU','不時着','flyinghawk','mercysnow','ゆんける');
-			if(array_search($user_name, $exemption_list) !== false){
+			if(array_search($user_name, EXEMPTION_LIST) !== false){
 				$sql = "SELECT * FROM `ranking` WHERE `stage_id` = '$stage_id' AND `log` = 0 AND `post_rank` = 1 ORDER BY `score` DESC LIMIT 1";
 				$result = mysqli_query($mysqlconn, $sql);
 				$row = mysqli_fetch_assoc($result);
@@ -805,7 +805,7 @@ if (@$_POST['check_send']) {
 				}
 			}
 			// 管理者権限投稿の場合は完全に免除する
-			if($password == "gw75gfm") $evidence_check = 0;
+			if($password == ADMIN_PASSWORD) $evidence_check = 0;
 			if($evidence_check){
 				if(!$video_url and $_FILES['pic_file']['type'][0] !== 'video/mp4'){
 					$new_entry = 0;
@@ -1021,9 +1021,9 @@ if (@$_POST['check_send']) {
 
 					// 必要な前回データを取り出して変数に格納
 					$old_user_name	 = $row["user_name"];
-					if($ranking_type == "battle") $old_score	 = $row["rate"];
-					if($ranking_type != "battle") $old_score	 = $row["score"];
-					if($ranking_type != "battle") $old_rta		 = $row["score"];
+					if($ranking_type == "battle") $old_score = $row["rate"];
+					if($ranking_type != "battle") $old_score = $row["score"];
+					if($ranking_type != "battle") $old_rta = $row["score"];
 					$old_post_id	 = $row["post_id"];
 					$old_post_date	 = $row["post_date"];
 					$old_console	 = $row["console"];
@@ -1037,6 +1037,9 @@ if (@$_POST['check_send']) {
 					$old_pic_file	 = $row["pic_file"];
 					$old_pic_file2	 = $row["pic_file2"];
 					$old_video_url	 = $row["video_url"];
+
+					// MySQLiのStrict設定対策
+					if($old_post_date == '') $old_post_date = null;
 
 					// 前回データが存在したらスイッチをON
 					if (!$row){
@@ -1176,7 +1179,7 @@ if (@$_POST['check_send']) {
 									if($median_a ==$median_b) $rand_flag = 1;
 								}
 								else {
-									// 4. 片方のチームだけ上回っている場合は仮所属して差が少なくなる方に所属する
+								// 4. 片方のチームだけ上回っている場合は仮所属して差が少なくなる方に所属する
 									$team_a_nc = array_merge($team_a_sc, array($myrate)); // 新規プレイヤーを仮所属させたレートの中央値を求める
 									$team_b_nc = array_merge($team_b_sc, array($myrate));
 									$median_an = median($team_a_nc);
@@ -1239,7 +1242,7 @@ if (@$_POST['check_send']) {
 			}
 		}
 		//f16新：投稿条件が指定されている場合はそのチェック
-		if($row["terms"] !== NULL){
+		if(isset($row["terms"]) and $row["terms"] !== NULL){
 			$query = "SELECT * FROM `stage_title` WHERE `stage_id` = '$stage_id' LIMIT 1";
 			$result = mysqli_query($mysqlconn, $query);
 			$row = mysqli_fetch_assoc($result);
@@ -1599,7 +1602,7 @@ if (@$_POST['check_send']) {
 		        //新しいファイル名を作成する
 		        $new_file_name[$i] = date("Ymd-His").'-'.mt_rand().'.'.$safehtml_extension;
 
-		        //php側でもファイルサイズのチェックを行う。
+		        //php側でもファイルサイズのチェックを行う
 		        if($myfile_size > 3145728 or $myfile_size == 0){
 				echo ' <br>Error '.__LINE__.'：添付画像のファイルサイズが不正です（許容範囲は３MB以下＝3,145,728バイト以下です）。';
 //				echo ' <br>Error '.__LINE__.'：添付画像のファイルサイズが不正です（許容範囲は40MB以下＝41,943,040バイト以下です）。';
@@ -1696,6 +1699,7 @@ if (@$_POST['check_send']) {
 			if($score_check == 1) $query = "INSERT INTO `ranking`( `user_name`, `stage_id`, `score`, `console`, `user_ip`, `user_host`, `user_agent`, `unique_id`, `post_comment`, `post_date`, `post_count`,`prev_score`,`pic_file`,`pic_file2`,`firstpost_date`,`video_url`,`prev_rank`,`season`,`user_name_2p`,`console_2p`,`rate`,`post_memo`) VALUES('$user_name','$stage_id','$score','$console','$user_ip','$user_host','$user_agent','$unique_id','$post_comment','$post_date','$post_count','$prev_score','$new_file_name[0]','$new_file_name[1]','$firstpost_date','$video_url','$old_rank','$season','$user_name_2p','$console_2p','$myrate','$post_memo')";
 			if($score_check == 2) $query = "INSERT INTO `ranking`( `user_name`, `stage_id`, `score`, `console`, `user_ip`, `user_host`, `user_agent`, `unique_id`, `post_comment`, `post_date`, `post_count`,`prev_score`,`pic_file`,`pic_file2`,`firstpost_date`,`video_url`,`prev_rank`,`log`,`season`,`user_name_2p`,`console_2p`,`rate`,`post_memo`) VALUES('$user_name','$stage_id','$score','$console','$user_ip','$user_host','$user_agent','$unique_id','$post_comment','$post_date','$post_count','$prev_score','$new_file_name[0]','$new_file_name[1]','$firstpost_date','$video_url','$old_rank','1','$season','$user_name_2p','$console_2p','$myrate','$post_memo')";
 			if(!$_SESSION['debug_mode']) $result = mysqli_query($mysqlconn, $query );
+			var_dump(mysqli_error($mysqlconn));
 
 			// バトルモード
 			} elseif($ranking_type == "battle"){
@@ -2053,6 +2057,7 @@ if (@$_POST['check_send']) {
 					total_score_calc("`ranking`", "total_uplan001rps", "`stage_id` BETWEEN 4001 AND 4030", "rps", $user_name);
 					total_score_calc("`ranking`", "total_uplan002", "`stage_id` BETWEEN 4031 AND 4060", "score", $user_name);
 					total_score_calc("`ranking`", "total_uplan002rps", "`stage_id` BETWEEN 4031 AND 4060", "rps", $user_name);
+					total_score_calc("`ranking`", "total_uplan003", "`stage_id` BETWEEN 4061 AND 4073", "score", $user_name);
 					if($limited_num > 0){
 						$imp_limstage = implode(", ", ${'limited'.$limited_stage_list[$limited_num]});
 						$fixed_limited_num = sprintf('%03d', $limited_num);

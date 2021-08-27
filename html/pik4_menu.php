@@ -276,8 +276,9 @@ if($limited_num != 0 and $now_time < $limited_start_time){
 <li><A href="https://discord.gg/rQEBJQa" tager="_brank"><i class="infof fab fa-discord"></i><span glot-model="menu_info_discord">Discord（ピクミン界隈専用チャット）</span></A></li>
 <li><A href="https://discord.gg/CrAgTFP" tager="_brank"><i class="infof fab fa-discord"></i>Discord（Pikmin Speedrunning）</span></A></li>
 <li><A href="https://chr.mn/glyph/%e9%80%a3%e7%b5%a1%e3%83%95%e3%82%a9%e3%83%bc%e3%83%a0" rel="nofollow"><i class="infof fas fa-phone-square"></i><span glot-model="menu_info_contact">管理人への連絡はこちら</span></a></li>
-<li><A href="./不正疑惑騒動まとめ"><i class="infof fas fa-frown"></i></i><span glot-model="menu_info_cheating">不正疑惑騒動まとめ</span></a></li>
-<li><A href="./期間限定チャレンジ一覧"><i class="infof fas fa-clipboard-list"></i></i><span glot-model="menu_info_limitedlist">期間限定チャレンジ一覧</span></a></li>
+<li><A href="./不正疑惑騒動まとめ"><i class="infof fas fa-frown"></i><span glot-model="menu_info_cheating">不正疑惑騒動まとめ</span></a></li>
+<li><A href="./期間限定チャレンジ一覧"><i class="infof fas fa-clipboard-list"></i><span glot-model="menu_info_limitedlist">期間限定チャレンジ一覧</span></a></li>
+<li><A href="https://docs.google.com/spreadsheets/d/1RPrgH3MnY2BFN-g3whJSgcIY4NXya5Tg/edit?usp=sharing&ouid=106930103873328114782&rtpof=true&sd=true"><i class="infof fas fa-language"></i>English translation sheet</a></li>
 
 </ul>
 <div id="display_guide_on" style="display:none;">

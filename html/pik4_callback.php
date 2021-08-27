@@ -1,22 +1,21 @@
 <?php
 ini_set('display_errors', 0);
 ini_set( 'session.gc_maxlifetime', 7776000 );
-session_save_path('/home/users/0/chronon/web/chr.mn/_session');
+session_save_path(SESSION_PATH);
 session_start();
-
-define("Consumer_Key", "g8DNcIpCm9LOJMN2x6PKekTPz");
-define("Consumer_Secret", "LF2waTjwrFG9dubT8FqJnumzUF11mX1EMb8AkTpa3OkTmqKws8");
 
 //ライブラリを読み込む
 require "twitteroauth/autoload.php";
 require "ca-bundle-master/src/CaBundle.php";
 use Abraham\TwitterOAuth\TwitterOAuth;
 
+require_once('_def.php');
+
 // データベースに接続
-$mysql_host = "mysql506.heteml.jp";
-$mysql_user = "_pik4";
-$mysql_pass = "a21586hhwxj7egk";
-$mysql_db   = "_pik4";
+$mysql_host = DATABASE_DOMAIN;
+$mysql_user = DATABASE_USER;
+$mysql_pass = DATABASE_PASS;
+$mysql_db   = DATABASE_USER;
 
 $mysqlconn = mysqli_connect($mysql_host,$mysql_user,$mysql_pass,$mysql_db);
 if ( $mysqlconn == false) {
@@ -31,11 +30,11 @@ if (!$result) {
 if($_SESSION['oauth_token'] == $_GET['oauth_token'] and $_GET['oauth_verifier']){
 	
 	//Twitterからアクセストークンを取得する
-	$connection = new TwitterOAuth(Consumer_Key, Consumer_Secret, $_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
+	$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
 	$access_token = $connection->oauth('oauth/access_token', array('oauth_verifier' => $_GET['oauth_verifier'], 'oauth_token'=> $_GET['oauth_token']));
 
 	//取得したアクセストークンでユーザ情報を取得
-	$user_connection = new TwitterOAuth(Consumer_Key, Consumer_Secret, $access_token['oauth_token'], $access_token['oauth_token_secret']);
+	$user_connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oauth_token'], $access_token['oauth_token_secret']);
 	$user_info = $user_connection->get('account/verify_credentials');
 	
 	//適当にユーザ情報を取得

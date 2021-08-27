@@ -1,5 +1,7 @@
 <?php
 
+require_once('_def.php');
+
 $back_data = '';
 
 if(isset($_POST['minites_count']) and isset($_COOKIE['user_name'])){
@@ -12,10 +14,10 @@ $get_name = $_COOKIE['user_name'];		// 名前を取得
 // データベース接続情報
 if($_SERVER['SERVER_NAME'] != 'localhost'){
 	// Heteml DataBase Server Connection
-	$mysql_host = "mysql506.heteml.jp";
-	$mysql_user = "_pik4";
-	$mysql_pass = "a21586hhwxj7egk";
-	$mysql_db   = "_pik4";
+	$mysql_host = DATABASE_DOMAIN;
+	$mysql_user = DATABASE_USER;
+	$mysql_pass = DATABASE_PASS;
+	$mysql_db   = DATABASE_USER;
 	// XAMPP Local Server Connection
 } else {
 	$mysql_host = "127.0.0.1";
@@ -40,7 +42,7 @@ $conn = mysqli_connect($mysql_host,$mysql_user,$mysql_pass,$mysql_db);
 	if (isset($_COOKIE['password'])) {
 	$cookie_flag	= 1;
 	$set_cookiepass	= $_COOKIE['password'];
-	$randpass	= 'uLB9EgG96R2X6EyEezsPRbyEuKvBydyC5pK';//乱数種を設定
+	$randpass	= COOKIE_CRYPT;//乱数種を設定
 	$iv		= openssl_random_pseudo_bytes( 8 );	//ランダムバイトを設定 
 	$raw_output	= false;				//Base64で出力
 	$method		='aes-256-ecb';				//AES256bitで暗号化
@@ -48,7 +50,7 @@ $conn = mysqli_connect($mysql_host,$mysql_user,$mysql_pass,$mysql_db);
 	}
 
 	// データベースのパスワードを複合
-	$randpass	= 'reuhg9regehrougherupgherpugherpguhp';//乱数種を設定
+	$randpass	= PASS_CRYPT;//乱数種を設定
 	$iv		= openssl_random_pseudo_bytes( 8 );	//ランダムバイトを設定 
 	$raw_output	= false;				//Base64で出力
 	$method		='aes-256-ecb';				//AES256bitで暗号化

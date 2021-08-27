@@ -132,10 +132,19 @@ function topscore_board_tab2($stage_list, $hook, $hook2 = 9999){
 		} else {
 			$tale = '';
 		}
-		// チャレンジ複合は規定範囲に収まらないので特別に別の翻訳ブロックを使う
-		if($hook == 93 or $hook == 94) echo '<td><A href="./'.$stage.'" title="'.$title_stage_title.'"><div style="white-space:nowrap;color:#111111;background-color:'.$peint.';"><span glot-model="array_stage_title_fixed'.$stage.'">'.mb_substr($title_stage_title, 0, $substr).$tale.'</span></div>';
-		if($hook != 93and $hook != 94) echo '<td><A href="./'.$stage.'" title="'.$title_stage_title.'"><div style="white-space:nowrap;color:#111111;background-color:'.$peint.';"><span glot-model="array_stage_title'.$stage.'">'.mb_substr($title_stage_title, 0, $substr).$tale.'</span></div>';
-		if(isset($topscorelist[$stage]['user_name'])) echo $topscorelist[$stage]['user_name'].'<br>';
+		// チャレンジ複合と第1～2回参加者企画は規定範囲に収まらないので特別に別の翻訳ブロックを使う
+		if($hook == 93 or $hook == 94 or $hook == 190209 or $hook == 190321){
+			echo '<td><A href="./'.$stage.'" title="'.$title_stage_title.'"><div style="white-space:nowrap;color:#111111;background-color:'.$peint.';"><span glot-model="array_stage_title_fixed'.$stage.'">'.mb_substr($title_stage_title, 0, $substr).$tale.'</span></div>';
+		} else {
+			echo '<td><A href="./'.$stage.'" title="'.$title_stage_title.'"><div style="white-space:nowrap;color:#111111;background-color:'.$peint.';"><span glot-model="array_stage_title'.$stage.'">'.mb_substr($title_stage_title, 0, $substr).$tale.'</span></div>';
+		}
+		if(isset($topscorelist[$stage]['user_name'])){
+			if(strlen($topscorelist[$stage]['user_name']) > ($substr * 3)){
+				echo mb_substr($topscorelist[$stage]['user_name'],0 ,$substr).'…<br>';
+			} else {
+				echo $topscorelist[$stage]['user_name'].'<br>';
+			}
+		}
 		if(isset($topscorelist[$stage]['score'])){
 			if(($stage > 10000 and $stage < 20000) or ($stage > 310 and $stage < 317) or ($stage > 2310 and $stage < 2317) or $stage == 356 or $stage == 359 or $stage == 361 or $stage == 2356 or $stage == 2359 or $stage == 2361){
 				if($stage < 10000){
@@ -306,7 +315,7 @@ function total_season_calc($point, $column, $where, $username){ // 抽出条件�
 		$sql = "SELECT * FROM `ranking` WHERE `user_name` = '$username' AND `log` < 2 AND `season` = $season AND `stage_id` = $val ORDER BY `score` DESC LIMIT 1";
 		$result = mysqli_query($mysqlconn, $sql);
 		$row = mysqli_fetch_assoc($result);
-		$total_score += $row[$point];
+		if(isset($row[$point])) $total_score += $row[$point];
 	}
 	$query_rps = "UPDATE `user` SET $column = '$total_score' WHERE `user_name` = '$username'";
 	$result_rps = mysqli_query($mysqlconn, $query_rps );
