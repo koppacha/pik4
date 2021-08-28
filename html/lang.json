@@ -87,6 +87,10 @@
 "ja": "開催予定の期間限定ランキング",
 "en": "Scheduled (ranking)"
 },
+"menu_uplan_notice":{
+"ja": "開催予定の参加者企画",
+"en": "Scheduled Participant planning"
+},
 "menu_limited_dai":{
 "ja": "第",
 "en": "#"
@@ -98,6 +102,10 @@
 "menu_limited_open":{
 "ja": "開催中の期間限定ランキング",
 "en": "Current Ranking Lists"
+},
+"menu_uplan_open":{
+"ja": "開催中の参加者企画",
+"en": "Current Participant planning"
 },
 "rank_tail":{
 "ja": "位",

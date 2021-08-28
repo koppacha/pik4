@@ -220,6 +220,9 @@ $limited_final_stage = max($limited_stage);
 $limited_stage_title_fixed = array('個人戦','個人戦','個人戦','個人戦','個人戦','個人戦','チーム対抗戦','チーム対抗戦','チーム対抗戦','チーム対抗戦','チーム対抗戦','チーム対抗戦','エリア踏破戦','エリア踏破戦','エリア踏破戦','エリア踏破戦');
 $limited_stage_title_fixed = array_translate($limited_stage_title_fixed, "limited_stage_title_fixed");
 
+// 参加者企画のイベント名を定義
+$uplan_stage_title_fixed = array('一本勝負','一本勝負','ムシ取り大会');
+
 // サブルール・優勝者・ベストステージの定義
 $limited_stage_sub_fixed = array('スタンダード','スタンダード','スタンダード','スタンダード','スタンダード','スタンダード','スタンダード','スタンダード','短期決戦','ピンポイント','代表選抜制','ブラインド制','協力制','スタンダード','チーム対抗制','チーム対抗制');
 $limited_stage_sub_fixed = array_translate($limited_stage_sub_fixed, "limited_stage_sub_fixed");

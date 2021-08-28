@@ -3,4 +3,4 @@
 #sleep 90s
 
 #run the setup script to create the DB and the schema in the DB
-mysql -u docker -pdocker test_database < "/docker-entrypoint-initdb.d/_pik4_20210808.sql"
+mysql -u docker -pdocker test_database < "/docker-entrypoint-initdb.d/pik4_20210828.sql"

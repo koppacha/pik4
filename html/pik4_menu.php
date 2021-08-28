@@ -12,7 +12,7 @@
 </span> <br>
 <hr size="1"/>
 <span style="line-height:1.0em;font-size:0.9em;color:#999999;">
-<?php echo "Ver.".$sys_ver." (".$php_update.")"; ?> <br>
+<A href="https://github.com/koppacha/pik4" target="_brank"><?php echo "Ver.".$sys_ver." (".$php_update.")"; ?></A><br>
 <hr size="1"/>
 <?php
 if(!$mysql_mode){
@@ -151,14 +151,25 @@ if($page_type == 0 or $page_type == 1 or $page_type == 2 or $page_type == 5 or $
 		}
 	}
 // 参加者数を表示
-if($limited_num != 0 and $now_time < $limited_start_time){
+if($uplan_num){
+	$event_flag = 1;
+} else {
+	$event_flag = 0;
+}
+if(($uplan_num != 0 or $limited_num != 0) and $now_time < $limited_start_time){
 	$query = "SELECT * FROM `user` WHERE `current_team` >= '$team_a'";
 	$result = mysqli_query($mysqlconn, $query );
 	$pre_entry_rows = mysqli_num_rows($result);
 	echo '<div style="background-color:#777777;" class="pickup_menu">';
-	echo '<span class="nav_caption mini_caption3" glot-model="menu_limited_notice">開催予定の期間限定ランキング</span> <br>';
-	echo '<span style="color:#ffffff;"><span glot-model="menu_limited_dai">第</span>'.$limited_num.'<span glot-model="menu_limited_kai">回</span> ('.$fixed_limstart.$fixed_limend.') <br>';
-	echo $limited_stage_title_fixed[$limited_num - 1].'×'.$limited_stage_sub_fixed[$limited_num - 1].' <br>';
+	if(!$event_flag){
+		echo '<span class="nav_caption mini_caption3" glot-model="menu_limited_notice">開催予定の期間限定ランキング</span> <br>';
+		echo '<span style="color:#ffffff;"><span glot-model="menu_limited_dai">第</span>'.$limited_num.'<span glot-model="menu_limited_kai">回</span> ('.$fixed_limstart.$fixed_limend.') <br>';
+		echo $limited_stage_title_fixed[$limited_num - 1].'×'.$limited_stage_sub_fixed[$limited_num - 1].' <br>';
+	} else {
+		echo '<span class="nav_caption mini_caption3" glot-model="menu_uplan_notice">開催予定の参加者企画</span> <br>';
+		echo '<span style="color:#ffffff;"><span glot-model="menu_limited_dai">第</span>'.$uplan_num.'<span glot-model="menu_limited_kai">回</span>：'.$uplan_stage_title_fixed[$uplan_num - 1].' <br>';
+		echo '<A style="font-size:1.2em;" href="./'.$uplan_stage_list[$uplan_num].'">→大会ページへ</A><br>';
+	}
 	// カウントダウンタイマー（確定前は表示しない）
 	echo '<span id="CDT2" style="line-height:150%;">　</span></A> <br>';
 	echo "</div>";
@@ -168,77 +179,90 @@ if($limited_num != 0 and $now_time < $limited_start_time){
 ?>
 <?php
 // 期間限定ランキングメニュー開催時
-	if($limited_num != 0 and $now_time > $limited_start_time){
-		echo '<div style="background-color:#555555;" class="pickup_menu">';
-		echo '<span class="nav_caption mini_caption4 glot-model="menu_limited_open">開催中の期間限定ランキング</span> <br>';
-		echo '→<b><A href="./'.$limited_stage_list[$limited_num].'"><span glot-model="menu_limited_dai">第</span>'.$limited_num.'<span glot-model="menu_limited_kai">回</span> ('.$fixed_limstart.$fixed_limend.')</A></b> <br>';
-		echo $limited_stage_title_fixed[$limited_num - 1].'×'.$limited_stage_sub_fixed[$limited_num - 1].' <br>';
-		echo '<span id="CDT" style="line-height:150%;">　</span> <br>';
+	if(($uplan_num != 0 or $limited_num != 0) and $now_time > $limited_start_time){
+		if(!$event_flag){
+			echo '<div style="background-color:#555555;" class="pickup_menu">';
+			echo '<span class="nav_caption mini_caption4 glot-model="menu_limited_open">開催中の期間限定ランキング</span> <br>';
+			echo '→<b><A href="./'.$limited_stage_list[$limited_num].'"><span glot-model="menu_limited_dai">第</span>'.$limited_num.'<span glot-model="menu_limited_kai">回</span> ('.$fixed_limstart.$fixed_limend.')</A></b> <br>';
+			echo $limited_stage_title_fixed[$limited_num - 1].'×'.$limited_stage_sub_fixed[$limited_num - 1].' <br>';
+			echo '<span id="CDT" style="line-height:150%;">　</span> <br>';
+		} else {
+			echo '<div style="background-color:#555555;" class="pickup_menu">';
+			echo '<span class="nav_caption mini_caption4 glot-model="menu_uplan_open">開催中の参加者企画</span> <br>';
+			echo '<span style="color:#ffffff;"><span glot-model="menu_limited_dai">第</span>'.$uplan_num.'<span glot-model="menu_limited_kai">回</span>：'.$uplan_stage_title_fixed[$uplan_num - 1].' <br>';
+			echo '<A style="font-size:1.2em;" href="./'.$uplan_stage_list[$uplan_num].'">→大会ページへ</A><br>';
+			echo '<span id="CDT" style="line-height:150%;">　</span> <br>';
+		}
+		// チーム対抗版期間限定ランキングのスコアボードを表示
+		if(strpos($limited_type[$limited_stage_list[$limited_num]], 't') !== false and $now_time > $limited_start_time){
 
-			// チーム対抗版期間限定ランキングのスコアボードを表示
-			if(strpos($limited_type[$limited_stage_list[$limited_num]], 't') !== false and $now_time > $limited_start_time){
+			// チーム点数を再計算
+			${'rps'.$team_a} = 0;
+			${'rps'.$team_b} = 0;
+			${'team'.$team_a.'_score'} = 0;
+			${'team'.$team_b.'_score'} = 0;
 
-				// チーム点数を再計算
-				${'rps'.$team_a} = 0;
-				${'rps'.$team_b} = 0;
-				${'team'.$team_a.'_score'} = 0;
-				${'team'.$team_b.'_score'} = 0;
-
-				// ハンデ再計算 (3673行付近)
-				$minority_bonus = 0;
-				$sql = "SELECT * FROM `ranking` WHERE `team` = '$team_a' AND `log` = 0";
-				$result = mysqli_query($mysqlconn, $sql);
-				$rightside_count = mysqli_num_rows($result);
-				$sql = "SELECT * FROM `ranking` WHERE `team` = '$team_b' AND `log` = 0";
-				$result = mysqli_query($mysqlconn, $sql);
-				$leftside_count = mysqli_num_rows($result);
-				$sql = "SELECT * FROM `user` WHERE `current_team` BETWEEN '$team_a' AND '$team_b'";
-				$result = mysqli_query($mysqlconn, $sql);
-				$player_total = mysqli_num_rows($result);
-				$post_diff = abs($rightside_count - $leftside_count);
-				$minority_bonus = $post_diff * ceil($player_total / 2);
-				echo " <br>";
-				list($leftside_count, $rightside_count) = array($rightside_count, $leftside_count); // ハンデ付与判定のために便宜的に変数の値を入れ替える
-				if($leftside_count > $rightside_count){
-					$is_minority = 2;
-					${'rps'.$team_b} += $minority_bonus;
-				}
-				if($leftside_count < $rightside_count){
-					$is_minority = 1;
-					${'rps'.$team_a} += $minority_bonus;
-				}
-				$imp_limstage = implode(",", ${'limited'.$limited_stage_list[$limited_num]});
-				$i = $team_a;
-				while($i <= $team_b){
-					$sql = "SELECT * FROM `ranking` WHERE `stage_id` IN($imp_limstage) AND `log` = 0 AND `team` = '$i' ORDER BY `score` DESC";
-					$result = mysqli_query($mysqlconn, $sql);
-					if (!$result) {
-						die('<br>Error '.__LINE__.'：クエリの取得に失敗.'.mysql_error());
-					}
-					// 各ステージのチーム別レコードをWhileして合計スコアを加算していく
-					while(${'total_row'.$i} = mysqli_fetch_assoc($result)){
-						${'rps'.$i} += ${'total_row'.$i}["rps2"];
-						if(array_search(${'total_row'.$i}["stage_id"], $limited_pik1)){
-							${'team'.$i.'_score'} += ${'total_row'.$i}["score"] * 10;
-						} else {
-							${'team'.$i.'_score'} += ${'total_row'.$i}["score"];
-						}
-					}
-				$i++;
-				}
-			echo '<div style="width:100%;text-align:center;"><span style="font-size:3em;line-height:100%;color:#'.$teamc[$team_a].'">'.${'rps'.$team_a}.'</span> <span style="padding:0 1em;font-size:2.5em;">‐</span> <span style="font-size:3em;color:#'.$teamc[$team_b].'">'.${'rps'.$team_b}.'</span></div>';
-//			echo '合計スコア：<span class="team'.$team_a.'">'.${'team'.$team_a.'_score'}.'</span> - <span class="team'.$team_b.'">'.${'team'.$team_b.'_score'}.'</span> <br>';
+			// ハンデ再計算 (3673行付近)
+			$minority_bonus = 0;
+			$sql = "SELECT * FROM `ranking` WHERE `team` = '$team_a' AND `log` = 0";
+			$result = mysqli_query($mysqlconn, $sql);
+			$rightside_count = mysqli_num_rows($result);
+			$sql = "SELECT * FROM `ranking` WHERE `team` = '$team_b' AND `log` = 0";
+			$result = mysqli_query($mysqlconn, $sql);
+			$leftside_count = mysqli_num_rows($result);
+			$sql = "SELECT * FROM `user` WHERE `current_team` BETWEEN '$team_a' AND '$team_b'";
+			$result = mysqli_query($mysqlconn, $sql);
+			$player_total = mysqli_num_rows($result);
+			$post_diff = abs($rightside_count - $leftside_count);
+			$minority_bonus = $post_diff * ceil($player_total / 2);
+			echo " <br>";
+			list($leftside_count, $rightside_count) = array($rightside_count, $leftside_count); // ハンデ付与判定のために便宜的に変数の値を入れ替える
+			if($leftside_count > $rightside_count){
+				$is_minority = 2;
+				${'rps'.$team_b} += $minority_bonus;
 			}
+			if($leftside_count < $rightside_count){
+				$is_minority = 1;
+				${'rps'.$team_a} += $minority_bonus;
+			}
+			$imp_limstage = implode(",", ${'limited'.$limited_stage_list[$limited_num]});
+			$i = $team_a;
+			while($i <= $team_b){
+				$sql = "SELECT * FROM `ranking` WHERE `stage_id` IN($imp_limstage) AND `log` = 0 AND `team` = '$i' ORDER BY `score` DESC";
+				$result = mysqli_query($mysqlconn, $sql);
+				if (!$result) {
+					die('<br>Error '.__LINE__.'：クエリの取得に失敗.'.mysql_error());
+				}
+				// 各ステージのチーム別レコードをWhileして合計スコアを加算していく
+				while(${'total_row'.$i} = mysqli_fetch_assoc($result)){
+					${'rps'.$i} += ${'total_row'.$i}["rps2"];
+					if(array_search(${'total_row'.$i}["stage_id"], $limited_pik1)){
+						${'team'.$i.'_score'} += ${'total_row'.$i}["score"] * 10;
+					} else {
+						${'team'.$i.'_score'} += ${'total_row'.$i}["score"];
+					}
+				}
+			$i++;
+			}
+		echo '<div style="width:100%;text-align:center;"><span style="font-size:3em;line-height:100%;color:#'.$teamc[$team_a].'">'.${'rps'.$team_a}.'</span> <span style="padding:0 1em;font-size:2.5em;">‐</span> <span style="font-size:3em;color:#'.$teamc[$team_b].'">'.${'rps'.$team_b}.'</span></div>';
+//			echo '合計スコア：<span class="team'.$team_a.'">'.${'team'.$team_a.'_score'}.'</span> - <span class="team'.$team_b.'">'.${'team'.$team_b.'_score'}.'</span> <br>';
+		}
+
 		// 通常版期間限定ランキングのトップランカーを表示
-		if($limited_type[$limited_stage_list[$limited_num]] == 'n'){
+		if($limited_type[$uplan_stage_list[$uplan_num]] == 'u' or $limited_type[$limited_stage_list[$limited_num]] == 'n'){
 			foreach($limited_stage as $val){
-				echo '<A href="./'.$val.'">・'.mb_substr($array_stage_title[$val], 5).'</A> <br>';
+				echo '<A href="./'.$val.'">・'.mb_substr( preg_replace('/<.*?>/', '', $array_stage_title[$val] ), 5).'</A> <br>';
 			}
 			echo '<hr size="1"/>';
 		}
-		if($limited_num != 0 and $now_time > $limited_start_time){
-			$fixed_limited_num = sprintf('%03d', $limited_num);
-			$limited_db = 'total_limited'.$fixed_limited_num;
+		if(($uplan_num != 0 or $limited_num != 0) and $now_time > $limited_start_time){
+			if(!$event_flag){
+				$fixed_limited_num = sprintf('%03d', $limited_num);
+				$limited_db = 'total_limited'.$fixed_limited_num;
+			} else {
+				$fixed_limited_num = sprintf('%03d', $uplan_num);
+				$limited_db = 'total_uplan'.$fixed_limited_num;
+			}
 			$sql_uc = "SELECT * FROM `user` WHERE $limited_db > 0 ORDER BY $limited_db DESC LIMIT 5";
 			$result_uc = mysqli_query($mysqlconn, $sql_uc);
 			if ($result_uc) {

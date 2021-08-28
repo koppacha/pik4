@@ -1,0 +1,26 @@
+<?php
+// 定数管理
+define('ADMIN_PASSWORD', "password");
+define('DATABASE_DOMAIN', "");
+define('DATABASE_USER', "");
+define('DATABASE_PASS', "");
+define('SESSION_PATH', '');
+define('TWITTER_API_KEY', '');
+define('TWITTER_API_SKEY', '');
+define('TWITTER_TOKEN', '');
+define('TWITTER_STOKEN', '');
+
+define('CONSUMER_KEY', "");
+define('CONSUMER_SECRET', "");
+
+define('COOKIE_CRYPT', 'aiewyfwialeogfwleioufgwaieufgwieaufgw');
+define('COOKIE_NAME', "");
+
+define('PICS_FOLDER', '');
+define('LOCAL_FOLDER', '');
+define('DEBUG_MODE', "debug_mode");
+define('ALTERNATIVE_USER', "alternative_user");
+
+define('PASS_CRYPT', 'awogyebpuwigp974ugeuhrghrgrgergerweawgwe');
+
+define('EXEMPTION_LIST', ['']);

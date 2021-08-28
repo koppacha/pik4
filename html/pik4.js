@@ -1379,14 +1379,14 @@ CountdownTimer.prototype={
  },addZero:function(num){ return ('0'+num).slice(-2); }
 }
 function CDT(){
- var tl = new Date('2020/09/22 22:00:00');
+ var tl = new Date('2021/08/29 23:59:59');
  var timer = new CountdownTimer('CDT',tl,'(終了しました)');
  timer.countDown();
 }
 
 // 期間限定ランキングのカウントダウン（告知→大会開始まで）
 function CDT2(){
- var tl = new Date('2020/09/18 22:00:00');
+ var tl = new Date('2021/08/29 21:00:00');
  var timer = new CountdownTimer('CDT2',tl,'(開幕しました)');
  timer.countDown();
 }
