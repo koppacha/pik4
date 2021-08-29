@@ -373,7 +373,7 @@ if($_SESSION['debug_mode']){
 }
 	// ページタイプによるdiv調整まずはここを試す
 	if($page_type != 21) echo '</div>';
-	if($page_type ==  3 or $page_type ==  4 or $page_type == 5 or $page_type == 8 or $page_type == 10 or $page_type ==  12 or $page_type ==  16 or $page_type ==  18 or $page_type == 19) echo '</div>';
+	if($page_type ==  1 or $page_type ==  3 or $page_type ==  4 or $page_type == 5 or $page_type == 8 or $page_type == 10 or $page_type == 11 or $page_type ==  12 or $page_type ==  14 or $page_type ==  16 or $page_type ==  18 or $page_type == 19) echo '</div>';
 
 require_once('pik4_menu.php'); // メニュー画面読み込み
 require_once('pik4_form.php'); // フォーム画面読み込み
