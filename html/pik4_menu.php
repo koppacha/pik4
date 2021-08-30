@@ -269,12 +269,15 @@ if(($uplan_num != 0 or $limited_num != 0) and $now_time < $limited_start_time){
 				$rows_count = mysqli_num_rows($result_uc);
 				$p = -1;
 				$i =  0;
+				$j =  1;
 				while($row_uc = mysqli_fetch_assoc($result_uc) ){
 				$user_rps = $row_uc[$limited_db];
 				$prev_user_rps[$i] = $user_rps;
 					if ( $prev_user_rps[$p] !== $user_rps ){
 						$i++ ;
 						$p++ ;
+					} else {
+						$i = $j;
 					}
 				// ランキングを表示
 					if($user_rps > 0){
@@ -282,6 +285,7 @@ if(($uplan_num != 0 or $limited_num != 0) and $now_time < $limited_start_time){
 						if( $blind) echo $i.' <span glot-model="rank_tail">位</span>：<A href="./'.$row_uc["user_name"].'">'.$row_uc["user_name"].'</A> (??,??? pts.) <br>'."\n";
 					}
 				}
+				$j++;
 			}
 		}
 	echo '</div>';

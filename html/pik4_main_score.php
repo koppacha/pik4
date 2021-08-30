@@ -89,6 +89,7 @@ $overlap_name = array();
 $overrap_score = array();
 $hidden_flag = 0;
 $get_user_name = '';
+$prev_score_db = 0;
 
 // 全ステージ一覧はヘッダーを出力しない
 if($stage_id == 5) $header_count = 0;
@@ -1231,9 +1232,8 @@ while ($row = mysqli_fetch_assoc($result) ){
 		<td class="rtd_score"><p>'.$row[$target_db].$score_tale.'</p></td>
 		<td class="rtd_info">'.$comment_temp.'</td></tr>
 	</tr>',"\n";
-
 	echo '<tr class="'.$rtd_tr.' pc-hidden"    ><td rowspan="2" class="rtd_rank"><p><span class="rtd_ranknum">'.$i.'</span><span class="score_tale" glot-model="rank_tail"> 位</span></td><td class="rtd_player"><A href="./'.$row["user_name"].'">'.$row["user_name"].'</A></td><td class="rtd_score">'.$row[$target_db].$score_tale.'</td></tr><tr class="'.$rtd_tr.' pc-hidden"><td colspan="2" class="rtd_comment">(<A href="./'.$stage_id.'">'.$stage_id.'#<span glot-model="menu_limited_dai">第</span>'.$limited_rank_comment_num.'<span glot-model="menu_limited_kai">回</span><span glot-model="main_limited_wrtotal">WR総合ランキング</span></A>) <br></td></tr>';
-
+	$i++;
 
 	// ランキングを表示（全ステージ一覧）
 	} elseif ( $stage_id == 5 ) {
