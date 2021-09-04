@@ -1271,68 +1271,77 @@ while ($row = mysqli_fetch_assoc($result) ){
 	break;
 	// ランキングを表示（総合）
 	} elseif ( $page_type == 2 ) {
-	if($stage_id > 9){
-		$stage_count = $r - 1;
-	} else {
-		// 参加者総合の場合投稿数を独自計算
-		if($stage_id == 9) $whereis = "AND (`stage_id` BETWEEN 101 AND 105 OR `stage_id` BETWEEN 201 AND 230 OR `stage_id` BETWEEN 301 AND 336)";
-		if($stage_id == 8) $whereis = "AND (`stage_id` BETWEEN 231 AND 297 OR `stage_id` BETWEEN 337 AND 348 OR `stage_id` BETWEEN 1001 AND 3999 OR `stage_id` BETWEEN 10001 AND 10399)";
-		if($stage_id == 7) $whereis = "AND (`stage_id` BETWEEN 101 AND 10399)";
-		$query_tcount = "SELECT * FROM `ranking` WHERE `user_name` = '$row[user_name]' AND `log` = 0 $whereis";
-		$result_tcount = mysqli_query($mysqlconn, $query_tcount);
-		$stage_count = mysqli_num_rows($result_tcount);
-		// バトルモードの投稿数を加算する
-		if($stage_id == 8 or $stage_id == 7){
-				$whereis = "AND (`stage_id` BETWEEN 275 AND 348)";
+		// 期間限定総合の場合は投稿ステージ数＝大会参加数とする
+		if($stage_id == 91){
+			$limited_ranking_range = range(1, $end_of_limited);
+			$stage_count = 0;
+			foreach($limited_ranking_range as $val){
+				if($users[$row["user_name"]]["total_limited".sprintf('%03d', $val)]){
+					$stage_count += 1;
+				}
+			}
+		} elseif($stage_id > 9) {
+			$stage_count = $r - 1;
+		} else {
+			// 参加者総合の場合投稿数を独自計算
+			if($stage_id == 9) $whereis = "AND (`stage_id` BETWEEN 101 AND 105 OR `stage_id` BETWEEN 201 AND 230 OR `stage_id` BETWEEN 301 AND 336)";
+			if($stage_id == 8) $whereis = "AND (`stage_id` BETWEEN 231 AND 297 OR `stage_id` BETWEEN 337 AND 348 OR `stage_id` BETWEEN 1001 AND 3999 OR `stage_id` BETWEEN 10001 AND 10399)";
+			if($stage_id == 7) $whereis = "AND (`stage_id` BETWEEN 101 AND 10399)";
 			$query_tcount = "SELECT * FROM `ranking` WHERE `user_name` = '$row[user_name]' AND `log` = 0 $whereis";
 			$result_tcount = mysqli_query($mysqlconn, $query_tcount);
-			$stage_count += mysqli_num_rows($result_tcount);
-		}
-		// 2Pモードの投稿数を加算する
-		if($stage_id == 8 or $stage_id == 7){
-			$query_tcount = "SELECT * FROM `ranking` WHERE (`user_name` = '$row[user_name]' OR `user_name_2p` = '$row[user_name]') AND `log` = 0 AND `stage_id` BETWEEN 2201 AND 2336";
-			$result_tcount = mysqli_query($mysqlconn, $query_tcount);
-			$stage_array = array();
-			while($strow = mysqli_fetch_assoc($result_tcount)){
-				$stage_array[] = $strow["stage_id"];
+			$stage_count = mysqli_num_rows($result_tcount);
+			// バトルモードの投稿数を加算する
+			if($stage_id == 8 or $stage_id == 7){
+					$whereis = "AND (`stage_id` BETWEEN 275 AND 348)";
+				$query_tcount = "SELECT * FROM `ranking` WHERE `user_name` = '$row[user_name]' AND `log` = 0 $whereis";
+				$result_tcount = mysqli_query($mysqlconn, $query_tcount);
+				$stage_count += mysqli_num_rows($result_tcount);
 			}
-			$stage_count += count( array_unique($stage_array) );
-		}
+			// 2Pモードの投稿数を加算する
+			if($stage_id == 8 or $stage_id == 7){
+				$query_tcount = "SELECT * FROM `ranking` WHERE (`user_name` = '$row[user_name]' OR `user_name_2p` = '$row[user_name]') AND `log` = 0 AND `stage_id` BETWEEN 2201 AND 2336";
+				$result_tcount = mysqli_query($mysqlconn, $query_tcount);
+				$stage_array = array();
+				while($strow = mysqli_fetch_assoc($result_tcount)){
+					$stage_array[] = $strow["stage_id"];
+				}
+				$stage_count += count( array_unique($stage_array) );
+			}
 
-	}
-	// 全ステージ投稿したら色を変える
-	if($stage_count_array[$stage_id] <= $stage_count){
-		$css_class = "score_tale2";
-	} else {
-		$css_class = "score_tale";
-	}
-	// ピクミン2総合の場合はレートを表示
-	if($stage_id >= 20 and $stage_id <= 22){
-		$show_rate = '<span class="rtd_rate">#'.$row["rate"].'</span>';
-	} elseif($stage_id == 91) {
-		$show_rate = '<span class="rtd_rate">#'.$row["limrate"].'</span>';
-	} else {
-		$show_rate = '';
-	}
-	echo '<tr class="'.$rtd_tr.' mobile-hidden rtd_top">
-		<td class="rtd_rank"><p><span class="rtd_ranknum">'.$i.'</span><span class="score_tale" glot-model="rank_tail"> 位</span></p></td>
-		<td class="rtd_player"><p>'.$get_user_name.'</p></td>
-		<td class="rtd_score">'.$show_rate.'<p>'.$show_score.$score_tale.'</p>';
-	if($stage_id < 98) echo '<span class="'.$css_class.'">'.$stage_count.'/'.$stage_count_array[$stage_id].$battle_total_count.'</span>';
-	echo '</td>
-		<td class="rtd_info">
-			<table class="rtd_comment_tab">
-				<tr>
-					<td><p><font class="rtd_date'.$new_record_flag.'">'.$get_post_date.'</font> <font class="rtd_time'.$new_record_flag.'">'.$get_post_time.'</font></p></td>
-					<td class="rtd_stage"><!--/ <p><A href="./'.$stage_id.'">'.$stage_id.'#'.$fixed_stage_title.'</A></p> /--></td>
-				</tr>
-				<tr>
-					<td colspan="2" class="rtd_comment_hr"><p class="rtd_comment">'.$comment_temp.'</td>
-				</tr>
-			</table>
-		</td>
-	</tr>',"\n";
-	echo '<tr class="'.$rtd_tr.' pc-hidden"  	   ><td rowspan="2" class="rtd_rank"><p><span class="rtd_ranknum">'.$i.'</span><span class="score_tale" glot-model="rank_tail"> 位</span></td><td                 class="rtd_player"   >'.$get_user_name.'</td><td                 class="rtd_score">'.$show_score.$score_tale.'</td></tr><tr class="'.$rtd_tr.' pc-hidden"><td colspan="2" class="rtd_comment">(<A href="./'.$stage_id.'">'.$fixed_stage_title.'</A>)</td></tr>';
+		}
+		// 全ステージ投稿したら色を変える
+		if($stage_count_array[$stage_id] <= $stage_count){
+			$css_class = "score_tale2";
+		} else {
+			$css_class = "score_tale";
+		}
+		// ピクミン2総合の場合はレートを表示
+		if($stage_id >= 20 and $stage_id <= 22){
+			$show_rate = '<span class="rtd_rate">#'.$row["rate"].'</span>';
+		} elseif($stage_id == 91) {
+			$show_rate = '<span class="rtd_rate">#'.$row["limrate"].'</span>';
+		} else {
+			$show_rate = '';
+		}
+		echo '<tr class="'.$rtd_tr.' mobile-hidden rtd_top">
+			<td class="rtd_rank"><p><span class="rtd_ranknum">'.$i.'</span><span class="score_tale" glot-model="rank_tail"> 位</span></p></td>
+			<td class="rtd_player"><p>'.$get_user_name.'</p></td>
+			<td class="rtd_score">'.$show_rate.'<p>'.$show_score.$score_tale.'</p>';
+		if($stage_id < 98) echo '<span class="'.$css_class.'">'.$stage_count.'/'.$stage_count_array[$stage_id].$battle_total_count.'</span>';
+		echo '</td>
+			<td class="rtd_info">
+				<table class="rtd_comment_tab">
+					<tr>
+						<td><p><font class="rtd_date'.$new_record_flag.'">'.$get_post_date.'</font> <font class="rtd_time'.$new_record_flag.'">'.$get_post_time.'</font></p></td>
+						<td class="rtd_stage"><!--/ <p><A href="./'.$stage_id.'">'.$stage_id.'#'.$fixed_stage_title.'</A></p> /--></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="rtd_comment_hr"><p class="rtd_comment">'.$comment_temp.'</td>
+					</tr>
+				</table>
+			</td>
+		</tr>',"\n";
+		echo '<tr class="'.$rtd_tr.' pc-hidden"  	   ><td rowspan="2" class="rtd_rank"><p><span class="rtd_ranknum">'.$i.'</span><span class="score_tale" glot-model="rank_tail"> 位</span></td><td                 class="rtd_player"   >'.$get_user_name.'</td><td                 class="rtd_score">'.$show_score.$score_tale.'</td></tr><tr class="'.$rtd_tr.' pc-hidden"><td colspan="2" class="rtd_comment">(<A href="./'.$stage_id.'">'.$fixed_stage_title.'</A>)</td></tr>';
 
 	// ランキングを表示（エリア踏破戦）
 	}  elseif ($page_type == 13) {

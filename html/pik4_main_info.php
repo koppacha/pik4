@@ -112,6 +112,23 @@ if($page_type != 8){
 echo '<div style="display:flex;flex-wrap:wrap;">';
 echo '<div style="order:3;width:100%;">';
 
+// 期間限定総合の場合、各大会のサマリーを表示
+if($stage_id == 91){
+        echo '<table class="mobile-hidden object_list" style="width:100%;table-layout:fixed;">';
+        echo '<tr><td>#</td><td>基本ルール</td><td>サブルール</td><td>参加者数</td><td>優勝者</td><td>MVP</td><td>アイデア賞</td></tr>';
+        foreach(range(1, $end_of_limited) as $val){
+                echo "<tr><td>第{$val}回</td>";
+                echo "<td>{$limited_stage_title_fixed[$val - 1]}</td>";
+                echo "<td>{$limited_stage_sub_fixed[$val - 1]}</td>";
+                echo "<td>{$limited_player[$val]}</td>";
+                echo "<td>".preg_replace('/(.*?)\s.*/i','$1', $limited_stage_win_fixed[$val - 1])."</td>";
+                echo "<td>".preg_replace('/(.*?)\s.*/i','$1', $limited_stage_mvp[$val - 1])."</td>";
+                echo "<td>".preg_replace('/(.*?)：(.*)\s.*/i','$2', $limited_stage_idea[$val - 1])."</td>";
+                echo "</tr>";
+        }
+        echo '</table>';
+}
+
 if(!$mysql_mode) loadtime_calc(__LINE__);
 // 一本勝負専用リンク
 if( $stage_id > 4000 and $stage_id < 4061){

@@ -1019,6 +1019,22 @@
 "ja": "総合 ------------------------------ ",
 "en": "Overall ------------------------------"
 },
+"mobile-menu1":{
+"ja": "先頭へ",
+"en": "Top"
+},
+"mobile-menu2":{
+"ja": "投稿",
+"en": "Submit"
+},
+"mobile-menu3":{
+"ja": "メニュー",
+"en": "Menu"
+},
+"mobile-menu4":{
+"ja": "マイページ",
+"en": "Mypage"
+},
 "main_head_special":{
 "ja": "◆特殊スコアリスト",
 "en": "◆ Special score list"

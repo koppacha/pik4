@@ -1,5 +1,7 @@
 <?php
 // 定数管理
+define('LOCAL_HOST', "192.168.0.1"); // モバイルから動作確認したい場合、PCのIPアドレスをここに記述
+
 define('ADMIN_PASSWORD', "password");
 define('DATABASE_DOMAIN', "");
 define('DATABASE_USER', "");

@@ -18,7 +18,7 @@ $blind	     = 0 ;						// ブラインド制のトグルスイッチ
 $blind_start = 3036 ;						// ブラインド制対象ステージ開始番号
 $blind_end   = 3037 ;						// ブラインド制対象ステージ終了番号
 $limited_num = 0 ;						// 現在の期間限定ランキング通しNo. (0＝非開催)
-$uplan_num   = 3 ;						// 現在の参加者企画通しNo.（0＝非開催）
+$uplan_num   = 0 ;						// 現在の参加者企画通しNo.（0＝非開催）
 $limited_stage = array();					// 現在の期間限定ランキング対象ステージ (非開催時は最後の開催ステージの最終IDのみ残す）
 $limited_start_time = strtotime( '2021-08-29 21:00:00');	// 期間限定ランキング開始時間
 $limited_end_time   = strtotime( '2021-08-29 23:59:59');	// 期間限定ランキング終了時間 (→pik4.jsにも反映する)
@@ -35,7 +35,14 @@ $network_error = 0;						// データベース接続状態
 $lang = ($http_langs = $_SERVER['HTTP_ACCEPT_LANGUAGE']) ? explode( ',', $http_langs )[0] : 'en';
 
 // データベース接続情報
-if($_SERVER['SERVER_NAME'] != 'localhost'){
+if($_SERVER['SERVER_NAME'] == 'localhost' or $_SERVER['SERVER_NAME'] == LOCAL_HOST){
+	// ローカル環境へ接続
+	$mysql_host = "pik4_db";
+	$mysql_user = "root";
+	$mysql_pass = "root";
+	$mysql_db   = "pik4";
+	$mysql_mode = 0;
+} else {
 	// 本番環境へ接続
 	$mysql_host = DATABASE_DOMAIN;
 	$mysql_user = DATABASE_USER;
@@ -43,13 +50,6 @@ if($_SERVER['SERVER_NAME'] != 'localhost'){
 	$mysql_db   = DATABASE_USER;
 	$mysql_mode = 1;
 	session_save_path(SESSION_PATH); // セッションの保存場所を定義
-} else {
-	// ローカル環境へ接続
-	$mysql_host = "pik4_db";
-	$mysql_user = "root";
-	$mysql_pass = "root";
-	$mysql_db   = "pik4";
-	$mysql_mode = 0;
 }
 // Twitter API関連（アクセストークンは@koppachappy経由）
 $pik4_api_key = TWITTER_API_KEY;

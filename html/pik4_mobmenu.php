@@ -1,26 +1,31 @@
 <!--/ 携帯用メニューここから /-->
-<div id="mobile_fixed_key4" class="pc-hidden">
-	<A href="./1">
-		<i class="mfoot fas fa-meteor" aria-hidden="true"></i><span glot-model="array_stage_title_fixed1">新着記録</span>
-	</A>
-</div>
-<div id="mobile_fixed_key1" class="pc-hidden">
+<div id="mobile_fixed_key1" class="pc-hidden mobile_fixed">
 	<A href="#top">
 		<i class="mfoot fa fa-arrow-up" aria-hidden="true"></i><span glot-model="mobile-menu1">先頭へ</span>
 	</A>
 </div>
-<div id="mobile_fixed_key2" class="pc-hidden">
+<div id="mobile_fixed_key2" class="pc-hidden mobile_fixed">
 	<A href="#form">
 		<i class="mfoot fa fa-paper-plane" aria-hidden="true"></i><span glot-model="mobile-menu2">投稿</span>
 	</A>
 </div>
-<div id="mobile_fixed_key3" class="pc-hidden">
+<div id="mobile_fixed_key3" class="pc-hidden mobile_fixed">
 	<A href="#menu">
 		<i class="mfoot fa fa-list" aria-hidden="true"></i><span glot-model="mobile-menu3">メニュー</span>
 	</A>
 </div>
+<div id="mobile_fixed_key4" class="pc-hidden mobile_fixed">
+	<A href="./1">
+		<i class="mfoot fas fa-meteor" aria-hidden="true"></i><span glot-model="array_stage_title_fixed1">新着記録</span>
+	</A>
+</div>
+<div id="mobile_fixed_key5" class="pc-hidden mobile_fixed">
+	<A href="./<?php $cookie_name; ?>">
+		<i class="mfoot fas fa-user-alt" aria-hidden="true"></i><span glot-model="mobile-menu4">マイページ</span>
+	</A>
+</div>
 
-<select type="text" name="pulldown1" id="mobile_header_menu" class="pc-hidden">
+<select type="text" name="pulldown1" id="mobile_header_menu" class="pc-hidden" style="display:none;">
 
 <option value="#" selected>LIST</option>
 <option value="./" glot-model="menu_toplink">トップページ</option>

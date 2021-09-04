@@ -445,7 +445,7 @@ h3 {
 }
 .object_list td{
 	border-bottom	:solid 1px #777777;
-	line-height	:0.98em;
+	line-height	:1.5em;
 }
 .object_list tr:hover {
 	background: #323232 ;
@@ -1211,64 +1211,36 @@ a:link, a:visited {
 	opacity		:.80;
 	z-index		:3;
 }
-#mobile_fixed_key1 {
+.mobile_fixed {
 	background-color:#eeeeee;
 	position	:fixed;
-	right		:0%;
 	bottom		:0px;
-	height		:50px;
+	height		:65px;
 	width		:20%;
-	color		:#555555;
-	box-shadow	: -0px -8px 3px rgba(0,0,0,0.5);
-	filter		:alpha(opacity=80);
-	-moz-opacity	:.80;
-	opacity		:.80;
-
+	/*box-shadow	: -0px -8px 3px rgba(0,0,0,0.5); */
+	opacity		:.97;
 	z-index		:3;
+}
+#mobile_fixed_key1 {
+	right		:0%;
 }
 #mobile_fixed_key2 {
-	background-color:#eeeeee;
-	position	:fixed;
 	right		:40%;
-	bottom		:0px;
-	height		:50px;
-	width		:20%;
-	box-shadow	: -0px -8px 3px rgba(0,0,0,0.5);
-	filter		:alpha(opacity=80);
-	-moz-opacity	:.80;
-	opacity		:.80;
-	z-index		:3;
 }
 #mobile_fixed_key3 {
-	background-color:#eeeeee;
-	position	:fixed;
 	right		:20%;
-	bottom		:0px;
-	height		:50px;
-	width		:20%;
-	box-shadow	: -0px -8px 3px rgba(0,0,0,0.5);
-	filter		:alpha(opacity=80);
-	-moz-opacity	:.80;
-	opacity		:.80;
-	z-index		:3;
 }
 #mobile_fixed_key4 {
-	background-color:#eeeeee;
-	position	:fixed;
 	right		:60%;
-	bottom		:0px;
-	height		:50px;
-	width		:20%;
-	box-shadow	: -0px -8px 3px rgba(0,0,0,0.5);
-	filter		:alpha(opacity=80);
-	-moz-opacity	:.80;
-	opacity		:.80;
-	z-index		:3;
+}
+#mobile_fixed_key5 {
+	right		:80%;
 }
 #mobile_fixed_key1 a,
 #mobile_fixed_key2 a,
 #mobile_fixed_key3 a,
-#mobile_fixed_key4 a {
+#mobile_fixed_key4 a,
+#mobile_fixed_key5 a {
 	font-size	:18px;
 	color		:#555555;
 	display		:block;
@@ -1278,10 +1250,10 @@ a:link, a:visited {
 #mobile_fixed_key1 a span,
 #mobile_fixed_key2 a span,
 #mobile_fixed_key3 a span,
-#mobile_fixed_key4 a span {
-	font-size: 8px;
+#mobile_fixed_key4 a span,
+#mobile_fixed_key5 a span {
+	font-size: 12px;
 }
-
 .rtd_eng_stage_name {
 	color		:#888888;
 }
@@ -2121,7 +2093,7 @@ line-height:1.5em;margin-left:0.5em;border:dotted 1px #ffffff;background-color:t
 .r3rd  { color:#62caf5;}
 .r4th  { color:#e6e6e6;}
 .r5th  { color:#999999;}
-.r9th  { color:#666666;}
+.r9th  { color:#777777;}
 .rtop  { color:#bbbbbb;}
 
 .team1 { color:#19acff;}
