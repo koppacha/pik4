@@ -1,5 +1,5 @@
-<!--/ ★左カラム ここから /-->
-<div class="pik4_form">
+<div class="pik4_form" id="g-nav">
+<div id="g-nav-list">
 <nav class="nav nav-masthead justify-content-center" style="overflow:hidden;">
 	<a class="nav-link" href="#" id="ja" glot-model="jp" style="width:50%;float:left;padding:4px 0 4px 0;font-size:1.3em;text-align:center;">日本語</a>
 	<a class="nav-link" href="#" id="en" glot-model="us" style="width:50%;float:left;padding:4px 0 4px 0;font-size:1.3em;text-align:center;">English</a>
@@ -734,4 +734,5 @@ Twitter: <A href="https://twitter.com/koppachappy" rel="nofollow">@koppachappy</
 <hr>
 Background-Image License <br>
 <a href="http://bg-patterns.com/?p=1319">Bg-Patterns</a>
+</div>
 </div>

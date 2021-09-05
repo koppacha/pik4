@@ -897,16 +897,16 @@ h3 {
 	font-size: 0.75em;
 }
 .pc-scroll-wrap{
-	overflow: auto;　　　　/*tableをスクロールさせる*/
-	white-space: nowrap;　　/*tableのセル内にある文字の折り返しを禁止*/
+	overflow: auto;
+	white-space: nowrap;
 }
-.pc-scroll-wrap::-webkit-scrollbar{　　/*tableにスクロールバーを追加*/
+.pc-scroll-wrap::-webkit-scrollbar{
 	height: 5px;
 }
-.pc-scroll-wrap::-webkit-scrollbar-track{　　/*tableにスクロールバーを追加*/
+.pc-scroll-wrap::-webkit-scrollbar-track{
 	background: #F1F1F1;
 }
-.pc-scroll-wrap::-webkit-scrollbar-thumb {　　/*tableにスクロールバーを追加*/
+.pc-scroll-wrap::-webkit-scrollbar-thumb {
 	background: #BCBCBC;
 }
 
@@ -1065,7 +1065,6 @@ a:link, a:visited {
 	color		:#eeeeee;
 	border		:1px solid #555555;
 	font-size	:1.33em;
-	padding		:0.5em;
 	width		:100%;
 	background-color:#111111;
 }
@@ -1567,17 +1566,17 @@ a:link, a:visited {
 	display:none;
 }
 .scroll-wrap{
-overflow: auto;　　　　/*tableをスクロールさせる*/
-white-space: nowrap;　　/*tableのセル内にある文字の折り返しを禁止*/
+	overflow: auto;
+	white-space: nowrap;
 }
-.scroll-wrap::-webkit-scrollbar{　　/*tableにスクロールバーを追加*/
- height: 5px;
+.scroll-wrap::-webkit-scrollbar{
+	height: 5px;
 }
-.scroll-wrap::-webkit-scrollbar-track{　　/*tableにスクロールバーを追加*/
- background: #F1F1F1;
+.scroll-wrap::-webkit-scrollbar-track{
+	background: #F1F1F1;
 }
-.scroll-wrap::-webkit-scrollbar-thumb {　　/*tableにスクロールバーを追加*/
- background: #BCBCBC;
+.scroll-wrap::-webkit-scrollbar-thumb {
+	background: #BCBCBC;
 }
 .series_nav {
 	width:1200px;
@@ -1644,10 +1643,52 @@ white-space: nowrap;　　/*tableのセル内にある文字の折り返しを�
 .head_link_tab td {
 	font-size:1em;
 }
+/* 携帯表示時、サブメニューを隠す 参考：https://coco-factory.jp/ugokuweb/move01/5-1-13/ */
+#g-nav,
+#org_form {
+	position:fixed;
+	z-index: 2;
+	top: 0;
+	height: 100vh;
+	transition: all cubic-bezier(0.165, 0.84, 0.44, 1) 0.8s;
+	overflow: auto;
+}
+#g-nav {
+	left: -120%;
+	width: 80%;
+}
+#org_form {
+	right: -120%;
+	width: 60%;
+}
+#g-nav.panelactive {
+	left: 0;
+}
+#org_form.panelactive {
+	right: 0;
+}
+#g-nav.panelactive #g-nav-list,
+#org_form.panelactive #org_form-list {
+	background-color: #000;
+	left: 0;
+	z-index: 2;
+	height: 100vh;
+	overflow : auto;
+}
+/* サイドメニュー表示時の背景をぼかす */
+.mainblur {
+	filter: blur(8px);
+	transition: all 0.8s ease-in-out;
+}
+.mainblur a {
+	pointer-events: none;
+}
+.blurhidden {
+	display: none;
+}
 /* ◆スマートフォン用CSS設定ここまで */
 
 }
-
 /* ◆4インチ以下モバイル用CSS設定ここから */
 @media screen and (max-width: 320px){
 .team_point {

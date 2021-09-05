@@ -12,6 +12,7 @@ if($page_type == 0 or $page_type == 1 or $page_type == 2 or $page_type == 5 or $
 }
 ?>
 <div id="org_form" style="<?php echo $open_toggle.$display; ?>" >
+<div id="org_form_list">
 <div id="loading_screen" style="display:none;position:fixed;z-index:100;width:100%;height:100%;background-color:#000;"> </div>
 
 <A name="form"><strong glot-model="form_title">◆スコア登録<span class="form_eng_cap"> / Entry Form</span> </strong></A> <br>
@@ -740,3 +741,29 @@ It is considered to have agreed to the terms when posting is completed. Please c
 <input style="height:40px;" type="submit" value="登録 / Enter" />
 </form>
 <form action="#" method="post"><input type="submit" name="del_id" value="Cookie削除 (ログアウト)"></form>
+<?php
+if(!$mysql_mode){
+	$time = microtime(true) - $time_start;
+	$loadtime_echo[] = " <br>".__LINE__. "行目：{$time} 秒";
+	echo '<div class="speed_test">';
+	foreach($loadtime_echo as $val){
+		echo $val;
+	}
+	echo '</div>';
+	echo '<div class="test_float_left">';
+	echo '$stage_id：'.$stage_id.'<br>';
+	echo '$url_stage_id：'.$url_stage_id.'<br>';
+	echo '$_COOKIE：';
+	var_dump($_COOKIE);
+	echo '<br>$_SESSION：';
+	var_dump($_SESSION);
+	echo '<br>$_FILES：';
+	var_dump($_FILES);
+	echo '<br>';
+	echo '</div>';
+}
+// BODY終了タグ直前に読み込むプラグインはここから記述
+?>
+<div style="padding-top:4em;"></div>
+</div>
+</div>

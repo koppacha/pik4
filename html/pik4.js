@@ -1606,3 +1606,35 @@ function teamselect(name){
 	    }
 	});
 }
+// 携帯表示時、サブメニューをクリックで表示トグル（★iPhoneで動作しない不具合発生中）
+$(function(){
+	$("#mobile_fixed_key3").on("click", ".submenutoggle", function () {
+		$("#g-nav").toggleClass('panelactive');
+		var checkpost = $("#org_form").attr("class");
+		if(checkpost == "panelactive"){
+			$("#org_form").removeClass('panelactive');
+		} else {
+			$(".pik4_table").toggleClass('mainblur');
+		}
+	});
+	$("#mobile_fixed_key2").on("click", ".submenutoggle", function () {
+		$("#org_form").toggleClass('panelactive');
+		var checknav = $("#g-nav").attr("class");
+		if(checknav == "pik4_form panelactive"){
+			$("#g-nav").removeClass('panelactive');
+		} else {
+			$(".pik4_table").toggleClass('mainblur');
+		}
+	});
+	$(document).on("click", ".mainblur", function () {
+		$("#org_form").removeClass('panelactive');
+		$("#g-nav").removeClass('panelactive');
+		$(".pik4_table").removeClass('mainblur');
+	});
+	$("#g-nav a").click(function () {
+		$("#g-nav").removeClass('panelactive');
+	});
+	$("#org_form a").click(function () {
+		$("#org_form").removeClass('panelactive');
+	});
+});

@@ -5,12 +5,12 @@
 	</A>
 </div>
 <div id="mobile_fixed_key2" class="pc-hidden mobile_fixed">
-	<A href="#form">
+	<A href="javascript:void(0)" class="submenutoggle" style="cursor: pointer;">
 		<i class="mfoot fa fa-paper-plane" aria-hidden="true"></i><span glot-model="mobile-menu2">投稿</span>
 	</A>
 </div>
 <div id="mobile_fixed_key3" class="pc-hidden mobile_fixed">
-	<A href="#menu">
+	<A href="javascript:void(0)" class="submenutoggle" style="cursor: pointer;">
 		<i class="mfoot fa fa-list" aria-hidden="true"></i><span glot-model="mobile-menu3">メニュー</span>
 	</A>
 </div>
@@ -24,6 +24,7 @@
 		<i class="mfoot fas fa-user-alt" aria-hidden="true"></i><span glot-model="mobile-menu4">マイページ</span>
 	</A>
 </div>
+<div id="wrapper_filter" class="blurhidden" style="position:fixed;left:0;top:0;z-index:1;width:100%;height:100vh;"></div>
 
 <select type="text" name="pulldown1" id="mobile_header_menu" class="pc-hidden" style="display:none;">
 

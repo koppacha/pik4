@@ -266,7 +266,7 @@ $header_stage_title = preg_replace('/<.*?>/', '', $header_stage_title);
 	<script type="text/javascript" charset="UTF-8" src="https://chr.mn/_js/jquery.tablesorter.min.js" async></script>
 	<script type="text/javascript" charset="UTF-8" src="https://chr.mn/_js/jquery.metadata.js" async></script>
 	<script type="text/javascript" charset="UTF-8" src="https://chr.mn/_js/chame.js" async></script>
-	<script type="text/javascript" charset="UTF-8" src="https://chr.mn/_js/glottologist.min.js"></script>
+	<!--/ <script type="text/javascript" charset="UTF-8" src="https://chr.mn/_js/glottologist.min.js"></script> /-->
 	<link href="https://fonts.googleapis.com/css?family=Asul|Audiowide|Josefin+Sans:400,700|Julius+Sans+One|Merriweather+Sans|Quicksand:400,700|Rajdhani:400,700|Reem+Kufi|Iceland|Geo|Play|Changa|Press+Start+2P|Alef|Hammersmith+One|Josefin+Slab" rel="stylesheet" async>
 	<link href="https://fonts.googleapis.com/earlyaccess/sawarabigothic.css" rel="stylesheet" async />
 
@@ -378,31 +378,6 @@ if($_SESSION['debug_mode']){
 require_once('pik4_menu.php'); // メニュー画面読み込み
 require_once('pik4_form.php'); // フォーム画面読み込み
 ?>
-<?php
-if(!$mysql_mode){
-	$time = microtime(true) - $time_start;
-	$loadtime_echo[] = " <br>".__LINE__. "行目：{$time} 秒";
-	echo '<div class="speed_test">';
-	foreach($loadtime_echo as $val){
-		echo $val;
-	}
-	echo '</div>';
-	echo '<div class="test_float_left">';
-	echo '$stage_id：'.$stage_id.'<br>';
-	echo '$url_stage_id：'.$url_stage_id.'<br>';
-	echo '$_COOKIE：';
-	var_dump($_COOKIE);
-	echo '<br>$_SESSION：';
-	var_dump($_SESSION);
-	echo '<br>$_FILES：';
-	var_dump($_FILES);
-	echo '<br>';
-	echo '</div>';
-}
-// BODY終了タグ直前に読み込むプラグインはここから記述
-?>
-<div style="padding-top:4em;"></div>
-</div>
 <!--/ フッターで読み込むjavascript /-->
 	<script src="https://vjs.zencdn.net/7.1.0/video.js"></script>
 	<script src="https://unpkg.com/glottologist"></script>
