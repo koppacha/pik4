@@ -37,23 +37,23 @@ if($season_top){
 	echo '</div>';
 }
 // 携帯版投稿ボタン
-if($page_type == 0 or $page_type == 1 or $page_type == 2 or $page_type == 5 or $page_type == 6 or $page_type == 9 or $page_type == 10 or $page_type == 13 or $page_type == 15 or $page_type == 17 or $page_type == 18 or $page_type == 20 or $page_type == 21 or $page_type > 97){
-} else {
-	echo '<A href="#form" style="display:block;">
-	<div class="form_button pc-hidden">
-		<div class="holder">
-			<div class="first"></div>
-			<div class="second"></div>
-			<div class="third"></div>
-			<div class="txt" style="text-align:center;margin:8px;width:96%;height:86px;background-color:#fff;border-radius:5px;">
-				<div style="margin-top:24px;">
-					<span style="border-bottom:solid 1px #777;color:#000;"><i class="faa-float animated fa fa-paper-plane" style="color:#000;" aria-hidden="true"></i>
-					<span glot-model="menu_submit">このステージに投稿する</span></span> <br>　<span style="color:#555;font-size:0.9em;"><span glot-model="menu_submit_sub">　Submit Record</span></span>
-				</div>
-			</div>
-		</div>
-	</div></A>';
-}
+// if($page_type == 0 or $page_type == 1 or $page_type == 2 or $page_type == 5 or $page_type == 6 or $page_type == 9 or $page_type == 10 or $page_type == 13 or $page_type == 15 or $page_type == 17 or $page_type == 18 or $page_type == 20 or $page_type == 21 or $page_type > 97){
+// } else {
+// 	echo '<A href="#form" style="display:block;">
+// 	<div class="form_button pc-hidden">
+// 		<div class="holder">
+// 			<div class="first"></div>
+// 			<div class="second"></div>
+// 			<div class="third"></div>
+// 			<div class="txt" style="text-align:center;margin:8px;width:96%;height:86px;background-color:#fff;border-radius:5px;">
+// 				<div style="margin-top:24px;">
+// 					<span style="border-bottom:solid 1px #777;color:#000;"><i class="faa-float animated fa fa-paper-plane" style="color:#000;" aria-hidden="true"></i>
+// 					<span glot-model="menu_submit">このステージに投稿する</span></span> <br>　<span style="color:#555;font-size:0.9em;"><span glot-model="menu_submit_sub">　Submit Record</span></span>
+// 				</div>
+// 			</div>
+// 		</div>
+// 	</div></A>';
+// }
 // 各種変数をリセットする
 $i = 0;			// 現在の順位 (総合ランキング)
 $p = -1;		// ひとつ前の順位 (総合ランキング)
@@ -1522,7 +1522,8 @@ while ($row = mysqli_fetch_assoc($result) ){
 }
 // Whileここまで
 
-echo '</table></div>';
+// フッターメニューでスコアが隠れるのを防止（携帯版のみ）
+echo '</table><div class="pc-hidden" style="height:60px;"> </div></div>';
 
 // ★動画リンクと比較プルダウンメニューここから
 if($season_data == 2 or $separation_mode == 2) $rows_count = $now_rows;

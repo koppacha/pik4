@@ -261,9 +261,9 @@ $header_stage_title = preg_replace('/<.*?>/', '', $header_stage_title);
 	<script type="text/javascript" charset="UTF-8" src="https://cdn.jsdelivr.net/gh/fengyuanchen/compressorjs/dist/compressor.min.js"></script>
 	<script type="text/javascript" charset="UTF-8" src="https://chr.mn/_js/lity.min.js"></script>
 	<script type="text/javascript" charset="UTF-8" src="https://chr.mn/_js/jquery.easing.1.3.js" async></script>
-	<script type="text/javascript" charset="UTF-8" src="https://chr.mn/_js/jquery.slidein.js" async></script>
+	<script type="text/javascript" charset="UTF-8" src="https://chr.mn/_js/jquery.slidein.js"></script>
 	<script type="text/javascript" charset="UTF-8" src="https://chr.mn/_js/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
-	<script type="text/javascript" charset="UTF-8" src="https://chr.mn/_js/jquery.tablesorter.min.js" async></script>
+	<script type="text/javascript" charset="UTF-8" src="https://chr.mn/_js/jquery.tablesorter.min.js"></script>
 	<script type="text/javascript" charset="UTF-8" src="https://chr.mn/_js/jquery.metadata.js" async></script>
 	<script type="text/javascript" charset="UTF-8" src="https://chr.mn/_js/chame.js" async></script>
 	<!--/ <script type="text/javascript" charset="UTF-8" src="https://chr.mn/_js/glottologist.min.js"></script> /-->
@@ -279,7 +279,6 @@ $header_stage_title = preg_replace('/<.*?>/', '', $header_stage_title);
 	<link rel='stylesheet' id='default-css'  href='./pik4.css' type='text/css' media='all'/>
 	<script type="text/javascript" src="./pik4.js" charset="UTF-8"></script>
 	<?php endif ?>
-
 </head>
 <?php
 	// フォームロックされている場合、ページ読み込み時にフォームを開く（総合系ページは無効）
@@ -373,7 +372,7 @@ if($_SESSION['debug_mode']){
 }
 	// ページタイプによるdiv調整まずはここを試す
 	if($page_type != 21) echo '</div>';
-	if($page_type ==  1 or $page_type ==  3 or $page_type ==  4 or $page_type == 5 or $page_type == 8 or $page_type == 10 or $page_type == 11 or $page_type ==  12 or $page_type ==  14 or $page_type ==  16 or $page_type ==  18 or $page_type == 19) echo '</div>';
+	if($page_type ==  1 or $page_type ==  3 or $page_type ==  4 or $page_type == 5 or $page_type == 7 or $page_type == 8 or $page_type == 10 or $page_type == 11 or $page_type ==  12 or $page_type ==  14 or $page_type ==  16 or $page_type ==  18 or $page_type == 19) echo '</div>';
 
 require_once('pik4_menu.php'); // メニュー画面読み込み
 require_once('pik4_form.php'); // フォーム画面読み込み

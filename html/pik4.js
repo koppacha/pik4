@@ -1397,7 +1397,6 @@ function CDT3(){
 	var timer = new CountdownTimer('CDT3',tl,'(発売しました)');
 	timer.countDown();
 }
-
 // ブロック要素のスライド表示 参考：https://zxcvbnmnbvcxz.com/tips-jquery-slidein/
 $(function(){
 	$('#pickup_stage').slidein({
@@ -1606,10 +1605,11 @@ function teamselect(name){
 	    }
 	});
 }
-// 携帯表示時、サブメニューをクリックで表示トグル（★iPhoneで動作しない不具合発生中）
+// 携帯表示時、サブメニューをクリックで表示トグル
 $(function(){
 	$("#mobile_fixed_key3").on("click", ".submenutoggle", function () {
 		$("#g-nav").toggleClass('panelactive');
+		$("#wrapper_filter").removeClass('hidden');
 		var checkpost = $("#org_form").attr("class");
 		if(checkpost == "panelactive"){
 			$("#org_form").removeClass('panelactive');
@@ -1619,6 +1619,7 @@ $(function(){
 	});
 	$("#mobile_fixed_key2").on("click", ".submenutoggle", function () {
 		$("#org_form").toggleClass('panelactive');
+		$("#wrapper_filter").removeClass('hidden');
 		var checknav = $("#g-nav").attr("class");
 		if(checknav == "pik4_form panelactive"){
 			$("#g-nav").removeClass('panelactive');
@@ -1626,15 +1627,18 @@ $(function(){
 			$(".pik4_table").toggleClass('mainblur');
 		}
 	});
-	$(document).on("click", ".mainblur", function () {
+	$(".blurhidden").click(function () {
 		$("#org_form").removeClass('panelactive');
 		$("#g-nav").removeClass('panelactive');
 		$(".pik4_table").removeClass('mainblur');
+		$(".blurhidden").addClass('hidden');
 	});
 	$("#g-nav a").click(function () {
 		$("#g-nav").removeClass('panelactive');
+		$(".pik4_table").removeClass('mainblur');
 	});
 	$("#org_form a").click(function () {
 		$("#org_form").removeClass('panelactive');
+		$(".pik4_table").removeClass('mainblur');
 	});
 });

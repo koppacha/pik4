@@ -32,7 +32,7 @@ if(!$mysql_mode) loadtime_calc(__LINE__);
 </span>
 <?php if($_SESSION['debug_mode']) echo '<span style="color:#ff9e56;"><i class="fa fa-flask" aria-hidden="true"></i>Debug Mode</span> <br>'; ?>
 <div id="display_config_on" style="display:none;margin-bottom:0.5em;" class="pickup_menu">
-<span class="nav_caption"><a style="color:#cccccc;" href="javascript:void(0)" onclick="menu_toggle('display_config_on','display_config_off');"><i class="fa fa-wrench" aria-hidden="true"></i><span glot-model="menu_setting">表示設定</span></A></span></A> <br>
+<span class="nav_caption"><span style="color:#cccccc;cursor:pointer;" href="javascript:void(0)" onclick="menu_toggle('display_config_on','display_config_off');"><i class="fa fa-wrench" aria-hidden="true"></i><span glot-model="menu_setting">表示設定</span></A></span></span> <br>
 
 <?php if($nav_table != 2) echo '<span><A style="color:#05ffe3;" href="javascript:void(0);" onclick="SeasonToggle(\'nav_table\');"><i class="fa fa-toggle-on" aria-hidden="true"></i><span glot-model="menu_nav_on">ナビゲーションテーブル表示</span></A> <br></span>'; ?>
 <?php if($nav_table == 2) echo '<span><A style="color:#aaaaaa;" href="javascript:void(0);" onclick="SeasonToggle(\'nav_table\');"><i class="fa fa-toggle-off" aria-hidden="true"></i><span glot-model="menu_nav_off">ナビゲーションテーブル非表示</span></A> <br></span>'; ?>
@@ -56,7 +56,7 @@ if(!$mysql_mode) loadtime_calc(__LINE__);
 */
 ?>
 </div>
-<div id="display_config_off" class="pickup_menu" style="background-color:transparent;margin-bottom:0;"><span class="nav_caption"><a style="color:#cccccc;" href="javascript:void(0)" onclick="menu_toggle('display_config_on','display_config_off');"><i class="fa fa-wrench" aria-hidden="true"></i><span glot-model="menu_setting">表示設定</span></A></span></A> <br>
+<div id="display_config_off" class="pickup_menu" style="background-color:transparent;margin-bottom:0;"><span class="nav_caption"><span style="color:#cccccc;cursor:pointer;" href="javascript:void(0)" onclick="menu_toggle('display_config_on','display_config_off');"><i class="fa fa-wrench" aria-hidden="true"></i><span glot-model="menu_setting">表示設定</span></A></span></span> <br>
 
 </div>
 <?php
@@ -69,24 +69,24 @@ if( $mysql_host == "127.0.0.1") {
 counter <Img title="累計アクセス（2015/09/01～)" src="https://chr.mn/_cgi/dayx_pik4_cha/dayx.cgi?gif"> | <Img title="今日のアクセス" src="https://chr.mn/_cgi/dayx_pik4_cha/dayx.cgi?today"> | <Img title="昨日のアクセス" src="https://chr.mn/_cgi/dayx_pik4_cha/dayx.cgi?yes"> <br>
 </div>
 <?php
-if($page_type == 0 or $page_type == 1 or $page_type == 2 or $page_type == 5 or $page_type == 6 or $page_type == 9 or $page_type == 10 or $page_type == 13 or $page_type == 15 or $page_type == 17 or $page_type == 18 or $page_type == 20 or $page_type == 21 or $page_type > 97){
+// if($page_type == 0 or $page_type == 1 or $page_type == 2 or $page_type == 5 or $page_type == 6 or $page_type == 9 or $page_type == 10 or $page_type == 13 or $page_type == 15 or $page_type == 17 or $page_type == 18 or $page_type == 20 or $page_type == 21 or $page_type > 97){
 
-} else {
-	echo '<A href="javascript:void(0)" class="form_toggle" style="display:block;">
-	<div class="form_button mobile-hidden">
-		<div class="holder">
-			<div class="first"></div>
-			<div class="second"></div>
-			<div class="third"></div>
-			<div class="txt" style="text-align:center;margin:8px;width:204px;height:86px;background-color:#fff;border-radius:5px;">
-				<div style="margin-top:24px;">
-					<span style="border-bottom:solid 1px #777;color:#000;"><i class="faa-float animated fa fa-paper-plane" style="color:#000;" aria-hidden="true"></i>
-					<span glot-model="menu_submit">このステージに投稿する</span></span> <br>　<span style="color:#555;font-size:0.9em;">　Submit Record</span>
-				</div>
-			</div>
-		</div>
-	</div></A>';
-}
+// } else {
+// 	echo '<A href="javascript:void(0)" class="form_toggle" style="display:block;">
+// 	<div class="form_button mobile-hidden">
+// 		<div class="holder">
+// 			<div class="first"></div>
+// 			<div class="second"></div>
+// 			<div class="third"></div>
+// 			<div class="txt" style="text-align:center;margin:8px;width:204px;height:86px;background-color:#fff;border-radius:5px;">
+// 				<div style="margin-top:24px;">
+// 					<span style="border-bottom:solid 1px #777;color:#000;"><i class="faa-float animated fa fa-paper-plane" style="color:#000;" aria-hidden="true"></i>
+// 					<span glot-model="menu_submit">このステージに投稿する</span></span> <br>　<span style="color:#555;font-size:0.9em;">　Submit Record</span>
+// 				</div>
+// 			</div>
+// 		</div>
+// 	</div></A>';
+// }
 
 	// 参加者総合ランキング簡易表示板
 
@@ -310,7 +310,7 @@ if(($uplan_num != 0 or $limited_num != 0) and $now_time < $limited_start_time){
 
 </ul>
 <div id="display_guide_on" style="display:none;">
-<span><a style="color:#cccccc;" href="javascript:void(0)" onclick="menu_toggle('display_guide_on','display_guide_off');" glot-model="menu_info_less">▲折り畳む</A></span></A> <br>
+<span><span style="color:#cccccc;cursor:pointer;" href="javascript:void(0)" onclick="menu_toggle('display_guide_on','display_guide_off');" glot-model="menu_info_less">▲折り畳む</span></span></A> <br>
 <ul class="nav" style="margin-bottom:0;">
 <li><A href="https://docs.google.com/forms/d/e/1FAIpQLScqiDmjbzlCb6M85gjsicVRnms9NBVxlOQGsm7oFk12axwOBw/viewform" target="_blank"><i class="infof far fa-paper-plane"></i><span glot-model="menu_info_temporarypost">臨時投稿フォーム(要Googleアカ)</span></a></li>
 <li><A href="https://docs.google.com/forms/d/e/1FAIpQLScWDkVFnWgFt_Xta9GpZY2Ykz7_iFHiCQWQ4k901Tesd4Ltgg/viewform"><i class="infof far fa-paper-plane"></i><span glot-model="menu_info_meetingroom">会議室入室申請フォーム</span></A></li>
@@ -323,7 +323,7 @@ if(($uplan_num != 0 or $limited_num != 0) and $now_time < $limited_start_time){
 </ul>
 </div>
 <div id="display_guide_off">
-<span><a style="color:#cccccc;" href="javascript:void(0)" onclick="menu_toggle('display_guide_on','display_guide_off');" glot-model="menu_info_more">▼さらに表示</A></span></A> <br>
+<span><span style="color:#cccccc;cursor:pointer;" href="javascript:void(0)" onclick="menu_toggle('display_guide_on','display_guide_off');" glot-model="menu_info_more">▼さらに表示</span></span></A> <br>
 </div>
 </div>
 <?php endif ?>
@@ -429,7 +429,7 @@ if(($uplan_num != 0 or $limited_num != 0) and $now_time < $limited_start_time){
 		$score_tale = "";
 	}
 	$rpstop_stage = $array_stage_title[ $row["stage_id"] ];
-	echo '<span class="nav_caption"><A class="mini_caption4" href="javascript:void(0)" onclick="menu_3toggle(\'new_record\',\'this_week_top\',\'trend_stage\');" glot-model="menu_newrec">最新記録</A></span> <span class="mini_caption4">('.date('m/d H:i',strtotime($row["post_date"])).')</span> <br>'."\n";
+	echo '<span class="nav_caption"><span class="mini_caption4" style="cursor:pointer;" href="javascript:void(0)" onclick="menu_3toggle(\'new_record\',\'this_week_top\',\'trend_stage\');" glot-model="menu_newrec">最新記録</span></span> <span class="mini_caption4">('.date('m/d H:i',strtotime($row["post_date"])).')</span> <br>'."\n";
 	echo '<ul class="nav not-margin"><li><A href="./'.$row["stage_id"].'"><span style="color:#8d8ae6;">◆</span>'.$rpstop_stage.'</A></li></ul>'.number_format($row["score"]).$score_tale.' ('.$row["post_rank"].'位) ['.$row["rps"].' pts.] <br><span class="marklink"><A href="./1" glot-model="menu_newrec_link">→新着一覧</A></span><span style="float:right;">Player: <A href="./'.$row["user_name"].'">'.$row["user_name"].'</A>　</span> <br>'."\n" ;
 	}
 	if (!$rpstop_stage){
@@ -444,7 +444,7 @@ if(($uplan_num != 0 or $limited_num != 0) and $now_time < $limited_start_time){
 // 今週のトップスコア
 	$this_week_monday = strtotime("last Monday");
 	$this_week_sunday = strtotime("last Monday +6day");
-	echo '<span class="nav_caption"><A class="mini_caption4" href="javascript:void(0)" onclick="menu_3toggle(\'new_record\',\'this_week_top\',\'trend_stage\');" glot-model="menu_topscore">今週のトップスコア</A></span> <span class="mini_caption4">('.date('m/d',$this_week_monday).'-'.date('m/d',$this_week_sunday).')</span> <br>'."\n";
+	echo '<span class="nav_caption"><span class="mini_caption4" style="cursor:pointer;" href="javascript:void(0)" onclick="menu_3toggle(\'new_record\',\'this_week_top\',\'trend_stage\');" glot-model="menu_topscore">今週のトップスコア</span></span> <span class="mini_caption4">('.date('m/d',$this_week_monday).'-'.date('m/d',$this_week_sunday).')</span> <br>'."\n";
 
 	// 一週間以内のRPSトップスコアを抽出（日替わりチャレンジは除く）
 	$last_week_date = date('Y-m-d', $this_week_monday);
@@ -474,7 +474,7 @@ if(($uplan_num != 0 or $limited_num != 0) and $now_time < $limited_start_time){
 <?php
 	// 直近の人気ステージ (10日以内の最多投稿)
 	$ten_day_ago = strtotime("-10day", $now_time);
-	echo '<span class="nav_caption"><a class="mini_caption4" href="javascript:void(0)" onclick="menu_3toggle(\'new_record\',\'this_week_top\',\'trend_stage\');" glot-model="menu_poplar">最近の人気ステージ</A></span> <span class="mini_caption4">('.date('m/d',$ten_day_ago).'-'.date('m/d',$now_time).')</span> <br>'."\n";
+	echo '<span class="nav_caption"><span class="mini_caption4" style="cursor:pointer;" href="javascript:void(0)" onclick="menu_3toggle(\'new_record\',\'this_week_top\',\'trend_stage\');" glot-model="menu_poplar">最近の人気ステージ</span></span> <span class="mini_caption4">('.date('m/d',$ten_day_ago).'-'.date('m/d',$now_time).')</span> <br>'."\n";
 	$sql = "SELECT `stage_id`,count(*) AS `stage_count` FROM `ranking` WHERE `post_date` > '$lastest_week_date' GROUP BY `stage_id` ORDER BY `stage_count` DESC LIMIT 1";
 	$result = mysqli_query($mysqlconn, $sql);
 	if($result){
@@ -498,7 +498,7 @@ if(($uplan_num != 0 or $limited_num != 0) and $now_time < $limited_start_time){
 ?>
 <?php if($diary_challenge !== "2"): ?>
 <div id="diary_challenge" class="pickup_menu">
-<span class="nav_caption"><a class="mini_caption4" href="javascript:void(0)" onclick="menu_toggle('diary_challenge','today_recommend');" glot-model="menu_daily">今日の日替わりチャレンジ</A></span> <span class="mini_caption4"><?php echo date('(m/d)', $now_time); ?></span> <br>
+<span class="nav_caption"><span class="mini_caption4" style="cursor:pointer;" href="javascript:void(0)" onclick="menu_toggle('diary_challenge','today_recommend');" glot-model="menu_daily">今日の日替わりチャレンジ</span></span> <span class="mini_caption4"><?php echo date('(m/d)', $now_time); ?></span> <br>
 <ul class="nav not-margin">
 <?php
 	echo '<ul class="nav not-margin">';
@@ -510,7 +510,7 @@ if(($uplan_num != 0 or $limited_num != 0) and $now_time < $limited_start_time){
 </div>
 
 <div id="today_recommend" style="display:none;" class="pickup_menu">
-<span class="nav_caption"><a class="mini_caption4" href="javascript:void(0)" onclick="menu_toggle('diary_challenge','today_recommend');" glot-model="menu_recommend">今日のオススメ！</A></span> <span class="mini_caption4"><?php echo date('(m/d)', $now_time); ?></A> <br>
+<span class="nav_caption"><span class="mini_caption4" style="cursor:pointer;" href="javascript:void(0)" onclick="menu_toggle('diary_challenge','today_recommend');" glot-model="menu_recommend">今日のオススメ！</span></span> <span class="mini_caption4"><?php echo date('(m/d)', $now_time); ?></A> <br>
 <ul class="nav not-margin">
 <?php
 	// 今日のオススメを計算
@@ -541,7 +541,7 @@ if(($uplan_num != 0 or $limited_num != 0) and $now_time < $limited_start_time){
 if($url_stage_id == 205 and isset($_COOKIE["user_name"])){
 	echo '<div id="egg_fortune_frame" style="" class="pickup_menu">';
 	echo '<span style="color:#51e0ff;" class="nav_caption" glot-model="menu_eggfortune">タマゴムシくじ</span> <br>';
-	echo '<div id="egg_fortune"><A href="javascript:void(0)" id="egg_fortune_start" onclick="egg_fortune_ope()" glot-model="menu_eggfortune_run">タマゴを割る</span></A></div>';
+	echo '<div id="egg_fortune"><span style="cursor:pointer;" href="javascript:void(0)" id="egg_fortune_start" onclick="egg_fortune_ope()" glot-model="menu_eggfortune_run">タマゴを割る</span></span></div>';
 	echo '</div>';
 }
 ?>
@@ -673,11 +673,11 @@ if($url_stage_id == 205 and isset($_COOKIE["user_name"])){
 	$loadtime_echo[] = " <br>".__LINE__. "行目：{$time_c} 秒";
 	$st_count_val = array_count_values($st_count);
 	echo '<div id="stage_list_noff" style="display:none;background-color:transparent;" class="pickup_menu">
-	<div style="width:100%;background-color:#dddddd;"><a style="display:block;color:#111111;" href="javascript:void(0)" onclick="menu_toggle(\'stage_list_noff\',\'stage_list_normal\');" glot-model="menu_toggle_open">▼再表示</span></A></div> <br>';
+	<div style="width:100%;background-color:#dddddd;"><span style="display:block;color:#111111;cursor:pointer;" href="javascript:void(0)" onclick="menu_toggle(\'stage_list_noff\',\'stage_list_normal\');" glot-model="menu_toggle_open">▼再表示</span></span></div> <br>';
 	echo '</div>';
 
 	echo '<div id="stage_list_normal" style="background-color:transparent;" class="pickup_menu">
-	<div style="width:100%;background-color:#dddddd;"><a style="display:block;color:#111111;" href="javascript:void(0)" onclick="menu_toggle(\'stage_list_noff\',\'stage_list_normal\');" glot-model="menu_toggle_normal">◆通常ステージ</A></div> <br>';
+	<div style="width:100%;background-color:#dddddd;"><span style="display:block;color:#111111;cursor:pointer;" href="javascript:void(0)" onclick="menu_toggle(\'stage_list_noff\',\'stage_list_normal\');" glot-model="menu_toggle_normal">◆通常ステージ</span></div> <br>';
 
 	nav_stagelist_echo($array_stage_title_fixed[10], range(101, 105), "#e6e58a", 0, 0);
 	echo '<span class="nav_caption">'.$array_stage_title_fixed[20].'</span> <br>'."\n";
@@ -692,11 +692,11 @@ if($url_stage_id == 205 and isset($_COOKIE["user_name"])){
 	echo '</div>';
 
 	echo '<div id="stage_list_off" style="background-color:transparent;" class="pickup_menu">
-	<div style="width:100%;background-color:#dddddd;"><a style="display:block;color:#111111;" href="javascript:void(0)" onclick="menu_toggle(\'stage_list_off\',\'stage_list_special\');" glot-model="menu_info_more">▼さらに表示</A></div> <br>';
+	<div style="width:100%;background-color:#dddddd;"><span style="display:block;color:#111111;cursor:pointer;" href="javascript:void(0)" onclick="menu_toggle(\'stage_list_off\',\'stage_list_special\');" glot-model="menu_info_more">▼さらに表示</span></div> <br>';
 	echo '</div>';
 
 	echo '<div id="stage_list_special" style="display:none;background-color:transparent;" class="pickup_menu">
-	<div style="width:100%;background-color:#dddddd;"><a style="display:block;color:#111111;" href="javascript:void(0)" onclick="menu_toggle(\'stage_list_off\',\'stage_list_special\');" glot-model="menu_toggle_special">◆特殊ステージ</A></div> <br>';
+	<div style="width:100%;background-color:#dddddd;"><span style="display:block;color:#111111;cursor:pointer;" href="javascript:void(0)" onclick="menu_toggle(\'stage_list_off\',\'stage_list_special\');" glot-model="menu_toggle_special">◆特殊ステージ</span></div> <br>';
 	nav_stagelist_echo($array_stage_title_fixed[93], array(10101, 10201, 10202, 10203, 10204, 10301, 10302), "#c58ae6", 1, 0);
 	nav_stagelist_echo($array_stage_title_fixed[94], range(10205, 10214), "#e68ae5", 1, 0);
 	nav_stagelist_echo($array_stage_title_fixed[23], range(231, 244), "#e68ad3", 0, 0);

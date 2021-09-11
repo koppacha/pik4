@@ -1221,19 +1221,19 @@ a:link, a:visited {
 	z-index		:3;
 }
 #mobile_fixed_key1 {
-	right		:0%;
-}
-#mobile_fixed_key2 {
 	right		:40%;
 }
+#mobile_fixed_key2 {
+	right		:80%;
+}
 #mobile_fixed_key3 {
-	right		:20%;
+	right		:0%;
 }
 #mobile_fixed_key4 {
 	right		:60%;
 }
 #mobile_fixed_key5 {
-	right		:80%;
+	right		:20%;
 }
 #mobile_fixed_key1 a,
 #mobile_fixed_key2 a,
@@ -1654,18 +1654,18 @@ a:link, a:visited {
 	overflow: auto;
 }
 #g-nav {
-	left: -120%;
+	right: -120%;
 	width: 80%;
 }
 #org_form {
-	right: -120%;
+	left: -120%;
 	width: 60%;
 }
 #g-nav.panelactive {
-	left: 0;
+	right: 0;
 }
 #org_form.panelactive {
-	right: 0;
+	left: 0;
 }
 #g-nav.panelactive #g-nav-list,
 #org_form.panelactive #org_form-list {
@@ -1679,11 +1679,20 @@ a:link, a:visited {
 .mainblur {
 	filter: blur(8px);
 	transition: all 0.8s ease-in-out;
+	cursor: pointer;
 }
 .mainblur a {
 	pointer-events: none;
 }
 .blurhidden {
+	position:fixed;
+	left:0;
+	top:0;
+	z-index:1;
+	width:100%;
+	height:100vh;
+}
+.hidden {
 	display: none;
 }
 /* ◆スマートフォン用CSS設定ここまで */

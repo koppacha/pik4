@@ -4,10 +4,14 @@
 		<i class="mfoot fa fa-arrow-up" aria-hidden="true"></i><span glot-model="mobile-menu1">先頭へ</span>
 	</A>
 </div>
-<div id="mobile_fixed_key2" class="pc-hidden mobile_fixed">
-	<A href="javascript:void(0)" class="submenutoggle" style="cursor: pointer;">
-		<i class="mfoot fa fa-paper-plane" aria-hidden="true"></i><span glot-model="mobile-menu2">投稿</span>
-	</A>
+<div id="mobile_fixed_key2" class="pc-hidden mobile_fixed"<?= $post_hidden; ?>>
+<?php
+if($page_type == 0 or $page_type == 1 or $page_type == 2 or $page_type == 5 or $page_type == 6 or $page_type == 9 or $page_type == 10 or $page_type == 13 or $page_type == 15 or $page_type == 17 or $page_type == 18 or $page_type == 20 or $page_type == 21 or $page_type > 97){
+	echo '<A href="./9"><i class="mfoot fa fa-award" aria-hidden="true"></i><span glot-model="mobile-menu6">総合ランキング</span></A>';
+} else {
+	echo '<A href="javascript:void(0)" class="submenutoggle" style="cursor: pointer;"><i class="mfoot fa fa-paper-plane" aria-hidden="true"></i><span glot-model="mobile-menu2">投稿</span></A>';
+}
+?>
 </div>
 <div id="mobile_fixed_key3" class="pc-hidden mobile_fixed">
 	<A href="javascript:void(0)" class="submenutoggle" style="cursor: pointer;">
@@ -20,11 +24,15 @@
 	</A>
 </div>
 <div id="mobile_fixed_key5" class="pc-hidden mobile_fixed">
-	<A href="./<?php $cookie_name; ?>">
-		<i class="mfoot fas fa-user-alt" aria-hidden="true"></i><span glot-model="mobile-menu4">マイページ</span>
-	</A>
+<?php
+if($cookie_name == ''){
+	echo '<A href="./"><i class="mfoot fas fa-home" aria-hidden="true"></i><span glot-model="mobile-menu5">トップページ</span></A>';
+} else {
+	echo '<A href="./<?php $cookie_name; ?>"><i class="mfoot fas fa-user-alt" aria-hidden="true"></i><span glot-model="mobile-menu4">マイページ</span></A>';
+}
+?>
 </div>
-<div id="wrapper_filter" class="blurhidden" style="position:fixed;left:0;top:0;z-index:1;width:100%;height:100vh;"></div>
+<div id="wrapper_filter" class="blurhidden pc-hidden hidden"></div>
 
 <select type="text" name="pulldown1" id="mobile_header_menu" class="pc-hidden" style="display:none;">
 
