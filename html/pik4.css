@@ -1536,7 +1536,7 @@ a:link, a:visited {
 }
 .team_point {
 	font-family	:'Julius Sans One', sans-serif;
-	font-size	:8em;
+	font-size	:20vw;
 	line-height	:85%;
 	letter-spacing	:0.03em;
 }
@@ -2502,5 +2502,10 @@ h2, h3, h4 {
 #CDT3 .day {
 	font-size:1.5em;
 	color: #90eff5;
+}
+.wraplink {
+	display: block;
+	width: 100%;
+	height: 100%;
 }
 /* ◆共通CSS設定ここまで */

@@ -43,18 +43,77 @@ if($stage_id > 100000){
 <html>
         <head>
                 <title>ピクチャレ大会 トップスコアストリーム（仮）</title>
+                <script type="text/javascript" charset="UTF-8" src="https://code.jquery.com/jquery-1.10.0.min.js"></script>
         </head>
         <script>
-                const timer = 950 // ミリ秒で間隔の時間を指定
-                window.addEventListener('load',function(){
-                        setInterval('location.reload()',timer);
-                });
+                // ページ読み込み時に実行
+                var stage_id = '<?php echo $stage_id; ?>';
+
+                window.onload = function(){
+                        time();
+                        getstream(stage_id);
+                }
+
+                function getstream(stage){
+                        $.ajax({
+                                type: "POST",
+                                url: "../pik4_stream.php",
+                                data: {
+                                        "stage_id": stage
+                                },
+                                success: function(data){
+                                        for(const[key, value] of Object.entries(data)){
+                                                for(const[keychild, val] of Object.entries(value)){
+                                                        $("#"+keychild+key).text(val);
+                                                }
+                                        }
+                                },
+                                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                                        alert("errorThrown : " + errorThrown.message);
+                                }
+                        });
+                }
+                function time(){
+                        var now = new Date();
+                        document.getElementById("time").innerHTML = now.toLocaleString();
+                }
+
+                // 1秒ごとに実行
+                setInterval('time()', 1000);
+                setInterval('getstream(stage_id)', 1000);
         </script>
+        <style>
+                body {
+                        background-color: #333;
+                        color: #ddd;
+                }
+                a {
+                        color: #fff;
+                }
+                table{
+                        table-layout: fixed;
+                        border-collapse: collapse;
+                        width:400px;
+                }
+                table td {
+                        font-size: 14px;
+                        text-align: center;
+                        border: 1px solid #777;
+                        padding: 4px;
+                }
+        </style>
         <body>
 <?php
 // トップスコアを表示
 echo '<A href="https://chr.mn/pik4/'.$stage_id.'">'.$array_stage_title[$stage_id]."</A><br><br>\n";
+echo '<span id="time"></span>';
+echo '<table>';
 foreach($stage_array as $val){
-        echo $topscorelist[$val]['score']."<br>\n";
+        echo '<tr><td>'.$array_stage_title[$val]."</td>\n";
+        echo '<td id="name'.$val.'"></td>'."\n";
+        echo '<td id="score'.$val.'"></td></tr>'."\n";
 }
-echo date('Y/m/d H:i:s', $now_time);
+echo '</table>';
+?>
+</body>
+</html>

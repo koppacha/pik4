@@ -474,20 +474,20 @@ for($tr = 1; $tr <= $ae_height[$key]; $tr++){ // 縦の長さを定義
 		echo '<meter min="0" max="100" value="'.$area_score_per.'">100</meter>';
 		echo '<div style="text-align:right;"><b><span glot-model="main_nav_area_unbanned">未解禁</span>：'.$area_1_cnt.' | <span glot-model="main_nav_area_lifted">解禁済み</span>：'.$area_2_cnt.' | <span glot-model="main_nav_area_notclear">未クリア</span>：'.$area_3_cnt.' | <span glot-model="main_nav_area_borderover">ボーダー突破</span><i class="fab fa-font-awesome" aria-hidden="true"></i>：'.$area_4_cnt.' | <span glot-model="main_nav_area_exborderover">EXボーダー突破</span><i class="fab fa-fort-awesome" aria-hidden="true"></i>：'.$area_5_cnt.'</b></div>';
 	}
-	if($area_cat == 'team'){
-		$area_count  = $area_1_cnt + $area_2_cnt + $area_3_cnt + $area_4_cnt + $area_5_cnt;
-		$lest_count  = $area_1_cnt + $area_2_cnt + $area_3_cnt;
-		$break_count = $area_4_cnt + $area_5_cnt;
-		$target_total_score = 700000;
-		$area_score_per = $area_score_total / $target_total_score * 100;
-		$area_score_lest = $target_total_score - $area_score_total;
+	// if($area_cat == 'team'){
+	// 	$area_count  = $area_1_cnt + $area_2_cnt + $area_3_cnt + $area_4_cnt + $area_5_cnt;
+	// 	$lest_count  = $area_1_cnt + $area_2_cnt + $area_3_cnt;
+	// 	$break_count = $area_4_cnt + $area_5_cnt;
+	// 	$target_total_score = 700000;
+	// 	$area_score_per = $area_score_total / $target_total_score * 100;
+	// 	$area_score_lest = $target_total_score - $area_score_total;
 
-		echo '<table style="width:100%"><tr><td style="width:205px;text-align:center;border-bottom:4px solid #'.$teamc[$team_a].'">';
-		echo '<span style="color:#'.$teamc[$team_a].';" class="team_point">'.$area_3_cnt.'</span> <br>';
-		echo '</td><td style="width:614px;"> </td><td style="width:205px;text-align:center;border-bottom:4px solid #'.$teamc[$team_b].'">';
-		echo '<span style="color:#'.$teamc[$team_b].';" class="team_point">'.$area_4_cnt.'</span> <br>';
-		echo '</tr></table>';
-	}
+	// 	echo '<table style="width:100%"><tr><td style="width:205px;text-align:center;border-bottom:4px solid #'.$teamc[$team_a].'">';
+	// 	echo '<span style="color:#'.$teamc[$team_a].';" class="team_point">'.$area_3_cnt.'</span> <br>';
+	// 	echo '</td><td style="width:614px;"> </td><td style="width:205px;text-align:center;border-bottom:4px solid #'.$teamc[$team_b].'">';
+	// 	echo '<span style="color:#'.$teamc[$team_b].';" class="team_point">'.$area_4_cnt.'</span> <br>';
+	// 	echo '</tr></table>';
+	// }
 }
 
 // チーム対抗・スタンダード戦のトップランカー一覧

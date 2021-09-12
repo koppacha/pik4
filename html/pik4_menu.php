@@ -69,24 +69,24 @@ if( $mysql_host == "127.0.0.1") {
 counter <Img title="累計アクセス（2015/09/01～)" src="https://chr.mn/_cgi/dayx_pik4_cha/dayx.cgi?gif"> | <Img title="今日のアクセス" src="https://chr.mn/_cgi/dayx_pik4_cha/dayx.cgi?today"> | <Img title="昨日のアクセス" src="https://chr.mn/_cgi/dayx_pik4_cha/dayx.cgi?yes"> <br>
 </div>
 <?php
-// if($page_type == 0 or $page_type == 1 or $page_type == 2 or $page_type == 5 or $page_type == 6 or $page_type == 9 or $page_type == 10 or $page_type == 13 or $page_type == 15 or $page_type == 17 or $page_type == 18 or $page_type == 20 or $page_type == 21 or $page_type > 97){
+if($page_type == 0 or $page_type == 1 or $page_type == 2 or $page_type == 5 or $page_type == 6 or $page_type == 9 or $page_type == 10 or $page_type == 13 or $page_type == 15 or $page_type == 17 or $page_type == 18 or $page_type == 20 or $page_type == 21 or $page_type > 97){
 
-// } else {
-// 	echo '<A href="javascript:void(0)" class="form_toggle" style="display:block;">
-// 	<div class="form_button mobile-hidden">
-// 		<div class="holder">
-// 			<div class="first"></div>
-// 			<div class="second"></div>
-// 			<div class="third"></div>
-// 			<div class="txt" style="text-align:center;margin:8px;width:204px;height:86px;background-color:#fff;border-radius:5px;">
-// 				<div style="margin-top:24px;">
-// 					<span style="border-bottom:solid 1px #777;color:#000;"><i class="faa-float animated fa fa-paper-plane" style="color:#000;" aria-hidden="true"></i>
-// 					<span glot-model="menu_submit">このステージに投稿する</span></span> <br>　<span style="color:#555;font-size:0.9em;">　Submit Record</span>
-// 				</div>
-// 			</div>
-// 		</div>
-// 	</div></A>';
-// }
+} else {
+	echo '<A href="javascript:void(0)" class="form_toggle" style="display:block;">
+	<div class="form_button mobile-hidden">
+		<div class="holder">
+			<div class="first"></div>
+			<div class="second"></div>
+			<div class="third"></div>
+			<div class="txt" style="text-align:center;margin:8px;width:204px;height:86px;background-color:#fff;border-radius:5px;">
+				<div style="margin-top:24px;">
+					<span style="border-bottom:solid 1px #777;color:#000;"><i class="faa-float animated fa fa-paper-plane" style="color:#000;" aria-hidden="true"></i>
+					<span glot-model="menu_submit">このステージに投稿する</span></span> <br>　<span style="color:#555;font-size:0.9em;">　Submit Record</span>
+				</div>
+			</div>
+		</div>
+	</div></A>';
+}
 
 	// 参加者総合ランキング簡易表示板
 

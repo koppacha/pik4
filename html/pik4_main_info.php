@@ -116,14 +116,15 @@ echo '<div style="order:3;width:100%;">';
 if($stage_id == 91){
         echo '<table class="mobile-hidden object_list" style="width:100%;table-layout:fixed;">';
         echo '<tr><td>#</td><td>基本ルール</td><td>サブルール</td><td>参加者数</td><td>優勝者</td><td>MVP</td><td>アイデア賞</td></tr>';
-        foreach(range(1, $end_of_limited) as $val){
-                echo "<tr><td>第{$val}回</td>";
-                echo "<td>{$limited_stage_title_fixed[$val - 1]}</td>";
-                echo "<td>{$limited_stage_sub_fixed[$val - 1]}</td>";
-                echo "<td>{$limited_player[$val]}</td>";
-                echo "<td>".preg_replace('/(.*?)\s.*/i','$1', $limited_stage_win_fixed[$val - 1])."</td>";
-                echo "<td>".preg_replace('/(.*?)\s.*/i','$1', $limited_stage_mvp[$val - 1])."</td>";
-                echo "<td>".preg_replace('/(.*?)：(.*)\s.*/i','$2', $limited_stage_idea[$val - 1])."</td>";
+        foreach(range(2, $end_of_limited) as $val){
+                echo '<tr>';
+		echo "<td>".'<A class="wraplink" href="'.$limited_stage_list[$val].'">'."第{$val}回</td>";
+                echo "<td>".'<A class="wraplink" href="'.$limited_stage_list[$val].'">'."{$limited_stage_title_fixed[$val - 1]}</td>";
+                echo "<td>".'<A class="wraplink" href="'.$limited_stage_list[$val].'">'."{$limited_stage_sub_fixed[$val - 1]}</td>";
+                echo "<td>".'<A class="wraplink" href="'.$limited_stage_list[$val].'">'."{$limited_player[$val]}</td>";
+                echo "<td>".'<A class="wraplink" href="'.$limited_stage_list[$val].'">'.preg_replace('/(.*?)\s.*/i','$1', $limited_stage_win_fixed[$val - 1])."</td>";
+                echo "<td>".'<A class="wraplink" href="'.$limited_stage_list[$val].'">'.preg_replace('/(.*?)\s.*/i','$1', $limited_stage_mvp[$val - 1])."</td>";
+                echo "<td>".'<A class="wraplink" href="'.$limited_stage_list[$val].'">'.preg_replace('/(.*?)：(.*)\s.*/i','$2', $limited_stage_idea[$val - 1])."</td>";
                 echo "</tr>";
         }
         echo '</table>';

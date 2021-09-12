@@ -222,10 +222,20 @@
 	} else  {
 		$background_color = '';
 	}
+	// エリア踏破制の場合は陣地の数を計算する
+	$areacount = 0;
+	$flag = '';
+	$limcount = array_search($stage_id, $limited_stage_list);
+	$sql = "SELECT * FROM `area` WHERE `lim` = '$limcount' AND `flag` = 3";
+	$result = mysqli_query($mysqlconn, $sql);
+	$areacount = mysqli_num_rows($result);
 	echo '<table class="team_info_tab"><tr>';
 	echo '<td style="width:20%;text-align:center;vertical-align:top;'.$background_color.'">';
-	echo '<span style="color:#'.$teamc[$team_a].'" class="team_point">'.${'rps'.$team_a}.'</span>';
-	echo ' <br>';
+	if($areacount > 0){
+		echo '<span style="color:#'.$teamc[$team_a].';" class="team_point">'.$areacount.'</span><hr style="height:3px;border:none;background-color:#'.$teamc[$team_a].';">';
+	}
+	echo '<span style="color:#'.$teamc[$team_a].';" class="team_point">'.${'rps'.$team_a}.'</span>';
+	echo '<br>';
 	if(!$blind) echo '<span style="color:#'.$teamc[$team_a].'" class="team_point_mini">.'.${'team'.$team_a.'_score'}.'</span></td>';
 	if( $blind) echo '<span style="color:#'.$teamc[$team_a].'" class="team_point_mini">.?????</span></td>';
 
@@ -416,8 +426,18 @@
 		echo '<tr><td colspan="4" glot-model="main_limited_noplayer">(まだ参加者がいません)</td></tr>';
 	}
 	echo '</table>';
-
 	echo '<td style="width:20%;text-align:center;vertical-align:top;'.$background_color.'">';
+
+	// エリア踏破制の場合は陣地の数を計算する
+	$areacount = 0;
+	$flag = '';
+	$limcount = array_search($stage_id, $limited_stage_list);
+	$sql = "SELECT * FROM `area` WHERE `lim` = '$limcount' AND `flag` = 4";
+	$result = mysqli_query($mysqlconn, $sql);
+	$areacount = mysqli_num_rows($result);
+	if($areacount > 0){
+		echo '<span style="color:#'.$teamc[$team_b].';" class="team_point">'.$areacount.'</span><hr style="height:3px;border:none;background-color:#'.$teamc[$team_b].';">';
+	}
 	echo '<span style="color:#'.$teamc[$team_b].'" class="team_point">'.${'rps'.$team_b}.'</span>';
 	echo '<br>';
 	if(!$blind) echo '<span style="color:#'.$teamc[$team_b].'" class="team_point_mini">.'.${'team'.$team_b.'_score'}.'</span></td>';
@@ -437,7 +457,7 @@
 		foreach($row_output as $output)	echo $output."\n";
 		echo '</table></div></div>';
 	}
-
+	echo '<div class="pc-hidden" style="width:100%;height:80px;"> </div>';
 	if($stage_id == 200723 or $stage_id == 200918) echo '</div>';
 
 	$show_scoretable = 0;
