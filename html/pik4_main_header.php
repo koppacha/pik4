@@ -112,6 +112,8 @@ elseif ( $page_type == 18		    ) $page_header = '<div class="rtd_main"><div clas
 elseif ( $page_type == 19		    ) $page_header = '<div class="rtd_main"><div class="rtd_head"><span glot-model="main_head_limited">◆期間限定ランキング</span> <br><h1 class="rtd_stage_caption">'.$fixed_stage_title.'</h1>' ;
 elseif ( $page_type == 20		    ) $page_header = '<div class="rtd_main"><div class="rtd_head"><span glot-model="main_head_single">◆記録個別ページ</span> <br><h1 class="rtd_stage_caption">ID:'.$stage_id.'</h1>' ;
 elseif ( $page_type == 21		    ) $page_header = '<div class="rtd_main"><div class="rtd_head"><span glot-model="main_head_userplan">◆参加者企画</span> <br><h1 class="rtd_stage_caption">'.$fixed_stage_title.'</h1>' ;
+elseif ( $page_type == 22		    ) $page_header = '<div class="rtd_main"><div class="rtd_head"><span glot-model="main_head_solobattle">◆ソロバトルRTA</span> <br><h1 class="rtd_stage_caption">'.$fixed_stage_title.'</h1>' ;
+elseif ( $page_type == 23		    ) $page_header = '<div class="rtd_main"><div class="rtd_head"><span glot-model="main_head_solobingo">◆ソロビンゴRTA</span> <br><h1 class="rtd_stage_caption">'.$fixed_stage_title.'</h1>' ;
 elseif ( $stage_id   > 6 AND $stage_id < 100) $page_header = '<div class="rtd_main"><div class="rtd_head"><span glot-model="main_head_total">◆総合ランキング</span> <br><h1 class="rtd_stage_caption">'.$array_stage_title[$stage_id].'</h1>' ;
 elseif ( $stage_id  == 9     		    ) $page_header = '<div class="rtd_main"><div class="rtd_head"><span glot-model="main_head_total">◆総合ランキング</span> <br><h1 class="rtd_stage_caption">'.$array_stage_title[9].'</h1>' ;
 else     $show_scoretable = 0;
@@ -196,6 +198,8 @@ if ( $page_type == 16 ) $sql = "SELECT * FROM `battle` WHERE `stage_id` = '$stag
 if ( $page_type == 17 ) $sql = "SELECT * FROM `battle` ORDER BY `post_id` DESC";
 if ( $page_type == 19 ) $sql = "SELECT * FROM `ranking` WHERE `stage_id` = '$stage_id' AND `log` = 0 ORDER BY `score` DESC,`post_date` ASC";
 if ( $page_type == 20 ) $sql = "SELECT * FROM `ranking` WHERE `unique_id` = '$stage_id' ORDER BY `score` DESC,`post_date` ASC";
+if ( $page_type == 22 ) $sql = "SELECT * FROM `ranking` WHERE `stage_id` = '$stage_id' AND `log` = 0 ORDER BY `score` ASC,`post_date` ASC";
+if ( $page_type == 23 ) $sql = "SELECT * FROM `ranking` WHERE `stage_id` = '$stage_id' AND `log` = 0 ORDER BY `score` ASC,`post_date` ASC";
 
 // 履歴表示クエリ（優先度2）
 if ( $season_data == 2 ) $sql = "SELECT * FROM `ranking` WHERE `stage_id` = '$stage_id' AND `log` < 2 AND `season` = '$season' ORDER BY `score` DESC,`post_date` ASC";
@@ -344,6 +348,8 @@ if ( $page_type == 18) $page_row .= '<span class="user_info ui_all"><span glot-m
 if ( $page_type == 19) $page_row .= '<span class="user_info ui_all"><span glot-model="main_playercount">参加人数</span>：'.$rows_count.'<span glot-model="tail_nin">人</span></span>'.$echo_average ;
 if ( $page_type == 13) $page_row .= '<span class="user_info ui_all"><span glot-model="main_playercount">参加人数</span>：'.$rows_count.'<span glot-model="tail_nin">人</span></span>'.$echo_average ;
 if ( $page_type == 21) $page_row .= '<span class="user_info ui_all"><span glot-model="main_playercount">参加人数</span>：'.$rows_count.'<span glot-model="tail_nin">人</span></span>'.$echo_average ;
+if ( $page_type == 22) $page_row .= '<span class="user_info ui_all"><span glot-model="main_playercount">参加人数</span>：'.$rows_count.'<span glot-model="tail_nin">人</span></span>'.$echo_average ;
+if ( $page_type == 23) $page_row .= '<span class="user_info ui_all"><span glot-model="main_playercount">参加人数</span>：'.$rows_count.'<span glot-model="tail_nin">人</span></span>'.$echo_average ;
 
 // ユーザープロフィールを表示
 if($page_type == 5){

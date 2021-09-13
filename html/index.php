@@ -79,8 +79,10 @@ elseif ( $stage_id >    5047 and $stage_id <      5079 ) $page_type = 3; // 特�
 elseif ( $stage_id >    4017 and $stage_id <     10001 ) $page_type =98; // 無効
 elseif ( $stage_id >   10000 and $stage_id <     10205 ) $page_type = 7; // 特殊ランキング (本編RTA)
 elseif ( $stage_id >   10204 and $stage_id <     10215 ) $page_type =14; // 特殊ランキング（チャレンジ複合）
-elseif ( $stage_id >   10214 and $stage_id <     10300 ) $page_type =98; // 無効
-elseif ( $stage_id >   10299 and $stage_id <     10400 ) $page_type = 7; // 特殊ランキング (ピクミン3)
+elseif ( $stage_id >   10214 and $stage_id <     10225 ) $page_type =22; // 特殊ランキング（ソロバトル）
+elseif ( $stage_id >   10224 and $stage_id <     10300 ) $page_type =98; // 無効
+elseif ( $stage_id >   10299 and $stage_id <     10303 ) $page_type = 7; // 特殊ランキング (ピクミン3)
+elseif ( $stage_id >   10302 and $stage_id <     10315 ) $page_type =23; // 特殊ランキング（ソロビンゴ）
 elseif ( $stage_id >   10399 and $stage_id <    151101 ) $page_type =98; // 無効
 elseif ( $stage_id >  151100 and $stage_id <    211232 ) $page_type = 6; // 総合ランキング（期間限定ランキング)
 elseif ( $stage_id >  211231 and $stage_id < 100000000 ) $page_type =98; // エラー
@@ -371,8 +373,8 @@ if($_SESSION['debug_mode']){
 	echo '</table>';
 }
 	// ページタイプによるdiv調整まずはここを試す
-	if($page_type != 21) echo '</div>';
-	if($page_type ==  1 or $page_type ==  3 or $page_type ==  4 or $page_type == 5 or $page_type == 7 or $page_type == 8 or $page_type == 10 or $page_type == 11 or $page_type ==  12 or $page_type ==  14 or $page_type ==  16 or $page_type ==  18 or $page_type == 19) echo '</div>';
+	if($page_type != 21 and $page_type != 22 and $page_type != 23) echo '</div>';
+	if($page_type == 1 or $page_type ==  3 or $page_type ==  4 or $page_type == 5 or $page_type == 7 or $page_type == 8 or $page_type == 10 or $page_type == 11 or $page_type ==  12 or $page_type ==  14 or $page_type ==  16 or $page_type ==  18 or $page_type == 19) echo '</div>';
 
 require_once('pik4_menu.php'); // メニュー画面読み込み
 require_once('pik4_form.php'); // フォーム画面読み込み

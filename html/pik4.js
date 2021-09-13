@@ -1642,3 +1642,10 @@ $(function(){
 		$(".pik4_table").removeClass('mainblur');
 	});
 });
+// 先頭へボタンの挙動
+$(function(){
+	$('#toplink').click(function(){
+		$('body, html').animate({ scrollTop: 0 }, 500);
+		return false;
+	})
+});

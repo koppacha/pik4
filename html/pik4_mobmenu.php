@@ -1,6 +1,6 @@
 <!--/ 携帯用メニューここから /-->
 <div id="mobile_fixed_key1" class="pc-hidden mobile_fixed">
-	<A href="#top">
+	<A href="#" id="toplink">
 		<i class="mfoot fa fa-arrow-up" aria-hidden="true"></i><span glot-model="mobile-menu1">先頭へ</span>
 	</A>
 </div>
@@ -28,7 +28,7 @@ if($page_type == 0 or $page_type == 1 or $page_type == 2 or $page_type == 5 or $
 if($cookie_name == ''){
 	echo '<A href="./"><i class="mfoot fas fa-home" aria-hidden="true"></i><span glot-model="mobile-menu5">トップページ</span></A>';
 } else {
-	echo '<A href="./<?php $cookie_name; ?>"><i class="mfoot fas fa-user-alt" aria-hidden="true"></i><span glot-model="mobile-menu4">マイページ</span></A>';
+	echo '<A href="./'.$cookie_name.'"><i class="mfoot fas fa-user-alt" aria-hidden="true"></i><span glot-model="mobile-menu4">マイページ</span></A>';
 }
 ?>
 </div>

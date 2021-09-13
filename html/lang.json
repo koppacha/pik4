@@ -1087,6 +1087,14 @@
 "ja": "◆参加者企画",
 "en": "◆ Participant planning"
 },
+"main_head_solobattle":{
+"ja": "◆ソロバトルRTA",
+"en": "◆ Solo Battle RTA"
+},
+"main_head_solobingo":{
+"ja": "◆ソロビンゴRTA",
+"en": "◆ Solo Bingo RTA"
+},
 "main_head_total":{
 "ja": "◆総合ランキング",
 "en": "◆ Overall ranking"

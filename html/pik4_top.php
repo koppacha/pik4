@@ -16,22 +16,6 @@ if( $page_type == 0 ){
 		}
 	}
 ?>
-<!--/ 携帯表示用スライドショー (→ver.2.30で廃止) /-->
-   <div id="headImage" class="pc-hidden">
-	      <ul>
-<?php
-		if($vsa_shuffle){
-			$p = 1;
-			foreach($video_src_array as $val){
-				echo '<li><img src="https://chr.mn/_img/pik4/'.$val.'.jpg" alt="" /></li>'."\n";
-				$p++;
-			}
-		} else {
-//			echo ' <br>Error '.__LINE__.'：スライドショーの再生に失敗しました。';
-		}
-?>
-	      </ul>
-	   </div><!-- /#headImage -->
 <div id="top_page_div" class="mobile-hidden">
 <span class="top_sub_title" glot-model="main_sub_title">本家ブログ11周年企画 by @koppachappy</span> <br>
 <span class="top_title" glot-model="main_title">ピクミンシリーズチャレンジモード大会</span> <br>
@@ -88,5 +72,42 @@ Today: <Img src="https://chr.mn/_cgi/dayx_pik4_cha/dayx.cgi?today">
 Yesterday: <Img src="https://chr.mn/_cgi/dayx_pik4_cha/dayx.cgi?yes">
 </div>
 <div id="video_info" class="mobile-hidden"> </div>
+
+<!--/ 携帯版トップページ /-->
+<div id="headImage" class="pc-hidden">
+	<span class="top_sub_title" glot-model="main_sub_title">本家ブログ11周年企画 by @koppachappy</span> <br>
+	<span class="top_title" glot-model="main_title">ピクミンシリーズチャレンジモード大会</span> <br>
+	<span class="top_sub_title" glot-model="main_eng_title">The Leaderboards of Pikmin Series Challenge & Mission Mode</span> <br>
+	<span class="top_content">
+	<ul class="nav mobnav">
+		<li><A href="./ピクチャレ大会へようこそ"><span glot-model="main_welcome">ようこそ</span></A></li>
+		<li><A href="./1"><?= $array_stage_title_fixed[1] ?></A></li>
+		<li><A href="./7"><?= $array_stage_title_fixed[7] ?></A></li>
+		<li><A href="./9"><?= $array_stage_title_fixed[9] ?></A></li>
+		<li><A href="./8"><?= $array_stage_title_fixed[8] ?></A></li>
+		<li><A href="./10"><?= $array_stage_title_fixed[10] ?></A></li>
+		<li><A href="./20"><?= $array_stage_title_fixed[20] ?></A></li>
+		<li><A href="./21"><?= $array_stage_title_fixed[21] ?></A></li>
+		<li><A href="./22"><?= $array_stage_title_fixed[22] ?></A></li>
+		<li><A href="./23"><?= $array_stage_title_fixed[23] ?></A></li>
+		<li><A href="./24"><?= $array_stage_title_fixed[24] ?></A></li>
+		<li><A href="./25"><?= $array_stage_title_fixed[25] ?></A></li>
+		<li><A href="./26"><?= $array_stage_title_fixed[26] ?></A></li>
+		<li><A href="./28"><?= $array_stage_title_fixed[28] ?></A></li>
+		<li><A href="./30"><?= $array_stage_title_fixed[30] ?></A></li>
+		<li><A href="./31"><?= $array_stage_title_fixed[31] ?></A></li>
+		<li><A href="./32"><?= $array_stage_title_fixed[32] ?></A></li>
+		<li><A href="./33"><?= $array_stage_title_fixed[33] ?></A></li>
+		<li><A href="./34"><?= $array_stage_title_fixed[34] ?></A></li>
+		<li><A href="./35"><?= $array_stage_title_fixed[35] ?></A></li>
+		<li><A href="./36"><?= $array_stage_title_fixed[36] ?></A></li>
+		<li><A href="./91"><?= $array_stage_title_fixed[91] ?></A></li>
+		<li><A href="./26"><?= $array_stage_title_fixed[26] ?></A></li>
+		<li><A href="./92"><?= $array_stage_title_fixed[92] ?></A></li>
+		<li><A href="./93"><?= $array_stage_title_fixed[93] ?></A></li>
+		<li><A href="./94"><?= $array_stage_title_fixed[94] ?></A></li>
+	</ul>
+	<div class="pc-hidden" style="width:100%; height:60px;"> </div>
+</div>
 <?php
 }

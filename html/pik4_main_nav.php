@@ -1,5 +1,5 @@
 <?php
-if($page_type != 1 and $page_type != 9 and $page_type != 15){
+if($page_type != 0 and $page_type != 1 and $page_type != 9 and $page_type != 15){
 // 総合ナビゲーションテーブルのロック機構
 if(isset($_COOKIE["navlock"])){
 	$lock_icon_def= ($_COOKIE["navlock"] == 1)? '<i class=" fa fa-lock" ></i><span glot-model="main_navlock_on">ナビゲーションロック中</span></a>' : '<i class=" fa fa-unlock" ></i><span glot-model="main_navlock_off">ナビゲーションロック解除中</span></a>';

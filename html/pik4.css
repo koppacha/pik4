@@ -948,12 +948,13 @@ body {
 	color:#aaaaaa;
 	font-size:1.12em;
 	text-shadow:0px 2px 8px #000000;
+	text-align: center;
 }
 .top_title {
 	color:#ffffff;
-	font-size:2.44em;
+	font-size:5.3vw;
 	line-height:98%;
-	text-shadow:0px 0px 8px #c9ff0a;
+	text-shadow:0px 0px 8px #ffffff;
 }
 .top_content {
 	color:#ffffff;
@@ -967,13 +968,7 @@ body {
 	margin-top:4em;
 }
 #top_wrapper {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-image:url(https://chr.mn/_img/pik4/videomask.png);
-	z-index: -3;
+	display: none;
 }
 #video_mask {
 	display:none;
@@ -1567,7 +1562,7 @@ a:link, a:visited {
 }
 .scroll-wrap{
 	overflow: auto;
-	white-space: nowrap;
+	/* white-space: nowrap; */
 }
 .scroll-wrap::-webkit-scrollbar{
 	height: 5px;
@@ -1786,6 +1781,14 @@ a:link, a:visited {
 	color		:#ffffff;
 	margin-top	:1.5em;
 	font-size	:1.2em;
+}
+.mobnav li {
+	line-height: 2.5em;
+	text-align: center;
+	font-weight: bold;
+}
+.mobnav li a {
+	color: #fff;
 }
 .pik4_scoretab a {
 	color		:#ffffff;
@@ -2027,30 +2030,8 @@ line-height:1.5em;margin-left:0.5em;border:dotted 1px #ffffff;background-color:t
 }
 /* 携帯スライドショー */
 #headImage {
-    overflow:hidden;
-    position:fixed;
-    top:0;
-    left:0;
-    width:640px;
-    z-index:-2;
-}
-
-#headImage ul {
-    margin:0;
-    padding:0;
-    width:100%;
-}
-
-#headImage li {
-    position:absolute;
-    margin:0;
-    padding:0;
-    width:100%;
-    background:#fff;
-    list-style:none;
-}
-#headImage img {
-    width:640px;
+    width: 100%;
+    background-color: #333;
 }
 .team_0 {
 	font-size	:0.8em;
