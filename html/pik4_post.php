@@ -734,7 +734,7 @@ if (@$_POST['check_send']) {
 				}
 			}
 			if ($ranking_type == "story"){
-				if( $stage_id > 10204 and $stage_id < 10215){
+				if( ($stage_id > 10204 and $stage_id < 10225) or ($stage_id > 10302 and $stage_id < 10315)){
 					if ( $user_name =="" OR $password =="" OR $stage_id =="" OR $console =="" OR $story_rtahour == "" OR $story_rtamin == "" OR $story_rtasec == ""){
 							$new_entry = 0;
 							echo " <br>Error ".__LINE__."：必須項目が入力されていません。";
@@ -2041,6 +2041,7 @@ if (@$_POST['check_send']) {
 					total_score_calc("`ranking`", "total_tas", "`stage_id` BETWEEN 5048 AND 5077", "score", $user_name);
 					total_score_calc("`ranking`", "total_diary", "`stage_id` BETWEEN 245 AND 274", "score", $user_name);
 					total_score_calc("`ranking`", "total_story", "`stage_id` IN(10101,10201,10202,10203,10204,10301,10302)", "rps", $user_name);
+					total_score_calc("`ranking`", "total_solobb", "`stage_id` IN(10215,10216,10217,10218,10219,10220,10221,10222,10223,10224,10303,10304,10305,10306,10307,10308,10309,10310,10311,10312,10313,10314)", "rps", $user_name);
 					total_score_calc("`ranking`", "total_mix", "`stage_id` BETWEEN 10205 AND 10214", "rps", $user_name);
 					total_score_calc("`ranking`", "total_pik3cha", "(`stage_id` BETWEEN 301 AND 336 OR `stage_id` BETWEEN 349 AND 362)", "score", $user_name);
 					total_score_calc("`ranking`", "total_pik3ct", "`stage_id` IN(301,302,303,304,305,317,318,319,320,321,327,328,329,330,331)", "score", $user_name);

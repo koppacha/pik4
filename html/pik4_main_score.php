@@ -211,6 +211,7 @@ while ($row = mysqli_fetch_assoc($result) ){
 		if ( $stage_id == 93 ) $score_hook = $row["total_story"] ;
 		if ( $stage_id == 94 ) $score_hook = $row["total_mix"] ;
 		if ( $stage_id == 95 ) $score_hook = $row["battle_rate"] ;
+		if ( $stage_id == 96 ) $score_hook = $row["total_solobb"] ;
 		if ( $stage_id == 98 ) $score_hook = $row["post_count"] ;
 		if ( $stage_id == 99 ) $score_hook = $row["minites_count"] ;
 		if ( $stage_id == 190209 ) $score_hook = $row["total_uplan001rps"] ;
@@ -858,6 +859,7 @@ while ($row = mysqli_fetch_assoc($result) ){
 		if($stage_id == 93) $comm_sel = "IN(10101,10201,10202,10203,10204,10301,10302)";
 		if($stage_id == 94) $comm_sel = "BETWEEN 10205 AND 10214";
 		if($stage_id == 95) $comm_sel = "IN(275,276,277,278,279,280,281,282,283,284,337,338,339,340,341,342,343,344,345,346,347,348)";
+		if($stage_id == 96) $comm_sel = "IN(10215,10216,10217,10218,10219,10220,10221,10222,10223,10224,10303,10304,10305,10306,10307,10308,10309,10310,10311,10312,10313,10314)";
 		if($stage_id == 98) $comm_sel = "IN(100)";
 		if($stage_id == 99) $comm_sel = "IN(100)";
 		if($stage_id == 190209) $comm_sel = "BETWEEN 4001 AND 4030";
@@ -1049,6 +1051,8 @@ while ($row = mysqli_fetch_assoc($result) ){
 		$score_int   = floor($row["battle_rate"]);
 		$score_deci  = sprintf('%03d', round(($score_float - $score_int) * 1000, 0));
 		$show_score = $score_int.'<span class="score_tale">.'.$score_deci.'</span>';
+	} elseif ($stage_id == 96 ){
+		$show_score = number_format( $row["total_solobb"] );
 	} elseif ($stage_id == 98 ){
 		$show_score = number_format( $row["post_count"] );
 	} elseif ($stage_id == 99 ){

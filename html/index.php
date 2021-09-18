@@ -99,7 +99,7 @@ if($page_type == 6 and strpos($limited_type[$stage_id], 'u') !== false) $page_ty
 // 有効ステージ名かどうかを判定
 // 廃止中の特殊ステージID（以下に追記して復活）…4（カスタムリスト）/ 5（全ステージ一覧）
 if($page_type != 5 and $page_type != 9 and $page_type != 0 and $page_type !=10 and $page_type !=13 and $page_type !=15 and $page_type != 20 and $page_type != 99){
-	$stage_array =array(1, 2, 3, 6, 7, 8, 9, 10, 20, 21, 22, 23, 24, 25, 26, 27, 28, 30, 31, 32, 33, 34, 35, 36, 81, 82, 91, 92, 93, 94, 95, 98, 99); // あらかじめ除外するステージID
+	$stage_array =array(1, 2, 3, 6, 7, 8, 9, 10, 20, 21, 22, 23, 24, 25, 26, 27, 28, 30, 31, 32, 33, 34, 35, 36, 81, 82, 91, 92, 93, 94, 95, 96, 98, 99); // あらかじめ除外するステージID
 	$sql = "SELECT * FROM `stage_title`";
 	$result = mysqli_query($mysqlconn, $sql);
 	if($result){

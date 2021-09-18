@@ -11,7 +11,7 @@ echo $lock_icon_def.'</div>';
 
 // 総合ナビゲーションテーブル
 	echo '<div class="scroll-wrap" style="clear:both;"><table class="series_nav" style="margin-top:1em;"><tr>';
-		$series_nav_output = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 21, 22, 30, 31, 32, 33, 36, 91, 26, 28, 92, 93, 94, 24, 34, 95);
+		$series_nav_output = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 21, 22, 30, 31, 32, 33, 36, 91, 26, 28, 92, 93, 96, 94, 24, 34);
 		$i = 1;
 		if($stage_id < 101) $stage_hook = $stage_id;
 		foreach($series_nav_output as $val){
@@ -45,8 +45,8 @@ echo $lock_icon_def.'</div>';
 		if($val == 5) echo '<td colspan="3"><b><A href="./20">'.$array_stage_title_fixed[20].'</A></b></td>';
 		if($val == 6) echo '<td colspan="5"><b><A href="./30"><span glot-model="main_nav_pik3anddx">ピクミン3/デラックス</span></A></b></td>';
 		if($val == 7) echo '<td colspan="4"><b><span glot-model="main_nav_anomaly">変則ルール</span></b></td>';
-		if($val == 8) echo '<td colspan="2"><b><A href="./23"><span glot-model="main_nav_storyandrta">本編/RTA</span></A></b></td>';
-		if($val == 9) echo '<td colspan="3"><b><A href="./6"><span glot-model="main_nav_2p">2Pプレイ</span></b></td>';
+		if($val == 8) echo '<td colspan="3"><b><A href="./23"><span glot-model="main_nav_storyandrta">本編/RTA</span></A></b></td>';
+		if($val == 9) echo '<td colspan="2"><b><A href="./6"><span glot-model="main_nav_2p">2Pプレイ</span></b></td>';
 		if($val ==10) echo '<td class="navmenu" id="nv8"'.$style.' rowspan="2"><b><A'.$color.' href="./8">'.$array_stage_title_fixed[8].'</A></b></td></tr><tr>';
 		}
 		$i++;
@@ -561,6 +561,8 @@ topscore_board_tab("rate",  range(337, 348), $stage_id, 95, 9999);
 topscore_board_tab2(array(10101, 10201, 10202, 10301, 10302, 10203, 10204), 93);
 topscore_board_tab2(range(231, 244), 93);
 topscore_board_tab2(range(10205, 10214), 94);
+topscore_board_tab2(range(10215, 10224), 96);
+topscore_board_tab2(range(10303, 10314), 96);
 
 if(!$mysql_mode) loadtime_calc(__LINE__);
 

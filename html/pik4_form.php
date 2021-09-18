@@ -421,7 +421,11 @@ foreach($today_challenge as $val){
 <select type="text" name="story_stage_id" onchange="SetSubMenu(value);SetSubMenu2(value);echostage('ranking_evidence', value, 'score', 'my_best');">
 <?php
 // 本編ランキング選択
-	$stage_output = array(10101, 10201, 10202, 10203, 10204, 10205, 10206, 10207, 10208, 10209, 10210, 10211, 10212, 10213, 10214, 10301, 10302);
+	$stage_output = array();
+	$stage_output1 = array(10101);
+	$stage_output2 = range(10201, 10224);
+	$stage_output3 = range(10301, 10314);
+	$stage_output  = array_merge($stage_output1, $stage_output2, $stage_output3);
 	foreach($stage_output as $sel){
 		$sel_key = '';
 		if($url_stage_id == $sel) $sel_key = ' selected="selected"';
@@ -469,9 +473,9 @@ foreach($array_console_long as $key => $sel){
 	$sel_key = '';
 	$hid_key = '';
 	if($key == 1){
-//		if($stage_cat == 30) $hid_key = ' hidden';
+		if($series_cat == 3) $hid_key = ' hidden';
 	} elseif($key >= 3){
-		if($stage_cat != 30) $hid_key = ' hidden';
+		if($series_cat != 3) $hid_key = ' hidden';
 	}
 	if($cookie_console == $key) $sel_key = ' selected="selected"';
 	echo '<option value="'.$key.'"'.$sel_key.$hid_key.'>'.$sel.'</option>';
@@ -495,9 +499,9 @@ foreach($array_console_long as $key => $sel){
 	$sel_key = '';
 	$hid_key = '';
 	if($key == 1){
-		if($stage_cat == 30) $hid_key = ' hidden';
+		if($series_cat == 3) $hid_key = ' hidden';
 	} elseif($key >= 3){
-		if($stage_cat != 30) $hid_key = ' hidden';
+		if($series_cat != 3) $hid_key = ' hidden';
 	}
 	if($cookie_console == $key) $sel_key = ' selected="selected"';
 	echo '<option value="'.$key.'"'.$sel_key.$hid_key.'>'.$sel.'</option>';
@@ -612,20 +616,21 @@ foreach($array_console_long as $key => $sel){
 <input type="radio" name="story_rta" value="2" /> クリアタイム |
 </span>
 /-->
-<b glot-model="form_score_basescore">基本スコア</b> <br>
+<hr size="1" />
+<i class="fa fa-trophy"></i><b glot-model="form_score_basescore">基本スコア</b> <br>
 <div id="notice1" <?php $sel=( $url_stage_id > 10000 and $url_stage_id < 10200 )? '' : 'style="display:none;"'; ?> <?php echo $sel; ?> > </div>
 <div id="notice2" <?php $sel=( $url_stage_id > 10199 and $url_stage_id < 10215 )? '' : 'style="display:none;"'; ?> <?php echo $sel; ?> ><span style="color:#777777;" glot-model="form_score_cleartime_caution">(＊クリアタイムのみ投稿の場合、秒数には「0」を入力してください)</span></div>
 <div style="float:left;">
-<div id="story_day" <?php $sel=( $url_stage_id > 10204 and $url_stage_id < 10215 )? 'style="display:none;"' : 'style="float:left;"'; ?> <?php echo $sel; ?> >
+<div id="story_day" <?php $sel=( ($url_stage_id > 10204 and $url_stage_id < 10225) or ($url_stage_id > 10302 and $url_stage_id < 10315) )? 'style="display:none;"' : 'style="float:left;"'; ?> <?php echo $sel; ?> >
 <span glot-model="form_score_days">クリア日数 <input type="tel" class="sbc_field" name="story_daycount" style="font-size:2em;margin:0;width:2em;ime-mode:disabled;"  pattern="^[0-9]+$" value="" maxlength='3' /><span glot-model="form_score_day">日</span>
- / </div><div id="story_correct" <?php $sel=( $url_stage_id > 10199 and $url_stage_id < 10300 )? 'style="display:none;"' : 'style="float:left;"'; ?> <?php echo $sel; ?> >
+ / </div><div id="story_correct" <?php $sel=( ($url_stage_id > 10199 and $url_stage_id < 10300) or ($url_stage_id > 10302 and $url_stage_id < 10315) )? 'style="display:none;"' : 'style="float:left;"'; ?> <?php echo $sel; ?> >
  <span glot-model="form_score_collect">回収数</span> <input type="tel" class="sbc_field" name="story_correct" style="font-size:2em;margin:0;width:2em;ime-mode:disabled;"  pattern="^[0-9]+$" value="" maxlength='3' /><span glot-model="form_score_piece">個</span>
  / </div><div style="float:left;">
 <span glot-model="form_score_hour">時間</span> <input type="tel" class="sbc_field" name="story_rtahour" style="font-size:2em;margin:0;width:1em;ime-mode:disabled;"  pattern="^[0-9]+$" value="" maxlength='3' />:
 <input type="tel" class="sbc_field" name="story_rtamin"  style="font-size:2em;margin:0;width:1.5em;ime-mode:disabled;"  pattern="^[0-9]+$" value="" maxlength='2' />:
 <input type="tel" class="sbc_field" name="story_rtasec"  style="font-size:2em;margin:0;width:1.5em;ime-mode:disabled;"  pattern="^[0-9]+$" value="" maxlength='2' />
 </div><br style="clear:both;" />
-<div id="story_pikmin" <?php $sel=( $url_stage_id > 10204 and $url_stage_id < 10215 )? 'style="display:none;"' : 'style="float:left;"'; ?> <?php echo $sel; ?> >
+<div id="story_pikmin" <?php $sel=( ($url_stage_id > 10204 and $url_stage_id < 10225) or ($url_stage_id > 10302 and $url_stage_id < 10315) )? 'style="display:none;"' : 'style="float:left;"'; ?> <?php echo $sel; ?> >
 <b glot-model="form_score_totalpikmin">増やした数</b> <span glot-model="form_score_total">合計</span>：<span id="total_pikmin">0</span> <br>
 <div id="notice3" <?php $sel=( $url_stage_id > 10299 and $url_stage_id < 10400 )? '' : 'style="display:none;"'; ?> <?php echo $sel; ?> ><span style="color:#777777;" glot-model="form_score_total_caution">(＊「増やした数」は「残ったピクミン」と「死んだピクミン」の合算です)</span></div>
 <span style="float:left;">

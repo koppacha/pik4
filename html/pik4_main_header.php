@@ -29,7 +29,34 @@ if (isset($stage_row["parent"]) and $stage_row["parent"] != 0){
 } else {
         $stage_hook = 0;
 }
-
+// 親カテゴリからシリーズを算出
+$series_cat = 0;
+if(floor($stage_cat / 10) == 1){
+        $series_cat = 1; // 通常ランキングのピクミン1
+} elseif(floor($stage_cat / 10) == 2){
+        $series_cat = 2; // 通常ランキングのピクミン2、本編地下、2Pバトル、タマゴムシ縛り、スプレー等縛り、2Pモード、ソロバトル
+} elseif(floor($stage_cat / 10) == 3){
+        $series_cat = 3; // 通常ランキングのピクミン3、2Pモード、サイドストーリー、ビンゴバトル、ソロビンゴ
+} elseif($stage_cat == 81){
+        $series_cat = 2; // 実機無差別級
+} elseif($stage_cat == 82){
+        $series_cat = 2; // TAS
+} elseif($stage_cat == 91){
+        $series_cat = 2; // 期間限定（★一部ピクミン1が混在するが許容範囲。ただしピクミン3には非対応）
+} elseif($stage_cat == 92){
+        $series_cat = 2; // 日替わり
+} elseif($stage_cat == 93){
+        if(floor($stage_id / 100) == 101) $series_cat = 1; // ピクミン1本編RTA
+        if(floor($stage_id / 100) == 102) $series_cat = 2; // ピクミン2本編RTA
+        if(floor($stage_id / 100) == 103) $series_cat = 3; // ピクミン3本編RTA
+} elseif($stage_cat == 94){
+        $series_cat = 2; // チャレンジ複合
+} elseif($stage_cat == 96){
+        if(floor($stage_id / 100) == 102) $series_cat = 2; // ソロバトルRTA
+        if(floor($stage_id / 100) == 103) $series_cat = 3; // ソロビンゴRTA
+} else {
+        $series_cat = 0;
+}
 // 過去のチーム対抗にアクセスしている場合はチーム色の定義を変える（本体部の後ろまで有効）
 if(isset($limited_stage_list[$limited_num]) || $limited_num == 0){
         // 未定義エラー回避不能のためエラー制御演算子でカバー
@@ -249,6 +276,7 @@ if ( $stage_id  == 92 ) $sql = "SELECT * FROM `user`  WHERE `total_diary` != 0 O
 if ( $stage_id  == 93 ) $sql = "SELECT * FROM `user`  WHERE `total_story` != 0 ORDER BY `total_story` DESC";
 if ( $stage_id  == 94 ) $sql = "SELECT * FROM `user`  WHERE `total_mix` != 0 ORDER BY `total_mix` DESC";
 if ( $stage_id  == 95 ) $sql = "SELECT * FROM `user`  WHERE `battle_rate` != 0 ORDER BY `battle_rate` DESC";
+if ( $stage_id  == 96 ) $sql = "SELECT * FROM `user`  WHERE `total_solobb` != 0 ORDER BY `total_solobb` DESC";
 if ( $stage_id  == 98 ) $sql = "SELECT * FROM `user`  WHERE `post_count` != 0 ORDER BY `post_count` DESC";
 if ( $stage_id  == 99 ) $sql = "SELECT * FROM `minites`  WHERE `minites_count` != 0 ORDER BY `minites_count` DESC";
 //	if ( $stage_id == 299  ) $sql = "SELECT * FROM `ranking` WHERE `stage_id` = '$stage_id' AND `log` = 0 ORDER BY `score` DESC";
@@ -370,7 +398,7 @@ echo $page_row;
 if ($page_type == 5 ) {
         // 順位を取得する項目を配列に格納
         //	$array_select_rank = array("total_rps", "total_pik1cha", "total_pik2cha", "total_pik2egg", "total_pik2noegg", "total_pik3cha", "total_pik3ct", "total_pik3be", "total_pik3db", "post_count", "total_pik2cave", "total_diary", "total_lim");
-        $array_select_rank = array("total_rps", "total_pik1cha", "total_pik2cha", "total_pik2egg", "total_pik2noegg", "total_pik3cha", "total_pik3ct", "total_pik3be", "total_pik3db", "total_pik3ss", "total_limited000", "total_new", "total_new2", "total_diary", "total_story", "total_mix", "total_pik2_2p", "total_pik3_2p","battle_rate","total_sp");
+        $array_select_rank = array("total_rps", "total_pik1cha", "total_pik2cha", "total_pik2egg", "total_pik2noegg", "total_pik3cha", "total_pik3ct", "total_pik3be", "total_pik3db", "total_pik3ss", "total_limited000", "total_new", "total_new2", "total_diary", "total_story","total_solobb","total_mix", "total_pik2_2p", "total_pik3_2p","total_sp");
         foreach ( $array_select_rank as $val){
                 $rank_sql = "SELECT *, (SELECT COUNT(*) + 1 FROM `user` b WHERE b.$val > a.$val) AS `ranking` FROM `user` a WHERE `user_name` = '$user_name';";
                 $rank_result = mysqli_query($mysqlconn, $rank_sql);
