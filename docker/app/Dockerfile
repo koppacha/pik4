@@ -45,3 +45,8 @@ FROM php:7.3-apache
     "post_max_size = 500M\n" \
     "max_execution_time = 600\n" \
     > /usr/local/etc/php/conf.d/uploads.ini
+
+# apache.confの追加設定
+  RUN touch /etc/apache2/sites-enabled/my-httpd.conf
+  RUN echo "ServerName localhost:80\n" \
+  > /etc/apache2/sites-enabled/my-httpd.conf
