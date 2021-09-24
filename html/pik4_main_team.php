@@ -2,15 +2,18 @@
 	$team1_win = 0;		// 左チームの勝利数
 	$team2_win = 0;		// 右チームの勝利数
 	$compare_score = 0;	// スコア差
+	$area_team_flag = 0;	// チーム対抗戦の場合はON
 	${'team'.$team_a.'_score'} = 0;	// 左チームの合計スコア
 	${'team'.$team_b.'_score'} = 0;	// 右チームの合計スコア
 
+	if($stage_id == 200723 or $stage_id == 200918 or $stage_id == 211022) $area_team_flag = 1;
+	
 	// スコアテーブル本体
 	$table_row_num = 1;
 	${'rps'.$team_a} = 0;
 	${'rps'.$team_b} = 0;
 	$array_count = count(${'limited'.$stage_id});
-	if($page_type == 10 or $stage_id == 200723 or $stage_id == 200918){
+	if($page_type == 10 or $area_team_flag == 1){
 		foreach(${'limited'.$stage_id} as $get_limstage){
 			$get_stage_title = $array_stage_title[$get_limstage];
 			$get_stage_title2= str_replace('#',' <br>', $get_stage_title);
@@ -162,7 +165,7 @@
 		}
 	}
 	// 少数チームへのハンディキャップを処理
-	if($stage_id == 200723 or $stage_id == 200918){
+	if($area_team_flag == 1){
 		// 第15回は処理しない
 
 	} elseif($stage_id == 170101){
@@ -179,7 +182,7 @@
 	}
 	// ハンディキャップ点数を計算	[第7回：１ステージ分のボーナス＝整数1から参加者数Nまでの和の平均に等しい数 ]
 	// 				[第8回：全ステージ分のボーナス＝各チーム投稿数の差分の絶対値×参加者数の半数切り上げ]
-	if($stage_id == 200723 or $stage_id == 200918){
+	if($area_team_flag == 1){
 		// 第15回は処理しない
 		
 	} elseif($stage_id == 170101){
@@ -458,6 +461,6 @@
 		echo '</table></div></div>';
 	}
 	echo '<div class="pc-hidden" style="width:100%;height:80px;"> </div>';
-	if($stage_id == 200723 or $stage_id == 200918) echo '</div>';
+	if($area_team_flag == 1) echo '</div>';
 
 	$show_scoretable = 0;

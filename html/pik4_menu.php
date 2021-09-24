@@ -24,7 +24,7 @@ if(!$mysql_mode){
 }
 if(!$mysql_mode) loadtime_calc(__LINE__);
 // お砂場
-
+var_dump($limited_stage_list_last);
 // お砂場ここまで
 
 // メニューカラムヘッダー

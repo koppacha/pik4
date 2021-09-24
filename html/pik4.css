@@ -384,14 +384,19 @@ h3 {
 	font-size	:0.95em;
 }
 .rtd_score {
-	font-size	:1.5em;
-	letter-spacing	:0.075em;
+	font-size	:1.55em;
+	letter-spacing	:0.1em;
 	font-family	:'Reem Kufi', sans-serif;
 	width		:25%;
-  text-shadow: 1px 1px 3px #000,
-               1px -1px 3px #000,
-               -1px 1px 3px #000,
-               -1px -1px 3px #000;
+	text-shadow    : 
+	2px  2px 2px #000000,
+       -2px  2px 2px #000000,
+	2px -2px 2px #000000,
+       -2px -2px 2px #000000,
+	2px  0px 2px #000000,
+	0px  2px 2px #000000,
+       -2px  0px 2px #000000,
+	0px -2px 2px #000000;
 }
 #user_tab .rtd_player a {
 	color		:#999999;
@@ -1169,6 +1174,15 @@ a:link, a:visited {
 	font-family	:'Reem Kufi', sans-serif;
 	border-bottom : solid 1px #777777;
 	padding-left:1em;
+	text-shadow    : 
+	2px  2px 2px #000000,
+       -2px  2px 2px #000000,
+	2px -2px 2px #000000,
+       -2px -2px 2px #000000,
+	2px  0px 2px #000000,
+	0px  2px 2px #000000,
+       -2px  0px 2px #000000,
+	0px -2px 2px #000000;
 }
 /* チーム対抗用 */
 .rtd2_player{

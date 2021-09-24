@@ -114,7 +114,7 @@ $legacylim_hook = array(151101, 160306, 160319, 160423, 160430, 160806);
 		$background_color = 'background-color:#8a5cdb;';
 		$color = '#111;';
 	}
-	echo '<td style="'.$background_color.';color:'.$color.';font-weight:bold;width:16em;border-bottom:2px solid #5c8bdb;" class="navmenulim" id="nvpersonal"><span glot-model="menu_limited_dai">第</span>1～6<span glot-model="menu_limited_kai">回</span><br><span glot-model="main_nav_individual">個人戦</span></td>';
+	echo '<td style="'.$background_color.$color.'font-weight:bold;width:12em;border-bottom:2px solid #5c8bdb;" class="navmenulim" id="nvpersonal"><span glot-model="menu_limited_dai">第</span>1～6<span glot-model="menu_limited_kai">回</span><br><span glot-model="main_nav_individual">個人戦</span></td>';
 	$i = 1;
 
 	// 第7回期間限定ランキング以降のナビゲーション
@@ -239,13 +239,14 @@ if($key == 13) $area_cat = 'coop';
 if($key == 14) $area_cat = 'standard';
 if($key == 15) $area_cat = 'team';
 if($key == 16) $area_cat = 'team';
+if($key == 17) $area_cat = 'team';
 
 // エリア踏破戦のナビゲーション
 echo '<div class="scroll-wrap">';
 if($area_cat == 'standard'){
 	// 第14回期間限定ランキングの色分け切り替え
-	if($watchmode != 2) echo '<span><A style="color:#aaaaaa;" href="javascript:void(0);" onclick="SeasonToggle(\'watchmode\');"><i class="fa fa-toggle-off" aria-hidden="true"></i><span glot-model="main_nav_colorcoded1">自陣と敵陣を色分け</span></A> <br></span>';
-	if($watchmode == 2) echo '<span><A style="color:#05ffe3;" href="javascript:void(0);" onclick="SeasonToggle(\'watchmode\');"><i class="fa fa-toggle-on" aria-hidden="true"></i><span glot-model="main_nav_colorcoded2">ユーザー毎に色分け</span></A> <br></span>';
+	if($watchmode == 2) echo '<span><A style="color:#aaaaaa;" href="javascript:void(0);" onclick="SeasonToggle(\'watchmode\');"><i class="fa fa-toggle-on" aria-hidden="true"></i><span glot-model="main_nav_colorcoded1">自陣と敵陣を色分け</span></A> <br></span>';
+	if($watchmode != 2) echo '<span><A style="color:#05ffe3;" href="javascript:void(0);" onclick="SeasonToggle(\'watchmode\');"><i class="fa fa-toggle-off" aria-hidden="true"></i><span glot-model="main_nav_colorcoded2">ユーザー毎に色分け</span></A> <br></span>';
 }
 if($area_cat == 'team' and $key == $limited_num){ // 最新のみ表示する
 	// エリア踏破戦チーム対抗制のチーム分けボタン
@@ -268,7 +269,7 @@ $area_3_cnt = 0;
 $area_4_cnt = 0;
 $area_5_cnt = 0;
 // 自陣が存在するかどうかチェックする
-$ae_area_before = $ae_area[$key - 1];
+$ae_area_before = $ae_area[$key - 1] + 1;
 $ae_area_after  = $ae_area[$key];
 $ae_query = "SELECT * FROM `area` WHERE `id` BETWEEN $ae_area_before AND $ae_area_after AND `user_name` = '$cookie_name'";
 $ae_result = mysqli_query($mysqlconn, $ae_query);
