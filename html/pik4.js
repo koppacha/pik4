@@ -1649,3 +1649,32 @@ $(function(){
 		return false;
 	})
 });
+// 期間限定ランキングナビゲーション：エリア取得リアルタイム版
+function getarea(){
+	$.ajax({
+		type: "POST",
+		url: "pik4_getarea.php",
+		data: {
+			"stage_id": 1
+		},
+		success: function(data){
+			console.log(data[173].post_date);
+			const mapkey = range(173, 221);
+			mapkey.forEach(function(key){
+					console.log(data[key].stage_id);
+					$("#area"+key).text(data[key].stage_id);
+				}
+			);
+		},
+			// for(const[key, value] of Object.entries(data)){
+			// 	for(const[keychild, val] of Object.entries(value)){
+			// 		$("#"+keychild+key).text(val);
+			// 	}
+			// }
+		error: function(XMLHttpRequest, textStatus, errorThrown) {
+			alert("errorThrown : " + errorThrown.message);
+		}
+	});
+}
+// javascriptでrange()関数 参考：https://qiita.com/RyutaKojima/items/168632d4980e65a285f3
+const range = (start, stop) => Array.from({ length: (stop - start) + 1}, (_, i) => start + i);

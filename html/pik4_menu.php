@@ -24,11 +24,12 @@ if(!$mysql_mode){
 }
 if(!$mysql_mode) loadtime_calc(__LINE__);
 // お砂場
-var_dump($limited_stage_list_last);
+
 // お砂場ここまで
 
 // メニューカラムヘッダー
 ?>
+<a href="javascript:void(0);" onclick="getarea();">getarea</A><br>
 </span>
 <?php if($_SESSION['debug_mode']) echo '<span style="color:#ff9e56;"><i class="fa fa-flask" aria-hidden="true"></i>Debug Mode</span> <br>'; ?>
 <div id="display_config_on" style="display:none;margin-bottom:0.5em;" class="pickup_menu">
