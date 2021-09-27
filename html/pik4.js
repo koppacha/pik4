@@ -1660,9 +1660,18 @@ function getarea(){
 		success: function(data){
 			console.log(data[173].post_date);
 			const mapkey = range(173, 221);
+			var areax = 7;
+			var areay = 7;
+			var teamae = "😂";
+			var teambe = "😊";
 			mapkey.forEach(function(key){
 					console.log(data[key].stage_id);
-					$("#area"+key).text(data[key].stage_id);
+					var current_area = 0; // ステージIDと一致していたら色を変える
+					var tr = Math.floor((key - mapkey[0] + 1) / areay) + 1; // 列数
+					var td = (key - mapkey[0] + 1) - (areay * (tr - 1)); // 行数
+					var stagetitle = data[key].title.replace("（", "<br>（");
+					$("#area"+key).addClass('area_'+data[key].flag, current_area);
+					$("#area"+key).html('<A href="./'+data[key].stage_id+'">'+tr+'-'+td+'◆'+stagetitle+'<br>'+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'</p></A>');
 				}
 			);
 		},
