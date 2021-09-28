@@ -1653,25 +1653,27 @@ $(function(){
 function getarea(){
 	$.ajax({
 		type: "POST",
-		url: "pik4_getarea.php",
+		url: "pik4_getarea.php?id="+Math.random(),
+		cache: false,
 		data: {
 			"stage_id": 1
 		},
 		success: function(data){
-			console.log(data[173].post_date);
 			const mapkey = range(173, 221);
 			var areax = 7;
 			var areay = 7;
 			var teamae = "😂";
 			var teambe = "😊";
 			mapkey.forEach(function(key){
-					console.log(data[key].stage_id);
 					var current_area = 0; // ステージIDと一致していたら色を変える
-					var tr = Math.floor((key - mapkey[0] + 1) / areay) + 1; // 列数
+					var tr = Math.floor((key - mapkey[0]) / areay) + 1; // 列数
 					var td = (key - mapkey[0] + 1) - (areay * (tr - 1)); // 行数
 					var stagetitle = data[key].title.replace("（", "<br>（");
+					// addClassだと変更のたびにクラスが追加されていって正常に動かなくなる（★2021/09/28解決中）
 					$("#area"+key).addClass('area_'+data[key].flag, current_area);
-					$("#area"+key).html('<A href="./'+data[key].stage_id+'">'+tr+'-'+td+'◆'+stagetitle+'<br>'+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'</p></A>');
+					if(data[key].flag != 0){
+						$("#area"+key).html('<A href="./'+data[key].stage_id+'">'+tr+'-'+td+'◆'+stagetitle+'<br>'+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'</p></A>');
+					}
 				}
 			);
 		},
@@ -1685,5 +1687,7 @@ function getarea(){
 		}
 	});
 }
+// setInterval('getarea()', 1000);
+
 // javascriptでrange()関数 参考：https://qiita.com/RyutaKojima/items/168632d4980e65a285f3
 const range = (start, stop) => Array.from({ length: (stop - start) + 1}, (_, i) => start + i);

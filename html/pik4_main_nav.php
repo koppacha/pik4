@@ -464,7 +464,7 @@ for($tr = 1; $tr <= $ae_height[$key]; $tr++){ // 縦の長さを定義
 		}
 		echo '</tr>';
 	}
-	echo '</table></div>';
+	echo '</table><a href="javascript:void(0);" onclick="getarea();">getarea</A><br></div>';
 	if($area_cat == 'coop'){
 		$area_count  = $area_1_cnt + $area_2_cnt + $area_3_cnt + $area_4_cnt + $area_5_cnt;
 		$lest_count  = $area_1_cnt + $area_2_cnt + $area_3_cnt;
