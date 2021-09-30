@@ -1669,10 +1669,14 @@ function getarea(){
 					var tr = Math.floor((key - mapkey[0]) / areay) + 1; // 列数
 					var td = (key - mapkey[0] + 1) - (areay * (tr - 1)); // 行数
 					var stagetitle = data[key].title.replace("（", "<br>（");
-					// addClassだと変更のたびにクラスが追加されていって正常に動かなくなる（★2021/09/28解決中）
-					$("#area"+key).addClass('area_'+data[key].flag, current_area);
+					var now = new Date();
+					var ptime = Date.parse(data[key].post_date);
+					var posttime = now.getTime() - ptime;
+					var min = Math.floor(posttime / 1000 / 60) % 60;
+					var hou = Math.floor(posttime / 1000 / 60 / 60);
+					$("#area"+key).removeClass().addClass('area_'+data[key].flag);
 					if(data[key].flag != 0){
-						$("#area"+key).html('<A href="./'+data[key].stage_id+'">'+tr+'-'+td+'◆'+stagetitle+'<br>'+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'</p></A>');
+						$("#area"+key).html('<A href="./'+data[key].stage_id+'">'+tr+'-'+td+'◆'+stagetitle+'<br>'+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'<br>'+hou+':'+min+'</p></A>');
 					}
 				}
 			);
@@ -1687,7 +1691,7 @@ function getarea(){
 		}
 	});
 }
-// setInterval('getarea()', 1000);
+setInterval('getarea()', 1000);
 
 // javascriptでrange()関数 参考：https://qiita.com/RyutaKojima/items/168632d4980e65a285f3
 const range = (start, stop) => Array.from({ length: (stop - start) + 1}, (_, i) => start + i);
