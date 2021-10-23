@@ -1379,14 +1379,14 @@ CountdownTimer.prototype={
  },addZero:function(num){ return ('0'+num).slice(-2); }
 }
 function CDT(){
- var tl = new Date('2021/08/29 23:59:59');
+ var tl = new Date('2021/11/07 21:59:59');
  var timer = new CountdownTimer('CDT',tl,'(終了しました)');
  timer.countDown();
 }
 
 // 期間限定ランキングのカウントダウン（告知→大会開始まで）
 function CDT2(){
- var tl = new Date('2021/08/29 21:00:00');
+ var tl = new Date('2021/11/05 22:00:00');
  var timer = new CountdownTimer('CDT2',tl,'(開幕しました)');
  timer.countDown();
 }
@@ -1670,13 +1670,31 @@ function getarea(){
 					var td = (key - mapkey[0] + 1) - (areay * (tr - 1)); // 行数
 					var stagetitle = data[key].title.replace("（", "<br>（");
 					var now = new Date();
-					var ptime = Date.parse(data[key].post_date);
-					var posttime = now.getTime() - ptime;
-					var min = Math.floor(posttime / 1000 / 60) % 60;
-					var hou = Math.floor(posttime / 1000 / 60 / 60);
+					var mark = data[key].mark;
+					if(mark == "ore01"){
+						var excav_time = 30;
+					} else {
+						var excav_time = 30;
+					}
+					var updatetime = Date.parse(data[key].update_time);
+					var posttime = now.getTime() - updatetime;
+					var min = excav_time - (Math.floor(((posttime) % (24*60*60*1000) ) / (60*1000) ) % 60) % excav_time - 1;
+					var sec = 60 - Math.floor(((posttime) % (24*60*60*1000) ) / 1000) % 60 % 60;
+					if(sec == 60){
+						sec = 0;
+						if(min < 29){
+							min++;
+						} else {
+							min = 0;
+						}
+					}
+					if(min == 0 && sec == 0){
+						// カウントダウンが０になったらエリアへの書き込み処理を実行する
+						writearea(data[key].id);
+					}
 					$("#area"+key).removeClass().addClass('area_'+data[key].flag);
 					if(data[key].flag != 0){
-						$("#area"+key).html('<A href="./'+data[key].stage_id+'">'+tr+'-'+td+'◆'+stagetitle+'<br>'+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'<br>'+hou+':'+min+'</p></A>');
+						$("#area"+key).html('<A href="./'+data[key].stage_id+'">'+tr+'-'+td+'◆'+stagetitle+'<br>'+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'<br><i class="fas fa-gem"></i>'+min+':'+zeroPadding(sec, 2)+' (BONUS:'+data[key].bonus_a+':'+data[key].bonus_b+')</p></A>');
 					}
 				}
 			);
@@ -1691,7 +1709,24 @@ function getarea(){
 		}
 	});
 }
+function writearea(id){
+	$.ajax({
+		type: "POST",
+		url: "pik4_writearea.php?id="+Math.random(),
+		cache: false,
+		data: {
+			"stage_id": id
+		},
+		success: function(flag){
+			// パーティクルを表示したい
+			console.log(flag); // ★あとで消す
+		}
+	});
+}
+// 定期実行する関数一覧
 setInterval('getarea()', 1000);
 
 // javascriptでrange()関数 参考：https://qiita.com/RyutaKojima/items/168632d4980e65a285f3
 const range = (start, stop) => Array.from({ length: (stop - start) + 1}, (_, i) => start + i);
+
+// 
