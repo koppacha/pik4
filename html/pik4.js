@@ -1664,37 +1664,35 @@ function getarea(){
 			var areay = 7;
 			var teamae = "😂";
 			var teambe = "😊";
+			var now = new Date();
 			mapkey.forEach(function(key){
 					var current_area = 0; // ステージIDと一致していたら色を変える
 					var tr = Math.floor((key - mapkey[0]) / areay) + 1; // 列数
 					var td = (key - mapkey[0] + 1) - (areay * (tr - 1)); // 行数
 					var stagetitle = data[key].title.replace("（", "<br>（");
-					var now = new Date();
 					var mark = data[key].mark;
 					if(mark == "ore01"){
 						var excav_time = 30;
+						var multi = 2;
 					} else {
 						var excav_time = 30;
+						var multi = 2;
 					}
-					var updatetime = Date.parse(data[key].update_time);
-					var posttime = now.getTime() - updatetime;
-					var min = excav_time - (Math.floor(((posttime) % (24*60*60*1000) ) / (60*1000) ) % 60) % excav_time - 1;
-					var sec = 60 - Math.floor(((posttime) % (24*60*60*1000) ) / 1000) % 60 % 60;
-					if(sec == 60){
-						sec = 0;
-						if(min < 29){
-							min++;
-						} else {
-							min = 0;
-						}
-					}
-					if(min == 0 && sec == 0){
+					var updatetime = now.getTime() - Date.parse(data[key].update_time);
+					var checktime = now.getTime() - Date.parse(data[key].check_time);
+					var counttime = orgcountdown(checktime, excav_time);
+					var getore = Math.floor(Math.floor((checktime % (24*60*60*1000) ) / (60*1000) ) / excav_time) * multi;
+					var bonus = Math.floor(Math.floor((updatetime % (24*60*60*1000) ) / (60*1000) ) / excav_time) * multi / 2;
+
+					if(counttime == 0){
 						// カウントダウンが０になったらエリアへの書き込み処理を実行する
 						writearea(data[key].id);
 					}
 					$("#area"+key).removeClass().addClass('area_'+data[key].flag);
-					if(data[key].flag != 0){
-						$("#area"+key).html('<A href="./'+data[key].stage_id+'">'+tr+'-'+td+'◆'+stagetitle+'<br>'+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'<br><i class="fas fa-gem"></i>'+min+':'+zeroPadding(sec, 2)+' (BONUS:'+data[key].bonus_a+':'+data[key].bonus_b+')</p></A>');
+					if(data[key].flag == 3 || data[key].flag == 4){
+						$("#area"+key).html('<A href="./'+data[key].stage_id+'">'+tr+'-'+td+'◆'+stagetitle+'<br>'+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'<br>⛏'+counttime+' | <i class="fas fa-gem"></i>'+getore+' | <i class="fas fa-coins"></i>'+bonus+'</p></A>');
+					} else if(data[key].flag == 2){
+						$("#area"+key).html('<A href="./'+data[key].stage_id+'">'+tr+'-'+td+'◆'+stagetitle+'</A>');
 					}
 				}
 			);
@@ -1729,4 +1727,17 @@ setInterval('getarea()', 1000);
 // javascriptでrange()関数 参考：https://qiita.com/RyutaKojima/items/168632d4980e65a285f3
 const range = (start, stop) => Array.from({ length: (stop - start) + 1}, (_, i) => start + i);
 
-// 
+// 時間のカウントダウン（エリア踏破戦発掘大作戦専用）
+function orgcountdown(time, excav){
+	var min = excav - (Math.floor((time % (24*60*60*1000) ) / (60*1000) ) % 60) % excav - 1;
+	var sec = 60 - Math.floor((time % (24*60*60*1000) ) / 1000) % 60 % 60;
+	if(sec == 60){
+		sec = 0;
+		if(min < excav - 1){
+			min++;
+		} else {
+			min = 0;
+		}
+	}
+	return min+':'+zeroPadding(sec, 2);
+}
