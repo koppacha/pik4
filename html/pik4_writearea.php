@@ -26,25 +26,31 @@ if(isset($_POST['stage_id'])){
 	require_once('pik4_name.php');
 
 	$error_flag = 0;
-	// データベースから陣地色とボーナスポイントを読み込んで計算
+	// クッキーからチーム番号を取得★作業中
+
+	// データベースから陣地色と最終更新日時を読み込んで計算
 	$query = "SELECT * FROM `area` WHERE `id` = '$stage_id' LIMIT 1";
 	$result = mysqli_query($mysqlconn, $query);
 	$row = mysqli_fetch_assoc($result);
 	$current_area = $row['flag'];
+	$check_time = floor((time() - strtotime($row['check_time'])) / 60);
 	$ore = intval(substr($row['mark'], 4) );
 	$ore_point = $ore * (pow(2, $ore) / 2) * 2;
-	if($current_area == 3){
-		$team = "bonus_b";
-		$point = $row['bonus_b'] + $ore_point;
-	} elseif($current_area == 4){
-		$team = "bonus_a";
-		$point = $row['bonus_a'] + $ore_point;
+	$ore_time  = 30 * (pow(2, ($ore - 1)));
+	if($check_time >= $ore_time){
+		$add_point = floor($check_time / $ore_time) * $ore_point;
+		// 最終チェック時間にポイント変換分の秒数を加算
+		$add_time = strtotime($row['check_time']) + floor($check_time / $ore_time) * 60;
 	} else {
-		$error_flag = 1;
+		$add_time = strtotime($row['check_time']);
+		$add_point = 0;
 	}
 	if(!$error_flag){
-		// データベースに書き込む（相手ボーナス点と自陣総合点の更新）
-		$query = "UPDATE `area` SET $team = '$point' WHERE `id` = '$stage_id'";
+		// データベースに書き込む（自陣総合点と最終チェック時間の更新）
+		$query = "UPDATE `area` SET `check_time` = '$add_time' WHERE `id` = '$stage_id'";
+		$result = mysqli_query($mysqlconn, $query );
+
+		$query = "UPDATE `team_log` SET `ore_point` = '$add_point' WHERE `id` = '$current_team'";
 		$result = mysqli_query($mysqlconn, $query );
 		$return_flag = 1;
 	} else {

@@ -1681,16 +1681,11 @@ function getarea(){
 					var updatetime = now.getTime() - Date.parse(data[key].update_time);
 					var checktime = now.getTime() - Date.parse(data[key].check_time);
 					var counttime = orgcountdown(checktime, excav_time);
-					var getore = Math.floor(Math.floor((checktime % (24*60*60*1000) ) / (60*1000) ) / excav_time) * multi;
-					var bonus = Math.floor(Math.floor((updatetime % (24*60*60*1000) ) / (60*1000) ) / excav_time) * multi / 2;
-
-					if(counttime == 0){
-						// カウントダウンが０になったらエリアへの書き込み処理を実行する
-						writearea(data[key].id);
-					}
+					var getore = Math.floor((checktime / (1000*60)) / excav_time) * multi;
+					var bonus = Math.floor((updatetime / (1000*60)) / excav_time) * (multi / 2);
 					$("#area"+key).removeClass().addClass('area_'+data[key].flag);
 					if(data[key].flag == 3 || data[key].flag == 4){
-						$("#area"+key).html('<A href="./'+data[key].stage_id+'">'+tr+'-'+td+'◆'+stagetitle+'<br>'+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'<br>⛏'+counttime+' | <i class="fas fa-gem"></i>'+getore+' | <i class="fas fa-coins"></i>'+bonus+'</p></A>');
+						$("#area"+key).html('<A href="./'+data[key].stage_id+'">'+tr+'-'+td+'◆'+stagetitle+'<br>'+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'<br>⛏'+counttime+' <i class="fas fa-gem"></i>'+getore+' <i class="fas fa-coins"></i>'+bonus+'</p></A><A href="javascript:void(0)" onclick="collectarea('+data[key].id+');">回収ボタン</A>');
 					} else if(data[key].flag == 2){
 						$("#area"+key).html('<A href="./'+data[key].stage_id+'">'+tr+'-'+td+'◆'+stagetitle+'</A>');
 					}
@@ -1707,7 +1702,9 @@ function getarea(){
 		}
 	});
 }
-function writearea(id){
+function collectarea(id){
+	// 不正チェック
+	
 	$.ajax({
 		type: "POST",
 		url: "pik4_writearea.php?id="+Math.random(),
