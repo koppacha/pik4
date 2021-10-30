@@ -24,9 +24,12 @@ if(isset($_POST['stage_id'])){
 	require_once('pik4_function.php');
 	require_once('pik4_array.php');
 	require_once('pik4_name.php');
+	require_once('pik4_database.php');
+	require_once('pik4_cookie.php');
 
 	$error_flag = 0;
 	// クッキーからチーム番号を取得★作業中
+	$current_team = $users[$cookie_name]["current_team"];
 
 	// データベースから陣地色と最終更新日時を読み込んで計算
 	$query = "SELECT * FROM `area` WHERE `id` = '$stage_id' LIMIT 1";

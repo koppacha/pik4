@@ -90,7 +90,7 @@ $uplan190321 = range(4031, 4060);
 $uplan210829 = range(4061, 4073);
 
 // 最新の期間限定ランキング・参加者企画対象ステージリスト
-$limited_stage = range(3113);
+$limited_stage = range(3113, 3113);
 
 $limited_last = 1050;
 $area_last = 3112;
@@ -245,8 +245,8 @@ $teamc= array('', '19acff', 'ff3919', 'eeeeee', 'b419ff','ff63f2','e3e3e3','f352
 
 // チーム固有絵文字の定義
 $teame = array();
-$teame['a'] = array(15 => "🍓", 16 => "🍐");
-$teame['b'] = array(15 => "🍊", 16 => "🍌");
+$teame['a'] = array(15 => "🍓", 16 => "🍐", 17 => "😂");
+$teame['b'] = array(15 => "🍊", 16 => "🍌", 17 => "😊");
 
 // 開催回数からチーム番号を逆算する
 $teamp = array();

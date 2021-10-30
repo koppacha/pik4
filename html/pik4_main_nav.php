@@ -237,9 +237,9 @@ if($limited_type[$val] == 'e'){
 // エリア踏破戦のカテゴリ分類
 if($key == 13) $area_cat = 'coop';
 if($key == 14) $area_cat = 'standard';
-if($key == 15) $area_cat = 'team';
+if($key == 15) $area_cat = 'team'; // PHP版チーム対抗エリア表示
 if($key == 16) $area_cat = 'team';
-if($key == 17) $area_cat = 'team';
+if($key == 17) $area_cat = 'team2'; // JS版チーム対抗エリア表示
 
 // エリア踏破戦のナビゲーション
 echo '<div class="scroll-wrap">';
@@ -248,14 +248,14 @@ if($area_cat == 'standard'){
 	if($watchmode == 2) echo '<span><A style="color:#aaaaaa;" href="javascript:void(0);" onclick="SeasonToggle(\'watchmode\');"><i class="fa fa-toggle-on" aria-hidden="true"></i><span glot-model="main_nav_colorcoded1">自陣と敵陣を色分け</span></A> <br></span>';
 	if($watchmode != 2) echo '<span><A style="color:#05ffe3;" href="javascript:void(0);" onclick="SeasonToggle(\'watchmode\');"><i class="fa fa-toggle-off" aria-hidden="true"></i><span glot-model="main_nav_colorcoded2">ユーザー毎に色分け</span></A> <br></span>';
 }
-if($area_cat == 'team' and $key == $limited_num){ // 最新のみ表示する
+if( strpos($area_cat, 'team') !== false and $key == $limited_num){ // 最新のみ表示する
 	// エリア踏破戦チーム対抗制のチーム分けボタン
 	echo '<div style="background-color:#cccccc;border-radius:6px;color:#000000;margin:1em;padding:0.5em;">';
 	if($cookie_row['current_team'] >= $team_a){
 		echo $cookie_name.' <span glot-model="main_nav_team_in">さんの所属チームは</span>'.$team[$cookie_row['current_team']].'<span glot-model="desu_tail">です。</span>';
 	} elseif($cookie_row['current_team'] > -1){
 		echo '<span id="teamoutput">'.$cookie_name.' <span glot-model="main_nav_team_notin">さんはまだチームに所属していません。</span>（'.$cookie_name.'<span glot-model="main_nav_team_rate">さんのレート</span>：'.$cookie_row['rate']."）<br>";
-		echo '<A href="#" style="font-size:1.2em;color:#000000;text-decoration:underline;" onClick="teamselect(\''.$cookie_name.'\',\''.$cookie_row['rate'].'\',\''.$team_a.'\',\''.$team_b.'\');">🍐<span glot-model="main_nav_team_join">参加する</span>🍌</A><span glot-model="main_nav_team_join_caution">（参加予定のない方は押さないでください！）</span></span>';
+		echo '<A href="#" style="font-size:1.2em;color:#000000;text-decoration:underline;" onClick="teamselect(\''.$cookie_name.'\',\''.$cookie_row['rate'].'\',\''.$team_a.'\',\''.$team_b.'\');">'.$teame['a'][$limited_num].'<span glot-model="main_nav_team_join">参加する</span>'.$teame['b'][$limited_num].'</A><span glot-model="main_nav_team_join_caution">（参加予定のない方は押さないでください！）</span></span>';
 	} else {
 		echo '<span glot-model="main_nav_team_error">ログインしていません。期間限定ランキングは通常ランキングに１回でも参加してログインしていることが参加条件になります。</span>';
 	}
@@ -275,194 +275,198 @@ $ae_query = "SELECT * FROM `area` WHERE `id` BETWEEN $ae_area_before AND $ae_are
 $ae_result = mysqli_query($mysqlconn, $ae_query);
 $myarea_count = mysqli_num_rows($ae_result);
 
-for($tr = 1; $tr <= $ae_height[$key]; $tr++){ // 縦の長さを定義
-	echo '<tr>';
-		for($td = 1; $td <= $ae_width[$key]; $td++){ // 横の長さを定義
-			$addr = ($ae_height[$key] * $tr) - ($ae_width[$key] - $td) + $ae_area[$key-1];
-			$area_nav_stage_title = str_replace("（",'<p style="text-align:right;">（', fixed_stage_title($area[$addr]["stage_id"]));
-			$area_nav_stage_title = str_replace("）",'）</p>', $area_nav_stage_title);
-			$break_lest = $area[$addr]["border_rank"] - $area[$addr]["break_count"];
-			if($break_lest > 0){
-				$break_str = '<i class="fa fa-users" aria-hidden="true"></i> <span glot-model="main_nav_team_last">あと</span>'.$break_lest.'<span glot-model="tail_nin">人</span>';
-			} else {
-				$break_str = '';
-			}
-			if(strpos($area_nav_stage_title, "（") === false){
-				$area_nav_stage_title = $area_nav_stage_title." <br> <br>";
-			}
-			if($page_type == 19 and $stage_id == $area[$addr]["stage_id"]){
-				$current_area = ' area_c';
-			} elseif($page_type == 13){
-				$current_area = ' area_c';
-			} else {
-				$current_area = ' area_n';
-			}
-			// 協力制のエリア表示
-			if($area_cat == 'coop'){
-				if($area[$addr]["flag"] == 1){
-					// 未解禁のフリーエリア
-					echo '<td style="text-align:center;" class="area_1'.$current_area.'">'."{$tr}-{$td}".'</td>';
-					$area_1_cnt++;
-				} elseif($area[$addr]["flag"] == 2){
-					// プレイアブルフリーエリア（まだプレイしていない）
-					echo '<td class="area_2'.$current_area.'"><A href="./'.$area[$addr]["stage_id"].'">'."{$tr}-{$td}".'◆'.$area_nav_stage_title.'<span glot-model="main_nav_team_undevelop">（未開地）</span> <br> <br><p>'.$break_str.' <i class="fab fa-font-awesome" aria-hidden="true"></i>'.$area[$addr]["border_score"].' pts.</p></A></td>';
-					$area_2_cnt++;
-				} elseif($area[$addr]["flag"] == 3){
-					// プレイ済み（ボーダーラインを越えていない）
-					echo '<td class="area_3'.$current_area.'"><A href="./'.$area[$addr]["stage_id"].'">'."{$tr}-{$td}".'◆'.$area_nav_stage_title.$area[$addr]["user_name"].'<p>'.$area[$addr]["top_score"].' pts.</p><p>'.$break_str.' <i class="fab fa-font-awesome" aria-hidden="true"></i>'.$area[$addr]["border_score"].' pts.</p></A></td>';
-					if($area[$addr]["mark"] != "Limited") $area_score_total += $area[$addr]["top_score"];
-					$area_3_cnt++;
-				} elseif($area[$addr]["flag"] == 4){
-					// プレイ済み（第一ボーダーラインを越えた）
-					echo '<td class="area_4'.$current_area.'"><A href="./'.$area[$addr]["stage_id"].'">'."{$tr}-{$td}".'◆'.$area_nav_stage_title.'<i class="fab fa-font-awesome" aria-hidden="true"></i>'.$area[$addr]["user_name"].'<p><i class="fa fa-star" aria-hidden="true"></i>'.$area[$addr]["top_score"].' pts.</p><p><span glot-model="main_nav_team_exborder">EXボーダー</span> <i class="fab fa-fort-awesome" aria-hidden="true"></i>'.$area[$addr]["ex_border_score"].' pts</p></A></td>';
-					if($area[$addr]["mark"] != "Limited") $area_score_total += $area[$addr]["top_score"];
-					$area_4_cnt++;
-				} elseif($area[$addr]["flag"] == 5){
-					// プレイ済み（第二ボーダーラインを越えた）
-					echo '<td class="area_5'.$current_area.'"><A href="./'.$area[$addr]["stage_id"].'">'."{$tr}-{$td}".'◆'.$area_nav_stage_title.'<i class="fab fa-fort-awesome" aria-hidden="true"></i>'.$area[$addr]["user_name"].'<p><span glot-model="main_nav_team_hiscore">ハイスコア</span> <i class="fa fa-spin fa-star" aria-hidden="true"></i>'.$area[$addr]["top_score"].' pts.</p><p> '.$area[$addr]["ex_border_score"].' pts.</p></A></td>';
-					if($area[$addr]["mark"] != "Limited") $area_score_total += $area[$addr]["top_score"];
-					$area_5_cnt++;
-				} else {
-					// 侵入不可能
-					echo '<td class="area_0"> </td>';
-				}
-			}
-			// スタンダードのエリア表示
-			if($area_cat == 'standard'){
-				// 侵入不可能
-				if($area[$addr]["flag"] == 0){
-					echo '<td class="area_0"> </td>';
-				}
-				// 鑑賞モード時にユーザーカラーで表示
-				elseif($watchmode == 2){
-					$ae_bgcolor = str2color($area[$addr]["user_name"], $user_colors);
-					echo '<td style="background-color:'.$ae_bgcolor.'" class="area_2'.$current_area.'"><A href="./'.$area[$addr]["stage_id"].'">'."{$tr}-{$td}".'◆'.$area_nav_stage_title.$area[$addr]["user_name"].'<p><i class="fa fa-star" aria-hidden="true"></i>'.$area[$addr]["top_score"].' pts.</p><p><i class="fas fa-paper-plane"></i>'.$area[$addr]['count'].'</p></A></td>';
-				}
-				// 自陣が存在しない
-				elseif($myarea_count == 0 or $cookie_name == ""){
-					echo '<td class="area_2'.$current_area.'"><A href="./'.$area[$addr]["stage_id"].'">'."{$tr}-{$td}".'◆'.$area_nav_stage_title.$area[$addr]["user_name"].'<p><i class="fa fa-star" aria-hidden="true"></i>'.$area[$addr]["top_score"].' pts.</p><p><i class="fas fa-paper-plane"></i>'.$area[$addr]['count'].'</p></A></td>';
-						$area_2_cnt++;
-				}
-				// 自陣
-				elseif($area[$addr]["user_name"] == $cookie_name){
-					echo '<td class="area_3'.$current_area.'"><A href="./'.$area[$addr]["stage_id"].'">'."{$tr}-{$td}".'◆'.$area_nav_stage_title.$area[$addr]["user_name"].'<p><i class="fa fa-star" aria-hidden="true"></i>'.$area[$addr]["top_score"].' pts.</p><p><i class="fas fa-paper-plane"></i>'.$area[$addr]['count'].'</p></A></td>';
-					if($area[$addr]["mark"] != "Limited") $area_score_total += $area[$addr]["top_score"];
-					$area_3_cnt++;
-				}
-				// 自陣と隣接している
-				elseif($area[$addr - 1]["user_name"] == $cookie_name or $area[$addr + 1]["user_name"] == $cookie_name or $area[$addr - $ae_width[$key]]["user_name"] == $cookie_name or $area[$addr + $ae_width[$key]]["user_name"] == $cookie_name){
-					echo '<td class="area_2'.$current_area.'"><A href="./'.$area[$addr]["stage_id"].'">'."{$tr}-{$td}".'◆'.$area_nav_stage_title.$area[$addr]["user_name"].'<p><i class="fa fa-star" aria-hidden="true"></i>'.$area[$addr]["top_score"].' pts.</p><p><i class="fas fa-paper-plane"></i>'.$area[$addr]['count'].'</p></A></td>';
-					$area_2_cnt++;
-				}
-				// 敵陣
-				elseif($area[$addr]["user_name"] != $cookie_name and $area[$addr]["user_name"] != ""){
-					echo '<td class="area_4'.$current_area.'"><A href="./#">'."{$tr}-{$td}".'◆'.$area_nav_stage_title.$area[$addr]["user_name"].'<p><i class="fa fa-star" aria-hidden="true"></i>'.$area[$addr]["top_score"].' pts.</p><p><i class="fas fa-paper-plane"></i>'.$area[$addr]['count'].'</p></A></td>';
-					$area_4_cnt++;
-				}
-				// 自陣と隣接していない
-				elseif($area[$addr]["flag"] != 0){
-					echo '<td class="area_1'.$current_area.'"><A href="./#">'."{$tr}-{$td}".'◆'.$area_nav_stage_title."（未開地）".'<p><i class="fa fa-star" aria-hidden="true"></i>'.$area[$addr]["top_score"].' pts.</p><p><i class="fas fa-paper-plane"></i>'.$area[$addr]['count'].'</p></A></td>';
-					$area_1_cnt++;
-				}
-				// 侵入不可能
-				else {
-					echo '<td class="area_0"> </td>';
-				}
-			}
-			// チーム制のエリア表示
-			if($area_cat == 'team'){
-				// アクセス可能かどうか判定する
-				// 大会開催中のみ有効（非開催時は全ステージアクセス可能にする）
-				if($limited_num == 16){
-					$addr_link_flag = 0;
-					if($area[$addr]["flag"] == 3 and $cookie_row['current_team'] == $team_a){
-						$addr_link_flag = 1;
-					} elseif($area[$addr]["flag"] == 4 and $cookie_row['current_team'] == $team_b){
-						$addr_link_flag = 1;
-					} else {
-						$addr_link_flag = 0;
-					}
-					// 上下左右が自陣
-					if($cookie_row['current_team'] == $team_a){
-						if($area[$addr - 1]["flag"] == 3) $addr_link_flag = 1;
-						if($area[$addr + 1]["flag"] == 3) $addr_link_flag = 1;
-						if($area[$addr - $ae_width[$limited_num]]["flag"] == 3) $addr_link_flag = 1;
-						if($area[$addr + $ae_width[$limited_num]]["flag"] == 3) $addr_link_flag = 1;
-					} elseif($cookie_row['current_team'] == $team_b){
-						if($area[$addr - 1]["flag"] == 4) $addr_link_flag = 1;
-						if($area[$addr + 1]["flag"] == 4) $addr_link_flag = 1;
-						if($area[$addr - $ae_width[$limited_num]]["flag"] == 4) $addr_link_flag = 1;
-						if($area[$addr + $ae_width[$limited_num]]["flag"] == 4) $addr_link_flag = 1;
-					} else {
-						$addr_link_flag = 0;
-					}
-
-					if($area[$addr]["mark"] == 'base'){
-						$add_link = '<A href="./200918">';
-						$add_tail = '</A>';
-					} elseif($addr_link_flag === 1){
-						$add_link = '<A href="./'.$area[$addr]["stage_id"].'">';
-						$add_tail = '</A>';
-					} else {
-						$add_link = '<A href="#">';
-						$add_tail = '</A>';
-//							$area_nav_stage_title = '？？？<br><br>';
-					}
-				} else {
-					$add_link = '<A href="./'.$area[$addr]["stage_id"].'">';
-					$add_tail = '</A>';
-				}
-				// 侵入不可能
-				if($area[$addr]["flag"] == 0){
-					echo '<td class="area_0"> </td>';
-				}
-				// 未開地
-				elseif($area[$addr]["flag"] == 1){
-					// 未解禁のフリーエリア
-					echo '<td style="text-align:center;" class="area_1'.$current_area.'">'."{$tr}-{$td}".'</td>';
-					$area_1_cnt++;
-				}
-				// どちらでもない解禁済みエリア
-				elseif($area[$addr]["flag"] == 2){
-					echo '<td class="area_2'.$current_area.'">'.$add_link."{$tr}-{$td}".'◆'.$area_nav_stage_title.$area[$addr]["user_name"].'<p><i class="fa fa-star" aria-hidden="true"></i>'.$area[$addr]["top_score"].' pts.  <i class="fas fa-paper-plane"></i>'.$area[$addr]["count"].'</p><p>'.$teame['a'][$key].$area[$addr]['team_a'].' - '.$area[$addr]['team_b'].$teame['b'][$key].'</p>'.$add_tail.'</td>';
-					$area_2_cnt++;
-				}
-				// 左チームのエリア
-				elseif($area[$addr]["flag"] == 3){
-					// 拠点の場合
-					if($area[$addr]["mark"] == 'base'){
-						echo '<td style="background-color:#'.$teamc[$teamp['a'][$key]].'" class="area_3'.$current_area.'">'.$add_link."{$tr}-{$td}".'◆'.$team[$teamp['a'][$key]].'<br><div style="text-align:right;" glot-model="main_nav_team_base">（拠点）</div></td>';
-					} else {
-						echo '<td style="background-color:#'.$teamc[$teamp['a'][$key]].'" class="area_3'.$current_area.'">'.$add_link."{$tr}-{$td}".'◆'.$area_nav_stage_title.$area[$addr]["user_name"].'<p><i class="fa fa-star" aria-hidden="true"></i>'.$area[$addr]["top_score"].' pts.  <i class="fas fa-paper-plane"></i>'.$area[$addr]["count"].'</p><p>'.$teame['a'][$key].$area[$addr]['team_a'].' - '.$area[$addr]['team_b'].$teame['b'][$key].'</p>'.$add_tail.'</td>';
-					}
-					$area_3_cnt++;
-				}
-				// 右チームのエリア
-				elseif($area[$addr]["flag"] == 4){
-					// 拠点の場合
-					if($area[$addr]["mark"] == 'base'){
-						echo '<td style="background-color:#'.$teamc[$teamp['b'][$key]].'" class="area_3'.$current_area.'">'.$add_link."{$tr}-{$td}".'◆'.$team[$teamp['b'][$key]].'<br><div style="text-align:right;" glot-model="main_nav_team_base">（拠点）</div></td>';
-					} else {
-						echo '<td style="background-color:#'.$teamc[$teamp['b'][$key]].'" class="area_4'.$current_area.'">'.$add_link."{$tr}-{$td}".'◆'.$area_nav_stage_title.$area[$addr]["user_name"].'<p><i class="fa fa-star" aria-hidden="true"></i>'.$area[$addr]["top_score"].' pts.  <i class="fas fa-paper-plane"></i>'.$area[$addr]["count"].'</p><p>'.$teame['a'][$key].$area[$addr]['team_a'].' - '.$area[$addr]['team_b'].$teame['b'][$key].'</p>'.$add_tail.'</td>';
-					}
-					$area_4_cnt++;
-				}
-				// 侵入不可能
-				else {
-					echo '<td class="area_0"> </td>';
-				}
-			}
-		}
-	echo '</tr>';
-	}
-	// リアルタイム読み込み用
+if($area_cat != "team2"){
 	for($tr = 1; $tr <= $ae_height[$key]; $tr++){ // 縦の長さを定義
 		echo '<tr>';
-		for($td = 1; $td <= $ae_width[$key]; $td++){ // 横の長さを定義
-			$addr = ($ae_height[$key] * $tr) - ($ae_width[$key] - $td) + $ae_area[$key-1];
-			echo '<td id="'."area{$addr}".'"> </td>';
-		}
+			for($td = 1; $td <= $ae_width[$key]; $td++){ // 横の長さを定義
+				$addr = ($ae_height[$key] * $tr) - ($ae_width[$key] - $td) + $ae_area[$key-1];
+				$area_nav_stage_title = str_replace("（",'<p style="text-align:right;">（', fixed_stage_title($area[$addr]["stage_id"]));
+				$area_nav_stage_title = str_replace("）",'）</p>', $area_nav_stage_title);
+				$break_lest = $area[$addr]["border_rank"] - $area[$addr]["break_count"];
+				if($break_lest > 0){
+					$break_str = '<i class="fa fa-users" aria-hidden="true"></i> <span glot-model="main_nav_team_last">あと</span>'.$break_lest.'<span glot-model="tail_nin">人</span>';
+				} else {
+					$break_str = '';
+				}
+				if(strpos($area_nav_stage_title, "（") === false){
+					$area_nav_stage_title = $area_nav_stage_title." <br> <br>";
+				}
+				if($page_type == 19 and $stage_id == $area[$addr]["stage_id"]){
+					$current_area = ' area_c';
+				} elseif($page_type == 13){
+					$current_area = ' area_c';
+				} else {
+					$current_area = ' area_n';
+				}
+				// 協力制のエリア表示
+				if($area_cat == 'coop'){
+					if($area[$addr]["flag"] == 1){
+						// 未解禁のフリーエリア
+						echo '<td style="text-align:center;" class="area_1'.$current_area.'">'."{$tr}-{$td}".'</td>';
+						$area_1_cnt++;
+					} elseif($area[$addr]["flag"] == 2){
+						// プレイアブルフリーエリア（まだプレイしていない）
+						echo '<td class="area_2'.$current_area.'"><A href="./'.$area[$addr]["stage_id"].'">'."{$tr}-{$td}".'◆'.$area_nav_stage_title.'<span glot-model="main_nav_team_undevelop">（未開地）</span> <br> <br><p>'.$break_str.' <i class="fab fa-font-awesome" aria-hidden="true"></i>'.$area[$addr]["border_score"].' pts.</p></A></td>';
+						$area_2_cnt++;
+					} elseif($area[$addr]["flag"] == 3){
+						// プレイ済み（ボーダーラインを越えていない）
+						echo '<td class="area_3'.$current_area.'"><A href="./'.$area[$addr]["stage_id"].'">'."{$tr}-{$td}".'◆'.$area_nav_stage_title.$area[$addr]["user_name"].'<p>'.$area[$addr]["top_score"].' pts.</p><p>'.$break_str.' <i class="fab fa-font-awesome" aria-hidden="true"></i>'.$area[$addr]["border_score"].' pts.</p></A></td>';
+						if($area[$addr]["mark"] != "Limited") $area_score_total += $area[$addr]["top_score"];
+						$area_3_cnt++;
+					} elseif($area[$addr]["flag"] == 4){
+						// プレイ済み（第一ボーダーラインを越えた）
+						echo '<td class="area_4'.$current_area.'"><A href="./'.$area[$addr]["stage_id"].'">'."{$tr}-{$td}".'◆'.$area_nav_stage_title.'<i class="fab fa-font-awesome" aria-hidden="true"></i>'.$area[$addr]["user_name"].'<p><i class="fa fa-star" aria-hidden="true"></i>'.$area[$addr]["top_score"].' pts.</p><p><span glot-model="main_nav_team_exborder">EXボーダー</span> <i class="fab fa-fort-awesome" aria-hidden="true"></i>'.$area[$addr]["ex_border_score"].' pts</p></A></td>';
+						if($area[$addr]["mark"] != "Limited") $area_score_total += $area[$addr]["top_score"];
+						$area_4_cnt++;
+					} elseif($area[$addr]["flag"] == 5){
+						// プレイ済み（第二ボーダーラインを越えた）
+						echo '<td class="area_5'.$current_area.'"><A href="./'.$area[$addr]["stage_id"].'">'."{$tr}-{$td}".'◆'.$area_nav_stage_title.'<i class="fab fa-fort-awesome" aria-hidden="true"></i>'.$area[$addr]["user_name"].'<p><span glot-model="main_nav_team_hiscore">ハイスコア</span> <i class="fa fa-spin fa-star" aria-hidden="true"></i>'.$area[$addr]["top_score"].' pts.</p><p> '.$area[$addr]["ex_border_score"].' pts.</p></A></td>';
+						if($area[$addr]["mark"] != "Limited") $area_score_total += $area[$addr]["top_score"];
+						$area_5_cnt++;
+					} else {
+						// 侵入不可能
+						echo '<td class="area_0"> </td>';
+					}
+				}
+				// スタンダードのエリア表示
+				if($area_cat == 'standard'){
+					// 侵入不可能
+					if($area[$addr]["flag"] == 0){
+						echo '<td class="area_0"> </td>';
+					}
+					// 鑑賞モード時にユーザーカラーで表示
+					elseif($watchmode == 2){
+						$ae_bgcolor = str2color($area[$addr]["user_name"], $user_colors);
+						echo '<td style="background-color:'.$ae_bgcolor.'" class="area_2'.$current_area.'"><A href="./'.$area[$addr]["stage_id"].'">'."{$tr}-{$td}".'◆'.$area_nav_stage_title.$area[$addr]["user_name"].'<p><i class="fa fa-star" aria-hidden="true"></i>'.$area[$addr]["top_score"].' pts.</p><p><i class="fas fa-paper-plane"></i>'.$area[$addr]['count'].'</p></A></td>';
+					}
+					// 自陣が存在しない
+					elseif($myarea_count == 0 or $cookie_name == ""){
+						echo '<td class="area_2'.$current_area.'"><A href="./'.$area[$addr]["stage_id"].'">'."{$tr}-{$td}".'◆'.$area_nav_stage_title.$area[$addr]["user_name"].'<p><i class="fa fa-star" aria-hidden="true"></i>'.$area[$addr]["top_score"].' pts.</p><p><i class="fas fa-paper-plane"></i>'.$area[$addr]['count'].'</p></A></td>';
+							$area_2_cnt++;
+					}
+					// 自陣
+					elseif($area[$addr]["user_name"] == $cookie_name){
+						echo '<td class="area_3'.$current_area.'"><A href="./'.$area[$addr]["stage_id"].'">'."{$tr}-{$td}".'◆'.$area_nav_stage_title.$area[$addr]["user_name"].'<p><i class="fa fa-star" aria-hidden="true"></i>'.$area[$addr]["top_score"].' pts.</p><p><i class="fas fa-paper-plane"></i>'.$area[$addr]['count'].'</p></A></td>';
+						if($area[$addr]["mark"] != "Limited") $area_score_total += $area[$addr]["top_score"];
+						$area_3_cnt++;
+					}
+					// 自陣と隣接している
+					elseif($area[$addr - 1]["user_name"] == $cookie_name or $area[$addr + 1]["user_name"] == $cookie_name or $area[$addr - $ae_width[$key]]["user_name"] == $cookie_name or $area[$addr + $ae_width[$key]]["user_name"] == $cookie_name){
+						echo '<td class="area_2'.$current_area.'"><A href="./'.$area[$addr]["stage_id"].'">'."{$tr}-{$td}".'◆'.$area_nav_stage_title.$area[$addr]["user_name"].'<p><i class="fa fa-star" aria-hidden="true"></i>'.$area[$addr]["top_score"].' pts.</p><p><i class="fas fa-paper-plane"></i>'.$area[$addr]['count'].'</p></A></td>';
+						$area_2_cnt++;
+					}
+					// 敵陣
+					elseif($area[$addr]["user_name"] != $cookie_name and $area[$addr]["user_name"] != ""){
+						echo '<td class="area_4'.$current_area.'"><A href="./#">'."{$tr}-{$td}".'◆'.$area_nav_stage_title.$area[$addr]["user_name"].'<p><i class="fa fa-star" aria-hidden="true"></i>'.$area[$addr]["top_score"].' pts.</p><p><i class="fas fa-paper-plane"></i>'.$area[$addr]['count'].'</p></A></td>';
+						$area_4_cnt++;
+					}
+					// 自陣と隣接していない
+					elseif($area[$addr]["flag"] != 0){
+						echo '<td class="area_1'.$current_area.'"><A href="./#">'."{$tr}-{$td}".'◆'.$area_nav_stage_title."（未開地）".'<p><i class="fa fa-star" aria-hidden="true"></i>'.$area[$addr]["top_score"].' pts.</p><p><i class="fas fa-paper-plane"></i>'.$area[$addr]['count'].'</p></A></td>';
+						$area_1_cnt++;
+					}
+					// 侵入不可能
+					else {
+						echo '<td class="area_0"> </td>';
+					}
+				}
+				// チーム制のエリア表示
+				if($area_cat == 'team'){
+					// アクセス可能かどうか判定する
+					// 大会開催中のみ有効（非開催時は全ステージアクセス可能にする）
+					if($limited_num == 16){
+						$addr_link_flag = 0;
+						if($area[$addr]["flag"] == 3 and $cookie_row['current_team'] == $team_a){
+							$addr_link_flag = 1;
+						} elseif($area[$addr]["flag"] == 4 and $cookie_row['current_team'] == $team_b){
+							$addr_link_flag = 1;
+						} else {
+							$addr_link_flag = 0;
+						}
+						// 上下左右が自陣
+						if($cookie_row['current_team'] == $team_a){
+							if($area[$addr - 1]["flag"] == 3) $addr_link_flag = 1;
+							if($area[$addr + 1]["flag"] == 3) $addr_link_flag = 1;
+							if($area[$addr - $ae_width[$limited_num]]["flag"] == 3) $addr_link_flag = 1;
+							if($area[$addr + $ae_width[$limited_num]]["flag"] == 3) $addr_link_flag = 1;
+						} elseif($cookie_row['current_team'] == $team_b){
+							if($area[$addr - 1]["flag"] == 4) $addr_link_flag = 1;
+							if($area[$addr + 1]["flag"] == 4) $addr_link_flag = 1;
+							if($area[$addr - $ae_width[$limited_num]]["flag"] == 4) $addr_link_flag = 1;
+							if($area[$addr + $ae_width[$limited_num]]["flag"] == 4) $addr_link_flag = 1;
+						} else {
+							$addr_link_flag = 0;
+						}
+
+						if($area[$addr]["mark"] == 'base'){
+							$add_link = '<A href="./200918">';
+							$add_tail = '</A>';
+						} elseif($addr_link_flag === 1){
+							$add_link = '<A href="./'.$area[$addr]["stage_id"].'">';
+							$add_tail = '</A>';
+						} else {
+							$add_link = '<A href="#">';
+							$add_tail = '</A>';
+	//							$area_nav_stage_title = '？？？<br><br>';
+						}
+					} else {
+						$add_link = '<A href="./'.$area[$addr]["stage_id"].'">';
+						$add_tail = '</A>';
+					}
+					// 侵入不可能
+					if($area[$addr]["flag"] == 0){
+						echo '<td class="area_0"> </td>';
+					}
+					// 未開地
+					elseif($area[$addr]["flag"] == 1){
+						// 未解禁のフリーエリア
+						echo '<td style="text-align:center;" class="area_1'.$current_area.'">'."{$tr}-{$td}".'</td>';
+						$area_1_cnt++;
+					}
+					// どちらでもない解禁済みエリア
+					elseif($area[$addr]["flag"] == 2){
+						echo '<td class="area_2'.$current_area.'">'.$add_link."{$tr}-{$td}".'◆'.$area_nav_stage_title.$area[$addr]["user_name"].'<p><i class="fa fa-star" aria-hidden="true"></i>'.$area[$addr]["top_score"].' pts.  <i class="fas fa-paper-plane"></i>'.$area[$addr]["count"].'</p><p>'.$teame['a'][$key].$area[$addr]['team_a'].' - '.$area[$addr]['team_b'].$teame['b'][$key].'</p>'.$add_tail.'</td>';
+						$area_2_cnt++;
+					}
+					// 左チームのエリア
+					elseif($area[$addr]["flag"] == 3){
+						// 拠点の場合
+						if($area[$addr]["mark"] == 'base'){
+							echo '<td style="background-color:#'.$teamc[$teamp['a'][$key]].'" class="area_3'.$current_area.'">'.$add_link."{$tr}-{$td}".'◆'.$team[$teamp['a'][$key]].'<br><div style="text-align:right;" glot-model="main_nav_team_base">（拠点）</div></td>';
+						} else {
+							echo '<td style="background-color:#'.$teamc[$teamp['a'][$key]].'" class="area_3'.$current_area.'">'.$add_link."{$tr}-{$td}".'◆'.$area_nav_stage_title.$area[$addr]["user_name"].'<p><i class="fa fa-star" aria-hidden="true"></i>'.$area[$addr]["top_score"].' pts.  <i class="fas fa-paper-plane"></i>'.$area[$addr]["count"].'</p><p>'.$teame['a'][$key].$area[$addr]['team_a'].' - '.$area[$addr]['team_b'].$teame['b'][$key].'</p>'.$add_tail.'</td>';
+						}
+						$area_3_cnt++;
+					}
+					// 右チームのエリア
+					elseif($area[$addr]["flag"] == 4){
+						// 拠点の場合
+						if($area[$addr]["mark"] == 'base'){
+							echo '<td style="background-color:#'.$teamc[$teamp['b'][$key]].'" class="area_3'.$current_area.'">'.$add_link."{$tr}-{$td}".'◆'.$team[$teamp['b'][$key]].'<br><div style="text-align:right;" glot-model="main_nav_team_base">（拠点）</div></td>';
+						} else {
+							echo '<td style="background-color:#'.$teamc[$teamp['b'][$key]].'" class="area_4'.$current_area.'">'.$add_link."{$tr}-{$td}".'◆'.$area_nav_stage_title.$area[$addr]["user_name"].'<p><i class="fa fa-star" aria-hidden="true"></i>'.$area[$addr]["top_score"].' pts.  <i class="fas fa-paper-plane"></i>'.$area[$addr]["count"].'</p><p>'.$teame['a'][$key].$area[$addr]['team_a'].' - '.$area[$addr]['team_b'].$teame['b'][$key].'</p>'.$add_tail.'</td>';
+						}
+						$area_4_cnt++;
+					}
+					// 侵入不可能
+					else {
+						echo '<td class="area_0"> </td>';
+					}
+				}
+			}
 		echo '</tr>';
+		}
+	}
+	if($area_cat == 'team2'){
+		// リアルタイム読み込み用
+		for($tr = 1; $tr <= $ae_height[$key]; $tr++){ // 縦の長さを定義
+			echo '<tr>';
+			for($td = 1; $td <= $ae_width[$key]; $td++){ // 横の長さを定義
+				$addr = ($ae_height[$key] * $tr) - ($ae_width[$key] - $td) + $ae_area[$key-1];
+				echo '<td id="'."area{$addr}".'"> </td>';
+			}
+			echo '</tr>';
+		}
 	}
 	echo '</table><a href="javascript:void(0);" onclick="getarea();">getarea</A><br></div>';
 	if($area_cat == 'coop'){

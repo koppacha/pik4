@@ -1,39 +1,28 @@
 <?php
 
 require_once('_def.php');
+require_once('pik4_config.php');
+require_once('pik4_function.php');
+require_once('pik4_array.php');
 
 $back_data = '';
 $user_name = $_POST["user_name"];
 $rate      = $_POST["rate"];
 $min       = $_POST["min"];
 $max	   = $_POST["max"];
-// $user_name = '木っ端ちゃっぴー';
-// $rate = 1043;
-// $min = 13;
-// $max = 14;
 $error	   = 0;
 
-// index.php からコピーする
-$teamname = array('', 'チーム青ピクミン', 'チーム赤ピクミン','チーム白ピクミン','チーム紫ピクミン','チーム羽ピクミン','チーム岩ピクミン','チームデメマダラ','チームヘビガラス','偉そうで偉くないチーム','偉そうで偉いチーム','飴坊主組','飴入道組','チームヒダマリノミ🍓','チームツラノカワ🍊','チームオフランス🍐','チームカワスベール🍌');
-
-// データベース接続情報
-if($_SERVER['SERVER_NAME'] != 'localhost'){
-	// Heteml DataBase Server Connection
-	$mysql_host = DATABASE_DOMAIN;
-	$mysql_user = DATABASE_USER;
-	$mysql_pass = DATABASE_PASS;
-	$mysql_db   = DATABASE_USER;
-	$mysql_mode = 1;
-} else {
-	// XAMPP Local Server Connection
-	$mysql_host = "127.0.0.1";
-	$mysql_user = "root";
-	$mysql_pass = "";
-	$mysql_db   = "pik4";
-	$mysql_mode = 0;
-}
-$conn = mysqli_connect($mysql_host,$mysql_user,$mysql_pass,$mysql_db);
-$result = mysqli_query($conn, 'SET NAMES utf8mb4');
+	// データベースへアクセス
+	$conn = mysqli_connect($mysql_host,$mysql_user,$mysql_pass,$mysql_db);
+	if ( $mysqlconn == false) {
+		$network_error = 1;
+		$return_flag = 0;
+	} else {
+		$result = mysqli_query($mysqlconn, 'SET NAMES utf8mb4');
+		if (!$result) {
+			$return_flag = 0;
+		}
+	}
 
 	if ( $conn == false) {
 		$error = 1;
@@ -103,37 +92,37 @@ $result = mysqli_query($conn, 'SET NAMES utf8mb4');
 		// チームメンバー数の差が１以上だったらレート関係なく不足している方へ
 		if(abs(count($team_a) - count($team_b)) > 0){
 			if(count($team_a) > count($team_b)){
-				$team = 'b';
+				$team_result = 'b';
 			} else {
-				$team = 'a';
+				$team_result = 'a';
 			}
 		} else {
 			// 全体の中で上位ならレート合計が少ない方へ
 			if($rate_rank <= ($player_count / 2)){
 				if($team_a_total > $team_b_total){
-					$team = 'b';
+					$team_result = 'b';
 				} elseif($team_a_total < $team_b_total){
-					$team = 'a';
+					$team_result = 'a';
 				} else {
-					$team = randteam();
+					$team_result = randteam();
 				}
 			} elseif($rate_rank >= ($player_count / 2)) {
 				if($team_a_total > $team_b_total){
-					$team = 'a';
+					$team_result = 'a';
 				} elseif($team_a_total < $team_b_total){
-					$team = 'b';
+					$team_result = 'b';
 				} else {
-					$team = randteam();
+					$team_result = randteam();
 				}
 			} else {
-				$team = randteam();
+				$team_result = randteam();
 			}
 			
 		}
-		if($team == 'a'){
+		if($team_result == 'a'){
 			$teamnum = $min;
 			$query ="UPDATE `user` SET `current_team` = '$min' WHERE `user_name` = '$user_name' ";
-		} elseif($team == 'b'){
+		} elseif($team_result == 'b'){
 			$teamnum = $max;
 			$query ="UPDATE `user` SET `current_team` = '$max' WHERE `user_name` = '$user_name' ";
 		} else {
@@ -143,7 +132,9 @@ $result = mysqli_query($conn, 'SET NAMES utf8mb4');
 		if($error != 1){
 			$result = mysqli_query($conn, $query );
 			if($result){
-				$back_data = '抽選の結果あなたは <b>'.$teamname[$teamnum].'</b> になりました。グッドラック！ <A style="#000;" href="./200918">→こちらを押して再読み込みしてください</A>';
+				$back_data = '抽選の結果あなたは <b>'.$team[$teamnum].'</b> になりました。グッドラック！ <A style="color:#000;" href="./'.$limited_stage_list[$limited_num].'">→こちらを押して再読み込みしてください</A>';
+				setcookie('team', $teamnum, time()+60*60*24*30*120);
+				$_COOKIE['team'] = $teamnum;
 			} else {
 				$back_data = 'エラー：データベースの登録に失敗しました。';
 			}

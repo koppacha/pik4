@@ -1587,24 +1587,24 @@ function teamselect(name, rate, min, max){
 	    }
 	});
 }
-// ランダムステージチャレンジ
-function teamselect(name){
-        $.ajax({
-            type: "POST",
-            url: "pik4_random.php",
-            data: {
-                "user_name": name
-            },
-            success: function(data){
-		// 指定要素に表示
-		var elem = document.getElementById("randomoutput");
-		elem.innerHTML = data;
-        },
-      error: function(XMLHttpRequest, textStatus, errorThrown) {
-//            alert("errorThrown : " + errorThrown.message);
-	    }
-	});
-}
+// // ランダムステージチャレンジ
+// function teamselect(name){
+//         $.ajax({
+//             type: "POST",
+//             url: "pik4_random.php",
+//             data: {
+//                 "user_name": name
+//             },
+//             success: function(data){
+// 		// 指定要素に表示
+// 		var elem = document.getElementById("randomoutput");
+// 		elem.innerHTML = data;
+//         },
+//       error: function(XMLHttpRequest, textStatus, errorThrown) {
+// //            alert("errorThrown : " + errorThrown.message);
+// 	    }
+// 	});
+// }
 // 携帯表示時、サブメニューをクリックで表示トグル
 $(function(){
 	$("#mobile_fixed_key3").on("click", ".submenutoggle", function () {
@@ -1660,13 +1660,13 @@ function getarea(){
 		},
 		success: function(data){
 			const mapkey = range(173, 221);
+			var team = getCookie("team");
 			var areax = 7;
 			var areay = 7;
 			var teamae = "😂";
 			var teambe = "😊";
 			var now = new Date();
 			mapkey.forEach(function(key){
-					var current_area = 0; // ステージIDと一致していたら色を変える
 					var tr = Math.floor((key - mapkey[0]) / areay) + 1; // 列数
 					var td = (key - mapkey[0] + 1) - (areay * (tr - 1)); // 行数
 					var stagetitle = data[key].title.replace("（", "<br>（");
@@ -1684,8 +1684,15 @@ function getarea(){
 					var getore = Math.floor((checktime / (1000*60)) / excav_time) * multi;
 					var bonus = Math.floor((updatetime / (1000*60)) / excav_time) * (multi / 2);
 					$("#area"+key).removeClass().addClass('area_'+data[key].flag);
-					if(data[key].flag == 3 || data[key].flag == 4){
+					if((data[key].flag == 3 && team == 17) || (data[key].flag == 4 && team == 18)){
+						var myteam = 1;
+					} else {
+						var myteam = 0;
+					}
+					if(myteam && (data[key].flag == 3 || data[key].flag == 4) ){
 						$("#area"+key).html('<A href="./'+data[key].stage_id+'">'+tr+'-'+td+'◆'+stagetitle+'<br>'+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'<br>⛏'+counttime+' <i class="fas fa-gem"></i>'+getore+' <i class="fas fa-coins"></i>'+bonus+'</p></A><A href="javascript:void(0)" onclick="collectarea('+data[key].id+');">回収ボタン</A>');
+					} else if(!myteam && (data[key].flag == 3 || data[key].flag == 4)){
+						$("#area"+key).html('<A href="./'+data[key].stage_id+'">'+tr+'-'+td+'◆'+stagetitle+'<br>'+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'<br>⛏'+counttime+' <i class="fas fa-gem"></i>'+getore+' <i class="fas fa-coins"></i>'+bonus+'</p></A>');
 					} else if(data[key].flag == 2){
 						$("#area"+key).html('<A href="./'+data[key].stage_id+'">'+tr+'-'+td+'◆'+stagetitle+'</A>');
 					}
