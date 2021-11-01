@@ -1429,7 +1429,7 @@ if (@$_POST['check_send']) {
 			$result = mysqli_query($mysqlconn, $query);
 			$ae_user_count = mysqli_num_rows($result);
 
-			if($stage_id >= 3066 and $stage_id <= 3112){
+			if($stage_id >= 3066 and $stage_id <= 3142){
 				// チーム対抗制の場合
 				if($cookie_row['current_team'] == $team_a) $flag_jadge = 3;
 				if($cookie_row['current_team'] == $team_b) $flag_jadge = 4;
@@ -2343,14 +2343,15 @@ if (@$_POST['check_send']) {
 				} elseif($ae_team_a < $ae_team_b){
 					$ae_flag = 4;
 				} else {
-					$ae_flag = 2;
+					// 第17回より同点になった場合は陣地色を中立にしないようにした
+					// $ae_flag = 2;
 				}
 
 				if($ae_flag > 2){
 					// 周囲エリアのフラグをチェックする
 					$around_check_array   = array();
 					// 今大会の一番左上から１引いた数値を定義しておく
-					$min_point = 147;
+					$min_point = 172;
 					if(($ae_point - $min_point) % $ae_width[$limited_num] !== 0) $around_check_array[] = $ae_point + 1; // 東
 					if(($ae_point - $min_point) % $ae_width[$limited_num] !== 1) $around_check_array[] = $ae_point - 1; // 西
 					if($ae_point > ($min_point + $ae_width[$limited_num])) $around_check_array[] = $ae_point - $ae_width[$limited_num]; // 北

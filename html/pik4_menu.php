@@ -25,6 +25,22 @@ if(!$mysql_mode){
 if(!$mysql_mode) loadtime_calc(__LINE__);
 // お砂場
 
+
+$stage_id = 176;
+$query = "SELECT * FROM `area` WHERE `id` = '$stage_id' LIMIT 1";
+$result = mysqli_query($mysqlconn, $query);
+$row = mysqli_fetch_assoc($result);
+$current_area = $row['flag'];
+$check_time = floor((time() - strtotime($row['check_time'])) / 60);
+$ore = intval(substr($row['mark'], 4) );
+$ore_point = $ore * (pow(2, $ore) / 2) * 2;
+$ore_time  = 30 * (pow(2, ($ore - 1)));
+
+$add_time = date('Y-m-d H:i:s', strtotime($row['check_time']) + ($check_time - ($check_time % $ore_time)) * 60);
+$add_point = floor($check_time / $ore_time) * $ore_point;
+
+var_dump($check_time, $ore_time, $ore_point, $ore);
+
 // お砂場ここまで
 
 // メニューカラムヘッダー

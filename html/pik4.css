@@ -913,6 +913,16 @@ h3 {
 .pc-scroll-wrap::-webkit-scrollbar-thumb {
 	background: #BCBCBC;
 }
+.team_user_tab_wrapper {
+	width: 30%;
+	text-align: center;
+	vertical-align: top;
+}
+.team_point_tab_wrapper {
+	width: 20%;
+	text-align: center;
+	vertical-align: top;
+}
 
 /* ◆ PC用CSS設定 ここまで */
 }
@@ -2224,7 +2234,10 @@ line-height:1.5em;margin-left:0.5em;border:dotted 1px #ffffff;background-color:t
 	color:#222222;
 	text-shadow: 1px 1px 1px #fff,1px -1px 1px #fff,-1px 1px 1px #fff,-1px -1px 1px #fff;
 }
-
+.roundbg {
+	background-color: #eee;
+	border-radius: 4px;
+}
 .area_n a {color:#555;} /* カレントエリアではない */
 .area_c a {color:#000;} /* カレントエリア */
 

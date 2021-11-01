@@ -90,10 +90,10 @@ $uplan190321 = range(4031, 4060);
 $uplan210829 = range(4061, 4073);
 
 // 最新の期間限定ランキング・参加者企画対象ステージリスト
-$limited_stage = range(3113, 3113);
+$limited_stage = range(3113, 3142);
 
 $limited_last = 1050;
-$area_last = 3112;
+$area_last = 3142;
 
 // 代表選抜戦のステージ地位を定義
 $rep_sel_mark = array(

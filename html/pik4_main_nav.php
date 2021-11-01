@@ -456,9 +456,10 @@ if($area_cat != "team2"){
 			}
 		echo '</tr>';
 		}
+		echo '</table><br></div>';
 	}
 	if($area_cat == 'team2'){
-		// リアルタイム読み込み用
+		// JS版エリア表示
 		for($tr = 1; $tr <= $ae_height[$key]; $tr++){ // 縦の長さを定義
 			echo '<tr>';
 			for($td = 1; $td <= $ae_width[$key]; $td++){ // 横の長さを定義
@@ -467,8 +468,41 @@ if($area_cat != "team2"){
 			}
 			echo '</tr>';
 		}
+		echo '</table><a href="javascript:void(0);" onclick="getarea();">getarea</A> <a href="javascript:void(0);" onclick="getpoint(\'17\', \'17\', \'18\');">getpoint</A><br></div>';
+		// JS版チームスコア表示
+		echo '
+		<table class="team_info_tab">
+			<tr>
+				<td class="team_point_tab_wrapper">
+					<span style="color:#'.$teamc[$team_a].';" class="team_point" id="teama_areapoint">0</span>
+					<hr style="height:3px;border:none;background-color:#'.$teamc[$team_a].';">
+					<span style="color:#'.$teamc[$team_a].';" class="team_point" id="teama_rankpoint">0</span>
+					<br>
+					<span style="color:#'.$teamc[$team_a].'" class="team_point_mini" id="teama_gamepoint">0</span>
+				</td>
+				<td class="mobile-hidden team_user_tab_wrapper">
+					<b style="color:#'.$teamc[$team_a].'">◆<span glot-model="team'.$team_a.'">'.$team[$team_a].'</span>◆</b> <br>
+					<table class="team_user_tab" id="teama_user_tab">
+						<tr><td><b></b></td><td>0 RPS</td><td>0 pts.</td></tr>
+					</table>
+				</td>
+				<td class="mobile-hidden team_user_tab_wrapper">
+					<b style="color:#'.$teamc[$team_b].'">◆<span glot-model="team'.$team_b.'">'.$team[$team_b].'</span>◆</b> <br>
+					<table class="team_user_tab" id="teamb_user_tab">
+						<tr><td><b></b></td><td>0 RPS</td><td>0 pts.</td></tr>
+					</table>
+				</td>
+				<td class="team_point_tab_wrapper">
+					<span style="color:#'.$teamc[$team_b].';" class="team_point" id="teamb_areapoint">0</span>
+					<hr style="height:3px;border:none;background-color:#'.$teamc[$team_b].';">
+					<span style="color:#'.$teamc[$team_b].'" class="team_point" id="teamb_rankpoint">0</span>
+					<br>
+					<span style="color:#'.$teamc[$team_b].'" class="team_point_mini" id="teamb_gamepoint">0</span>
+				</td>
+			</tr>
+		</table>
+		';
 	}
-	echo '</table><a href="javascript:void(0);" onclick="getarea();">getarea</A><br></div>';
 	if($area_cat == 'coop'){
 		$area_count  = $area_1_cnt + $area_2_cnt + $area_3_cnt + $area_4_cnt + $area_5_cnt;
 		$lest_count  = $area_1_cnt + $area_2_cnt + $area_3_cnt;

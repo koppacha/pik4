@@ -69,8 +69,8 @@ elseif ( $stage_id ==    399			       ) $page_type = 3; // サンドボックス
 elseif ( $stage_id >     348 and $stage_id <      1001 ) $page_type =98; // 無効
 elseif ( $stage_id >    1000 and $stage_id <      2001 ) $page_type = 4; // 特殊ランキング（期間限定チャレンジ）
 elseif ( $stage_id >    2000 and $stage_id <      3001 ) $page_type =12; // 特殊ランキング (2Pモード)
-elseif ( $stage_id >    3000 and $stage_id <      3113 ) $page_type =19; // 特殊ランキング（エリア踏破戦個別ページ）
-elseif ( $stage_id >    3035 and $stage_id <      4001 ) $page_type =98; // 無効
+elseif ( $stage_id >    3000 and $stage_id <      3143 ) $page_type =19; // 特殊ランキング（エリア踏破戦個別ページ）
+elseif ( $stage_id >    3142 and $stage_id <      4001 ) $page_type =98; // 無効
 elseif ( $stage_id >    4000 and $stage_id <      4074 ) $page_type = 4; // 特殊ランキング（参加者企画）
 elseif ( $stage_id >    4073 and $stage_id <      5001 ) $page_type =98; // 無効
 elseif ( $stage_id >    5000 and $stage_id <      5018 ) $page_type = 3; // 特殊ランキング（スプレー縛り等）
@@ -404,6 +404,10 @@ require_once('pik4_form.php'); // フォーム画面読み込み
 		e.preventDefault()
 		glot.render('en');
 		});
+
+		// 定期実行する関数
+		// setInterval('getarea()', 1000); // エリア踏破戦エリア取得
+		// setInterval('getpoint(\'<?= $limited_num ?>\',\'<?= $team_a ?>\',\'<?= $team_b ?>\')', 1000);// エリア踏破戦ポイント取得
 	</script>
 </body>
 </html>

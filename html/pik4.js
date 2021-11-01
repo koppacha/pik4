@@ -1678,23 +1678,35 @@ function getarea(){
 						var excav_time = 30;
 						var multi = 2;
 					}
-					var updatetime = now.getTime() - Date.parse(data[key].update_time);
-					var checktime = now.getTime() - Date.parse(data[key].check_time);
-					var counttime = orgcountdown(checktime, excav_time);
-					var getore = Math.floor((checktime / (1000*60)) / excav_time) * multi;
-					var bonus = Math.floor((updatetime / (1000*60)) / excav_time) * (multi / 2);
-					$("#area"+key).removeClass().addClass('area_'+data[key].flag);
 					if((data[key].flag == 3 && team == 17) || (data[key].flag == 4 && team == 18)){
 						var myteam = 1;
 					} else {
 						var myteam = 0;
 					}
-					if(myteam && (data[key].flag == 3 || data[key].flag == 4) ){
-						$("#area"+key).html('<A href="./'+data[key].stage_id+'">'+tr+'-'+td+'◆'+stagetitle+'<br>'+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'<br>⛏'+counttime+' <i class="fas fa-gem"></i>'+getore+' <i class="fas fa-coins"></i>'+bonus+'</p></A><A href="javascript:void(0)" onclick="collectarea('+data[key].id+');">回収ボタン</A>');
+					var updatetime = now.getTime() - Date.parse(data[key].update_time);
+					var checktime = now.getTime() - Date.parse(data[key].check_time);
+					if(myteam){
+						var counttime = orgcountdown(checktime, excav_time);
+					} else {
+						var counttime = orgcountdown(updatetime, excav_time);
+					}
+					var getore = Math.floor((checktime / (1000*60)) / excav_time) * multi;
+					var bonus = Math.floor((updatetime / (1000*60)) / excav_time) * (multi / 2);
+					$("#area"+key).removeClass().addClass('area_'+data[key].flag);
+					// 自陣
+					if(data[key].mark == "base"){
+						$("#area"+key).html('拠点');
+					} else if(myteam && (data[key].flag == 3 || data[key].flag == 4)){
+						$("#area"+key).html('<A href="./'+data[key].stage_id+'">'+tr+'-'+td+'◆'+stagetitle+'<br>'+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'<br><i class="roundbg"><i class="fa faa-wrench animated">⛏</i>'+counttime+' <i class="fas fa-gem"></i>'+getore+'</i> <i class="fas fa-coins"></i>'+bonus+'</p></A><A href="javascript:void(0)" onclick="collectarea('+data[key].id+');">回収ボタン</A>');
+					// 敵陣
 					} else if(!myteam && (data[key].flag == 3 || data[key].flag == 4)){
-						$("#area"+key).html('<A href="./'+data[key].stage_id+'">'+tr+'-'+td+'◆'+stagetitle+'<br>'+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'<br>⛏'+counttime+' <i class="fas fa-gem"></i>'+getore+' <i class="fas fa-coins"></i>'+bonus+'</p></A>');
+						$("#area"+key).html('<A href="#">'+tr+'-'+td+'◆'+stagetitle+'<br>'+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'<br><i class="fas fa-gem"></i>'+getore+' <i class="roundbg"><i class="fa faa-wrench animated-hover">⛏</i>'+counttime+' <i class="fas fa-coins"></i>'+bonus+'</i></p></A>');
+					// 中立解禁済み
 					} else if(data[key].flag == 2){
 						$("#area"+key).html('<A href="./'+data[key].stage_id+'">'+tr+'-'+td+'◆'+stagetitle+'</A>');
+					// 中立未解禁
+					} else if(data[key].flag == 1){
+						$("#area"+key).html(tr+'-'+td);
 					}
 				}
 			);
@@ -1709,6 +1721,7 @@ function getarea(){
 		}
 	});
 }
+// 期間限定ランキングナビゲーション：採掘ボタン
 function collectarea(id){
 	// 不正チェック
 	
@@ -1725,8 +1738,40 @@ function collectarea(id){
 		}
 	});
 }
-// 定期実行する関数一覧
-setInterval('getarea()', 1000);
+// 期間限定ランキングナビゲーション：チーム情報リアルタイム版
+function getpoint(lim, teama, teamb){
+	// 不正チェック
+	
+	$.ajax({
+		type: "POST",
+		url: "pik4_getpoint.php?id="+Math.random(),
+		cache: false,
+		data: {
+			"lim": lim,
+			"teama": teama,
+			"teamb": teamb
+		},
+		success: function(data){
+			$('#teama_areapoint').text(data.team.teama['ore_point']);
+			$('#teamb_areapoint').text(data.team.teamb['ore_point']);
+			$('#teama_rankpoint').text(data.team.teama['rps']);
+			$('#teamb_rankpoint').text(data.team.teamb['rps']);
+			$('#teama_gamepoint').text(data.team.teama['game_point']);
+			$('#teamb_gamepoint').text(data.team.teamb['game_point']);
+			$('#teama_user_tab').empty();
+			$('#teamb_user_tab').empty();
+			for(const useradata in data.user.teama){
+				$('#teama_user_tab').append('<tr><td><b>'+data.user.teama[useradata].user_name+'</b></td><td>'+data.user.teama[useradata].total_rpslim017+' RPS</td><td>'+data.user.teama[useradata].total_limited017+' pts.</td></tr>');
+			}
+			for(const userbdata in data.user.teamb){
+				$('#teamb_user_tab').append('<tr><td><b>'+data.user.teamb[userbdata].user_name+'</b></td><td>'+data.user.teamb[userbdata].total_rpslim017+' RPS</td><td>'+data.user.teamb[userbdata].total_limited017+' pts.</td></tr>');
+			}
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown) {
+			alert("errorThrown : " + errorThrown.message);
+		}
+	});
+}
 
 // javascriptでrange()関数 参考：https://qiita.com/RyutaKojima/items/168632d4980e65a285f3
 const range = (start, stop) => Array.from({ length: (stop - start) + 1}, (_, i) => start + i);
