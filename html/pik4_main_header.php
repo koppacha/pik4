@@ -96,6 +96,9 @@ if(isset($limited_stage_list[$limited_num]) || $limited_num == 0){
         } elseif($stage_id >= 3096 and $stage_id <= 3112) {
                 $team_a = 15;
                 $team_b = 16;
+        } elseif($stage_id >= 3113 and $stage_id <= 3142) {
+                $team_a = 17;
+                $team_b = 18;
         }
 }
 //ステージ種別を表示

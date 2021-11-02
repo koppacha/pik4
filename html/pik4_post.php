@@ -1104,7 +1104,7 @@ if (@$_POST['check_send']) {
 		}
 		// f16新2：エリア踏破戦のチーム分けチェック
 		// チーム分けプログラムを実行していないと登録できないようにする
-		if($stage_id >= 3066 and $stage_id <= 3112){
+		if($stage_id >= 3066 and $stage_id <= 3142){
 			$query = "SELECT * FROM `user` WHERE `user_name` = '$user_name' LIMIT 1";
 			if ($result = mysqli_query($mysqlconn, $query) ){
 				$row = mysqli_fetch_assoc($result);
@@ -1690,7 +1690,7 @@ if (@$_POST['check_send']) {
 			$myrate = $user_data["rate"];
 
 			// エリア踏破戦×チーム対抗戦は擬似的にチーム対抗戦と同じ登録
-			if($stage_id >= 3066 and $stage_id <= 3112){
+			if($stage_id >= 3066 and $stage_id <= 3142){
 			$query = "INSERT INTO `ranking`( `user_name`, `stage_id`, `score`, `console`, `user_ip`, `user_host`, `user_agent`, `unique_id`, `post_comment`, `post_date`, `post_count`,`prev_score`,`pic_file`,`pic_file2`,`firstpost_date`,`video_url`,`prev_rank`,`team`,`rate`) VALUES('$user_name','$stage_id','$score','$console','$user_ip','$user_host','$user_agent','$unique_id','$post_comment','$post_date','$post_count','$prev_score','$new_file_name[0]','$new_file_name[1]','$firstpost_date','$video_url','$old_rank','$current_team','$myrate')";
 			if(!$_SESSION['debug_mode']) $result = mysqli_query($mysqlconn, $query );
 
@@ -1844,7 +1844,7 @@ if (@$_POST['check_send']) {
 			// 		if(!$_SESSION['debug_mode']) $result_af = mysqli_query($mysqlconn, $update_query );
 			// 	}
 			// }
-			if( $switch[23] and ($ranking_type != "limited_team" and $ranking_type != "limited_area")){
+			if( $switch[23]){
 
 				// ステージの数だけループする
 				$array_stage_list = array();
@@ -1891,7 +1891,7 @@ if (@$_POST['check_send']) {
 						// 期間限定ランキング・参加者企画
 						} elseif(($stage_id > 1000 and $stage_id < 2000) or ($stage_id > 3000 and $stage_id < 5000)){
 							$query = "SELECT * FROM `ranking` WHERE `stage_id` = '$stage_id' AND `log` = 0 ORDER BY `score` DESC";
-							continue;
+							// continue;
 
 						// その他すべて
 						} else {
@@ -2213,8 +2213,8 @@ if (@$_POST['check_send']) {
 		// }
 
 		// チーム対抗の場合は対象ステージすべてのRPSを更新する(★暫定対応）
-		if( $switch[23] and ($ranking_type == "limited_team" or $del_ranking_type == "limited_team") or ($stage_id >= 3066 and $stage_id <= 3112)){
-		if(     $ranking_type == "limited_team" or ($stage_id >= 3066 and $stage_id <= 3112)) $rps_update_limited_array = ${'limited'.$limited_stage_list[$limited_num]};
+		if( $switch[23] and ($ranking_type == "limited_team" or $del_ranking_type == "limited_team") or ($stage_id >= 3066 and $stage_id <= 3142)){
+		if(     $ranking_type == "limited_team" or ($stage_id >= 3066 and $stage_id <= 3142)) $rps_update_limited_array = ${'limited'.$limited_stage_list[$limited_num]};
 		if( $del_ranking_type == "limited_team") $rps_update_limited_array = ${'limited'.$limited_stage_list[$del_limited_num]};
 
 		// 計算対象の期間限定ランキング参加者を計算

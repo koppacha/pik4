@@ -1649,7 +1649,7 @@ $(function(){
 		return false;
 	})
 });
-// 期間限定ランキングナビゲーション：エリア取得リアルタイム版
+// 期間限定ランキングナビゲーション：エリア取得リアルタイム版（第17回専用）
 function getarea(){
 	$.ajax({
 		type: "POST",
@@ -1661,10 +1661,9 @@ function getarea(){
 		success: function(data){
 			const mapkey = range(173, 221);
 			var team = getCookie("team");
-			var areax = 7;
 			var areay = 7;
-			var teamae = "😂";
-			var teambe = "😊";
+			var teamae = "☕";
+			var teambe = "🐻";
 			var now = new Date();
 			mapkey.forEach(function(key){
 					var tr = Math.floor((key - mapkey[0]) / areay) + 1; // 列数
@@ -1692,15 +1691,15 @@ function getarea(){
 					}
 					var getore = Math.floor((checktime / (1000*60)) / excav_time) * multi;
 					var bonus = Math.floor((updatetime / (1000*60)) / excav_time) * (multi / 2);
-					$("#area"+key).removeClass().addClass('area_'+data[key].flag);
+					$("#area"+key).removeClass().addClass('area_'+data[key].flag+' '+'team'+(Number(data[key].flag) + 14));
 					// 自陣
 					if(data[key].mark == "base"){
 						$("#area"+key).html('拠点');
 					} else if(myteam && (data[key].flag == 3 || data[key].flag == 4)){
-						$("#area"+key).html('<A href="./'+data[key].stage_id+'">'+tr+'-'+td+'◆'+stagetitle+'<br>'+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'<br><i class="roundbg"><i class="fa faa-wrench animated">⛏</i>'+counttime+' <i class="fas fa-gem"></i>'+getore+'</i> <i class="fas fa-coins"></i>'+bonus+'</p></A><A href="javascript:void(0)" onclick="collectarea('+data[key].id+');">回収ボタン</A>');
+						$("#area"+key).html('<A href="./'+data[key].stage_id+'">'+tr+'-'+td+'◆'+stagetitle+'<br>'+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p>'+arrow[0]+teamae+data[key].team_a+' - '+data[key].team_b+teambe+arrow[1]+'<br><i class="roundbg"><i class="fa faa-wrench animated">⛏</i>'+counttime+' <i class="fas fa-gem"></i>'+getore+'</i> <i class="fas fa-coins"></i>'+bonus+'</p></A><A href="javascript:void(0)" onclick="collectarea('+data[key].id+');">回収ボタン</A>');
 					// 敵陣
 					} else if(!myteam && (data[key].flag == 3 || data[key].flag == 4)){
-						$("#area"+key).html('<A href="#">'+tr+'-'+td+'◆'+stagetitle+'<br>'+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'<br><i class="fas fa-gem"></i>'+getore+' <i class="roundbg"><i class="fa faa-wrench animated-hover">⛏</i>'+counttime+' <i class="fas fa-coins"></i>'+bonus+'</i></p></A>');
+						$("#area"+key).html('<A href="#">'+tr+'-'+td+'◆'+stagetitle+'<br>'+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p>'+arrow[0]+teamae+data[key].team_a+' - '+data[key].team_b+teambe+arrow[1]+'<br><i class="fas fa-gem"></i>'+getore+' <i class="roundbg"><i class="fa faa-wrench animated-hover">⛏</i>'+counttime+' <i class="fas fa-coins"></i>'+bonus+'</i></p></A>');
 					// 中立解禁済み
 					} else if(data[key].flag == 2){
 						$("#area"+key).html('<A href="./'+data[key].stage_id+'">'+tr+'-'+td+'◆'+stagetitle+'</A>');
@@ -1721,6 +1720,31 @@ function getarea(){
 		}
 	});
 }
+// 期間限定ランキングナビゲーション：ヘッドラインアロー
+// ★作成中：対象ステージ（自陣or敵陣のみ）の最新100件を取得し、ステージ/チームごとに振り分けてアロー数を算出する
+// getareaは介さずに直接書き込む（あらかじめ指定するhtmlが必要）
+function headlinearrow(stage_id){
+	$.ajax({
+		type: "POST",
+		url: "pik4_getarrow.php?id="+Math.random(),
+		cache: false,
+		data: {
+			"stage_id": stage_id
+		}
+	})
+	.done( function(arrowarray){
+		var left = 0;
+		var right = 0;
+		for(const arr in arrowarray){
+			if(arrowarray[arr]["team"] == 17) ++left;
+			if(arrowarray[arr]["team"] == 18) ++right;
+		}
+		let arrows = [left, right];
+		}
+	).fail( function(){
+		return false;
+	});
+};
 // 期間限定ランキングナビゲーション：採掘ボタン
 function collectarea(id){
 	// 不正チェック

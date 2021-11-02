@@ -787,7 +787,30 @@ h3 {
 .team_color16 > .rtd_info {
 	border-bottom	:solid 2px #dce645;
 }
-
+.team_color17 > .rtd_rank {
+	border-left:solid 10px #457de6;
+}
+.team_color17 > .rtd_rank,
+.team_color17 > .rtd_player,
+.team_color17 > .rtd_score,
+.team_color17 > .rtd_info {
+	border-bottom	:solid 2px #457de6;
+}
+.team17 {
+	background-color: #457de6 !important;
+}
+.team_color18 > .rtd_rank {
+	border-left:solid 10px #e69345;
+}
+.team_color18 > .rtd_rank,
+.team_color18 > .rtd_player,
+.team_color18 > .rtd_score,
+.team_color18 > .rtd_info {
+	border-bottom	:solid 2px #e69345;
+}
+.team18 {
+	background-color: #e69345 !important;
+}
 .mobile-clear {
 	float:right;
 	text-align:right;
@@ -2430,13 +2453,14 @@ select {
 }
 .test_float_left {
 	background-color:#222;
-	color:#ddd;
-	position:fixed;
-	left:0px;
-	bottom:0px;
+	color		:#ddd;
+	position	:fixed;
+	left		:0px;
+	bottom		:0px;
 	filter		:alpha(opacity=70);
 	-moz-opacity	:.70;
 	opacity		:.70;
+	display		: none;
 }
 /* ミニメニューのカラーリングを統一する */
 .mini_caption1 { color: #24CAFF !important;}
