@@ -39,9 +39,22 @@ $ore_time  = 30 * (pow(2, ($ore - 1)));
 $add_time = date('Y-m-d H:i:s', strtotime($row['check_time']) + ($check_time - ($check_time % $ore_time)) * 60);
 $add_point = floor($check_time / $ore_time) * $ore_point;
 
-var_dump($check_time, $ore_time, $ore_point, $ore);
-
 // お砂場ここまで
+
+$min = min(${'limited'.$limited_stage_list[$limited_num]});
+$max = max(${'limited'.$limited_stage_list[$limited_num]});
+
+// 期間限定ランキングの最新100件を取得
+$sql = "SELECT `stage_id`,`team` FROM `ranking` WHERE `stage_id` BETWEEN '$min' AND '$max' AND `log` < 2 ORDER BY `post_date` DESC LIMIT 100";
+$result = mysqli_query($mysqlconn, $sql);
+if($result){
+	while($arrow_data = mysqli_fetch_assoc($result)){
+		$arrowdata[$arrow_data["team"]][] = $arrow_data["stage_id"];
+	}
+	$arrow_count["teama"] = array_count_values($arrowdata[$team_a]);
+	$arrow_count["teamb"] = array_count_values($arrowdata[$team_b]);
+}
+var_dump($arrow_count);
 
 // メニューカラムヘッダー
 ?>

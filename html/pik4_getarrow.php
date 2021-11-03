@@ -24,14 +24,23 @@ if(isset($_POST['stage_id'])){
 	require_once('pik4_array.php');
 	require_once('pik4_name.php');
 
-	// 指定されたステージIDの最新10件を取得
-        $sql = "SELECT `team`,`post_rank` FROM `ranking` WHERE `stage_id` = '$stage_id' AND `team` > 16 ORDER BY `post_date` DESC LIMIT 10";
-        $result = mysqli_query($mysqlconn, $sql);
-        if($result){
-                while($area_data = mysqli_fetch_assoc($result)){
-                        $area[] = $area_data;
-                }
-        }
+	$min = min(${'limited'.$limited_stage_list[$limited_num]});
+	$max = max(${'limited'.$limited_stage_list[$limited_num]});
+	
+	$arrow_count = array(
+		"teama" => range($min, $max),
+		"teamb" => range($min, $max),
+	);
+	// 期間限定ランキングの最新100件を取得
+	$sql = "SELECT `stage_id`,`team` FROM `ranking` WHERE `stage_id` BETWEEN '$min' AND '$max' AND `log` < 2 ORDER BY `post_date` DESC LIMIT 110";
+	$result = mysqli_query($mysqlconn, $sql);
+	if($result){
+		while($arrow_data = mysqli_fetch_assoc($result)){
+			$arrowdata[$arrow_data["team"]][] = $arrow_data["stage_id"];
+		}
+		$arrow_count["teama"] = array_count_values($arrowdata[$team_a]);
+		$arrow_count["teamb"] = array_count_values($arrowdata[$team_b]);
+	}
 	mysqli_close($mysqlconn);
 } else {
 
@@ -41,5 +50,5 @@ $back_data = "エラーが発生しています（ステージIDの取得に失�
 
 header('Content-Type: application/json; charset=utf-8');
 
-echo json_encode($area);
+echo json_encode($arrow_count);
 ?>

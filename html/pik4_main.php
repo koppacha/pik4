@@ -47,7 +47,7 @@ if( $show_scoretable == 1 and $page_type == 17){
 if(!$mysql_mode) loadtime_calc(__LINE__);
 
 //チーム対抗テーブル（通常スコア表示フラグ削除）
-if( $show_scoretable == 1 and ($page_type == 10 or $stage_id == 200723 or $stage_id == 200918)){
+if( $show_scoretable == 1 and ($page_type == 10 or $stage_id == 200723 or $stage_id == 200918 or $stage_id == 211105)){
 	require_once('pik4_main_team.php');
 }
 if(!$mysql_mode) loadtime_calc(__LINE__);

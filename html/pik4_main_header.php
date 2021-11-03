@@ -82,7 +82,7 @@ if(isset($limited_stage_list[$limited_num]) || $limited_num == 0){
                 } elseif($stage_id == 200918){
                         $team_a = 15;
                         $team_b = 16;
-                } elseif($stage_id == 211022){
+                } elseif($stage_id == 211105){
                         $team_a = 17;
                         $team_b = 18;
                 } elseif($stage_id <= 170101){

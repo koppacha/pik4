@@ -463,7 +463,7 @@ if($area_cat != "team2"){
 		for($tr = 1; $tr <= $ae_height[$key]; $tr++){ // 縦の長さを定義
 			echo '<tr>';
 			for($td = 1; $td <= $ae_width[$key]; $td++){ // 横の長さを定義
-				$addr = ($ae_height[$key] * $tr) - ($ae_width[$key] - $td) + $ae_area[$key-1];
+				$addr = ($ae_width[$key] * $tr) - ($ae_width[$key] - $td) + $ae_area[$key-1];
 				echo '<td id="'."area{$addr}".'"> </td>';
 			}
 			echo '</tr>';
