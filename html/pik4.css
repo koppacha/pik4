@@ -787,30 +787,6 @@ h3 {
 .team_color16 > .rtd_info {
 	border-bottom	:solid 2px #dce645;
 }
-.team_color17 > .rtd_rank {
-	border-left:solid 10px #457de6;
-}
-.team_color17 > .rtd_rank,
-.team_color17 > .rtd_player,
-.team_color17 > .rtd_score,
-.team_color17 > .rtd_info {
-	border-bottom	:solid 2px #457de6;
-}
-.team17 {
-	background-color: #457de6 !important;
-}
-.team_color18 > .rtd_rank {
-	border-left:solid 10px #e69345;
-}
-.team_color18 > .rtd_rank,
-.team_color18 > .rtd_player,
-.team_color18 > .rtd_score,
-.team_color18 > .rtd_info {
-	border-bottom	:solid 2px #e69345;
-}
-.team18 {
-	background-color: #e69345 !important;
-}
 .mobile-clear {
 	float:right;
 	text-align:right;
@@ -1737,6 +1713,9 @@ a:link, a:visited {
 .hidden {
 	display: none;
 }
+.areainfo {
+	width: 1200px;
+}
 /* ◆スマートフォン用CSS設定ここまで */
 
 }
@@ -2238,7 +2217,7 @@ line-height:1.5em;margin-left:0.5em;border:dotted 1px #ffffff;background-color:t
 }
 
 .area_0 {background-color:#222222;} /* 壁 */
-.area_1 {background-color:#888888;} /* 未解禁フリーエリア */
+.area_1 {background-color:#777777;} /* 未解禁フリーエリア */
 .area_2 {background-color:#e4e4e4;} /* プレイアブルエリア */
 .area_3 {background-color:#7ea9f3;} /* プレイアブルエリア */
 .area_4 {background-color:#95fa4b;} /* 第一ボーダー突破 */
@@ -2540,14 +2519,63 @@ h2, h3, h4 {
 	width: 100%;
 	height: 100%;
 }
+.team_color17 > .rtd_rank {
+	border-left:solid 10px #457de6;
+}
+.team_color17 > .rtd_rank,
+.team_color17 > .rtd_player,
+.team_color17 > .rtd_score,
+.team_color17 > .rtd_info {
+	border-bottom	:solid 2px #457de6;
+}
+.team17 {
+	background-color: #457de6 !important;
+}
+.team_color18 > .rtd_rank {
+	border-left:solid 10px #e69345;
+}
+.team_color18 > .rtd_rank,
+.team_color18 > .rtd_player,
+.team_color18 > .rtd_score,
+.team_color18 > .rtd_info {
+	border-bottom	:solid 2px #e69345;
+}
+.team18 {
+	background-color: #e69345 !important;
+}
 .arrow {
 	letter-spacing: -2px;
 	font-size: 0.7em;
 }
-.ore01 {
-	color: #ff0;
+.gem {
+	font-weight: bold;
 }
-.ore04 {
-	color:#fff;
+.ore01 .gem {
+	color: rgb(148, 29, 29);
+}
+.ore02 .gem {
+	color: rgb(39, 148, 30);
+}
+.ore03 .gem {
+	color: rgb(37, 40, 161);
+}
+.ore04 .gem {
+	background: linear-gradient(60deg, rgba(180,27,27,1) 0%, rgba(203,158,44,1) 25%, rgba(165,203,44,1)75%, rgb(9, 110, 8) 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+.areainfo {
+	background: linear-gradient(90deg, rgba(255,255,255,1) 0%,  rgb(44, 44, 44) 100%);
+	color: #111;
+	border-radius: 6px;
+	font-weight: bold;
+	margin: 1em;
+	padding: 0.5em;
+	border:solid 1px #fff;
+}
+.tar {
+	display: block;
+	width: 100%;
+	text-align: right;
 }
 /* ◆共通CSS設定ここまで */

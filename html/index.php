@@ -111,6 +111,7 @@ if($page_type != 5 and $page_type != 9 and $page_type != 0 and $page_type !=10 a
 	if($stage_id > 1000 and $stage_id < 2000 and $limited_num > 0){
 		if($stage_id > max($limited_stage)) $page_type = 98;  // 期間限定チャレンジにおいて、現行最終ステージより後のIDはアクセス禁止とする
 	}
+	// エリア踏破戦で未解禁のステージはアクセス禁止とする
 	if($stage_id > 3000 and $stage_id < 4000 and $limited_num > 0){
 		$sql = "SELECT * FROM `area` WHERE `stage_id` = $stage_id LIMIT 1";
 		$result = mysqli_query($mysqlconn, $sql);
@@ -120,12 +121,12 @@ if($page_type != 5 and $page_type != 9 and $page_type != 0 and $page_type !=10 a
 		}
 	}
 }
-// 開催中の期間限定ランキングでは直飛びを禁止する
-//if($stage_id >= 3096 and $stage_id <= 3112){
-//	if($_SERVER['HTTP_REFERER'] == ""){
-//		$page_type = 98;
-//	}
-//}
+// 開催中の期間限定ランキングではリファラを検査して直飛びを禁止する
+if($stage_id >= 3113 and $stage_id <= 3134){
+	if($_SERVER['HTTP_REFERER'] == ""){
+		$page_type = 98;
+	}
+}
 // 記録個別ページの場合、有効ステージかどうか判定
 if($page_type == 20){
 	$sql = "SELECT * FROM `ranking` WHERE `unique_id` = '$stage_id' ORDER BY `score` DESC,`post_date` ASC";
@@ -406,8 +407,8 @@ require_once('pik4_form.php'); // フォーム画面読み込み
 		});
 
 		// 定期実行する関数
-		// setInterval('getarea()', 1000); // エリア踏破戦エリア取得
-		// setInterval('getpoint(\'<?= $limited_num ?>\',\'<?= $team_a ?>\',\'<?= $team_b ?>\')', 1000);// エリア踏破戦ポイント取得
+		setInterval('getarea()', 1000); // エリア踏破戦エリア取得
+		setInterval('getpoint(\'<?= $limited_num ?>\',\'<?= $team_a ?>\',\'<?= $team_b ?>\')', 1000);// エリア踏破戦ポイント取得
 	</script>
 </body>
 </html>

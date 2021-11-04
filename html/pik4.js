@@ -1668,14 +1668,23 @@ function getarea(){
 			mapkey.forEach(function(key){
 					var tr = Math.floor((key - mapkey[0]) / awidth) + 1; // 列数
 					var td = (key - mapkey[0] + 1) - (awidth * (tr - 1)); // 行数
-					var stagetitle = data[key].title.replace("（", "<br>（");
-					var mark = data[key].mark;
-					if(mark == "ore01"){
-						var excav_time = 30;
+					var stagetitle = data[key].title.replace("（", '<br><span class="tar">（') + '</span>';
+					var mark = data[key].mark.substring(4, 5);
+					if(mark == 1){
+						var excav_time = 15;
 						var multi = 2;
+					} else if(mark == 2){
+						var excav_time = 30;
+						var multi = 8;
+					} else if(mark == 3){
+						var excav_time = 60;
+						var multi = 24;
+					} else if(mark == 4){
+						var excav_time = 120;
+						var multi = 64;
 					} else {
-						var excav_time = 30;
-						var multi = 2;
+						var excav_time = 999999;
+						var multi = 0;
 					}
 					if((data[key].flag == 3 && team == 17) || (data[key].flag == 4 && team == 18)){
 						var myteam = 1;
@@ -1691,22 +1700,26 @@ function getarea(){
 					}
 					var getore = Math.floor((checktime / (1000*60)) / excav_time) * multi;
 					var bonus = Math.floor((updatetime / (1000*60)) / excav_time) * (multi / 2);
-					$("#area"+key).removeClass().addClass('area_'+data[key].flag+' '+'team'+(Number(data[key].flag) + 14));
+					if(data[key].flag > 2){
+						var teamnum = 'team' + (Number(data[key].flag) + 14);
+					} else {
+						var teamnum = '';
+					}
+					$("#area"+key).removeClass("area_1 area_2 area_3 area_4 team17 team18").addClass('area_'+data[key].flag+' '+teamnum);
 
 					// 自陣が上下左右にあるかどうかの確認
 					var nextcheck = [];
-					// key 173~ mapkey[0]=173 awidth=5
-					// 173
-					if((key - (mapkey[0] - 1)) % awidth !== 0) nextcheck.push(key + 1); // 東
-					if((key - (mapkey[0] - 1)) % awidth !== 1) nextcheck.push(key - 1); // 西
-					if(key > ((mapkey[0] - 1) + awidth))  nextcheck.push(key - awidth); // 北
-					if(key <= ((mapkey[0] - 1) + (awidth * (awidth - 1)))) nextcheck.push(key + awidth); // 南
-					console.log(nextcheck);
-					var link = '#';
+					if((key -   (mapkey[0] - 1)) % awidth !== 0)		nextcheck.push(key + 1); // 東
+					if((key -   (mapkey[0] - 1)) % awidth !== 1)		nextcheck.push(key - 1); // 西
+					if( key >  ((mapkey[0] - 1)  + awidth))			nextcheck.push(key - awidth); // 北
+					if( key <= ((mapkey[0] - 1)  +(awidth * (awidth - 1)))) nextcheck.push(key + awidth); // 南
+					var link = 0;
 					nextcheck.forEach(function(next){
 						if(team == 17 && data[next].flag == 3) link = data[key].stage_id;
 						if(team == 18 && data[next].flag == 4) link = data[key].stage_id;
 					});
+					// 踏破不能なエリアはステージ名を非表示にする
+					if(!link) stagetitle = '？？？<br><span class="tar">（？？？）</span>';
 					// 拠点
 					if(data[key].mark == "base"){
 						if(data[key].flag == 3) var teamname = "チームカフェオレ"+teamae;
@@ -1714,13 +1727,17 @@ function getarea(){
 						$("#area"+key).html('<A href="#">◆拠点◆<br>'+teamname+'</A>');
 					// 自陣
 					} else if(myteam && (data[key].flag == 3 || data[key].flag == 4)){
-						$("#area"+key).html('<A href="./'+link+'">'+tr+'-'+td+'◆'+stagetitle+'<br>'+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p style="text-align:center;"><span class="arrow" id="arra'+data[key].stage_id+'"></span>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'<span class="arrow" id="arrb'+data[key].stage_id+'"></span><br><i class="roundbg"><i class="fa faa-wrench animated">⛏</i>'+counttime+' <i class="fas fa-gem '+data[key].mark+'"></i>'+getore+'</i> <i class="fas fa-coins"></i>'+bonus+'</p></A><A href="javascript:void(0)" onclick="collectarea('+data[key].id+');">回収ボタン</A>');
+						$("#area"+key).html('<A href="./'+link+'">'+tr+'-'+td+'◆'+stagetitle+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p style="text-align:center;"><span class="arrow" id="arra'+data[key].stage_id+'"></span>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'<span class="arrow" id="arrb'+data[key].stage_id+'"></span><br><i class="roundbg"><i class="fa faa-wrench animated">⛏</i>'+counttime+' <span class="gem"><i class="fas fa-gem"></i></span>'+getore+'</i> <i class="fas fa-coins"></i>'+bonus+'</p></A><A href="javascript:void(0)" onclick="collectarea('+data[key].id+');">回収ボタン</A>');
 					// 敵陣
 					} else if(!myteam && (data[key].flag == 3 || data[key].flag == 4)){
-						$("#area"+key).html('<A href="'+link+'">'+tr+'-'+td+'◆'+stagetitle+'<br>'+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p style="text-align:center;"><span class="arrow" id="arra'+data[key].stage_id+'"></span>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'<span class="arrow" id="arrb'+data[key].stage_id+'"></span><br><i class="fas fa-gem '+data[key].mark+'"></i>'+getore+' <i class="roundbg"><i class="fa faa-wrench animated-hover">⛏</i>'+counttime+' <i class="fas fa-coins"></i>'+bonus+'</i></p></A>');
+						if(link){
+							$("#area"+key).html('<A href="./'+link+'">'+tr+'-'+td+'◆'+stagetitle+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p style="text-align:center;"><span class="arrow" id="arra'+data[key].stage_id+'"></span>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'<span class="arrow" id="arrb'+data[key].stage_id+'"></span><br><span class="gem"><i class="fas fa-gem"></i></span>'+getore+' <i class="roundbg"><i class="fa faa-wrench animated-hover">⛏</i>'+counttime+' <i class="fas fa-coins"></i>'+bonus+'</i></p></A>');
+						} else {
+							$("#area"+key).html('<A href="./'+link+'">'+tr+'-'+td+'◆'+stagetitle+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p style="text-align:center;"><span class="arrow" id="arra'+data[key].stage_id+'"></span>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'<span class="arrow" id="arrb'+data[key].stage_id+'"></span><br><span class="gem"><i class="fas fa-gem"></i></span>'+getore+' <i class="roundbg"><i class="fa faa-wrench animated-hover">⛏</i>'+counttime+' <i class="fas fa-coins"></i>'+bonus+'</i></p></A>');
+						}
 					// 中立解禁済み
-					} else if(data[key].flag == 2 || data[key].flag == 1){
-						$("#area"+key).html('<A href="'+link+'">'+tr+'-'+td+'◆'+stagetitle+'<br><i class="fas fa-gem '+data[key].mark+'"></i></A>');
+					} else if(data[key].flag == 2){
+						$("#area"+key).html('<A href="./'+link+'">'+tr+'-'+td+'◆'+stagetitle+'<br><span class="gem">'+mark+'<i class="fas fa-gem"></i></span></A>');
 					// 中立未解禁
 					} else if(data[key].flag == 1){
 						$("#area"+key).html(tr+'-'+td);

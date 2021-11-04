@@ -250,7 +250,7 @@ if($area_cat == 'standard'){
 }
 if( strpos($area_cat, 'team') !== false and $key == $limited_num){ // 最新のみ表示する
 	// エリア踏破戦チーム対抗制のチーム分けボタン
-	echo '<div style="background-color:#cccccc;border-radius:6px;color:#000000;margin:1em;padding:0.5em;">';
+	echo '<div class="areainfo">';
 	if($cookie_row['current_team'] >= $team_a){
 		echo $cookie_name.' <span glot-model="main_nav_team_in">さんの所属チームは</span>'.$team[$cookie_row['current_team']].'<span glot-model="desu_tail">です。</span>';
 	} elseif($cookie_row['current_team'] > -1){
@@ -260,6 +260,15 @@ if( strpos($area_cat, 'team') !== false and $key == $limited_num){ // 最新の�
 		echo '<span glot-model="main_nav_team_error">ログインしていません。期間限定ランキングは通常ランキングに１回でも参加してログインしていることが参加条件になります。</span>';
 	}
 	echo '</div>';
+}
+if($key == 17){
+	// マイニング制の凡例を表示
+	echo '<div class="areainfo"><table style="table-layout: fixed;width: 100%;"><tr>';
+	echo '<td class="ore01"><span class="gem">1<i class="fas fa-gem"></i>鶏冠石 (15分につき2ポイント)</span></td>';
+	echo '<td class="ore02"><span class="gem">2<i class="fas fa-gem"></i>孔雀石 (30分につき8ポイント)</span></td>';
+	echo '<td class="ore03"><span class="gem">3<i class="fas fa-gem"></i>天藍石 (1時間につき24ポイント)</span></td>';
+	echo '<td class="ore04"><span class="gem">4<i class="fas fa-gem"></i>電気石 (2時間につき64ポイント)</span></td>';
+	echo '</tr></table></div>';
 }
 echo '<table class="area_table">';
 $area_score_total = 0;
@@ -464,7 +473,7 @@ if($area_cat != "team2"){
 			echo '<tr>';
 			for($td = 1; $td <= $ae_width[$key]; $td++){ // 横の長さを定義
 				$addr = ($ae_width[$key] * $tr) - ($ae_width[$key] - $td) + $ae_area[$key-1];
-				echo '<td id="'."area{$addr}".'"> </td>';
+				echo '<td id="'."area{$addr}".'" class="'.$area[$addr]["mark"].'"></td>';
 			}
 			echo '</tr>';
 		}

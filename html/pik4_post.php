@@ -1104,7 +1104,7 @@ if (@$_POST['check_send']) {
 		}
 		// f16新2：エリア踏破戦のチーム分けチェック
 		// チーム分けプログラムを実行していないと登録できないようにする
-		if($stage_id >= 3066 and $stage_id <= 3142){
+		if($stage_id >= 3066 and $stage_id <= 3134){
 			$query = "SELECT * FROM `user` WHERE `user_name` = '$user_name' LIMIT 1";
 			if ($result = mysqli_query($mysqlconn, $query) ){
 				$row = mysqli_fetch_assoc($result);
@@ -1429,7 +1429,7 @@ if (@$_POST['check_send']) {
 			$result = mysqli_query($mysqlconn, $query);
 			$ae_user_count = mysqli_num_rows($result);
 
-			if($stage_id >= 3066 and $stage_id <= 3142){
+			if($stage_id >= 3066 and $stage_id <= 3134){
 				// チーム対抗制の場合
 				if($cookie_row['current_team'] == $team_a) $flag_jadge = 3;
 				if($cookie_row['current_team'] == $team_b) $flag_jadge = 4;
@@ -1690,7 +1690,7 @@ if (@$_POST['check_send']) {
 			$myrate = $user_data["rate"];
 
 			// エリア踏破戦×チーム対抗戦は擬似的にチーム対抗戦と同じ登録
-			if($stage_id >= 3066 and $stage_id <= 3142){
+			if($stage_id >= 3066 and $stage_id <= 3134){
 			$query = "INSERT INTO `ranking`( `user_name`, `stage_id`, `score`, `console`, `user_ip`, `user_host`, `user_agent`, `unique_id`, `post_comment`, `post_date`, `post_count`,`prev_score`,`pic_file`,`pic_file2`,`firstpost_date`,`video_url`,`prev_rank`,`team`,`rate`) VALUES('$user_name','$stage_id','$score','$console','$user_ip','$user_host','$user_agent','$unique_id','$post_comment','$post_date','$post_count','$prev_score','$new_file_name[0]','$new_file_name[1]','$firstpost_date','$video_url','$old_rank','$current_team','$myrate')";
 			if(!$_SESSION['debug_mode']) $result = mysqli_query($mysqlconn, $query );
 
@@ -2063,8 +2063,10 @@ if (@$_POST['check_send']) {
 						$imp_limstage = implode(", ", ${'limited'.$limited_stage_list[$limited_num]});
 						$fixed_limited_num = sprintf('%03d', $limited_num);
 						$limited_db = 'total_limited'.$fixed_limited_num;
+						$limited_rps_db = 'total_rpslim'.$fixed_limited_num;
 						$whereis = "`stage_id` IN($imp_limstage)";
 						total_score_calc("`ranking`", $limited_db, $whereis, "score", $user_name);
+						total_score_calc("`ranking`", $limited_rps_db, $whereis, "rps", $user_name);
 					}
 					if($limited_type[$limited_stage_list[$limited_num]] == 'e'){
 						$imp_limstage = implode(", ", ${'arealim'.$limited_stage_list[$limited_num]});
@@ -2213,8 +2215,8 @@ if (@$_POST['check_send']) {
 		// }
 
 		// チーム対抗の場合は対象ステージすべてのRPSを更新する(★暫定対応）
-		if( $switch[23] and ($ranking_type == "limited_team" or $del_ranking_type == "limited_team") or ($stage_id >= 3066 and $stage_id <= 3142)){
-		if(     $ranking_type == "limited_team" or ($stage_id >= 3066 and $stage_id <= 3142)) $rps_update_limited_array = ${'limited'.$limited_stage_list[$limited_num]};
+		if( $switch[23] and ($ranking_type == "limited_team" or $del_ranking_type == "limited_team") or ($stage_id >= 3066 and $stage_id <= 3134)){
+		if(     $ranking_type == "limited_team" or ($stage_id >= 3066 and $stage_id <= 3134)) $rps_update_limited_array = ${'limited'.$limited_stage_list[$limited_num]};
 		if( $del_ranking_type == "limited_team") $rps_update_limited_array = ${'limited'.$limited_stage_list[$del_limited_num]};
 
 		// 計算対象の期間限定ランキング参加者を計算
@@ -2321,6 +2323,7 @@ if (@$_POST['check_send']) {
 			$row = mysqli_fetch_assoc($result);
 				$ae_point	= $row["id"];
 				$ae_flag	= $row["flag"];
+				$ae_flag_old	= $row["flag"];
 				$ae_border	= $row["border_score"];
 				$ae_exborder	= $row["ex_border_score"];
 				$ae_topscore	= $row["top_score"];
@@ -2346,7 +2349,12 @@ if (@$_POST['check_send']) {
 					// 第17回より同点になった場合は陣地色を中立にしないようにした
 					// $ae_flag = 2;
 				}
-
+				// エリアの有色更新を検出した場合は最終更新日時をスタンプする
+				if($ae_flag_old != $ae_flag and $ae_flag > 2){
+					$timestamp = date('Y/m/d H:i:s',$now_time);
+					$query_rps = "UPDATE `area` SET `update_time` = '$timestamp', `check_time` = '$timestamp' WHERE `stage_id` = '$stage_id'";
+					$result_rps = mysqli_query($mysqlconn, $query_rps );
+				}
 				if($ae_flag > 2){
 					// 周囲エリアのフラグをチェックする
 					$around_check_array   = array();
