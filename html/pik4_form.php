@@ -404,7 +404,7 @@ if($selected_limited_type == "n" or $selected_limited_type == "t" or $selected_u
 }
 if($selected_limited_type == "e"){ // エリア踏破戦の場合はアクセス中のステージのみ表示
 	if($url_stage_id < 4000){
-		echo '<option value="'.$url_stage_id.' selected="selected">'.$array_stage_title[$url_stage_id].'</option>';
+		echo '<option value="'.$url_stage_id.'" selected="selected">'.$array_stage_title[$url_stage_id].'</option>';
 	}
 }
 // 日替わりチャレンジ選択

@@ -1662,10 +1662,12 @@ function getarea(){
 			const mapkey = range(173, 207);
 			var team = getCookie("team");
 			var awidth = 5; // 列数を定義
+			var aheight= 7; // 行数を定義
 			var teamae = "☕";
 			var teambe = "🐻";
 			var now = new Date();
 			mapkey.forEach(function(key){
+					// var arrb = headlinearrow(1);
 					var tr = Math.floor((key - mapkey[0]) / awidth) + 1; // 列数
 					var td = (key - mapkey[0] + 1) - (awidth * (tr - 1)); // 行数
 					var stagetitle = data[key].title.replace("（", '<br><span class="tar">（') + '</span>';
@@ -1705,6 +1707,22 @@ function getarea(){
 					} else {
 						var teamnum = '';
 					}
+					// ヘッドラインアローを取得
+					if(data['arrow'].teama[data[key].stage_id] === null){
+						var arra = '';
+					} else if(data['arrow'].teama[data[key].stage_id] < 6){
+						var arra = '<i class="fas fa-chevron-right"></i>'.repeat(data['arrow'].teama[data[key].stage_id]);
+					} else {
+						var arra = data['arrow'].teama[data[key].stage_id] + '<i class="fas fa-chevron-right"></i>'.repeat(5);
+					}
+					if(data['arrow'].teamb[data[key].stage_id] === null){
+						var arrb = '';
+					} else if(data['arrow'].teamb[data[key].stage_id] < 6){
+						var arrb = '<i class="fas fa-chevron-left"></i>'.repeat(data['arrow'].teamb[data[key].stage_id]);
+					} else {
+						var arrb = '<i class="fas fa-chevron-left"></i>'.repeat(5) + data['arrow'].teamb[data[key].stage_id];
+					}
+					// エリア表示を初期化
 					$("#area"+key).removeClass("area_1 area_2 area_3 area_4 team17 team18").addClass('area_'+data[key].flag+' '+teamnum);
 
 					// 自陣が上下左右にあるかどうかの確認
@@ -1712,7 +1730,7 @@ function getarea(){
 					if((key -   (mapkey[0] - 1)) % awidth !== 0)		nextcheck.push(key + 1); // 東
 					if((key -   (mapkey[0] - 1)) % awidth !== 1)		nextcheck.push(key - 1); // 西
 					if( key >  ((mapkey[0] - 1)  + awidth))			nextcheck.push(key - awidth); // 北
-					if( key <= ((mapkey[0] - 1)  +(awidth * (awidth - 1)))) nextcheck.push(key + awidth); // 南
+					if( key <= ((mapkey[0] - 1)  +(awidth * (aheight - 1)))) nextcheck.push(key + awidth); // 南
 					var link = 0;
 					nextcheck.forEach(function(next){
 						if(team == 17 && data[next].flag == 3) link = data[key].stage_id;
@@ -1720,6 +1738,7 @@ function getarea(){
 					});
 					// 踏破不能なエリアはステージ名を非表示にする
 					if(!link) stagetitle = '？？？<br><span class="tar">（？？？）</span>';
+
 					// 拠点
 					if(data[key].mark == "base"){
 						if(data[key].flag == 3) var teamname = "チームカフェオレ"+teamae;
@@ -1727,13 +1746,13 @@ function getarea(){
 						$("#area"+key).html('<A href="#">◆拠点◆<br>'+teamname+'</A>');
 					// 自陣
 					} else if(myteam && (data[key].flag == 3 || data[key].flag == 4)){
-						$("#area"+key).html('<A href="./'+link+'">'+tr+'-'+td+'◆'+stagetitle+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p style="text-align:center;"><span class="arrow" id="arra'+data[key].stage_id+'"></span>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'<span class="arrow" id="arrb'+data[key].stage_id+'"></span><br><i class="roundbg"><i class="fa faa-wrench animated">⛏</i>'+counttime+' <span class="gem"><i class="fas fa-gem"></i></span>'+getore+'</i> <i class="fas fa-coins"></i>'+bonus+'</p></A><A href="javascript:void(0)" onclick="collectarea('+data[key].id+');">回収ボタン</A>');
+						$("#area"+key).html('<A href="./'+link+'">'+tr+'-'+td+'◆'+stagetitle+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p style="text-align:center;"><span class="arrow" id="arra'+data[key].stage_id+'">'+arra+'</span>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'<span class="arrow" id="arrb'+data[key].stage_id+'">'+arrb+'</span><br><i class="roundbg"><i class="fa faa-wrench animated">⛏</i>'+counttime+' <span class="gem"><i class="fas fa-gem"></i></span>'+getore+'</i> <i class="fas fa-coins"></i>'+bonus+'</p></A><A href="javascript:void(0)" onclick="collectarea('+data[key].id+');">回収ボタン</A>');
 					// 敵陣
 					} else if(!myteam && (data[key].flag == 3 || data[key].flag == 4)){
 						if(link){
-							$("#area"+key).html('<A href="./'+link+'">'+tr+'-'+td+'◆'+stagetitle+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p style="text-align:center;"><span class="arrow" id="arra'+data[key].stage_id+'"></span>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'<span class="arrow" id="arrb'+data[key].stage_id+'"></span><br><span class="gem"><i class="fas fa-gem"></i></span>'+getore+' <i class="roundbg"><i class="fa faa-wrench animated-hover">⛏</i>'+counttime+' <i class="fas fa-coins"></i>'+bonus+'</i></p></A>');
+							$("#area"+key).html('<A href="./'+link+'">'+tr+'-'+td+'◆'+stagetitle+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p style="text-align:center;"><span class="arrow" id="arra'+data[key].stage_id+'">'+arra+'</span>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'<span class="arrow" id="arrb'+data[key].stage_id+'">'+arrb+'</span><br><span class="gem"><i class="fas fa-gem"></i></span>'+getore+' <i class="roundbg"><i class="fa faa-wrench animated-hover">⛏</i>'+counttime+' <i class="fas fa-coins"></i>'+bonus+'</i></p></A>');
 						} else {
-							$("#area"+key).html('<A href="./'+link+'">'+tr+'-'+td+'◆'+stagetitle+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p style="text-align:center;"><span class="arrow" id="arra'+data[key].stage_id+'"></span>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'<span class="arrow" id="arrb'+data[key].stage_id+'"></span><br><span class="gem"><i class="fas fa-gem"></i></span>'+getore+' <i class="roundbg"><i class="fa faa-wrench animated-hover">⛏</i>'+counttime+' <i class="fas fa-coins"></i>'+bonus+'</i></p></A>');
+							$("#area"+key).html('<A href="./'+link+'">'+tr+'-'+td+'◆'+stagetitle+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p style="text-align:center;"><span class="arrow" id="arra'+data[key].stage_id+'">'+arra+'</span>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'<span class="arrow" id="arrb'+data[key].stage_id+'">'+arrb+'</span><br><span class="gem"><i class="fas fa-gem"></i></span>'+getore+' <i class="roundbg"><i class="fa faa-wrench animated-hover">⛏</i>'+counttime+' <i class="fas fa-coins"></i>'+bonus+'</i></p></A>');
 						}
 					// 中立解禁済み
 					} else if(data[key].flag == 2){
@@ -1744,7 +1763,6 @@ function getarea(){
 					}
 				}
 			);
-			headlinearrow(1);
 		},
 			// for(const[key, value] of Object.entries(data)){
 			// 	for(const[keychild, val] of Object.entries(value)){
@@ -1756,37 +1774,6 @@ function getarea(){
 		}
 	});
 }
-// 期間限定ランキングナビゲーション：ヘッドラインアロー
-function headlinearrow(stage_id){
-	$.ajax({
-		type: "POST",
-		url: "pik4_getarrow.php?id="+Math.random(),
-		cache: false,
-		data: {
-			"stage_id": stage_id
-		}
-	})
-	.done( function(data){
-		// arrowの数は各チーム最大５個までに限定する
-		for(const stage in data['teama']){
-			if(data['teama'][stage] < 6){
-				$("#arra"+stage).html('<i class="fas fa-chevron-right"></i>'.repeat(data['teama'][stage]));
-			} else {
-				$("#arra"+stage).html(data['teama'][stage] + '<i class="fas fa-chevron-right"></i>'.repeat(5));
-			}
-		}
-		for(const stage in data['teamb']){
-			if(data['teamb'][stage] < 6){
-				$("#arrb"+stage).html('<i class="fas fa-chevron-left"></i>'.repeat(data['teamb'][stage]));
-			} else {
-				$("#arrb"+stage).html('<i class="fas fa-chevron-left"></i>'.repeat(5) + data['teamb'][stage]);
-			}
-		}
-	}
-	).fail( function(){
-		return false;
-	});
-};
 // 期間限定ランキングナビゲーション：採掘ボタン
 function collectarea(id){
 	// 不正チェック
@@ -1826,6 +1813,7 @@ function getpoint(lim, teama, teamb){
 			$('#teamb_gamepoint').text(data.team.teamb['game_point']);
 			$('#teama_user_tab').empty();
 			$('#teamb_user_tab').empty();
+			console.log(data.user.teama);
 			for(const useradata in data.user.teama){
 				$('#teama_user_tab').append('<tr><td><b>'+data.user.teama[useradata].user_name+'</b></td><td>'+data.user.teama[useradata].total_rpslim017+' RPS</td><td>'+data.user.teama[useradata].total_limited017+' pts.</td></tr>');
 			}

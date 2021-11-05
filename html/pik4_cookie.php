@@ -69,6 +69,7 @@ $array_cookie = array(
 		'formlock',
 		'navlock',
 		'watchmode',
+		'refleshmode',
 		'console',
 		'console_2p',
 		'user_name_2p',

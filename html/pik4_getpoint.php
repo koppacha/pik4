@@ -33,13 +33,12 @@ if(isset($_POST['lim'])){
 
 	// 各チームの名前・RPS・合計点をRPS降順で取得する
         $point = array();
-        $sql = "SELECT `user_id`,`user_name`,`current_team`,$tlim ,$rlim FROM `user` WHERE `current_team` BETWEEN '$teama' AND '$teamb' ORDER BY '$rlim' DESC";
+        $sql = "SELECT `user_id`,`user_name`,`current_team`,$tlim ,$rlim FROM `user` WHERE `current_team` BETWEEN '$teama' AND '$teamb' ORDER BY $rlim DESC";
         $result = mysqli_query($mysqlconn, $sql);
         if($result){
                 while($area_data = mysqli_fetch_assoc($result)){
-                        if($area_data["current_team"] == $teama) $point["user"]["teama"][$area_data["user_id"]] = $area_data;
-                        if($area_data["current_team"] == $teamb) $point["user"]["teamb"][$area_data["user_id"]] = $area_data;
-			$point["test"][$area_data["user_id"]] = $area_data;
+                        if($area_data["current_team"] == $teama) $point["user"]["teama"][] = $area_data;
+                        if($area_data["current_team"] == $teamb) $point["user"]["teamb"][] = $area_data;
                 }
         }
 

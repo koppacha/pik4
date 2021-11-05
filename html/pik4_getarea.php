@@ -35,6 +35,33 @@ if(isset($_POST['stage_id'])){
                         $area[$area_data["id"]] = $area_data;
                 }
         }
+	// ヘッドラインアローを表示するためのデータを取得
+	$min = min(${'limited'.$limited_stage_list[$limited_num]});
+	$max = max(${'limited'.$limited_stage_list[$limited_num]});
+	
+	// 期間限定ランキングの最新100件を取得
+	$sql = "SELECT `stage_id`,`team` FROM `ranking` WHERE `stage_id` BETWEEN '$min' AND '$max' AND `log` < 2 ORDER BY `post_date` DESC LIMIT 110";
+	$result = mysqli_query($mysqlconn, $sql);
+	if($result){
+		while($arrow_data = mysqli_fetch_assoc($result)){
+			$arrowdata[$arrow_data["team"]][] = $arrow_data["stage_id"];
+		}
+		$area_count_value["teama"] = array_count_values($arrowdata[$team_a]);
+		$area_count_value["teamb"] = array_count_values($arrowdata[$team_b]);
+	
+		for($i = $min; $i <= $max; $i++){
+			if(isset($area_count_value["teama"][$i])){
+				$area["arrow"]["teama"][$i] = $area_count_value["teama"][$i];
+			} else {
+				$area["arrow"]["teama"][$i] = 0;
+			}
+			if(isset($area_count_value["teamb"][$i])){
+				$area["arrow"]["teamb"][$i] = $area_count_value["teamb"][$i];
+			} else {
+				$area["arrow"]["teamb"][$i] = 0;
+			}
+		}
+	}
 	mysqli_close($conn);
 } else {
 

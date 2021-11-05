@@ -407,8 +407,13 @@ require_once('pik4_form.php'); // フォーム画面読み込み
 		});
 
 		// 定期実行する関数
-		setInterval('getarea()', 1000); // エリア踏破戦エリア取得
-		setInterval('getpoint(\'<?= $limited_num ?>\',\'<?= $team_a ?>\',\'<?= $team_b ?>\')', 1000);// エリア踏破戦ポイント取得
-	</script>
+		<?php if($refleshmode == 2): ?>
+			setInterval('getarea()', 1000); // エリア踏破戦エリア取得
+			setInterval('getpoint(\'<?= $limited_num ?>\',\'<?= $team_a ?>\',\'<?= $team_b ?>\')', 1000);// エリア踏破戦ポイント取得
+		<?php else: ?>
+			getarea();
+			getpoint(<?= $limited_num ?>,<?= $team_a ?>,<?= $team_b ?>);
+		<?php endif; ?>
+		</script>
 </body>
 </html>

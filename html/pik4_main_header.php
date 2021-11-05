@@ -248,7 +248,7 @@ if( $page_type == 3 and $filtering_sub_data > 2){
         $separation_mode = 0;
 }
 // 総合・特殊系テーブルクエリを取得（優先度1）
-if ( $stage_id  == 1  ) $sql = "SELECT * FROM `ranking` WHERE `log` = 0 AND `stage_id` != 399 AND `stage_id` NOT BETWEEN 3113 AND 3124 ORDER BY `post_date` DESC LIMIT 100";
+if ( $stage_id  == 1  ) $sql = "SELECT * FROM `ranking` WHERE `log` = 0 AND `stage_id` != 399 AND `stage_id` NOT BETWEEN 3113 AND 3134 ORDER BY `post_date` DESC LIMIT 100";
 if ( $stage_id  == 2  ) $sql = "SELECT * FROM `ranking` WHERE `log` < 2 AND `season` = '$season' AND `stage_id` != 399 ORDER BY `post_date` DESC LIMIT 100";
 //	if ( $stage_id  == 2  ) $sql = "SELECT * FROM `ranking` WHERE `log` = 0 AND `stage_id` != 299 ORDER BY `rps` DESC LIMIT 100";
 if ( $stage_id  == 3  ) $sql = "SELECT * FROM `ranking` WHERE `log` = 0 AND `stage_id` != 299 AND `stage_id` BETWEEN 101 AND 999 AND `post_rank` = 1 ORDER BY `stage_id` ASC";

@@ -1409,8 +1409,9 @@ if (@$_POST['check_send']) {
 			// 上下左右いずれかに自陣があるかチェック
 			$user_area_array   = array();
 			$user_area_array[] = $row["id"]; // 現在地
+
 			// 今大会の一番左上から１引いた数値を定義しておく
-			$min_point = 147;
+			$min_point = 172;
 			if(($row["id"] - $min_point) % $ae_width[$limited_num] !== 0) $user_area_array[] = $row["id"] + 1; // 東
 			if(($row["id"] - $min_point) % $ae_width[$limited_num] !== 1) $user_area_array[] = $row["id"] - 1; // 西
 			if($row["id"] > ($min_point + $ae_width[$limited_num])) $user_area_array[] = $row["id"] - $ae_width[$limited_num]; // 北
@@ -2066,7 +2067,6 @@ if (@$_POST['check_send']) {
 						$limited_rps_db = 'total_rpslim'.$fixed_limited_num;
 						$whereis = "`stage_id` IN($imp_limstage)";
 						total_score_calc("`ranking`", $limited_db, $whereis, "score", $user_name);
-						total_score_calc("`ranking`", $limited_rps_db, $whereis, "rps", $user_name);
 					}
 					if($limited_type[$limited_stage_list[$limited_num]] == 'e'){
 						$imp_limstage = implode(", ", ${'arealim'.$limited_stage_list[$limited_num]});
@@ -2286,6 +2286,11 @@ if (@$_POST['check_send']) {
 				$query_rps ="UPDATE `ranking` SET `at_rank` = '$rps_rank[$i]', `post_rank` = '$rps_rank[$i]' , `rps` = '$rps[$i]' , `rps2` = '$rps[$i]' WHERE `post_id` = '$rps_id[$i]' ";
 				if(!$_SESSION['debug_mode']) $result_rps = mysqli_query($mysqlconn, $query_rps );
 
+				// 合計ランクポイントを算出する
+				$imp_limstage = "`stage_id` IN(".implode(", ", ${'limited'.$limited_stage_list[$limited_num]}).")";
+				$limited_rps_db = 'total_rpslim'.sprintf('%03d', $limited_num);
+				total_score_calc("`ranking`", $limited_rps_db, $imp_limstage, "rps", $row["user_name"]);
+
 				$i++;
 				$p++;
 				}
@@ -2349,8 +2354,29 @@ if (@$_POST['check_send']) {
 					// 第17回より同点になった場合は陣地色を中立にしないようにした
 					// $ae_flag = 2;
 				}
-				// エリアの有色更新を検出した場合は最終更新日時をスタンプする
 				if($ae_flag_old != $ae_flag and $ae_flag > 2){
+					$current_team = $ae_flag + 14;
+
+					// マイニング制の場合は採掘ボーナスを加算
+					$ore_query = "SELECT `ore_point` FROM `team_log` WHERE `id` = '$current_team'";
+					$ore_result = mysqli_query($mysqlconn, $ore_query);
+					$ore_row = mysqli_fetch_assoc($ore_result);
+					$current_ore_point = $ore_row["ore_point"];
+					
+					$area_query = "SELECT `mark`,`update_time` FROM `area` WHERE `stage_id` = '$stage_id'";
+					$area_result = mysqli_query($mysqlconn, $area_query);
+					$area_row = mysqli_fetch_assoc($area_result);
+					$area_update_time = $area_row["update_time"];
+					$ore = intval(substr($area_row['mark'], 4) );
+					$ore_point = $ore * (pow(2, $ore) / 2) * 2;
+					$ore_time  = 15 * (pow(2, ($ore - 1)));
+					$new_ore_point = $current_ore_point + (((floor( floor(time() - strtotime($area_update_time)) / 60) / $ore_time) * $ore_point) / 2);
+
+					$bonus_rps = "UPDATE `team_log` SET `ore_point` = '$new_ore_point' WHERE `id` = '$current_team'";
+					$bonus_result = mysqli_query($mysqlconn, $bonus_rps );
+					var_dump($area_update_time, $ore_time, $ore_point);
+
+					// エリアの有色更新を検出した場合は最終更新日時をスタンプ
 					$timestamp = date('Y/m/d H:i:s',$now_time);
 					$query_rps = "UPDATE `area` SET `update_time` = '$timestamp', `check_time` = '$timestamp' WHERE `stage_id` = '$stage_id'";
 					$result_rps = mysqli_query($mysqlconn, $query_rps );
@@ -2363,7 +2389,7 @@ if (@$_POST['check_send']) {
 					if(($ae_point - $min_point) % $ae_width[$limited_num] !== 0) $around_check_array[] = $ae_point + 1; // 東
 					if(($ae_point - $min_point) % $ae_width[$limited_num] !== 1) $around_check_array[] = $ae_point - 1; // 西
 					if($ae_point > ($min_point + $ae_width[$limited_num])) $around_check_array[] = $ae_point - $ae_width[$limited_num]; // 北
-					if($ae_point < ($min_point + ($ae_width[$limited_num] * ($ae_height[$limited_num] - 1)))) $around_check_array[] = $ae_point + $ae_width[$limited_num]; // 南
+					if($ae_point < ($min_point + ($ae_width[$limited_num] * ($ae_height[$limited_num] - 1)) + 1)) $around_check_array[] = $ae_point + $ae_width[$limited_num]; // 南
 				}
 				foreach($around_check_array as $val){
 					$query = "SELECT * FROM `area` WHERE `id` = '$val'";
@@ -2385,16 +2411,21 @@ if (@$_POST['check_send']) {
 
 		// 現在の各チーム合計点を記録
 		if($ranking_type == "limited_team" or $ranking_type == "limited_area"){
-			$limstage = ${'limited'.$limited_stage_list[$limited_num]};
+			$leftside_pts = 0;
+			$leftside_rps = 0;
+			$rightside_pts = 0;
+			$rightside_rps = 0;
 			$query = "SELECT * FROM `ranking` WHERE `log` = 0 AND `team` = $team_a";
 			$result = mysqli_query($mysqlconn, $query);
 			while ($row = mysqli_fetch_assoc($result) ) {
 				$leftside_rps += $row["rps2"];
+				$leftside_pts += $row["score"];
 			}
 			$query = "SELECT * FROM `ranking` WHERE `log` = 0 AND `team` = $team_b";
 			$result = mysqli_query($mysqlconn, $query);
 			while ($row = mysqli_fetch_assoc($result) ) {
 				$rightside_rps += $row["rps2"];
+				$rightside_pts += $row["score"];
 			}
 
 			// ハンデ再計算 (3673行付近を再利用)
@@ -2427,8 +2458,21 @@ if (@$_POST['check_send']) {
 				$area_log_array[] = $row["flag"];
 			}
 			$area_log = implode(" ",$area_log_array);
+
+			// 期間限定生ログを出力
 			$query = "INSERT INTO `limited_log`( `date`,`user_name`,`stage_id`,`score`,`left_side`,`right_side`,`area`) VALUES('$post_date','$user_name','$stage_id','$score','$leftside_rps','$rightside_rps','$area_log')";
 			if(!$_SESSION['debug_mode']) $result = mysqli_query($mysqlconn, $query );
+
+			// チームログを更新
+			for($i = $team_a; $i <= $team_b; $i++){
+				if($i == $team_a) $rps = $leftside_rps;
+				if($i == $team_b) $rps = $rightside_rps;
+				if($i == $team_a) $pts = $leftside_pts;
+				if($i == $team_b) $pts = $rightside_pts;
+				$query = "UPDATE `team_log` SET `rps` = '$rps', `game_point` = '$pts' WHERE `id` = '$i'";
+				if(!$_SESSION['debug_mode']) $result = mysqli_query($mysqlconn, $query );
+			}
+
 		}
 	}
 } else {

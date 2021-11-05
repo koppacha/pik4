@@ -42,7 +42,7 @@ if(isset($_POST['stage_id'])){
 		$check_time = floor((time() - strtotime($row['check_time'])) / 60);
 		$ore = intval(substr($row['mark'], 4) );
 		$ore_point = $ore * (pow(2, $ore) / 2) * 2;
-		$ore_time  = 30 * (pow(2, ($ore - 1)));
+		$ore_time  = 15 * (pow(2, ($ore - 1)));
 
 		// 採掘に必要な時間が経過していたら処理続行
 		if($check_time >= $ore_time){

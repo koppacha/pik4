@@ -25,36 +25,7 @@ if(!$mysql_mode){
 if(!$mysql_mode) loadtime_calc(__LINE__);
 // お砂場
 
-
-$stage_id = 176;
-$query = "SELECT * FROM `area` WHERE `id` = '$stage_id' LIMIT 1";
-$result = mysqli_query($mysqlconn, $query);
-$row = mysqli_fetch_assoc($result);
-$current_area = $row['flag'];
-$check_time = floor((time() - strtotime($row['check_time'])) / 60);
-$ore = intval(substr($row['mark'], 4) );
-$ore_point = $ore * (pow(2, $ore) / 2) * 2;
-$ore_time  = 30 * (pow(2, ($ore - 1)));
-
-$add_time = date('Y-m-d H:i:s', strtotime($row['check_time']) + ($check_time - ($check_time % $ore_time)) * 60);
-$add_point = floor($check_time / $ore_time) * $ore_point;
-
 // お砂場ここまで
-
-$min = min(${'limited'.$limited_stage_list[$limited_num]});
-$max = max(${'limited'.$limited_stage_list[$limited_num]});
-
-// 期間限定ランキングの最新100件を取得
-$sql = "SELECT `stage_id`,`team` FROM `ranking` WHERE `stage_id` BETWEEN '$min' AND '$max' AND `log` < 2 ORDER BY `post_date` DESC LIMIT 100";
-$result = mysqli_query($mysqlconn, $sql);
-if($result){
-	while($arrow_data = mysqli_fetch_assoc($result)){
-		$arrowdata[$arrow_data["team"]][] = $arrow_data["stage_id"];
-	}
-	$arrow_count["teama"] = array_count_values($arrowdata[$team_a]);
-	$arrow_count["teamb"] = array_count_values($arrowdata[$team_b]);
-}
-var_dump($arrow_count);
 
 // メニューカラムヘッダー
 ?>
@@ -440,7 +411,7 @@ if(($uplan_num != 0 or $limited_num != 0) and $now_time < $limited_start_time){
 <?php
 // 最新記録
 	// もっとも最近の記録を抽出
-	$sql = "SELECT * FROM `ranking` WHERE `log` = 0 ORDER BY `post_date` DESC LIMIT 1";
+	$sql = "SELECT * FROM `ranking` WHERE `log` = 0 AND `stage_id` != 399 AND `stage_id` NOT BETWEEN 3113 AND 3134 ORDER BY `post_date` DESC LIMIT 1";
 	$result = mysqli_query($mysqlconn, $sql);
 	if (!$result) {
 		echo " <br>Error ".__LINE__."：クエリの取得エラーが発生しています。";

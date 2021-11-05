@@ -456,7 +456,7 @@
 	}
 	// 総合ヘッダーここまで
 	echo '<table id="team_tab" class="pik4_teamtab" style="margin-top:0.5em;">'."\n";
-	foreach($row_output as $output)	echo $output."\n";
+	if($stage_id < 211105) foreach($row_output as $output)	echo $output."\n";
 	echo '</table></div></div>';
 	echo '<div class="pc-hidden" style="width:100%;height:80px;"> </div>';
 	if($area_team_flag == 1) echo '</div>';

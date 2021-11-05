@@ -281,7 +281,7 @@ function topscore_board_tab($val, $stage_id, $table_name, $hook, $hook2){ // 比
 	echo '</tr></table></div>'."\n";
 }
 // 合計点算出・登録関数
-function total_score_calc($db, $column, $where, $point, $username){ // 使用するデータベース、登録カラム（retuenの場合はDB登録せず値を返す）、抽出条件、抽出単位、ユーザー名
+function total_score_calc($db, $column, $where, $point, $username){ // 使用するデータベース、登録カラム（returnの場合はDB登録せず値を返す）、抽出条件、抽出単位、ユーザー名
 	global $mysqlconn;
 	global $limited_pik1;
 	$total_score = 0;

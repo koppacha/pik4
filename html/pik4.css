@@ -865,7 +865,7 @@ h3 {
 	width		:100%;
 }
 .area_table td {
-	height: 7em;
+	height: 10em;
 	font-size	:0.9em;
 }
 .area_table td a .fa {
@@ -2233,7 +2233,6 @@ line-height:1.5em;margin-left:0.5em;border:dotted 1px #ffffff;background-color:t
 .area_4 a,
 .area_5 a {
 	display:block;
-	height:100%;
 	color:#222222;
 	text-shadow: 1px 1px 1px #fff,1px -1px 1px #fff,-1px 1px 1px #fff,-1px -1px 1px #fff;
 }
@@ -2563,6 +2562,7 @@ h2, h3, h4 {
 	background: linear-gradient(60deg, rgba(180,27,27,1) 0%, rgba(203,158,44,1) 25%, rgba(165,203,44,1)75%, rgb(9, 110, 8) 100%);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
+	text-shadow: none;
 }
 .areainfo {
 	background: linear-gradient(90deg, rgba(255,255,255,1) 0%,  rgb(44, 44, 44) 100%);

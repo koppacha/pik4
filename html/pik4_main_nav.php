@@ -248,10 +248,17 @@ if($area_cat == 'standard'){
 	if($watchmode == 2) echo '<span><A style="color:#aaaaaa;" href="javascript:void(0);" onclick="SeasonToggle(\'watchmode\');"><i class="fa fa-toggle-on" aria-hidden="true"></i><span glot-model="main_nav_colorcoded1">自陣と敵陣を色分け</span></A> <br></span>';
 	if($watchmode != 2) echo '<span><A style="color:#05ffe3;" href="javascript:void(0);" onclick="SeasonToggle(\'watchmode\');"><i class="fa fa-toggle-off" aria-hidden="true"></i><span glot-model="main_nav_colorcoded2">ユーザー毎に色分け</span></A> <br></span>';
 }
+if($area_cat == 'team2'){
+	// 第17回期間限定ランキングの自動/手動更新切り替え
+	if($refleshmode == 2) echo '<span><A style="color:#05ffe3;" href="javascript:void(0);" onclick="SeasonToggle(\'refleshmode\');"><i class="fa fa-toggle-off" aria-hidden="true"></i>自動更新する</A> <br></span>';
+	if($refleshmode != 2) echo '<span><A style="color:#aaaaaa;" href="javascript:void(0);" onclick="SeasonToggle(\'refleshmode\');"><i class="fa fa-toggle-on" aria-hidden="true"></i>ボタンで更新する</A> <br></span>';
+	if($refleshmode == 0) echo '<a href="javascript:void(0);" onclick="getarea();">エリアを更新</A> | <a href="javascript:void(0);" onclick="getpoint(\'17\', \'17\', \'18\');">チームポイントを更新</A>';
+}
+
 if( strpos($area_cat, 'team') !== false and $key == $limited_num){ // 最新のみ表示する
 	// エリア踏破戦チーム対抗制のチーム分けボタン
 	echo '<div class="areainfo">';
-	if($cookie_row['current_team'] >= $team_a){
+	if($cookie_row['current_team'] >= 17){
 		echo $cookie_name.' <span glot-model="main_nav_team_in">さんの所属チームは</span>'.$team[$cookie_row['current_team']].'<span glot-model="desu_tail">です。</span>';
 	} elseif($cookie_row['current_team'] > -1){
 		echo '<span id="teamoutput">'.$cookie_name.' <span glot-model="main_nav_team_notin">さんはまだチームに所属していません。</span>（'.$cookie_name.'<span glot-model="main_nav_team_rate">さんのレート</span>：'.$cookie_row['rate']."）<br>";
@@ -477,7 +484,7 @@ if($area_cat != "team2"){
 			}
 			echo '</tr>';
 		}
-		echo '</table><a href="javascript:void(0);" onclick="getarea();">getarea</A> <a href="javascript:void(0);" onclick="getpoint(\'17\', \'17\', \'18\');">getpoint</A><br></div>';
+		echo '</table></div>';
 		// JS版チームスコア表示
 		echo '
 		<table class="team_info_tab">
