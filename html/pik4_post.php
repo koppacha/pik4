@@ -2357,25 +2357,25 @@ if (@$_POST['check_send']) {
 				if($ae_flag_old != $ae_flag and $ae_flag > 2){
 					$current_team = $ae_flag + 14;
 
-					// マイニング制の場合は採掘ボーナスを加算
-					$ore_query = "SELECT `ore_point` FROM `team_log` WHERE `id` = '$current_team'";
-					$ore_result = mysqli_query($mysqlconn, $ore_query);
-					$ore_row = mysqli_fetch_assoc($ore_result);
-					$current_ore_point = $ore_row["ore_point"];
-					
-					$area_query = "SELECT `mark`,`update_time` FROM `area` WHERE `stage_id` = '$stage_id'";
-					$area_result = mysqli_query($mysqlconn, $area_query);
-					$area_row = mysqli_fetch_assoc($area_result);
-					$area_update_time = $area_row["update_time"];
-					$ore = intval(substr($area_row['mark'], 4) );
-					$ore_point = $ore * (pow(2, $ore) / 2) * 2;
-					$ore_time  = 15 * (pow(2, ($ore - 1)));
-					$new_ore_point = $current_ore_point + (((floor( floor(time() - strtotime($area_update_time)) / 60) / $ore_time) * $ore_point) / 2);
+					if($ae_flag + $ae_flag_old == 7){
+						// マイニング制の場合は採掘ボーナスを加算
+						$ore_query = "SELECT `ore_point` FROM `team_log` WHERE `id` = '$current_team'";
+						$ore_result = mysqli_query($mysqlconn, $ore_query);
+						$ore_row = mysqli_fetch_assoc($ore_result);
+						$current_ore_point = $ore_row["ore_point"];
+						
+						$area_query = "SELECT `mark`,`update_time` FROM `area` WHERE `stage_id` = '$stage_id'";
+						$area_result = mysqli_query($mysqlconn, $area_query);
+						$area_row = mysqli_fetch_assoc($area_result);
+						$area_update_time = $area_row["update_time"];
+						$ore = intval(substr($area_row['mark'], 4) );
+						$ore_point = $ore * (pow(2, $ore) / 2) * 2;
+						$ore_time  = 15 * (pow(2, ($ore - 1)));
+						$new_ore_point = $current_ore_point + (((floor( floor(time() - strtotime($area_update_time)) / 60) / $ore_time) * $ore_point) / 2);
 
-					$bonus_rps = "UPDATE `team_log` SET `ore_point` = '$new_ore_point' WHERE `id` = '$current_team'";
-					$bonus_result = mysqli_query($mysqlconn, $bonus_rps );
-					var_dump($area_update_time, $ore_time, $ore_point);
-
+						$bonus_rps = "UPDATE `team_log` SET `ore_point` = '$new_ore_point' WHERE `id` = '$current_team'";
+						$bonus_result = mysqli_query($mysqlconn, $bonus_rps );
+					}
 					// エリアの有色更新を検出した場合は最終更新日時をスタンプ
 					$timestamp = date('Y/m/d H:i:s',$now_time);
 					$query_rps = "UPDATE `area` SET `update_time` = '$timestamp', `check_time` = '$timestamp' WHERE `stage_id` = '$stage_id'";

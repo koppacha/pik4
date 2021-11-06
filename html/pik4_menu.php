@@ -25,6 +25,8 @@ if(!$mysql_mode){
 if(!$mysql_mode) loadtime_calc(__LINE__);
 // お砂場
 
+
+
 // お砂場ここまで
 
 // メニューカラムヘッダー

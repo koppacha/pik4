@@ -516,7 +516,7 @@ foreach($array_console_long as $key => $sel){
 <div id="normal_score" <?php $sel=( $url_stage_id == 6 or $url_stage_id == 25 or $url_stage_id == 35 or ($url_stage_id > 230 AND $url_stage_id < 245) OR ($url_stage_id > 274 AND $url_stage_id < 285) OR ($url_stage_id > 336 AND $url_stage_id < 349) OR ($url_stage_id > 2310 AND $url_stage_id < 2317) OR ($url_stage_id > 310 AND $url_stage_id < 317) OR ($url_stage_id > 10000 and $url_stage_id < 99999) or $url_stage_id == 356 or $url_stage_id == 359 or $url_stage_id == 361)? 'style="display:none;"' : ''; ?> <?php echo $sel; ?> >
 <hr size="1"/>
 <i class="fa fa-trophy"></i><span glot-model="form_score_score">スコア<span class="form_eng_cap"> / Score</span></span><br>
-<input type="tel" class="sbc_field" <?php $sel=($cookie_name != '' AND $url_stage_id < 311 OR $url_stage_id > 316)? 'autofocus':''; ?> <?php echo $sel; ?>  name="score" style="font-size:2em;margin:0;width:270px;ime-mode:disabled;"  pattern="^[0-9]+$" value="" maxlength='5' /><br>
+<input type="tel" class="sbc_field" <?php $sel=($cookie_name != '' AND $url_stage_id < 311 OR $url_stage_id > 316)? 'autofocus':''; ?> <?php echo $sel; ?>  name="score" style="font-size:2em;margin:0;width:270px;ime-mode:disabled;"  pattern="^[0-9]+$" value="" maxlength='6' /><br>
 <span style="font-size:0.9em;"><?= (($url_stage_id >= 201 and $url_stage_id <= 230) ? '<span glot-model="form_score_evidence_video">証拠動画必要スコア</span>' : '<span glot-model="form_score_evidence_photo2">証拠画像必要スコア</span>'); ?>＝<span id="my_best"> </span></span> <br>
 </div>
 

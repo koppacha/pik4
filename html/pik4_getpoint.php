@@ -58,7 +58,7 @@ $back_data = "エラーが発生しています（ステージIDの取得に失�
 
 }
 
-header('Content-Type: application/json; charset=utf-8');
+header('Content-Type: application/json; Access-Control-Allow-Origin: <origin> | *; Access-Control-Allow-Headers: *');
 
 echo json_encode($point);
 ?>

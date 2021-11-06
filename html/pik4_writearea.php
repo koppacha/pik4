@@ -59,8 +59,8 @@ if(isset($_POST['stage_id'])){
 			$query = "SELECT * FROM `team_log` WHERE `id` = '$current_team' LIMIT 1";
 			$result = mysqli_query($mysqlconn, $query);
 			$team_log = mysqli_fetch_assoc($result);
-
-			$add_ore_point = $team_log["ore_point"] + $add_point;
+			$pre_ore_point = $team_log["ore_point"];
+			$add_ore_point = $pre_ore_point + $add_point;
 
 			// データベースに書き込む（自陣総合点と最終チェック時間の更新）
 			$query = "UPDATE `area` SET `check_time` = '$add_time' WHERE `id` = '$stage_id'";
@@ -68,6 +68,13 @@ if(isset($_POST['stage_id'])){
 			
 			$query = "UPDATE `team_log` SET `ore_point` = '$add_ore_point' WHERE `id` = '$current_team'";
 			$result = mysqli_query($mysqlconn, $query );
+
+			// ボタンを押した履歴を残しておく
+			$now = date('Y-m-d H:i:s');
+			$ckt = $row['check_time'];
+			$shin_stage_id = $row['stage_id'];
+			$sql = "INSERT INTO `push_log` (`post_date`,`pre_check_time`,`pre_ore_point`,`aft_ore_point`,`team`,`stage_id`,`user_name`) VALUES ('$now', '$ckt', '$pre_ore_point','$add_ore_point', '$current_team', '$shin_stage_id','$cookie_name')";
+			$result = mysqli_query($mysqlconn, $sql);
 			$return_flag = 1;
 		} else {
 			$return_flag = 0;

@@ -56,7 +56,7 @@ $uplan_stage_list = array(
 	3	=>	210829
 );
 // 終了した期間限定ランキングのナンバリング（開発中は無効にする）
-$end_of_limited = 16;
+$end_of_limited = 17;
 if($mysql_mode === 0) $end_of_limited ++;
 
 // 期間限定ランキングの対象ステージ一覧

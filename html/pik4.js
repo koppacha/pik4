@@ -1653,7 +1653,7 @@ $(function(){
 function getarea(){
 	$.ajax({
 		type: "POST",
-		url: "pik4_getarea.php?id="+Math.random(),
+		url: "pik4_getarea.php",
 		cache: false,
 		data: {
 			"stage_id": 1
@@ -1667,7 +1667,6 @@ function getarea(){
 			var teambe = "🐻";
 			var now = new Date();
 			mapkey.forEach(function(key){
-					// var arrb = headlinearrow(1);
 					var tr = Math.floor((key - mapkey[0]) / awidth) + 1; // 列数
 					var td = (key - mapkey[0] + 1) - (awidth * (tr - 1)); // 行数
 					var stagetitle = data[key].title.replace("（", '<br><span class="tar">（') + '</span>';
@@ -1731,13 +1730,17 @@ function getarea(){
 					if((key -   (mapkey[0] - 1)) % awidth !== 1)		nextcheck.push(key - 1); // 西
 					if( key >  ((mapkey[0] - 1)  + awidth))			nextcheck.push(key - awidth); // 北
 					if( key <= ((mapkey[0] - 1)  +(awidth * (aheight - 1)))) nextcheck.push(key + awidth); // 南
-					var link = 0;
+					if(myteam){
+						var link = data[key].stage_id;
+					} else {
+						var link = data[key].stage_id;
+					}
 					nextcheck.forEach(function(next){
 						if(team == 17 && data[next].flag == 3) link = data[key].stage_id;
 						if(team == 18 && data[next].flag == 4) link = data[key].stage_id;
 					});
 					// 踏破不能なエリアはステージ名を非表示にする
-					if(!link) stagetitle = '？？？<br><span class="tar">（？？？）</span>';
+					// if(link === 0 && myteam === 0) stagetitle = '？？？<br><span class="tar">（？？？）</span>';
 
 					// 拠点
 					if(data[key].mark == "base"){
@@ -1770,7 +1773,7 @@ function getarea(){
 			// 	}
 			// }
 		error: function(XMLHttpRequest, textStatus, errorThrown) {
-			alert("errorThrown : " + errorThrown.message);
+			// alert("errorThrown : " + errorThrown.message);
 		}
 	});
 }
@@ -1787,7 +1790,6 @@ function collectarea(id){
 		},
 		success: function(flag){
 			// パーティクルを表示したい
-			console.log(flag); // ★あとで消す
 		}
 	});
 }
@@ -1797,7 +1799,7 @@ function getpoint(lim, teama, teamb){
 	
 	$.ajax({
 		type: "POST",
-		url: "pik4_getpoint.php?id="+Math.random(),
+		url: "pik4_getpoint.php",
 		cache: false,
 		data: {
 			"lim": lim,
@@ -1813,7 +1815,6 @@ function getpoint(lim, teama, teamb){
 			$('#teamb_gamepoint').text(data.team.teamb['game_point']);
 			$('#teama_user_tab').empty();
 			$('#teamb_user_tab').empty();
-			console.log(data.user.teama);
 			for(const useradata in data.user.teama){
 				$('#teama_user_tab').append('<tr><td><b>'+data.user.teama[useradata].user_name+'</b></td><td>'+data.user.teama[useradata].total_rpslim017+' RPS</td><td>'+data.user.teama[useradata].total_limited017+' pts.</td></tr>');
 			}
@@ -1822,7 +1823,7 @@ function getpoint(lim, teama, teamb){
 			}
 		},
 		error: function(XMLHttpRequest, textStatus, errorThrown) {
-			alert("errorThrown : " + errorThrown.message);
+			// alert("errorThrown : " + errorThrown.message);
 		}
 	});
 }
@@ -1832,7 +1833,7 @@ const range = (start, stop) => Array.from({ length: (stop - start) + 1}, (_, i) 
 
 // 時間のカウントダウン（エリア踏破戦発掘大作戦専用）
 function orgcountdown(time, excav){
-	var min = excav - (Math.floor((time % (24*60*60*1000) ) / (60*1000) ) % 60) % excav - 1;
+	var min = excav - Math.floor((time % (24*60*60*1000) ) / (60*1000) ) % excav - 1;
 	var sec = 60 - Math.floor((time % (24*60*60*1000) ) / 1000) % 60 % 60;
 	if(sec == 60){
 		sec = 0;
