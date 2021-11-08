@@ -1692,8 +1692,8 @@ function getarea(){
 					} else {
 						var myteam = 0;
 					}
-					var updatetime = now.getTime() - Date.parse(data[key].update_time);
-					var checktime = now.getTime() - Date.parse(data[key].check_time);
+					var updatetime = Date.parse('2021-11-07 22:00') - Date.parse(data[key].update_time);
+					var checktime = Date.parse('2021-11-07 22:00') - Date.parse(data[key].check_time);
 					if(myteam){
 						var counttime = orgcountdown(checktime, excav_time);
 					} else {
@@ -1749,7 +1749,7 @@ function getarea(){
 						$("#area"+key).html('<A href="#">◆拠点◆<br>'+teamname+'</A>');
 					// 自陣
 					} else if(myteam && (data[key].flag == 3 || data[key].flag == 4)){
-						$("#area"+key).html('<A href="./'+link+'">'+tr+'-'+td+'◆'+stagetitle+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p style="text-align:center;"><span class="arrow" id="arra'+data[key].stage_id+'">'+arra+'</span>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'<span class="arrow" id="arrb'+data[key].stage_id+'">'+arrb+'</span><br><i class="roundbg"><i class="fa faa-wrench animated">⛏</i>'+counttime+' <span class="gem"><i class="fas fa-gem"></i></span>'+getore+'</i> <i class="fas fa-coins"></i>'+bonus+'</p></A><A href="javascript:void(0)" onclick="collectarea('+data[key].id+');">回収ボタン</A>');
+						$("#area"+key).html('<A href="./'+link+'">'+tr+'-'+td+'◆'+stagetitle+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p style="text-align:center;"><span class="arrow" id="arra'+data[key].stage_id+'">'+arra+'</span>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'<span class="arrow" id="arrb'+data[key].stage_id+'">'+arrb+'</span><br><i class="roundbg"><i class="fa faa-wrench animated-hover">⛏</i>'+counttime+' <span class="gem"><i class="fas fa-gem"></i></span>'+getore+'</i> <i class="fas fa-coins"></i>'+bonus+'</p></A>'); // <A href="javascript:void(0)" onclick="collectarea('+data[key].id+');">回収ボタン</A>
 					// 敵陣
 					} else if(!myteam && (data[key].flag == 3 || data[key].flag == 4)){
 						if(link){

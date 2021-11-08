@@ -236,7 +236,7 @@ if ( $page_type == 23 ) $sql = "SELECT * FROM `ranking` WHERE `stage_id` = '$sta
 
 // 履歴表示クエリ（優先度2）
 if ( $season_data == 2 ) $sql = "SELECT * FROM `ranking` WHERE `stage_id` = '$stage_id' AND `log` < 2 AND `season` = '$season' ORDER BY `score` DESC,`post_date` ASC";
-if ( $page_type == 5  ) $sql = "SELECT * FROM `ranking` WHERE `user_name` = '$user_name' AND `log` = 0 AND AND `stage_id` != 399 AND `stage_id` NOT BETWEEN 3113 AND 3124 "."$whereand"."$whereand2"."$orderby";
+if ( $page_type == 5  ) $sql = "SELECT * FROM `ranking` WHERE `user_name` = '$user_name' AND `log` = 0 AND `stage_id` != 399 AND `stage_id` NOT BETWEEN 3125 AND 3126 "."$whereand"."$whereand2"."$orderby";
 if ( $page_type == 5 and $season_data == 2 ) $sql = "SELECT * FROM `ranking` WHERE `user_name` = '$user_name' AND `log` < 2 AND `season` = '$season'  "."$whereand"."$whereand2"."$orderby";
 if( $history_id  != '') $sql = "SELECT * FROM `ranking` WHERE `user_name` = '$user_id' AND `log` != 2 AND `stage_id` = '$history_id' ORDER BY `post_date` DESC LIMIT 100";
 
@@ -248,7 +248,7 @@ if( $page_type == 3 and $filtering_sub_data > 2){
         $separation_mode = 0;
 }
 // 総合・特殊系テーブルクエリを取得（優先度1）
-if ( $stage_id  == 1  ) $sql = "SELECT * FROM `ranking` WHERE `log` = 0 AND `stage_id` != 399 AND `stage_id` NOT BETWEEN 3113 AND 3134 ORDER BY `post_date` DESC LIMIT 100";
+if ( $stage_id  == 1  ) $sql = "SELECT * FROM `ranking` WHERE `log` = 0 AND `stage_id` != 399 AND `stage_id` NOT BETWEEN 3125 AND 3126 ORDER BY `post_date` DESC LIMIT 100";
 if ( $stage_id  == 2  ) $sql = "SELECT * FROM `ranking` WHERE `log` < 2 AND `season` = '$season' AND `stage_id` != 399 ORDER BY `post_date` DESC LIMIT 100";
 //	if ( $stage_id  == 2  ) $sql = "SELECT * FROM `ranking` WHERE `log` = 0 AND `stage_id` != 299 ORDER BY `rps` DESC LIMIT 100";
 if ( $stage_id  == 3  ) $sql = "SELECT * FROM `ranking` WHERE `log` = 0 AND `stage_id` != 299 AND `stage_id` BETWEEN 101 AND 999 AND `post_rank` = 1 ORDER BY `stage_id` ASC";

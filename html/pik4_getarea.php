@@ -36,8 +36,8 @@ if(isset($_POST['stage_id'])){
                 }
         }
 	// ヘッドラインアローを表示するためのデータを取得
-	$min = min(${'limited'.$limited_stage_list[$limited_num]});
-	$max = max(${'limited'.$limited_stage_list[$limited_num]});
+	$min = min(${'limited'.$limited_stage_list[17]});
+	$max = max(${'limited'.$limited_stage_list[17]});
 	
 	// 期間限定ランキングの最新100件を取得
 	$sql = "SELECT `stage_id`,`team` FROM `ranking` WHERE `stage_id` BETWEEN '$min' AND '$max' AND `log` < 2 ORDER BY `post_date` DESC LIMIT 110";
@@ -69,7 +69,7 @@ $back_data = "エラーが発生しています（ステージIDの取得に失�
 
 }
 
-header('Content-Type: application/json; Access-Control-Allow-Origin: <origin> | *, Access-Control-Allow-Headers: *');
+header('Content-Type: application/json; Access-Control-Allow-Origin: <origin> | *; Access-Control-Allow-Headers: *; charset=utf-8');
 
 echo json_encode($area);
 ?>

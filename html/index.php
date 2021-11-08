@@ -274,13 +274,13 @@ $header_stage_title = preg_replace('/<.*?>/', '', $header_stage_title);
 	<link href="https://fonts.googleapis.com/earlyaccess/sawarabigothic.css" rel="stylesheet" async />
 
 	<?php if($mysql_mode === 1): ?>
-	<link rel='stylesheet' id='default-css'  href='https://chr.mn/pik4/pik4.css' type='text/css' media='all' />
-	<script type="text/javascript" src="https://chr.mn/pik4/pik4.js" charset="UTF-8"></script>
+	<link rel='stylesheet' id='default-css'  href='https://chr.mn/pik4/pik4.min.css' type='text/css' media='all' />
+	<script type="text/javascript" src="https://chr.mn/pik4/pik4.min.js" charset="UTF-8"></script>
 	<?php endif ?>
 
 	<?php if($mysql_mode === 0): ?>
 	<link rel='stylesheet' id='default-css'  href='./pik4.css' type='text/css' media='all'/>
-	<script type="text/javascript" src="./pik4.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="./pik4.min.js" charset="UTF-8"></script>
 	<?php endif ?>
 </head>
 <?php
@@ -409,10 +409,10 @@ require_once('pik4_form.php'); // フォーム画面読み込み
 		// 定期実行する関数
 		<?php if($refleshmode == 2): ?>
 			setInterval('getarea()', 1000); // エリア踏破戦エリア取得
-			setInterval('getpoint(\'<?= $limited_num ?>\',\'<?= $team_a ?>\',\'<?= $team_b ?>\')', 1000);// エリア踏破戦ポイント取得
+			setInterval('getpoint(\'17\',\'17\',\'18\')', 1000);// エリア踏破戦ポイント取得
 		<?php else: ?>
 			getarea();
-			getpoint(<?= $limited_num ?>,<?= $team_a ?>,<?= $team_b ?>);
+			getpoint(17,17,18);
 		<?php endif; ?>
 		</script>
 </body>

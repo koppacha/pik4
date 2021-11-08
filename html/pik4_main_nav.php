@@ -227,8 +227,13 @@ foreach($limited_stage_list as $key => $val){
 	} else {
 		echo '　MVP：？';
 	}
+	if($limited_stage_staff[$i] !== ''){
+		$staff_echo = '<span glot-model="main_nav_staff">運営</span>：'.$limited_stage_staff[$i];
+	} else {
+		$staff_echo = '';
+	}
 	if($limited_stage_idea[$i] !== ''){
-		echo '<br><div style="text-align:right;"><span glot-model="main_nav_idea">アイデア賞</span>：'.$limited_stage_idea[$i].'</div>';
+		echo '<br><div style="text-align:right;">'.$staff_echo.'<span glot-model="main_nav_idea">アイデア賞</span>：'.$limited_stage_idea[$i].'</div>';
 	}
 echo '</A>';
 if($limited_type[$val] == 'e'){
