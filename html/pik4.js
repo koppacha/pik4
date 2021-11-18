@@ -1665,7 +1665,7 @@ function getarea(){
 			var aheight= 7; // 行数を定義
 			var teamae = "☕";
 			var teambe = "🐻";
-			var now = new Date();
+			// var now = new Date('07 Nov 2021 22:00:00 +0900'); // 期間限定ランキング終了後は終了日時を入れる
 			mapkey.forEach(function(key){
 					var tr = Math.floor((key - mapkey[0]) / awidth) + 1; // 列数
 					var td = (key - mapkey[0] + 1) - (awidth * (tr - 1)); // 行数
@@ -1692,8 +1692,8 @@ function getarea(){
 					} else {
 						var myteam = 0;
 					}
-					var updatetime = Date.parse('2021-11-07 22:00') - Date.parse(data[key].update_time);
-					var checktime = Date.parse('2021-11-07 22:00') - Date.parse(data[key].check_time);
+					var updatetime = data[key].update_time;
+					var checktime = data[key].checkdate_time;
 					if(myteam){
 						var counttime = orgcountdown(checktime, excav_time);
 					} else {
@@ -1773,7 +1773,7 @@ function getarea(){
 			// 	}
 			// }
 		error: function(XMLHttpRequest, textStatus, errorThrown) {
-			// alert("errorThrown : " + errorThrown.message);
+			alert("errorThrown : " + errorThrown.message);
 		}
 	});
 }
