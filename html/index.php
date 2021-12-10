@@ -279,7 +279,7 @@ $header_stage_title = preg_replace('/<.*?>/', '', $header_stage_title);
 	<?php endif ?>
 
 	<?php if($mysql_mode === 0): ?>
-	<link rel='stylesheet' id='default-css'  href='./pik4.css' type='text/css' media='all'/>
+	<link rel='stylesheet' id='default-css'  href='./pik4.min.css' type='text/css' media='all'/>
 	<script type="text/javascript" src="./pik4.min.js" charset="UTF-8"></script>
 	<?php endif ?>
 </head>

@@ -1651,6 +1651,7 @@ $(function(){
 });
 // 期間限定ランキングナビゲーション：エリア取得リアルタイム版（第17回専用）
 function getarea(){
+	console.log('test');
 	$.ajax({
 		type: "POST",
 		url: "pik4_getarea.php",
@@ -1659,6 +1660,7 @@ function getarea(){
 			"stage_id": 1
 		},
 		success: function(data){
+			console.log(data);
 			const mapkey = range(173, 207);
 			var team = getCookie("team");
 			var awidth = 5; // 列数を定義
@@ -1693,14 +1695,16 @@ function getarea(){
 						var myteam = 0;
 					}
 					var updatetime = data[key].update_time;
-					var checktime = data[key].checkdate_time;
+					var checktime = data[key].check_time;
 					if(myteam){
 						var counttime = orgcountdown(checktime, excav_time);
 					} else {
 						var counttime = orgcountdown(updatetime, excav_time);
 					}
-					var getore = Math.floor((checktime / (1000*60)) / excav_time) * multi;
-					var bonus = Math.floor((updatetime / (1000*60)) / excav_time) * (multi / 2);
+					// var getore = Math.floor((checktime / (1000*60)) / excav_time) * multi;
+					var getore = checktime !== 0 ? (Math.floor((checktime / (1000*60)) / excav_time) * multi) : 0;
+					// var bonus = Math.floor((updatetime / (1000*60)) / excav_time) * (multi / 2);
+					var bonus = updatetime !== 0 ? (Math.floor((updatetime / (1000*60)) / excav_time) * multi) : 0;
 					if(data[key].flag > 2){
 						var teamnum = 'team' + (Number(data[key].flag) + 14);
 					} else {
@@ -1773,7 +1777,7 @@ function getarea(){
 			// 	}
 			// }
 		error: function(XMLHttpRequest, textStatus, errorThrown) {
-			alert("errorThrown : " + errorThrown.message);
+			// alert("errorThrown : " + errorThrown.message);
 		}
 	});
 }
@@ -1833,15 +1837,19 @@ const range = (start, stop) => Array.from({ length: (stop - start) + 1}, (_, i) 
 
 // 時間のカウントダウン（エリア踏破戦発掘大作戦専用）
 function orgcountdown(time, excav){
-	var min = excav - Math.floor((time % (24*60*60*1000) ) / (60*1000) ) % excav - 1;
-	var sec = 60 - Math.floor((time % (24*60*60*1000) ) / 1000) % 60 % 60;
-	if(sec == 60){
-		sec = 0;
-		if(min < excav - 1){
-			min++;
-		} else {
-			min = 0;
+	if(time == 0){
+		var min = excav - Math.floor((time % (24*60*60*1000) ) / (60*1000) ) % excav - 1;
+		var sec = 60 - Math.floor((time % (24*60*60*1000) ) / 1000) % 60 % 60;
+		if(sec == 60){
+			sec = 0;
+			if(min < excav - 1){
+				min++;
+			} else {
+				min = 0;
+			}
 		}
+		return min+':'+zeroPadding(sec, 2);
+	} else {
+		return '0:0';
 	}
-	return min+':'+zeroPadding(sec, 2);
 }

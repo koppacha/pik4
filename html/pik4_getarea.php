@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors', 1);
 
 require_once('_def.php');
 require_once('pik4_config.php');
@@ -28,7 +29,19 @@ if(isset($_POST['stage_id'])){
 
 	// エリア踏破戦データベースを一括取得して配列に入れる
         $area = array(0 => null);
-        $sql = "SELECT `id`, `lim`, `flag`, `stage_id`, `mark`, `title`, `top_score`, `user_name`, `count`, `team_a`, `team_b`, UNIX_TIMESTAMP( TIMEDIFF('2021-11-07 22:00:00',`update_time`)) AS update_time, UNIX_TIMESTAMP( TIMEDIFF('2021-11-07 22:00:00',`check_time`)) AS check_time FROM `area`";
+        $sql = "SELECT `id`, `lim`, `flag`, `stage_id`, `mark`, `title`, `top_score`, `user_name`, `count`, `team_a`, `team_b`,
+	CASE  
+		WHEN update_time IS NULL THEN 0 
+		WHEN update_time = '0000-00-00 00:00:00' THEN 0
+		ELSE (UNIX_TIMESTAMP('2021-11-07 22:00:00') - UNIX_TIMESTAMP(update_time))
+	END  AS update_time,
+	CASE  
+		WHEN check_time IS NULL THEN 0 
+		WHEN check_time = '0000-00-00 00:00:00' THEN 0
+		ELSE (UNIX_TIMESTAMP('2021-11-07 22:00:00') - UNIX_TIMESTAMP(check_time))
+	END  AS check_time
+	FROM `area`";
+
         $result = mysqli_query($mysqlconn, $sql);
         if($result){
                 while($area_data = mysqli_fetch_assoc($result)){
