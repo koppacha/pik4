@@ -1,28 +1,29 @@
 <?php
 // 定数管理
-define('LOCAL_HOST', "192.168.0.1"); // モバイルから動作確認したい場合、PCのIPアドレスをここに記述
+const LOCAL_HOST = "192.168.0.1"; // モバイルから動作確認したい場合、PCのIPアドレスをここに記述
+const MYSQL_TCP_PORT = "3306";
 
-define('ADMIN_PASSWORD', "password");
-define('DATABASE_DOMAIN', "");
-define('DATABASE_USER', "");
-define('DATABASE_PASS', "");
-define('SESSION_PATH', '');
-define('TWITTER_API_KEY', '');
-define('TWITTER_API_SKEY', '');
-define('TWITTER_TOKEN', '');
-define('TWITTER_STOKEN', '');
+const ADMIN_PASSWORD = "password";
+const DATABASE_DOMAIN = "localhost";
+const DATABASE_USER = "root";
+const DATABASE_PASS = "root";
+const SESSION_PATH = '';
+const TWITTER_API_KEY = '';
+const TWITTER_API_SKEY = '';
+const TWITTER_TOKEN = '';
+const TWITTER_STOKEN = '';
 
-define('CONSUMER_KEY', "");
-define('CONSUMER_SECRET', "");
+const CONSUMER_KEY = "";
+const CONSUMER_SECRET = "";
 
-define('COOKIE_CRYPT', 'aiewyfwialeogfwleioufgwaieufgwieaufgw');
-define('COOKIE_NAME', "");
+const COOKIE_CRYPT = 'aiewyfwialeogfwleioufgwaieufgwieaufgw';
+const COOKIE_NAME = "";
 
-define('PICS_FOLDER', '');
-define('LOCAL_FOLDER', '');
-define('DEBUG_MODE', "debug_mode");
-define('ALTERNATIVE_USER', "alternative_user");
+const PICS_FOLDER = '';
+const LOCAL_FOLDER = '';
+const DEBUG_MODE = "debug_mode";
+const ALTERNATIVE_USER = "alternative_user";
 
-define('PASS_CRYPT', 'awogyebpuwigp974ugeuhrghrgrgergerweawgwe');
+const PASS_CRYPT = 'awogyebpuwigp974ugeuhrghrgrgergerweawgwe';
 
-define('EXEMPTION_LIST', ['']);
+const EXEMPTION_LIST = [''];

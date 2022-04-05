@@ -25,7 +25,9 @@ if(!$mysql_mode){
 if(!$mysql_mode) loadtime_calc(__LINE__);
 // お砂場
 
-
+$blank = '';
+$iii = 1;
+echo "test {$blank}{$iii} test";
 
 // お砂場ここまで
 

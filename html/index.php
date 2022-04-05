@@ -17,7 +17,7 @@ session_start();
 $mysqlconn = mysqli_connect($mysql_host,$mysql_user,$mysql_pass,$mysql_db);
 if ( $mysqlconn == false) {
 	$network_error = 1;
-	echo " <br>Error ".__LINE__."：データベースに接続できませんでした。エラー番号：".mysqli_connect_errno();
+	echo " <br>Error ".__LINE__."：データベースに接続できませんでした。エラー番号：".mysqli_connect_error();
 	exit;
 } else {
 	$result = mysqli_query($mysqlconn, 'SET NAMES utf8mb4');
