@@ -1,6 +1,8 @@
+.DS_Store
+/docker/.DS_Store
+/docker/db/.DS_Store
 /html/_def.php
 /html/_img/
 /html/uploads/
-/docker/db/data/
 /data/Excel/
 /docker/db/init/

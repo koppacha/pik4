@@ -4,7 +4,7 @@ services:
   pik4_web:
     container_name: pik4_web
     build:
-      context: docker/app
+      context: ./docker/app
       dockerfile: Dockerfile
     depends_on:
       - pik4_db
@@ -37,9 +37,9 @@ services:
     depends_on:
       - pik4_db
     environment:
-      - PMA_ARBITRARY=1
-      - PMA_HOSTS=pik4_db
-      - PMA_USER=root
-      - PMA_PASSWORD=root
+      PMA_ARBITRARY: 1
+      PMA_HOSTS: pik4_db
+      PMA_USER: root
+      PMA_PASSWORD: root
     ports:
       - "9999:80"

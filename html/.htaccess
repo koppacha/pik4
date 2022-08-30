@@ -11,7 +11,7 @@ RewriteRule ^(.*) https://chr.mn/pik4/$1 [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !(^/_conf/)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule stream/([0-9]+) stream.php\?s=$1 [L]
+RewriteRule stream stream.php [L]
 
 #/confフォルダを除外、ファイルやディレクトリが存在しないリクエストを除外
 #ルート以下が数値の場合、index.phpのGET変数 (s) に渡す
