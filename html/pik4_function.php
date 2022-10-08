@@ -288,15 +288,17 @@ function total_score_calc($db, $column, $where, $point, $username){ // 使用す
 	if($db == "battle") $sql = "SELECT * FROM $db WHERE `user_name` = '$username' AND `log` = 0 AND `reague` > 0 AND $where ORDER BY `stage_id` DESC";
 	if($db != "battle") $sql = "SELECT * FROM $db WHERE `user_name` = '$username' AND `log` = 0 AND $where ORDER BY `stage_id` DESC";
 	$result = mysqli_query($mysqlconn, $sql);
-	while ($row = mysqli_fetch_assoc($result) ){
-		// 対象ステージがRTAの場合、基準点から引いた点数を加算する
-		// 対象ステージが期間限定チャレンジまたは通常総合かつピクミン1チャレンジモードの場合、スコアを10倍して計算する
-		if(($column == "total_point" and $row["stage_id"] > 100 and $row["stage_id"] < 106) or array_search($row["stage_id"], $limited_pik1)){
-			$total_score = $total_score + ($row[$point] * 10);
-		} else {
-		$total_score = $total_score + $row[$point];
-		}
-	}
+        if($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                // 対象ステージがRTAの場合、基準点から引いた点数を加算する
+                // 対象ステージが期間限定チャレンジまたは通常総合かつピクミン1チャレンジモードの場合、スコアを10倍して計算する
+                if (($column == "total_point" and $row["stage_id"] > 100 and $row["stage_id"] < 106) or array_search($row["stage_id"], $limited_pik1)) {
+                    $total_score = $total_score + ($row[$point] * 10);
+                } else {
+                    $total_score = $total_score + $row[$point];
+                }
+            }
+        }
 	if($column != 'return'){
 		$query_rps = "UPDATE `user` SET $column = '$total_score' WHERE `user_name` = '$username'";
 		$result_rps = mysqli_query($mysqlconn, $query_rps );

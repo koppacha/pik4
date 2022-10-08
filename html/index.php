@@ -48,9 +48,9 @@ $url_stage_id =  urldecode( array_pop( $url_array ) );
 // URLのルーティング
 $page_type = 0;
 $show_scoretable = 1;
-    if ( $site_mode == 1			       ) $page_type =99; // メンテナンスモード
-elseif ( $network_error == 1			       ) $page_type =98; // ネットワークエラー
-elseif ( !$stage_id	     and!$user_name 	       ) $page_type = 0; // エラー
+    if ( $site_mode == 1			                   ) $page_type =99; // メンテナンスモード
+elseif ( $network_error == 1			               ) $page_type =98; // ネットワークエラー
+elseif ( !$stage_id	     and!$user_name 	           ) $page_type = 0; // エラー
 elseif ( $stage_id >       0 and $stage_id <         6 ) $page_type = 1; // 特殊ランキング（新着、RPS順）
 elseif ( $stage_id >       5 and $stage_id <         7 ) $page_type =17; // 特殊ランキング（バトルモード戦歴）
 elseif ( $stage_id >       6 and $stage_id <       101 ) $page_type = 2; // 総合ランキング（9＝RPS総合、10番台＝初代、20番台＝2、30番台＝3、90番台＝特殊）
@@ -65,12 +65,12 @@ elseif ( $stage_id >     297 and $stage_id <       301 ) $page_type =98; // 無�
 elseif ( $stage_id >     300 and $stage_id <       337 ) $page_type = 3; // 通常ランキング (ピクミン3)
 elseif ( $stage_id >     336 and $stage_id <       349 ) $page_type =16; // 特殊ランキング (ビンゴバトルモード)
 elseif ( $stage_id >     348 and $stage_id <       363 ) $page_type = 3; // 通常ランキング（サイドストーリーモード）
-elseif ( $stage_id ==    399			       ) $page_type = 3; // サンドボックス用
+elseif ( $stage_id ==    399			               ) $page_type = 3; // サンドボックス用
 elseif ( $stage_id >     348 and $stage_id <      1001 ) $page_type =98; // 無効
 elseif ( $stage_id >    1000 and $stage_id <      2001 ) $page_type = 4; // 特殊ランキング（期間限定チャレンジ）
 elseif ( $stage_id >    2000 and $stage_id <      3001 ) $page_type =12; // 特殊ランキング (2Pモード)
-elseif ( $stage_id >    3000 and $stage_id <      3143 ) $page_type =19; // 特殊ランキング（エリア踏破戦個別ページ）
-elseif ( $stage_id >    3142 and $stage_id <      4001 ) $page_type =98; // 無効
+elseif ( $stage_id >    3000 and $stage_id <      3147 ) $page_type =19; // 特殊ランキング（エリア踏破戦個別ページ）
+elseif ( $stage_id >    3148 and $stage_id <      4001 ) $page_type =98; // 無効
 elseif ( $stage_id >    4000 and $stage_id <      4074 ) $page_type = 4; // 特殊ランキング（参加者企画）
 elseif ( $stage_id >    4073 and $stage_id <      5001 ) $page_type =98; // 無効
 elseif ( $stage_id >    5000 and $stage_id <      5018 ) $page_type = 3; // 特殊ランキング（スプレー縛り等）
@@ -84,7 +84,7 @@ elseif ( $stage_id >   10224 and $stage_id <     10300 ) $page_type =98; // 無�
 elseif ( $stage_id >   10299 and $stage_id <     10303 ) $page_type = 7; // 特殊ランキング (ピクミン3)
 elseif ( $stage_id >   10302 and $stage_id <     10315 ) $page_type =23; // 特殊ランキング（ソロビンゴ）
 elseif ( $stage_id >   10399 and $stage_id <    151101 ) $page_type =98; // 無効
-elseif ( $stage_id >  151100 and $stage_id <    211232 ) $page_type = 6; // 総合ランキング（期間限定ランキング)
+elseif ( $stage_id >  151100 and $stage_id <    221232 ) $page_type = 6; // 総合ランキング（期間限定ランキング)
 elseif ( $stage_id >  211231 and $stage_id < 100000000 ) $page_type =98; // エラー
 elseif ( $stage_id >99999999 and $stage_id <1000000000 ) $page_type =20; // 記録個別ページ
 elseif ( $user_name != "index.php" )		         $page_type = 5; // ユーザー別ランキング
@@ -122,7 +122,7 @@ if($page_type != 5 and $page_type != 9 and $page_type != 0 and $page_type !=10 a
 	}
 }
 // 開催中の期間限定ランキングではリファラを検査して直飛びを禁止する
-if($stage_id >= 3113 and $stage_id <= 3134){
+if($stage_id >= 3135 and $stage_id <= 3147){
 	if($_SERVER['HTTP_REFERER'] == ""){
 		$page_type = 98;
 	}
@@ -279,8 +279,8 @@ $header_stage_title = preg_replace('/<.*?>/', '', $header_stage_title);
 	<?php endif ?>
 
 	<?php if($mysql_mode === 0): ?>
-	<link rel='stylesheet' id='default-css'  href='./pik4.min.css' type='text/css' media='all'/>
-	<script type="text/javascript" src="./pik4.min.js" charset="UTF-8"></script>
+	<link rel='stylesheet' id='default-css'  href='./pik4.css' type='text/css' media='all'/>
+	<script type="text/javascript" src="./pik4.js" charset="UTF-8"></script>
 	<?php endif ?>
 </head>
 <?php
@@ -406,14 +406,11 @@ require_once('pik4_form.php'); // フォーム画面読み込み
 		glot.render('en');
 		});
 
-		// 定期実行する関数
-		<?php if($refleshmode == 2): ?>
-			setInterval(getarea, 1000); // エリア踏破戦エリア取得
-			setInterval('getpoint(\'17\',\'17\',\'18\')', 1000);// エリア踏破戦ポイント取得
-		<?php else: ?>
-			getarea();
-			getpoint(17,17,18);
-		<?php endif; ?>
+		// 定期実行する関数（第18回開催中は毎秒取得する（通常時の発動条件→if($refleshmode == 2)
+        setInterval(function(){
+            getarea18();
+            getpoint('18','19','20');
+        }, 1000);
 		</script>
 </body>
 </html>

@@ -2542,6 +2542,30 @@ h2, h3, h4 {
 .team18 {
 	background-color: #e69345 !important;
 }
+.team_color19 > .rtd_rank {
+	border-left:solid 10px #e64575;
+}
+.team_color19 > .rtd_rank,
+.team_color19 > .rtd_player,
+.team_color19 > .rtd_score,
+.team_color19 > .rtd_info {
+	border-bottom	:solid 2px #e64575;
+}
+.team19 {
+	background-color: #e64575 !important;
+}
+.team_color20 > .rtd_rank {
+	border-left:solid 10px #455ae6;
+}
+.team_color20 > .rtd_rank,
+.team_color20 > .rtd_player,
+.team_color20 > .rtd_score,
+.team_color20 > .rtd_info {
+	border-bottom	:solid 2px #455ae6;
+}
+.team20 {
+	background-color: #455ae6 !important;
+}
 .arrow {
 	letter-spacing: -2px;
 	font-size: 0.7em;

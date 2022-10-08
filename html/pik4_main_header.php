@@ -61,30 +61,33 @@ if(floor($stage_cat / 10) == 1){
 if(isset($limited_stage_list[$limited_num]) || $limited_num == 0){
         // 未定義エラー回避不能のためエラー制御演算子でカバー
         if( $stage_id != @$limited_stage_list[$limited_num]){
-                if($stage_id == 170211){
+                if($stage_id == 170211 or parent_stage_id($stage_id) === 8){
                         $team_a = 3;
                         $team_b = 4;
-                } elseif($stage_id == 170325){
+                } elseif($stage_id == 170325 or parent_stage_id($stage_id) === 9){
                         $team_a = 5;
                         $team_b = 6;
-                } elseif($stage_id == 170429){
+                } elseif($stage_id == 170429 or parent_stage_id($stage_id) === 10){
                         $team_a = 7;
                         $team_b = 8;
-                } elseif($stage_id == 171013){
+                } elseif($stage_id == 171013 or parent_stage_id($stage_id) === 11){
                         $team_a = 9;
                         $team_b = 10;
-                } elseif($stage_id == 180101){
+                } elseif($stage_id == 180101 or parent_stage_id($stage_id) === 12){
                         $team_a = 11;
                         $team_b = 12;
-                } elseif($stage_id == 200723){
+                } elseif($stage_id == 200723 or parent_stage_id($stage_id) === 15){
                         $team_a = 13;
                         $team_b = 14;
-                } elseif($stage_id == 200918){
+                } elseif($stage_id == 200918 or parent_stage_id($stage_id) === 16){
                         $team_a = 15;
                         $team_b = 16;
-                } elseif($stage_id == 211105){
+                } elseif($stage_id == 211105 or parent_stage_id($stage_id) === 17){
                         $team_a = 17;
                         $team_b = 18;
+                } elseif($stage_id == 221008 or parent_stage_id($stage_id) === 18){
+                        $team_a = 19;
+                        $team_b = 20;
                 } elseif($stage_id <= 170101){
                         $team_a = 1;
                         $team_b = 2;
@@ -248,7 +251,7 @@ if( $page_type == 3 and $filtering_sub_data > 2){
         $separation_mode = 0;
 }
 // 総合・特殊系テーブルクエリを取得（優先度1）
-if ( $stage_id  == 1  ) $sql = "SELECT * FROM `ranking` WHERE `log` = 0 AND `stage_id` != 399 AND `stage_id` NOT BETWEEN 3125 AND 3126 ORDER BY `post_date` DESC LIMIT 100";
+if ( $stage_id  == 1  ) $sql = "SELECT * FROM `ranking` WHERE `log` = 0 AND `stage_id` != 399 AND `stage_id` NOT BETWEEN 3135 AND 3146 ORDER BY `post_date` DESC LIMIT 100";
 if ( $stage_id  == 2  ) $sql = "SELECT * FROM `ranking` WHERE `log` < 2 AND `season` = '$season' AND `stage_id` != 399 ORDER BY `post_date` DESC LIMIT 100";
 //	if ( $stage_id  == 2  ) $sql = "SELECT * FROM `ranking` WHERE `log` = 0 AND `stage_id` != 299 ORDER BY `rps` DESC LIMIT 100";
 if ( $stage_id  == 3  ) $sql = "SELECT * FROM `ranking` WHERE `log` = 0 AND `stage_id` != 299 AND `stage_id` BETWEEN 101 AND 999 AND `post_rank` = 1 ORDER BY `stage_id` ASC";

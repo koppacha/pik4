@@ -1057,6 +1057,8 @@ $(function() {
   });
 });
 
+
+
 // フルスクリーン動画のOn/Off
 function VideoToggle() {
 	var toggle = getCookie("video_toggle");
@@ -1068,6 +1070,9 @@ function VideoToggle() {
 		document.cookie = "video_toggle="+toggle+";";
 	}
 	location.reload();
+}
+function navToggle() {
+	$("#top_page_div").toggle();
 }
 // JavaScript内で配列をシャッフルする関数 (参考孫引き：https://h2ham.net/javascript-%E3%81%A7%E9%85%8D%E5%88%97%E3%81%AE%E3%82%B7%E3%83%A3%E3%83%83%E3%83%95%E3%83%AB
 function shuffle(array) {
@@ -1379,14 +1384,14 @@ CountdownTimer.prototype={
  },addZero:function(num){ return ('0'+num).slice(-2); }
 }
 function CDT(){
- var tl = new Date('2021/11/07 21:59:59');
+ var tl = new Date('2022/10/10 19:59:59');
  var timer = new CountdownTimer('CDT',tl,'(終了しました)');
  timer.countDown();
 }
 
 // 期間限定ランキングのカウントダウン（告知→大会開始まで）
 function CDT2(){
- var tl = new Date('2021/11/05 22:00:00');
+ var tl = new Date('2022/10/08 20:00:00');
  var timer = new CountdownTimer('CDT2',tl,'(開幕しました)');
  timer.countDown();
 }
@@ -1445,7 +1450,7 @@ $(function() {
   });
 });
 
-// Google Chromneでスコア入力欄に２バイト文字を入力させない 参考：https://qiita.com/ttake/items/072508219af6e32a263a
+// Google Chromeでスコア入力欄に２バイト文字を入力させない 参考：https://qiita.com/ttake/items/072508219af6e32a263a
 jQuery(document).ready(function() {
 	
 	// ime-modeが使えるか
@@ -1651,7 +1656,6 @@ $(function(){
 });
 // 期間限定ランキングナビゲーション：エリア取得リアルタイム版（第17回専用）
 function getarea(){
-	console.log('test');
 	$.ajax({
 		type: "POST",
 		url: "pik4_getarea.php",
@@ -1660,7 +1664,6 @@ function getarea(){
 			"stage_id": 1
 		},
 		success: function(data){
-			console.log(data);
 			const mapkey = range(173, 207);
 			var team = getCookie("team");
 			var awidth = 5; // 列数を定義
@@ -1811,19 +1814,19 @@ function getpoint(lim, teama, teamb){
 			"teamb": teamb
 		},
 		success: function(data){
-			$('#teama_areapoint').text(data.team.teama['ore_point']);
-			$('#teamb_areapoint').text(data.team.teamb['ore_point']);
-			$('#teama_rankpoint').text(data.team.teama['rps']);
-			$('#teamb_rankpoint').text(data.team.teamb['rps']);
-			$('#teama_gamepoint').text(data.team.teama['game_point']);
-			$('#teamb_gamepoint').text(data.team.teamb['game_point']);
-			$('#teama_user_tab').empty();
-			$('#teamb_user_tab').empty();
+			$('#teama_areapoint'+lim).text(data.team.teama['area']); // 第17回はore_point
+			$('#teamb_areapoint'+lim).text(data.team.teamb['area']); // 第17回はore_point
+			$('#teama_rankpoint'+lim).text(data.team.teama['rps']);
+			$('#teamb_rankpoint'+lim).text(data.team.teamb['rps']);
+			$('#teama_gamepoint'+lim).text(data.team.teama['game_point']);
+			$('#teamb_gamepoint'+lim).text(data.team.teamb['game_point']);
+			$('#teama_user_tab'+lim).empty();
+			$('#teamb_user_tab'+lim).empty();
 			for(const useradata in data.user.teama){
-				$('#teama_user_tab').append('<tr><td><b>'+data.user.teama[useradata].user_name+'</b></td><td>'+data.user.teama[useradata].total_rpslim017+' RPS</td><td>'+data.user.teama[useradata].total_limited017+' pts.</td></tr>');
+				$('#teama_user_tab'+lim).append('<tr><td><b>'+data.user.teama[useradata].user_name+'</b></td><td>'+data.user.teama[useradata].total_rpslim018+' RPS</td><td>'+data.user.teama[useradata].total_limited018+' pts.</td></tr>');
 			}
 			for(const userbdata in data.user.teamb){
-				$('#teamb_user_tab').append('<tr><td><b>'+data.user.teamb[userbdata].user_name+'</b></td><td>'+data.user.teamb[userbdata].total_rpslim017+' RPS</td><td>'+data.user.teamb[userbdata].total_limited017+' pts.</td></tr>');
+				$('#teamb_user_tab'+lim).append('<tr><td><b>'+data.user.teamb[userbdata].user_name+'</b></td><td>'+data.user.teamb[userbdata].total_rpslim018+' RPS</td><td>'+data.user.teamb[userbdata].total_limited018+' pts.</td></tr>');
 			}
 		},
 		error: function(XMLHttpRequest, textStatus, errorThrown) {
@@ -1852,4 +1855,122 @@ function orgcountdown(time, excav){
 	} else {
 		return '0:0';
 	}
+}
+// 期間限定ランキングナビゲーション：エリア取得リアルタイム版（第18回専用）
+function getarea18(){
+	$.ajax({
+		type: "POST",
+		url: "pik4_getarea.php",
+		cache: false,
+		data: {
+			"stage_id": 1
+		},
+		success: function(data){
+			const mapkey = range(208, 222); // 第17回は173〜207
+			var team = getCookie("team");
+			var awidth = 5; // 列数を定義
+			var aheight= 3; // 行数を定義、第17回は7
+			var teamae = "🚀";
+			var teambe = "🐤";
+			// var now = new Date('07 Nov 2021 22:00:00 +0900'); // 期間限定ランキング終了後は終了日時を入れる
+			mapkey.forEach(function(key){
+					var tr = Math.floor((key - mapkey[0]) / awidth) + 1; // 列数
+					var td = (key - mapkey[0] + 1) - (awidth * (tr - 1)); // 行数
+					if(data[key].title) {
+						var stagetitle = data[key].title.replace("（", '<br><span class="tar">（') + '</span>';
+					} else {
+						var stagetitle = "";
+					}
+					if(data[key].mark) {
+						var mark = data[key].mark.substring(4, 5);
+					} else {
+						var mark = "";
+					}
+					if((data[key].flag == 3 && team == 19) || (data[key].flag == 4 && team == 20)){
+						var myteam = 1;
+					} else {
+						var myteam = 0;
+					}
+					if(data[key].flag > 2){
+						var teamnum = 'team' + (Number(data[key].flag) + 16);
+					} else {
+						var teamnum = '';
+					}
+					// ヘッドラインアローを取得
+					if(data['arrow']) {
+						if (data['arrow'].teama[data[key].stage_id] === null) {
+							var arra = '';
+						} else if (data['arrow'].teama[data[key].stage_id] < 6) {
+							var arra = '<i class="fas fa-chevron-right"></i>'.repeat(data['arrow'].teama[data[key].stage_id]);
+						} else {
+							var arra = data['arrow'].teama[data[key].stage_id] + '<i class="fas fa-chevron-right"></i>'.repeat(5);
+						}
+						if (data['arrow'].teamb[data[key].stage_id] === null) {
+							var arrb = '';
+						} else if (data['arrow'].teamb[data[key].stage_id] < 6) {
+							var arrb = '<i class="fas fa-chevron-left"></i>'.repeat(data['arrow'].teamb[data[key].stage_id]);
+						} else {
+							var arrb = '<i class="fas fa-chevron-left"></i>'.repeat(5) + data['arrow'].teamb[data[key].stage_id];
+						}
+					} else {
+						var arra = '';
+						var arrb = '';
+					}
+					// エリア表示を初期化
+					$("#area"+key).removeClass("area_1 area_2 area_3 area_4 team19 team20").addClass('area_'+data[key].flag+' '+teamnum);
+
+					// 自陣が上下左右にあるかどうかの確認
+					var nextcheck = [];
+					if((key -   (mapkey[0] - 1)) % awidth !== 0)			nextcheck.push(key + 1); // 東
+					if((key -   (mapkey[0] - 1)) % awidth !== 1)			nextcheck.push(key - 1); // 西
+					if( key >  ((mapkey[0] - 1)  + awidth))					nextcheck.push(key - awidth); // 北
+					if( key <= ((mapkey[0] - 1)  +(awidth * (aheight - 1))))nextcheck.push(key + awidth); // 南
+					if(myteam){
+						var link = data[key].stage_id;
+					} else {
+						var link = 0;
+					}
+					nextcheck.forEach(function(next){
+						if(team == 19 && data[next].flag == 3) link = data[key].stage_id;
+						if(team == 20 && data[next].flag == 4) link = data[key].stage_id;
+					});
+					// 踏破不能なエリアはステージ名を非表示にする
+					if(link === 0 && myteam === 0){
+						stagetitle = '？？？<br><span class="tar">（？？？）</span>';
+						link = "221008#";
+					}
+					// 拠点
+					if(data[key].mark == "base"){
+						if(data[key].flag == 3) var teamname = "チームオリマー"+teamae;
+						if(data[key].flag == 4) var teamname = "チームチャーリー"+teambe;
+						$("#area"+key).html('<A href="./221008">◆拠点◆<br>'+teamname+'</A>');
+						// 自陣
+					} else if(myteam && (data[key].flag == 3 || data[key].flag == 4)){
+						$("#area"+key).html('<A href="./'+link+'">'+tr+'-'+td+'◆'+stagetitle+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p style="text-align:center;"><span class="arrow" id="arra'+data[key].stage_id+'">'+arra+'</span>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'<span class="arrow" id="arrb'+data[key].stage_id+'">'+arrb+'</span></p></A>'); // <A href="javascript:void(0)" onclick="collectarea('+data[key].id+');">回収ボタン</A>
+						// 敵陣
+					} else if(!myteam && (data[key].flag == 3 || data[key].flag == 4)){
+						if(link){
+							$("#area"+key).html('<A href="./'+link+'">'+tr+'-'+td+'◆'+stagetitle+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p style="text-align:center;"><span class="arrow" id="arra'+data[key].stage_id+'">'+arra+'</span>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'<span class="arrow" id="arrb'+data[key].stage_id+'">'+arrb+'</span></p></A>');
+						} else {
+							$("#area"+key).html('<A href="./'+link+'">'+tr+'-'+td+'◆'+stagetitle+data[key].user_name+'<p><i class="fa fa-star" aria-hidden="true"></i>'+data[key].top_score+' pts.  <i class="fas fa-paper-plane"></i>'+data[key].count+'</p><p style="text-align:center;"><span class="arrow" id="arra'+data[key].stage_id+'">'+arra+'</span>'+teamae+data[key].team_a+' - '+data[key].team_b+teambe+'<span class="arrow" id="arrb'+data[key].stage_id+'">'+arrb+'</span></p></A>');
+						}
+						// 中立解禁済み
+					} else if(data[key].flag == 2){
+						$("#area"+key).html('<A href="./'+link+'">'+tr+'-'+td+'◆'+stagetitle+'</A>');
+						// 中立未解禁
+					} else if(data[key].flag == 1){
+						$("#area"+key).html(tr+'-'+td);
+					}
+				}
+			);
+		},
+		// for(const[key, value] of Object.entries(data)){
+		// 	for(const[keychild, val] of Object.entries(value)){
+		// 		$("#"+keychild+key).text(val);
+		// 	}
+		// }
+		error: function(XMLHttpRequest, textStatus, errorThrown) {
+			// alert("errorThrown : " + errorThrown.message);
+		}
+	});
 }

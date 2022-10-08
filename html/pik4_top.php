@@ -62,7 +62,7 @@ if( $page_type == 0 ){
 </span>
 </div>
 <div style="position:fixed;right:45%;bottom:0px;" class="mobile-hidden">
-<A style="color:#ffffff;" href="#" onClick="VideoPause();"><span id="video_control" glot-model="main_video_stop">一時停止</span> | </A><A style="color:#ffffff;" href="#" onClick="VideoToggle();" glot-model="main_video_toggle">動画On/Off</A>
+<A style="color:#ffffff;" href="#" onClick="VideoPause();"><span id="video_control" glot-model="main_video_stop">一時停止</span> | </A><A style="color:#ffffff;" href="#" onClick="VideoToggle();" glot-model="main_video_toggle">動画On/Off</A> | <A style="color:#ffffff;" href="#" onClick="navToggle();">ナビゲーションOn/Off</A>
 </div>
 <div style="position:fixed;right:8px;bottom:0px;color:#aaaaaa;text-align:right;" class="mobile-hidden">
 Since: 2007/04/29 (Rebuilding Date: 2015/09/01) <br>

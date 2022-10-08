@@ -1104,7 +1104,7 @@ if (@$_POST['check_send']) {
 		}
 		// f16新2：エリア踏破戦のチーム分けチェック
 		// チーム分けプログラムを実行していないと登録できないようにする
-		if($stage_id >= 3066 and $stage_id <= 3134){
+		if($stage_id >= 3066 and $stage_id <= 3148){
 			$query = "SELECT * FROM `user` WHERE `user_name` = '$user_name' LIMIT 1";
 			if ($result = mysqli_query($mysqlconn, $query) ){
 				$row = mysqli_fetch_assoc($result);
@@ -1411,7 +1411,7 @@ if (@$_POST['check_send']) {
 			$user_area_array[] = $row["id"]; // 現在地
 
 			// 今大会の一番左上から１引いた数値を定義しておく
-			$min_point = 172;
+			$min_point = 207;
 			if(($row["id"] - $min_point) % $ae_width[$limited_num] !== 0) $user_area_array[] = $row["id"] + 1; // 東
 			if(($row["id"] - $min_point) % $ae_width[$limited_num] !== 1) $user_area_array[] = $row["id"] - 1; // 西
 			if($row["id"] > ($min_point + $ae_width[$limited_num])) $user_area_array[] = $row["id"] - $ae_width[$limited_num]; // 北
@@ -1430,7 +1430,7 @@ if (@$_POST['check_send']) {
 			$result = mysqli_query($mysqlconn, $query);
 			$ae_user_count = mysqli_num_rows($result);
 
-			if($stage_id >= 3066 and $stage_id <= 3134){
+			if($stage_id >= 3066 and $stage_id <= 3147){
 				// チーム対抗制の場合
 				if($cookie_row['current_team'] == $team_a) $flag_jadge = 3;
 				if($cookie_row['current_team'] == $team_b) $flag_jadge = 4;
@@ -1691,7 +1691,7 @@ if (@$_POST['check_send']) {
 			$myrate = $user_data["rate"];
 
 			// エリア踏破戦×チーム対抗戦は擬似的にチーム対抗戦と同じ登録
-			if($stage_id >= 3066 and $stage_id <= 3134){
+			if($stage_id >= 3066 and $stage_id <= 3147){
 			$query = "INSERT INTO `ranking`( `user_name`, `stage_id`, `score`, `console`, `user_ip`, `user_host`, `user_agent`, `unique_id`, `post_comment`, `post_date`, `post_count`,`prev_score`,`pic_file`,`pic_file2`,`firstpost_date`,`video_url`,`prev_rank`,`team`,`rate`) VALUES('$user_name','$stage_id','$score','$console','$user_ip','$user_host','$user_agent','$unique_id','$post_comment','$post_date','$post_count','$prev_score','$new_file_name[0]','$new_file_name[1]','$firstpost_date','$video_url','$old_rank','$current_team','$myrate')";
 			if(!$_SESSION['debug_mode']) $result = mysqli_query($mysqlconn, $query );
 
@@ -1971,6 +1971,7 @@ if (@$_POST['check_send']) {
 							if(($stage_id > 1000 and $stage_id < 2000) or ($stage_id > 3000 and $stage_id < 4000)){
 								// 期間限定ランキングのランクポイント計算
 								$rps[$i] = $limited_player[parent_stage_id($stage_id)] - $rps_rank[$i] + 1;
+                                                                if($rps_rank[$i] == 1) $rps[$i]++; // 第18回からは１位にボーナス１点を加える
 							} elseif($stage_id > 4000 and $stage_id < 5000){
 								// 参加者企画のランクポイント計算
 								$rps[$i] = $uplan_player[parent_stage_id($stage_id)] - $rps_rank[$i] + 1;
@@ -2215,8 +2216,8 @@ if (@$_POST['check_send']) {
 		// }
 
 		// チーム対抗の場合は対象ステージすべてのRPSを更新する(★暫定対応）
-		if( $switch[23] and ($ranking_type == "limited_team" or $del_ranking_type == "limited_team") or ($stage_id >= 3066 and $stage_id <= 3134)){
-		if(     $ranking_type == "limited_team" or ($stage_id >= 3066 and $stage_id <= 3134)) $rps_update_limited_array = ${'limited'.$limited_stage_list[$limited_num]};
+		if( $switch[23] and ($ranking_type == "limited_team" or $del_ranking_type == "limited_team") or ($stage_id >= 3066 and $stage_id <= 3147)){
+		if(     $ranking_type == "limited_team" or ($stage_id >= 3066 and $stage_id <= 3147)) $rps_update_limited_array = ${'limited'.$limited_stage_list[$limited_num]};
 		if( $del_ranking_type == "limited_team") $rps_update_limited_array = ${'limited'.$limited_stage_list[$del_limited_num]};
 
 		// 計算対象の期間限定ランキング参加者を計算
@@ -2246,42 +2247,49 @@ if (@$_POST['check_send']) {
 						$rps_rank[$i] = 1;
 					}
 					// RPS = (期間限定総合の参加人数 - 順位 + 1)
-					$rps[$i] = ($current_limited_player - $rps_rank[$i]) + 1;
+//					$rps[$i] = ($current_limited_player - $rps_rank[$i]) + 1;
 
-						// レーティング制の場合の特殊処理
-						if($limited_num == 11 or $limited_num == 12){
+                                        // RPS = (そのステージの参加者数 - 順位 + 1)
+                                        $rps[$i] = ($rows_count - $rps_rank[$i]) + 1;
 
-						// 比較元のレートを取得
-						$now_score = $row["score"];
-						$now_user_name = $row["user_name"];
-						$rate_query = "SELECT * FROM `user` WHERE `user_name` = '$now_user_name' LIMIT 1";
-						$rate_result = mysqli_query($mysqlconn, $rate_query);
-						$rate_row = mysqli_fetch_assoc($rate_result);
-						$now_rate = $rate_row["rate"];
+                                        // 第18回から１位の場合はボーナス１点を加える
+                                        if($rps_rank[$i] == 1) $rps[$i]++;
 
-						// 上から順にランキングを取得してそれ以下のスコアとレートを比較する
-						$sub_query = "SELECT * FROM `ranking` WHERE `stage_id` = '$get_lim_stage_id' AND `log` = 0 AND `score` < '$now_score' ORDER BY `score` DESC";
-						$sub_result = mysqli_query($mysqlconn, $sub_query);
-						while( $sub_row = mysqli_fetch_assoc($sub_result) ){
-							$opponent_user_name = $sub_row["user_name"];
+                                        // レーティング制の場合の特殊処理
+                                        if($limited_num == 11 or $limited_num == 12){
 
-								// 比較相手のレートを取得
-								$rate_query = "SELECT * FROM `user` WHERE `user_name` = '$opponent_user_name' LIMIT 1";
-								$rate_result = mysqli_query($mysqlconn, $rate_query);
-								$rate_row = mysqli_fetch_assoc($rate_result);
-								$opponent_rate = $rate_row["rate"];
+                                            // 比較元のレートを取得
+                                            $now_score = $row["score"];
+                                            $now_user_name = $row["user_name"];
+                                            $rate_query = "SELECT * FROM `user` WHERE `user_name` = '$now_user_name' LIMIT 1";
+                                            $rate_result = mysqli_query($mysqlconn, $rate_query);
+                                            $rate_row = mysqli_fetch_assoc($rate_result);
+                                            $now_rate = $rate_row["rate"];
 
-							if($opponent_rate > $now_rate){
-								$rps_seed = 1;
-							} else {
-								$rps_seed = 0;
-							}
+                                            // 上から順にランキングを取得してそれ以下のスコアとレートを比較する
+                                            $sub_query = "SELECT * FROM `ranking` WHERE `stage_id` = '$get_lim_stage_id' AND `log` = 0 AND `score` < '$now_score' ORDER BY `score` DESC";
+                                            $sub_result = mysqli_query($mysqlconn, $sub_query);
+                                            while( $sub_row = mysqli_fetch_assoc($sub_result) ){
+                                                    $opponent_user_name = $sub_row["user_name"];
 
-							$rps[$i] += $rps_seed;
-						}
-						// 選抜戦の場合はRPSを2倍にする
-						if($get_lim_stage_id > 1037 and $get_lim_stage_id < 1042 and $rps_rank[$i] == 1) $rps[$i] *= 2;
-					}
+                                                    // 比較相手のレートを取得
+                                                    $rate_query = "SELECT * FROM `user` WHERE `user_name` = '$opponent_user_name' LIMIT 1";
+                                                    $rate_result = mysqli_query($mysqlconn, $rate_query);
+                                                    $rate_row = mysqli_fetch_assoc($rate_result);
+                                                    $opponent_rate = $rate_row["rate"];
+
+                                                    if($opponent_rate > $now_rate){
+                                                            $rps_seed = 1;
+                                                    } else {
+                                                            $rps_seed = 0;
+                                                    }
+
+                                                    $rps[$i] += $rps_seed;
+                                            }
+                                            // 選抜戦の場合はRPSを2倍にする
+                                            if($get_lim_stage_id > 1037 and $get_lim_stage_id < 1042 and $rps_rank[$i] == 1) $rps[$i] *= 2;
+                                    }
+
 				// ランクポイントを更新する
 				$query_rps ="UPDATE `ranking` SET `at_rank` = '$rps_rank[$i]', `post_rank` = '$rps_rank[$i]' , `rps` = '$rps[$i]' , `rps2` = '$rps[$i]' WHERE `post_id` = '$rps_id[$i]' ";
 				if(!$_SESSION['debug_mode']) $result_rps = mysqli_query($mysqlconn, $query_rps );
@@ -2338,6 +2346,7 @@ if (@$_POST['check_send']) {
 				$ae_username	= $row["user_name"];
 				$ae_team_a	= $row["team_a"];
 				$ae_team_b	= $row["team_b"];
+
 			if($ae_flag > 1){
 				// トップスコアを更新していた場合は名前を上書き
 				if($score > $ae_topscore){
@@ -2355,7 +2364,7 @@ if (@$_POST['check_send']) {
 					// $ae_flag = 2;
 				}
 				if($ae_flag_old != $ae_flag and $ae_flag > 2){
-					$current_team = $ae_flag + 14;
+					$current_team = $ae_flag + 16; // 第18回の場合はフラグに16を加えた値
 
 					if($ae_flag + $ae_flag_old == 7){
 						// マイニング制の場合は採掘ボーナスを加算
@@ -2385,7 +2394,7 @@ if (@$_POST['check_send']) {
 					// 周囲エリアのフラグをチェックする
 					$around_check_array   = array();
 					// 今大会の一番左上から１引いた数値を定義しておく
-					$min_point = 172;
+					$min_point = 207;
 					if(($ae_point - $min_point) % $ae_width[$limited_num] !== 0) $around_check_array[] = $ae_point + 1; // 東
 					if(($ae_point - $min_point) % $ae_width[$limited_num] !== 1) $around_check_array[] = $ae_point - 1; // 西
 					if($ae_point > ($min_point + $ae_width[$limited_num])) $around_check_array[] = $ae_point - $ae_width[$limited_num]; // 北
@@ -2428,8 +2437,8 @@ if (@$_POST['check_send']) {
 				$rightside_pts += $row["score"];
 			}
 
-			// ハンデ再計算 (3673行付近を再利用)
-			if(!($stage_id >= 3066 and $stage_id <= 3095)){
+			// ハンデ再計算 (3673行付近を再利用、第15・18回は適用しない→第16・17回は調査中)
+			if(!(($stage_id >= 3066 and $stage_id <= 3095) or $stage_id >= 3135 and $stage_id <= 3146)){
 				$minority_bonus = 0;
 				$sql = "SELECT * FROM `ranking` WHERE `team` = '$team_b' AND `log` = 0";
 				$result = mysqli_query($mysqlconn, $sql);
@@ -2450,7 +2459,7 @@ if (@$_POST['check_send']) {
 				}
 			}
 
-			// エリア情報を出力
+                        // エリア情報を出力
 			$area_log_array = array();
 			$query = "SELECT * FROM `area` WHERE `lim` = '$limited_num'";
 			$result = mysqli_query($mysqlconn, $query);
@@ -2458,6 +2467,7 @@ if (@$_POST['check_send']) {
 				$area_log_array[] = $row["flag"];
 			}
 			$area_log = implode(" ",$area_log_array);
+                        $area_counter = array_count_values($area_log_array);
 
 			// 期間限定生ログを出力
 			$query = "INSERT INTO `limited_log`( `date`,`user_name`,`stage_id`,`score`,`left_side`,`right_side`,`area`) VALUES('$post_date','$user_name','$stage_id','$score','$leftside_rps','$rightside_rps','$area_log')";
@@ -2469,7 +2479,9 @@ if (@$_POST['check_send']) {
 				if($i == $team_b) $rps = $rightside_rps;
 				if($i == $team_a) $pts = $leftside_pts;
 				if($i == $team_b) $pts = $rightside_pts;
-				$query = "UPDATE `team_log` SET `rps` = '$rps', `game_point` = '$pts' WHERE `id` = '$i'";
+                                if($i == $team_a) $are = $area_counter[3] - 1;
+                                if($i == $team_b) $are = $area_counter[4] - 1;
+				$query = "UPDATE `team_log` SET `rps` = '$rps', `game_point` = '$pts', `area` = '$are' WHERE `id` = '$i'";
 				if(!$_SESSION['debug_mode']) $result = mysqli_query($mysqlconn, $query );
 			}
 

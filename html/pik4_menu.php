@@ -25,10 +25,6 @@ if(!$mysql_mode){
 if(!$mysql_mode) loadtime_calc(__LINE__);
 // お砂場
 
-$blank = '';
-$iii = 1;
-echo "test {$blank}{$iii} test";
-
 // お砂場ここまで
 
 // メニューカラムヘッダー
@@ -169,6 +165,7 @@ if(($uplan_num != 0 or $limited_num != 0) and $now_time < $limited_start_time){
 		echo '<span class="nav_caption mini_caption3" glot-model="menu_limited_notice">開催予定の期間限定ランキング</span> <br>';
 		echo '<span style="color:#ffffff;"><span glot-model="menu_limited_dai">第</span>'.$limited_num.'<span glot-model="menu_limited_kai">回</span> ('.$fixed_limstart.$fixed_limend.') <br>';
 		echo $limited_stage_title_fixed[$limited_num - 1].'×'.$limited_stage_sub_fixed[$limited_num - 1].' <br>';
+        echo '今大会が最後の期間限定ランキングです！<br>';
 	} else {
 		echo '<span class="nav_caption mini_caption3" glot-model="menu_uplan_notice">開催予定の参加者企画</span> <br>';
 		echo '<span style="color:#ffffff;"><span glot-model="menu_limited_dai">第</span>'.$uplan_num.'<span glot-model="menu_limited_kai">回</span>：'.$uplan_stage_title_fixed[$uplan_num - 1].' <br>';
@@ -235,7 +232,7 @@ if(($uplan_num != 0 or $limited_num != 0) and $now_time < $limited_start_time){
 				$sql = "SELECT * FROM `ranking` WHERE `stage_id` IN($imp_limstage) AND `log` = 0 AND `team` = '$i' ORDER BY `score` DESC";
 				$result = mysqli_query($mysqlconn, $sql);
 				if (!$result) {
-					die('<br>Error '.__LINE__.'：クエリの取得に失敗.'.mysql_error());
+					die('<br>Error '.__LINE__.'：クエリの取得に失敗.');
 				}
 				// 各ステージのチーム別レコードをWhileして合計スコアを加算していく
 				while(${'total_row'.$i} = mysqli_fetch_assoc($result)){
@@ -415,7 +412,7 @@ if(($uplan_num != 0 or $limited_num != 0) and $now_time < $limited_start_time){
 <?php
 // 最新記録
 	// もっとも最近の記録を抽出
-	$sql = "SELECT * FROM `ranking` WHERE `log` = 0 AND `stage_id` != 399 AND `stage_id` NOT BETWEEN 3113 AND 3134 ORDER BY `post_date` DESC LIMIT 1";
+	$sql = "SELECT * FROM `ranking` WHERE `log` = 0 AND `stage_id` != 399 AND `stage_id` NOT BETWEEN 3135 AND 3147 ORDER BY `post_date` DESC LIMIT 1";
 	$result = mysqli_query($mysqlconn, $sql);
 	if (!$result) {
 		echo " <br>Error ".__LINE__."：クエリの取得エラーが発生しています。";
@@ -455,7 +452,7 @@ if(($uplan_num != 0 or $limited_num != 0) and $now_time < $limited_start_time){
 	$sql = "SELECT * FROM `ranking` WHERE `post_date` >= '$last_week_date' AND NOT(`stage_id` BETWEEN 244 AND 274) AND `log` = 0 ORDER BY `rps` DESC LIMIT 1";
 	$result = mysqli_query($mysqlconn, $sql);
 	if (!$result) {
-		die('<br>Error '.__LINE__.'：クエリの取得に失敗.'.mysql_error());
+		die('<br>Error '.__LINE__.'：クエリの取得に失敗.');
 	}
 	while ($row = mysqli_fetch_assoc($result) ){
 
@@ -514,7 +511,7 @@ if(($uplan_num != 0 or $limited_num != 0) and $now_time < $limited_start_time){
 </div>
 
 <div id="today_recommend" style="display:none;" class="pickup_menu">
-<span class="nav_caption"><span class="mini_caption4" style="cursor:pointer;" href="javascript:void(0)" onclick="menu_toggle('diary_challenge','today_recommend');" glot-model="menu_recommend">今日のオススメ！</span></span> <span class="mini_caption4"><?php echo date('(m/d)', $now_time); ?></A> <br>
+<span class="nav_caption"><span class="mini_caption4" style="cursor:pointer;" href="javascript:void(0)" onclick="menu_toggle('diary_challenge','today_recommend');" glot-model="menu_recommend">今日のオススメ！</span></span> <span class="mini_caption4"><?php echo date('(m/d)', $now_time); ?></span> <br>
 <ul class="nav not-margin">
 <?php
 	// 今日のオススメを計算
@@ -562,7 +559,7 @@ if($url_stage_id == 205 and isset($_COOKIE["user_name"])){
 	$sql = "SELECT * FROM `user` ORDER BY `total_rps` DESC LIMIT 5";
 	$result = mysqli_query($mysqlconn, $sql);
 	if (!$result) {
-		die('<br>Error '.__LINE__.'：クエリの取得に失敗.'.mysql_error());
+		die('<br>Error '.__LINE__.'：クエリの取得に失敗.');
 	}
 	$rows_count = mysqli_num_rows($result);
 	$p = -1;
@@ -588,7 +585,7 @@ if($url_stage_id == 205 and isset($_COOKIE["user_name"])){
 	$sql = "SELECT * FROM `user` WHERE `total_rps` > 0 ORDER BY `total_rps` DESC LIMIT 99999 OFFSET 5";
 	$result = mysqli_query($mysqlconn, $sql);
 	if (!$result) {
-		die('<br>Error '.__LINE__.'：クエリの取得に失敗.'.mysql_error());
+		die('<br>Error '.__LINE__.'：クエリの取得に失敗.');
 	}
 	$rows_count = mysqli_num_rows($result);
 	$i = 1;

@@ -1,5 +1,5 @@
 <?php
-ini_set('display_errors', 1);
+ini_set('display_errors', 0);
 
 require_once('_def.php');
 require_once('pik4_config.php');
@@ -33,12 +33,12 @@ if(isset($_POST['stage_id'])){
 	CASE  
 		WHEN update_time IS NULL THEN 0 
 		WHEN update_time = '0000-00-00 00:00:00' THEN 0
-		ELSE (UNIX_TIMESTAMP('2021-11-07 22:00:00') - UNIX_TIMESTAMP(update_time))
+		ELSE (UNIX_TIMESTAMP('2022-10-10 22:00:00') - UNIX_TIMESTAMP(update_time))
 	END  AS update_time,
 	CASE  
 		WHEN check_time IS NULL THEN 0 
 		WHEN check_time = '0000-00-00 00:00:00' THEN 0
-		ELSE (UNIX_TIMESTAMP('2021-11-07 22:00:00') - UNIX_TIMESTAMP(check_time))
+		ELSE (UNIX_TIMESTAMP('2022-10-10 22:00:00') - UNIX_TIMESTAMP(check_time))
 	END  AS check_time
 	FROM `area`";
 
@@ -49,18 +49,18 @@ if(isset($_POST['stage_id'])){
                 }
         }
 	// ヘッドラインアローを表示するためのデータを取得
-	$min = min(${'limited'.$limited_stage_list[17]});
-	$max = max(${'limited'.$limited_stage_list[17]});
+	$min = min(${'limited'.$limited_stage_list[18]});
+	$max = max(${'limited'.$limited_stage_list[18]});
 	
-	// 期間限定ランキングの最新100件を取得
-	$sql = "SELECT `stage_id`,`team` FROM `ranking` WHERE `stage_id` BETWEEN '$min' AND '$max' AND `log` < 2 ORDER BY `post_date` DESC LIMIT 110";
+	// 期間限定ランキングの最新50件を取得
+	$sql = "SELECT `stage_id`,`team` FROM `ranking` WHERE `stage_id` BETWEEN '$min' AND '$max' AND `log` < 2 ORDER BY `post_date` DESC LIMIT 60";
 	$result = mysqli_query($mysqlconn, $sql);
 	if($result){
 		while($arrow_data = mysqli_fetch_assoc($result)){
 			$arrowdata[$arrow_data["team"]][] = $arrow_data["stage_id"];
 		}
-		$area_count_value["teama"] = array_count_values($arrowdata[$team_a]);
-		$area_count_value["teamb"] = array_count_values($arrowdata[$team_b]);
+                if(isset($arrowdata[$team_a])) $area_count_value["teama"] = array_count_values($arrowdata[$team_a]);
+		if(isset($arrowdata[$team_b])) $area_count_value["teamb"] = array_count_values($arrowdata[$team_b]);
 	
 		for($i = $min; $i <= $max; $i++){
 			if(isset($area_count_value["teama"][$i])){
@@ -75,7 +75,7 @@ if(isset($_POST['stage_id'])){
 			}
 		}
 	}
-	mysqli_close($conn);
+	mysqli_close($mysqlconn);
 } else {
 
 $back_data = "エラーが発生しています（ステージIDの取得に失敗しました）";
@@ -85,4 +85,3 @@ $back_data = "エラーが発生しています（ステージIDの取得に失�
 header('Content-Type: application/json; Access-Control-Allow-Origin: <origin> | *; Access-Control-Allow-Headers: *; charset=utf-8');
 
 echo json_encode($area);
-?>

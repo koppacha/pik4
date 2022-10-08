@@ -245,6 +245,7 @@ if($key == 14) $area_cat = 'standard';
 if($key == 15) $area_cat = 'team'; // PHP版チーム対抗エリア表示
 if($key == 16) $area_cat = 'team';
 if($key == 17) $area_cat = 'team2'; // JS版チーム対抗エリア表示
+if($key == 18) $area_cat = 'team2'; // JS版チーム対抗エリア表示
 
 // エリア踏破戦のナビゲーション
 echo '<div class="scroll-wrap">';
@@ -253,7 +254,7 @@ if($area_cat == 'standard'){
 	if($watchmode == 2) echo '<span><A style="color:#aaaaaa;" href="javascript:void(0);" onclick="SeasonToggle(\'watchmode\');"><i class="fa fa-toggle-on" aria-hidden="true"></i><span glot-model="main_nav_colorcoded1">自陣と敵陣を色分け</span></A> <br></span>';
 	if($watchmode != 2) echo '<span><A style="color:#05ffe3;" href="javascript:void(0);" onclick="SeasonToggle(\'watchmode\');"><i class="fa fa-toggle-off" aria-hidden="true"></i><span glot-model="main_nav_colorcoded2">ユーザー毎に色分け</span></A> <br></span>';
 }
-if($area_cat == 'team2'){
+if($key == 17){
 	// 第17回期間限定ランキングの自動/手動更新切り替え
 	if($refleshmode == 2) echo '<span><A style="color:#05ffe3;" href="javascript:void(0);" onclick="SeasonToggle(\'refleshmode\');"><i class="fa fa-toggle-off" aria-hidden="true"></i>自動更新する</A> <br></span>';
 	if($refleshmode != 2) echo '<span><A style="color:#aaaaaa;" href="javascript:void(0);" onclick="SeasonToggle(\'refleshmode\');"><i class="fa fa-toggle-on" aria-hidden="true"></i>ボタンで更新する</A> <br></span>';
@@ -263,11 +264,11 @@ if($area_cat == 'team2'){
 if( strpos($area_cat, 'team') !== false and $key == $limited_num){ // 最新のみ表示する
 	// エリア踏破戦チーム対抗制のチーム分けボタン
 	echo '<div class="areainfo">';
-	if($cookie_row['current_team'] >= 17){
+	if($cookie_row['current_team'] >= 19){
 		echo $cookie_name.' <span glot-model="main_nav_team_in">さんの所属チームは</span>'.$team[$cookie_row['current_team']].'<span glot-model="desu_tail">です。</span>';
 	} elseif($cookie_row['current_team'] > -1){
 		echo '<span id="teamoutput">'.$cookie_name.' <span glot-model="main_nav_team_notin">さんはまだチームに所属していません。</span>（'.$cookie_name.'<span glot-model="main_nav_team_rate">さんのレート</span>：'.$cookie_row['rate']."）<br>";
-		echo '<A href="#" style="font-size:1.2em;color:#000000;text-decoration:underline;" onClick="teamselect(\''.$cookie_name.'\',\''.$cookie_row['rate'].'\',\''.$team_a.'\',\''.$team_b.'\');">'.$teame['a'][$limited_num].'<span glot-model="main_nav_team_join">参加する</span>'.$teame['b'][$limited_num].'</A><span glot-model="main_nav_team_join_caution">（参加予定のない方は押さないでください！）</span></span>';
+		echo '<A href="#" style="font-size:1.2em;color:#000000;text-decoration:underline;" onClick="teamselect(\''.$cookie_name.'\',\''.$cookie_row['rate'].'\',\''.$team_a.'\',\''.$team_b.'\');">'.$teame['a'][$limited_num].'<span glot-model="main_nav_team_join">参加する</span>'.$teame['b'][$limited_num].'</A><span glot-model="main_nav_team_join_caution">（チーム配属直後からプレイ予定の方のみ押してください。席取り行為はご遠慮願います🙇）</span></span>';
 	} else {
 		echo '<span glot-model="main_nav_team_error">ログインしていません。期間限定ランキングは通常ランキングに１回でも参加してログインしていることが参加条件になります。</span>';
 	}
@@ -495,30 +496,30 @@ if($area_cat != "team2"){
 		<table class="team_info_tab">
 			<tr>
 				<td class="team_point_tab_wrapper">
-					<span style="color:#'.$teamc[$team_a].';" class="team_point" id="teama_areapoint">0</span>
+					<span style="color:#'.$teamc[$team_a].';" class="team_point" id="teama_areapoint'.$key.'">0</span>
 					<hr style="height:3px;border:none;background-color:#'.$teamc[$team_a].';">
-					<span style="color:#'.$teamc[$team_a].';" class="team_point" id="teama_rankpoint">0</span>
+					<span style="color:#'.$teamc[$team_a].';" class="team_point" id="teama_rankpoint'.$key.'">0</span>
 					<br>
-					<span style="color:#'.$teamc[$team_a].'" class="team_point_mini" id="teama_gamepoint">0</span>
+					<span style="color:#'.$teamc[$team_a].'" class="team_point_mini" id="teama_gamepoint'.$key.'">0</span>
 				</td>
 				<td class="mobile-hidden team_user_tab_wrapper">
 					<b style="color:#'.$teamc[$team_a].'">◆<span glot-model="team'.$team_a.'">'.$team[$team_a].'</span>◆</b> <br>
-					<table class="team_user_tab" id="teama_user_tab">
+					<table class="team_user_tab" id="teama_user_tab'.$key.'">
 						<tr><td><b></b></td><td>0 RPS</td><td>0 pts.</td></tr>
 					</table>
 				</td>
 				<td class="mobile-hidden team_user_tab_wrapper">
 					<b style="color:#'.$teamc[$team_b].'">◆<span glot-model="team'.$team_b.'">'.$team[$team_b].'</span>◆</b> <br>
-					<table class="team_user_tab" id="teamb_user_tab">
+					<table class="team_user_tab" id="teamb_user_tab'.$key.'">
 						<tr><td><b></b></td><td>0 RPS</td><td>0 pts.</td></tr>
 					</table>
 				</td>
 				<td class="team_point_tab_wrapper">
-					<span style="color:#'.$teamc[$team_b].';" class="team_point" id="teamb_areapoint">0</span>
+					<span style="color:#'.$teamc[$team_b].';" class="team_point" id="teamb_areapoint'.$key.'">0</span>
 					<hr style="height:3px;border:none;background-color:#'.$teamc[$team_b].';">
-					<span style="color:#'.$teamc[$team_b].'" class="team_point" id="teamb_rankpoint">0</span>
+					<span style="color:#'.$teamc[$team_b].'" class="team_point" id="teamb_rankpoint'.$key.'">0</span>
 					<br>
-					<span style="color:#'.$teamc[$team_b].'" class="team_point_mini" id="teamb_gamepoint">0</span>
+					<span style="color:#'.$teamc[$team_b].'" class="team_point_mini" id="teamb_gamepoint'.$key.'">0</span>
 				</td>
 			</tr>
 		</table>

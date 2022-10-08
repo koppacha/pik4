@@ -51,7 +51,7 @@ if(isset($_POST['lim'])){
 			if($area_data["id"] == $teamb) $point["team"]["teamb"] = $area_data;
 		}
 	}
-	mysqli_close($conn);
+	mysqli_close($mysqlconn);
 } else {
 
 $back_data = "エラーが発生しています（ステージIDの取得に失敗しました）";
@@ -61,4 +61,3 @@ $back_data = "エラーが発生しています（ステージIDの取得に失�
 header('Content-Type: application/json; Access-Control-Allow-Origin: <origin> | *; Access-Control-Allow-Headers: *');
 
 echo json_encode($point);
-?>

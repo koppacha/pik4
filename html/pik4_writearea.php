@@ -32,7 +32,7 @@ if(isset($_POST['stage_id'])){
 	$current_team = $users[$cookie_name]["current_team"];
 
 	// チームIDが有効なら処理を続行する
-	if($current_team > 16){
+	if($current_team > 18){
 
 		// データベースから陣地色と最終更新日時を読み込んで計算
 		$query = "SELECT * FROM `area` WHERE `id` = '$stage_id' LIMIT 1";

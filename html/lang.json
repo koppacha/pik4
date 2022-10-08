@@ -1288,7 +1288,7 @@
 "en": "Join"
 },
 "main_nav_team_join_caution":{
-"ja": "（参加予定のない方は押さないでください！）",
+"ja": "（チーム配属直後からプレイ予定の方のみ押してください。席取り行為はご遠慮願います\uD83D\uDE47）",
 "en": "(Please do not press if you do not plan to participate!)"
 },
 "main_nav_team_error":{

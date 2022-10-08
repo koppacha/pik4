@@ -3,7 +3,6 @@
 require_once('_def.php');
 require_once('pik4_config.php');
 require_once('pik4_function.php');
-require_once('pik4_array.php');
 
 $back_data = '';
 $user_name = $_POST["user_name"];
@@ -13,7 +12,7 @@ $max	   = $_POST["max"];
 $error	   = 0;
 
 	// データベースへアクセス
-	$conn = mysqli_connect($mysql_host,$mysql_user,$mysql_pass,$mysql_db);
+        $mysqlconn = mysqli_connect($mysql_host,$mysql_user,$mysql_pass,$mysql_db);
 	if ( $mysqlconn == false) {
 		$network_error = 1;
 		$return_flag = 0;
@@ -24,7 +23,9 @@ $error	   = 0;
 		}
 	}
 
-	if ( $conn == false) {
+        require_once('pik4_array.php');
+
+        if (!$mysqlconn) {
 		$error = 1;
 		$back_data = 'エラー：データベースの接続に失敗しました。';
 	}
@@ -39,14 +40,14 @@ $error	   = 0;
 		$team_b = array();
 
 		$query = "SELECT `rate` FROM `user` WHERE `current_team` = '$min' ";
-		if ($result = mysqli_query($conn, $query) ){
+		if ($result = mysqli_query($mysqlconn, $query) ){
 			while ($row = mysqli_fetch_assoc($result)) {
 				$team_a[] = $row['rate'];
 			}
 		}
 
 		$query = "SELECT `rate` FROM `user` WHERE `current_team` = '$max' ";
-		if ($result = mysqli_query($conn, $query) ){
+		if ($result = mysqli_query($mysqlconn, $query) ){
 			while ($row = mysqli_fetch_assoc($result)) {
 				$team_b[] = $row['rate'];
 			}
@@ -54,7 +55,7 @@ $error	   = 0;
 		// 新規メンバーのレートを取得
 		$rate = 0;
 		$query = "SELECT `rate` FROM `user` WHERE `user_name` = '$user_name' LIMIT 1 ";
-		if ($result = mysqli_query($conn, $query) ){
+		if ($result = mysqli_query($mysqlconn, $query) ){
 			$row = mysqli_fetch_assoc($result);
 			$rate = $row['rate'];
 		} else {
@@ -80,7 +81,8 @@ $error	   = 0;
 		$team_b_total = array_sum($team_b);
 		
 		// ランダムで決める場合の関数
-		function randteam(){
+		function randteam(): string
+                {
 			$rand = rand(1, 2);
 			if($rand === 1){
 				return 'a';
@@ -130,7 +132,7 @@ $error	   = 0;
 			$back_data = 'エラー：チーム振り分けでエラーが発生しました。';
 		}
 		if($error != 1){
-			$result = mysqli_query($conn, $query );
+			$result = mysqli_query($mysqlconn, $query );
 			if($result){
 				$back_data = '抽選の結果あなたは <b>'.$team[$teamnum].'</b> になりました。グッドラック！ <A style="color:#000;" href="./'.$limited_stage_list[$limited_num].'">→こちらを押して再読み込みしてください</A>';
 				setcookie('team', $teamnum, time()+60*60*24*30*120);
@@ -141,9 +143,8 @@ $error	   = 0;
 		}
 	}
 
-	mysqli_close($conn);
+	mysqli_close($mysqlconn);
 
 header('Content-Type: application/json; charset=utf-8');
 
 echo json_encode($back_data);
-?>
