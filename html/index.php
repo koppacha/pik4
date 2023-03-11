@@ -80,7 +80,8 @@ elseif ( $stage_id >    4017 and $stage_id <     10001 ) $page_type =98; // 無�
 elseif ( $stage_id >   10000 and $stage_id <     10205 ) $page_type = 7; // 特殊ランキング (本編RTA)
 elseif ( $stage_id >   10204 and $stage_id <     10215 ) $page_type =14; // 特殊ランキング（チャレンジ複合）
 elseif ( $stage_id >   10214 and $stage_id <     10225 ) $page_type =22; // 特殊ランキング（ソロバトル）
-elseif ( $stage_id >   10224 and $stage_id <     10300 ) $page_type =98; // 無効
+elseif ( $stage_id ==  10225			               ) $page_type = 7; // 特殊ランキング（本編RTA）
+elseif ( $stage_id >   10225 and $stage_id <     10300 ) $page_type =98; // 無効
 elseif ( $stage_id >   10299 and $stage_id <     10303 ) $page_type = 7; // 特殊ランキング (ピクミン3)
 elseif ( $stage_id >   10302 and $stage_id <     10315 ) $page_type =23; // 特殊ランキング（ソロビンゴ）
 elseif ( $stage_id >   10399 and $stage_id <    151101 ) $page_type =98; // 無効

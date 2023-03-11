@@ -628,7 +628,7 @@ topscore_board_tab2(array(301,302,303,304,305,317,318,319,320,321,327,328,329,33
 topscore_board_tab2(array(306,307,308,309,310,322,323,324,325,326,332,333,334,335,336), 32);
 topscore_board_tab2(array(311,312,313,314,315,316), 33);
 topscore_board_tab("rate",  range(337, 348), $stage_id, 95, 9999);
-topscore_board_tab2(array(10101, 10201, 10202, 10301, 10302, 10203, 10204), 93);
+topscore_board_tab2(array(10101, 10201, 10202, 10301, 10302, 10203, 10204, 10225), 93);
 topscore_board_tab2(range(231, 244), 93);
 topscore_board_tab2(range(10205, 10214), 94);
 topscore_board_tab2(range(10215, 10224), 96);

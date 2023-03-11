@@ -6,3 +6,5 @@
 /html/uploads/
 /data/Excel/
 /docker/db/init/
+/docker/db/data/
+/.idea

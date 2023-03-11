@@ -24,7 +24,7 @@ if (@$_POST['check_send']) {
 		$trial		= $_POST['trial'];		// 体験版
 		$post_comment	= $_POST['post_comment'];	// コメント
 		$console	= $_POST['console'];		// 操作方法
-		$console_2p	= $_POST['console_2p'];		// 2Pの操作方法
+		$console_2p	= $_POST['console_2p'] ?: 0;		// 2Pの操作方法
 		$user_name_2p	= $_POST['user_name_2p'];	// 2Pの名前
 		$video_url	= $_POST['video_url'];		// 動画URL
 		$large_picfile	= $_POST['large_picfile'];	// 先行アップロード画像のURL
@@ -63,7 +63,7 @@ if (@$_POST['check_send']) {
 		$storyc_death	= $_REQUEST['storyc_death'];	// 本編地下犠牲数
 
 		$story_daycount = $_REQUEST['story_daycount'];	// 本編クリア日数
-		$story_correct	= $_REQUEST['story_correct'];	// 本編回収数
+		$story_correct	= $_REQUEST['story_correct'] ?: 0;	// 本編回収数
 		$story_rtahour	= $_REQUEST['story_rtahour'];	// 本編クリア(時)
 		$story_rtamin	= $_REQUEST['story_rtamin'];	// 本編クリア(分)
 		$story_rtasec	= $_REQUEST['story_rtasec'];	// 本編クリア(秒)
@@ -71,10 +71,10 @@ if (@$_POST['check_send']) {
 		$story_red	= $_REQUEST['story_red'];	// 本編赤を増やした数
 		$story_blue	= $_REQUEST['story_blue'];	// 本編青を増やした数
 		$story_yellow	= $_REQUEST['story_yellow'];	// 本編黄を増やした数
-		$story_purple	= $_REQUEST['story_purple'];	// 本編紫を増やした数
-		$story_white	= $_REQUEST['story_white'];	// 本編白を増やした数
-		$story_winged	= $_REQUEST['story_winged'];	// 本編羽を増やした数
-		$story_rock	= $_REQUEST['story_rock'];	// 本編岩を増やした数
+		$story_purple	= $_REQUEST['story_purple'] ?: 0; // 本編紫を増やした数
+		$story_white	= $_REQUEST['story_white'] ?: 0;	// 本編白を増やした数
+		$story_winged	= $_REQUEST['story_winged'] ?: 0;	// 本編羽を増やした数
+		$story_rock	= $_REQUEST['story_rock'] ?: 0;	// 本編岩を増やした数
 		$story_death	= $_REQUEST['story_death'];	// 本編犠牲数
 //		$story_lim_array= $_REQUEST['story_lim_array'];	// 本編縛り内容配列（停止中）
 //		$story_lim_pts	= $_REQUEST['story_lim_pts'];	// 本編縛りポイント
@@ -1700,7 +1700,6 @@ if (@$_POST['check_send']) {
 			if($score_check == 1) $query = "INSERT INTO `ranking`( `user_name`, `stage_id`, `score`, `console`, `user_ip`, `user_host`, `user_agent`, `unique_id`, `post_comment`, `post_date`, `post_count`,`prev_score`,`pic_file`,`pic_file2`,`firstpost_date`,`video_url`,`prev_rank`,`season`,`user_name_2p`,`console_2p`,`rate`,`post_memo`) VALUES('$user_name','$stage_id','$score','$console','$user_ip','$user_host','$user_agent','$unique_id','$post_comment','$post_date','$post_count','$prev_score','$new_file_name[0]','$new_file_name[1]','$firstpost_date','$video_url','$old_rank','$season','$user_name_2p','$console_2p','$myrate','$post_memo')";
 			if($score_check == 2) $query = "INSERT INTO `ranking`( `user_name`, `stage_id`, `score`, `console`, `user_ip`, `user_host`, `user_agent`, `unique_id`, `post_comment`, `post_date`, `post_count`,`prev_score`,`pic_file`,`pic_file2`,`firstpost_date`,`video_url`,`prev_rank`,`log`,`season`,`user_name_2p`,`console_2p`,`rate`,`post_memo`) VALUES('$user_name','$stage_id','$score','$console','$user_ip','$user_host','$user_agent','$unique_id','$post_comment','$post_date','$post_count','$prev_score','$new_file_name[0]','$new_file_name[1]','$firstpost_date','$video_url','$old_rank','1','$season','$user_name_2p','$console_2p','$myrate','$post_memo')";
 			if(!$_SESSION['debug_mode']) $result = mysqli_query($mysqlconn, $query );
-			var_dump(mysqli_error($mysqlconn));
 
 			// バトルモード
 			} elseif($ranking_type == "battle"){

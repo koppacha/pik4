@@ -423,7 +423,7 @@ foreach($today_challenge as $val){
 // 本編ランキング選択
 	$stage_output = array();
 	$stage_output1 = array(10101);
-	$stage_output2 = range(10201, 10224);
+	$stage_output2 = range(10201, 10225);
 	$stage_output3 = range(10301, 10314);
 	$stage_output  = array_merge($stage_output1, $stage_output2, $stage_output3);
 	foreach($stage_output as $sel){
@@ -573,7 +573,7 @@ foreach($array_console_long as $key => $sel){
 <?php
 // 本編のスコア入力欄
 ?>
-<div id="complex_challenge" <?php $sel=( $url_stage_id < 10204 or $url_stage_id > 10215 )? 'style="display:none;"' : ''; ?> <?php echo $sel; ?> >
+<div id="complex_challenge" <?php $sel=( $url_stage_id < 10204 or $url_stage_id > 10215 or $url_stage_id === 10225 )? 'style="display:none;"' : ''; ?> <?php echo $sel; ?> >
 <b glot-model="form_score_timeandscore">通過タイム/スコア</b> (任意項目です。タイムかスコアどちらかだけの登録も可能です） <br>
 <table style="table-layout:fixed;">
 <?php
